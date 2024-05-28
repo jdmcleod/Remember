@@ -1,0 +1,14 @@
+doctype html
+html
+  = render 'layouts/head'
+
+  body.app-container
+    / = render 'shared/flash'
+    - if current_user.present?
+      / = render 'layouts/navigation'
+    .wrapper--main
+      .container
+        = yield
+      / = render 'shared/confirm'
+      / = render 'shared/modal'
+

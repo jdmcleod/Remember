@@ -1,0 +1,6 @@
+.card-login
+  - if session[:current_user_id]
+    = button_to 'Logout', session_path(session[:current_user_id]), method: :delete
+  - else
+    = button_to 'Sign In With Google', '/auth/google', class: 'btn-delete', data: { turbo: false }
+

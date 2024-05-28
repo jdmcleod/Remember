@@ -1,0 +1,8 @@
+doctype html
+html
+  = render 'layouts/head', optics: true
+
+  body.app-body.app-body--login class=class_names('app-body--login': current_user.nil? && session[:logged_in] == false)
+    = turbo_frame_tag 'modal'
+    / = render 'shared/optics_flash'
+    = yield

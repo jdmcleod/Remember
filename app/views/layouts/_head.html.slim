@@ -1,0 +1,12 @@
+head
+  title Remember
+  = csrf_meta_tags
+  = csp_meta_tag
+  = javascript_importmap_tags
+
+  = stylesheet_link_tag "application", "data-turbo-track": "reload"
+  = javascript_include_tag "application", "data-turbo-track": "reload", defer: true, type: "module"
+
+  / link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  / link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet"
+  meta content="width=device-width, initial-scale=1.0" name="viewport"
