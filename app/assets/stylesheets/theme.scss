@@ -1,0 +1,107 @@
+@font-face {
+  font-family: "Inter";
+  src: url("themes/fonts/Inter-Regular.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("themes/fonts/Inter-Italic.woff2") format("woff2");
+  font-style: italic;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("themes/fonts/Inter-SemiBold.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("themes/fonts/Inter-SemiBoldItalic.woff2") format("woff2");
+  font-style: italic;
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("themes/fonts/Inter-Bold.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("themes/fonts/Inter-BoldItalic.woff2") format("woff2");
+  font-style: italic;
+  font-weight: 700;
+}
+
+// Initial Color Definitions
+@mixin color-varieties {
+  // Primary HSL
+  --op-color-primary-h: 174;
+  --op-color-primary-s: 71%;
+  --op-color-primary-s-alt: 51%;
+  --op-color-primary-l: 26%;
+
+  // Neutral HSL
+  --op-color-neutral-h: 204;
+  --op-color-neutral-s: 8%;
+  --op-color-neutral-l: 50%;
+
+  // Alerts Notice HSL
+  --op-color-alerts-notice-h: 174;
+  --op-color-alerts-notice-s: 71%;
+  --op-color-alerts-notice-s-alt: 51%;
+  --op-color-alerts-notice-l: 26%;
+
+  // Alerts Info HSL
+  --op-color-alerts-info-h: 204;
+  --op-color-alerts-info-s: 100%;
+  --op-color-alerts-info-s-alt: 80%;
+  --op-color-alerts-info-l: 50%;
+
+  // Alerts Warning HSL
+  --op-color-alerts-warning-h: 44;
+  --op-color-alerts-warning-s: 100%;
+  --op-color-alerts-warning-s-alt-low: 85%;
+  --op-color-alerts-warning-s-alt-med: 90%;
+  --op-color-alerts-warning-s-alt-high: 95%;
+  --op-color-alerts-warning-l: 60%;
+
+  // Alerts Danger HSL
+  --op-color-alerts-danger-h: 345;
+  --op-color-alerts-danger-s: 100%;
+  --op-color-alerts-danger-s-alt: 80%;
+  --op-color-alerts-danger-l: 40%;
+}
+
+@mixin box-shadows {
+  --op-border-all: inset 0 0 0 var(--op-border-width);
+  --op-border-modal-accent: var(--op-color-neutral-minus-four);
+  --op-current-day-highlight: inset 0 0 0 var(--op-border-width-large) var(--op-color-primary-on-plus-seven);
+  --op-holiday-highlight: inset 0 0 0 var(--op-border-width-large) var(--op-color-alerts-danger-base);
+}
+
+@mixin spacing-scales {
+  --op-space-3x-large: calc(var(--op-space-scale-unit) * 3.2); // 32px
+  --op-space-4x-large: calc(var(--op-space-scale-unit) * 4); // 40px
+  --op-space-5x-large: calc(var(--op-space-scale-unit) * 8); // 80px
+}
+
+:root {
+  @include color-varieties;
+  @include box-shadows;
+  @include spacing-scales;
+
+  --op-font-family: 'Inter', sans-serif;
+}
+
+// Resets
+body {
+  line-height: var(--op-line-height-densest);
+}

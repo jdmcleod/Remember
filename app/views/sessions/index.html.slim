@@ -1,4 +1,4 @@
-.card-login
+.card
   - if session[:current_user_id]
     = button_to 'Logout', session_path(session[:current_user_id]), method: :delete
   - else
