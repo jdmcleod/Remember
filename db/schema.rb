@@ -10,9 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_27_174500) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_29_003506) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "days", force: :cascade do |t|
+    t.bigint "months_id"
+    t.date "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["months_id"], name: "index_days_on_months_id"
+  end
+
+  create_table "months", force: :cascade do |t|
+    t.bigint "quarter_id"
+    t.string "name"
+    t.date "start"
+    t.date "end"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["quarter_id"], name: "index_months_on_quarter_id"
+  end
+
+  create_table "quarters", force: :cascade do |t|
+    t.bigint "year_id"
+    t.date "start"
+    t.date "end"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["year_id"], name: "index_quarters_on_year_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
@@ -20,6 +47,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_27_174500) do
     t.string "profile_image_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "years", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "year"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_years_on_user_id"
   end
 
 end

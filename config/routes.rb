@@ -8,5 +8,9 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :index, :destroy]
   get '/auth/:provider/callback', to: 'sessions#create'
 
-  root to: "sessions/#index"
+  root to: 'years#current'
+
+  resources :years, only: [:index, :show] do
+    get :current, on: :collection
+  end
 end
