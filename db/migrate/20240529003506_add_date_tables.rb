@@ -25,7 +25,7 @@ class AddDateTables < ActiveRecord::Migration[7.1]
     end
 
     create_table(:days) do |t|
-      t.belongs_to :months
+      t.belongs_to :month
       t.date :date
 
       t.timestamps

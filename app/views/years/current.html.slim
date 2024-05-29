@@ -1,5 +1,18 @@
 .header.flex.items-center.justify-between
   h2.margin-none = "Remember #{@year.year}"
 
-  button.btn.btn--small Settings
+  button.btn.btn--small = icon('adjustments-alt', classes: 'icon--large')
 
+.app-container
+  - @year.quarters.each do |quarter|
+    .quarter
+      - quarter.months.each do |month|
+        .month
+          .month-name--scribble class="month-name--scribble-#{rand(1..4)}"
+          .month-name = month.name
+          .month-days
+            - month.days.first.date.wday.times do |i|
+              div
+
+            - month.days.each do |day|
+              .day = day.number

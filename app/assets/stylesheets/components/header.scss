@@ -1,0 +1,12 @@
+.header {
+  width: 100%;
+  height: 6rem;
+  padding: var(--op-space-small) var(--op-space-large);
+
+  background-color: var(--op-color-neutral-plus-seven);
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+
+  h2 {
+    font-weight: var(--op-font-weight-semi-bold);
+  }
+}

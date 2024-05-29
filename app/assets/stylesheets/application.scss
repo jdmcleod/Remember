@@ -4,6 +4,12 @@
 //@import '@rolemodel/optics/dist/scss/addons/rails-modal-and-panel/modal';
 
 @import 'theme';
-@import 'header';
+@import 'components/header';
+@import 'components/icon';
+
+@import 'components/base';
+@import 'components/quarter';
+@import 'components/month';
+@import 'components/day';
 
 @import 'utilities';

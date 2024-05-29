@@ -1,0 +1,8 @@
+// https://tabler-icons.io/
+
+$ti-font-path: 'https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/fonts';
+@import '../../../../node_modules/@tabler/icons-webfont/tabler-icons';
+
+.icon--large {
+  font-size: var(--op-font-2x-large);
+}

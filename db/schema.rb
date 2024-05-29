@@ -15,11 +15,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_29_003506) do
   enable_extension "plpgsql"
 
   create_table "days", force: :cascade do |t|
-    t.bigint "months_id"
+    t.bigint "month_id"
     t.date "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["months_id"], name: "index_days_on_months_id"
+    t.index ["month_id"], name: "index_days_on_month_id"
   end
 
   create_table "months", force: :cascade do |t|

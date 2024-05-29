@@ -1,0 +1,13 @@
+.day {
+  --size: 3.5rem;
+
+  width: var(--size);
+  height: var(--size);
+  border-radius: var(--op-radius-2x-large);
+  display: flex;
+  background-color: var(--op-color-primary-minus-six);
+  align-items: center;
+  justify-content: center;
+  font-weight: var(--op-font-weight-bold);
+  color: var(--op-color-neutral-plus-max);
+}
