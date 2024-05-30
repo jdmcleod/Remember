@@ -1,14 +1,14 @@
 .month {
   border-radius: var(--op-radius-x-large);
   box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
-  background-color: var(--op-color-neutral-plus-five);
-  padding: var(--op-space-medium);
+  background-color: var(--op-color-neutral-plus-max);
+  padding: var(--op-space-small);
   width: 100%;
   flex-grow: 1;
   height: 100%;
   display: flex;
   flex-direction: column;
-  gap: var(--op-space-medium);
+  gap: var(--op-space-small);
   position: relative;
   max-width: 34rem;
 }
@@ -30,6 +30,7 @@
   z-index: 0;
 }
 
+
 .month-name--scribble-1 {
   background-image: url('scribbles/scribble_1.svg');
   top: var(--op-space-small);
@@ -46,4 +47,19 @@
   height: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  div {
+    align-self: center;
+    justify-self: center;
+  }
+}
+
+.month-day-names {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+
+  div {
+    color: var(--op-color-neutral-plus-two);
+    font-size: var(--op-font-small);
+    text-align: center;
+  }
 }

@@ -9,10 +9,28 @@
       - quarter.months.each do |month|
         .month
           .month-name--scribble class="month-name--scribble-#{rand(1..4)}"
-          .month-name = month.name
+          .flex.justify-between
+            = icon('book-2', classes: 'icon--large', color: 'neutral-minus-two')
+            .month-name = month.name
+            = icon('highlight', classes: 'icon--large', color: 'neutral-minus-two')
+          .month-day-names
+            div s
+            div m
+            div t
+            div w
+            div t
+            div f
+            div s
           .month-days
             - month.days.first.date.wday.times do |i|
               div
 
             - month.days.each do |day|
-              .day = day.number
+              .day
+                div = day.number
+                - if (rand(1..2) == 1)
+                  .day-note-indicator.day-short-note-indicator
+                    = icon('pencil', color: 'primary-minus-two')
+                - if (rand(1..5) == 5)
+                  .day-note-indicator.day-long-note-indicator
+                    = icon('book-2', color: 'alerts-notice-minus-two')

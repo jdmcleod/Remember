@@ -1,52 +1,10 @@
-@font-face {
-  font-family: "Inter";
-  src: url("themes/fonts/Inter-Regular.woff2") format("woff2");
-  font-style: normal;
-  font-weight: 400;
-}
-
-@font-face {
-  font-family: "Inter";
-  src: url("themes/fonts/Inter-Italic.woff2") format("woff2");
-  font-style: italic;
-  font-weight: 400;
-}
-
-@font-face {
-  font-family: "Inter";
-  src: url("themes/fonts/Inter-SemiBold.woff2") format("woff2");
-  font-style: normal;
-  font-weight: 600;
-}
-
-@font-face {
-  font-family: "Inter";
-  src: url("themes/fonts/Inter-SemiBoldItalic.woff2") format("woff2");
-  font-style: italic;
-  font-weight: 600;
-}
-
-@font-face {
-  font-family: "Inter";
-  src: url("themes/fonts/Inter-Bold.woff2") format("woff2");
-  font-style: normal;
-  font-weight: 700;
-}
-
-@font-face {
-  font-family: "Inter";
-  src: url("themes/fonts/Inter-BoldItalic.woff2") format("woff2");
-  font-style: italic;
-  font-weight: 700;
-}
-
 // Initial Color Definitions
 @mixin color-varieties {
   // Primary HSL
-  --op-color-primary-h: 174;
-  --op-color-primary-s: 71%;
+  --op-color-primary-h: 348;
+  --op-color-primary-s: 87%;
   --op-color-primary-s-alt: 51%;
-  --op-color-primary-l: 26%;
+  --op-color-primary-l: 63%;
 
   // Neutral HSL
   --op-color-neutral-h: 204;

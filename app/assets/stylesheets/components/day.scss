@@ -1,13 +1,32 @@
 .day {
-  --size: 3.5rem;
+  --size: 3.6rem;
 
   width: var(--size);
   height: var(--size);
-  border-radius: var(--op-radius-2x-large);
+  border-radius: 14px;
   display: flex;
-  background-color: var(--op-color-primary-minus-six);
+  background-color: var(--op-color-neutral-plus-six);
   align-items: center;
   justify-content: center;
   font-weight: var(--op-font-weight-bold);
-  color: var(--op-color-neutral-plus-max);
+  color: var(--op-color-neutral-plus-one);
+  border: solid 1px var(--op-color-primary-plus-four);
+  position: relative;
+}
+
+.day-note-indicator {
+  position: absolute;
+  background-color: var(--op-color-primary-plus-six);
+  border-radius: 50%;
+  padding: 1px;
+  left: -8px;
+  top: -8px;
+}
+
+.day-short-note-indicator {
+}
+
+.day-long-note-indicator {
+  background-color: var(--op-color-alerts-notice-plus-six);
+  left: 10px;
 }
