@@ -13,4 +13,8 @@ Rails.application.routes.draw do
   resources :years, only: [:index, :show] do
     get :current, on: :collection
   end
+
+  resources :entries, only: %i[create] do
+    get :day_popup_form
+  end
 end

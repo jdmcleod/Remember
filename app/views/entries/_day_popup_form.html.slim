@@ -1,0 +1,15 @@
+= turbo_frame_tag 'day-popup-form'
+  div
+    = simple_form_for @entry, url: day_entry_path(@entry), data: { method: :put, turbo_frame: 'day-popup-form', 'day-popup-target': 'form' } do |f|
+      = f.hidden_field :user_id, value: @entry.user_id
+      div = "Edit Entry for #{@entry.user.email}"
+
+      / = f.input_field :copy_to_id,
+              collection: Person.active.order(:name) - @booked_time.project.booked_times.map(&:person),
+              placeholder: 'Copy To',
+              class: 'form-control form-control--small',
+                  data: { action: 'change->booked-time-popup#copyInitiated' }
+
+      .full-width.justify-end.flex.gap-xs
+        .btn.btn--small data-action='click->day-popup#close' Cancel
+        = f.submit 'Save', class: 'btn btn--small btn-primary', form: f.id, data: { day_popup_target: 'saveButton', action: 'click->day-popup#save' }

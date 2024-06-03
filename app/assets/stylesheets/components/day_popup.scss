@@ -1,0 +1,19 @@
+.day-popup {
+  --hardcoded-width: 285px;
+  --hardcoded-height: 179px;
+  min-width: var(--hardcoded-width); // make loading stage less jumpy
+  min-height: var(--hardcoded-height); // make loading stage less jumpy
+  position: absolute;
+  padding: var(--op-space-x-small) var(--op-space-small);
+  box-shadow: var(--op-shadow-large);
+  background-color: var(--op-color-neutral-plus-max);
+  border-radius: var(--op-radius-large);
+
+  .form__error {
+    max-width: calc(calc(var(--hardcoded-width) / 2) - var(--op-space-x-large));
+  }
+}
+
+.animate__animated.animate__zoomIn, .animate__animated.animate__zoomOut {
+  --animate-duration: 0.6s;
+}
