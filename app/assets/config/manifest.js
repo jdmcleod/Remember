@@ -3,5 +3,4 @@
 //= link @rails--actiontext.js
 //= link application.js
 //= link_tree ../builds
-//= link animate.css.js
 

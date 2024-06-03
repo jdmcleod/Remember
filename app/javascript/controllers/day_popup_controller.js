@@ -1,32 +1,38 @@
 import { Controller } from '@hotwired/stimulus'
 import { animate, setElementLocation, toggleVisible } from '../helpers/dom_helpers'
+import { get } from '@rails/request.js'
 
 export default class DayPopupController extends Controller {
-  static targets = ['saveButton', 'form']
+  static targets = ['popup', 'container']
 
-  connect() {
-    this._initializeElement()
+  async show(event) {
+    this.dayElement = event.target.closest('.day')
+    const date = this.dayElement.dataset.date
+    await this._loadContent(date)
     this._addEventListeners()
   }
 
-  disconnect() {
-    this._removeEventListeners()
-    this.element.remove()
+  popupTargetConnected() {
+    if (this.dayElement) this._movePopup()
   }
 
-  _initializeElement() {
-    this.element.classList.add('day-popup')
+  // disconnect() {
+  //   this._removeEventListeners()
+  // }
+
+  async _loadContent(date) {
+    const response = await get(`/entries/day_popup_form/${date}`, { responseKind: 'turbo-stream' })
+    if (response.ok) {
+      console.log('it worked!')
+    } else {
+      console.log('it did not work')
+    }
+  }
+
+  _movePopup() {
     this._setPosition()
-    animate(this.element, 'zoomIn')
-    toggleVisible(this.element, true)
+    animate(this.popupTarget, 'zoomIn')
   }
-
-  get containerClass() { return '.day-popup' }
-  selectedElement() { return this._selectedDiv ??= document.querySelector('.vis-item.vis-selected') }
-  leftPanel() { return this._leftPanel ??= document.querySelector('.vis-panel.vis-left') }
-  sidebar() { return this._sidebar ??= document.querySelector('.sidebar__content') }
-  xOffset() { return 85 }
-  yOffset() { return 35 }
 
   _removeEventListeners() {
     document.removeEventListener('mousedown', this._handleOutsideClick, true)
@@ -47,16 +53,16 @@ export default class DayPopupController extends Controller {
   }
 
   _handleClickOutsideDiv(target) {
-    const clickOutsideNoteContainer = !target.closest(this.containerClass)
+    const clickOutsideNoteContainer = !target.closest('#day-popup-form')
     const isVisible = !this.element.classList.contains('visibility-hidden')
 
     if (clickOutsideNoteContainer && isVisible) this.close()
   }
 
   close() {
-    animate(this.element, 'zoomOut')
+    animate(this.popupTarget, 'zoomOut')
     setTimeout(() => {
-      toggleVisible(this.element, false)
+      toggleVisible(this.popupTarget, false)
       this.disconnect()
     }, 500)
   }
@@ -70,14 +76,11 @@ export default class DayPopupController extends Controller {
   }
 
   _setPosition() {
-    let { x, y } = this.selectedElement().getBoundingClientRect()
+    let { x, y } = this.dayElement.getBoundingClientRect()
 
-    const minXPosition = this.leftPanel().clientWidth + this.sidebar().clientWidth
+    // if (x + this.popupTarget.clientWidth > document.body.clientWidth) x = x - this.popupTarget.clientWidth
+    // if (y + this.popupTarget.clientHeight > document.body.clientHeight) y   = y - this.popupTarget.clientHeight
 
-    if (x < minXPosition) x = minXPosition
-    if (x + this.element.clientWidth > document.body.clientWidth) x = x - this.element.clientWidth
-    if (y + this.element.clientHeight > document.body.clientHeight) y   = y - this.element.clientHeight
-
-    setElementLocation(this.element, x - this.xOffset(), y + this.yOffset())
+    setElementLocation(this.popupTarget, x, y)
   }
 }

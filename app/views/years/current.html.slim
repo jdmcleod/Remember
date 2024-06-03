@@ -27,7 +27,7 @@
               div
 
             - month.days.each do |day|
-              .day data-action='click->day-popup#show'
+              button.day data-action='click->day-popup#show' data-date=day.date.to_s
                 div = day.number
                 - if (rand(1..2) == 1)
                   .day-note-indicator.day-short-note-indicator

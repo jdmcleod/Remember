@@ -1,3 +1,9 @@
+GIT
+  remote: https://github.com/RoleModel/rolemodel_rails.git
+  revision: 9caf060d6f8eb1f9660a37f20c2c6f7d42e42c18
+  specs:
+    rolemodel_rails (0.8.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -277,6 +283,9 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
+    simple_form (5.3.1)
+      actionpack (>= 5.2)
+      activemodel (>= 5.2)
     slim (5.2.1)
       temple (~> 0.10.0)
       tilt (>= 2.1.0)
@@ -342,8 +351,10 @@ DEPENDENCIES
   puma (>= 5.0)
   rails (~> 7.1.3, >= 7.1.3.3)
   requestjs-rails
+  rolemodel_rails!
   rspec-rails
   selenium-webdriver
+  simple_form (~> 5.3)
   slim
   sprockets-rails
   stimulus-rails

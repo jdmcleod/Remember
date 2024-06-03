@@ -9,7 +9,6 @@ import "controllers"
 
 import "trix"
 import "@rails/actiontext"
-// import "animate.css"
 
 // Rails.start()
 // ActiveStorage.start()

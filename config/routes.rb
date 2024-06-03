@@ -15,6 +15,6 @@ Rails.application.routes.draw do
   end
 
   resources :entries, only: %i[create] do
-    get :day_popup_form
+    get 'day_popup_form/:date', to: 'entries#day_popup_form', as: :day_popup_form, on: :collection
   end
 end
