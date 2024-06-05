@@ -29,9 +29,9 @@
             - month.days.each do |day|
               button.day data-action='click->day-popup#show' data-date=day.date.to_s
                 div = day.number
-                - if (rand(1..2) == 1)
+                / - if (rand(1..2) == 1)
                   .day-note-indicator.day-short-note-indicator
                     = icon('pencil', color: 'primary-minus-two')
-                - if (rand(1..5) == 5)
+                / - if (rand(1..5) == 5)
                   .day-note-indicator.day-long-note-indicator
                     = icon('book-2', color: 'alerts-notice-minus-two')

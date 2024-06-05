@@ -2,8 +2,18 @@ import { Controller } from '@hotwired/stimulus'
 import { animate, setElementLocation, toggleVisible } from '../helpers/dom_helpers'
 import { get } from '@rails/request.js'
 
+const freeze = () => {
+  // @ts-ignore
+  window.Turbo.navigator.currentVisit.scrolled = true;
+  document.removeEventListener("turbo:render", freeze);
+};
+
+const freezeScrollOnNextRender = () => {
+  document.addEventListener("turbo:render", freeze);
+};
+
 export default class DayPopupController extends Controller {
-  static targets = ['popup', 'container']
+  static targets = ['popup', 'container', 'form']
 
   async show(event) {
     this.dayElement = event.target.closest('.day')
@@ -16,17 +26,12 @@ export default class DayPopupController extends Controller {
     if (this.dayElement) this._movePopup()
   }
 
-  // disconnect() {
-  //   this._removeEventListeners()
-  // }
+  disconnect() {
+    this._removeEventListeners()
+  }
 
   async _loadContent(date) {
-    const response = await get(`/entries/day_popup_form/${date}`, { responseKind: 'turbo-stream' })
-    if (response.ok) {
-      console.log('it worked!')
-    } else {
-      console.log('it did not work')
-    }
+    await get(`/entries/day_popup_form/${date}`, { responseKind: 'turbo-stream' })
   }
 
   _movePopup() {
@@ -62,17 +67,17 @@ export default class DayPopupController extends Controller {
   close() {
     animate(this.popupTarget, 'zoomOut')
     setTimeout(() => {
+      this.save()
       toggleVisible(this.popupTarget, false)
       this.disconnect()
-    }, 500)
+    }, 150)
   }
 
   save() {
-    setTimeout(() => {
-      if (this.element.querySelector('#popup-form-saved')) {
-        this.close()
-      }
-    }, 150)
+    if (this.formTarget) {
+      freezeScrollOnNextRender()
+      this.formTarget.requestSubmit()
+    }
   }
 
   _setPosition() {

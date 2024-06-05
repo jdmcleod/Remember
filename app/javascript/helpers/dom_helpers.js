@@ -17,7 +17,6 @@ export function toggleVisible(element, override) {
   if (!element) return
   const isVisible = !element.classList.contains('visibility-hidden')
   if (override === isVisible) return
-  console.log('removing class', element)
   element.classList.toggle('visibility-hidden', isVisible)
 }
 
