@@ -9,12 +9,29 @@
   align-items: center;
   justify-content: center;
   font-weight: var(--op-font-weight-bold);
-  color: var(--op-color-neutral-plus-one);
+  color: var(--op-color-neutral-base);
   border: solid 1px var(--op-color-primary-plus-four);
   position: relative;
   align-self: center;
   justify-self: center;
   font-family: "Space Grotesk";
+
+  &:hover {
+    background-color: var(--op-color-primary-plus-six);
+    border: dashed var(--op-border-width-large) var(--op-color-primary-plus-two);
+  }
+
+  &.day--current {
+    border: dashed var(--op-border-width-large) var(--op-color-primary-plus-six);
+    background-color: var(--op-color-primary-base);
+    color: var(--op-color-neutral-plus-max);
+  }
+
+  &.day--future {
+    border: none;
+    background-color: var(--op-color-neutral-plus-seven);
+    color: var(--op-color-neutral-plus-two);
+  }
 }
 
 .day-note-indicator {

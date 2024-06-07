@@ -16,6 +16,9 @@ export default class DayPopupController extends Controller {
   static targets = ['popup', 'container', 'form']
 
   async show(event) {
+    if (this._popupOpen) return
+
+    this._popupOpen = true
     this.dayElement = event.target.closest('.day')
     const date = this.dayElement.dataset.date
     await this._loadContent(date)
@@ -70,6 +73,7 @@ export default class DayPopupController extends Controller {
       this.save()
       toggleVisible(this.popupTarget, false)
       this.disconnect()
+      this._popupOpen = false
     }, 150)
   }
 
@@ -83,8 +87,8 @@ export default class DayPopupController extends Controller {
   _setPosition() {
     let { x, y } = this.dayElement.getBoundingClientRect()
 
-    // if (x + this.popupTarget.clientWidth > document.body.clientWidth) x = x - this.popupTarget.clientWidth
-    // if (y + this.popupTarget.clientHeight > document.body.clientHeight) y   = y - this.popupTarget.clientHeight
+    if (x + this.popupTarget.clientWidth > document.body.clientWidth) x = x - this.popupTarget.clientWidth
+    if (y + this.popupTarget.clientHeight > document.body.clientHeight) y   = y - this.popupTarget.clientHeight
 
     setElementLocation(this.popupTarget, x, y)
   }

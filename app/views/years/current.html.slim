@@ -24,7 +24,8 @@
               div
 
             - month.days.each do |day|
-              button.day data-action='click->day-popup#show' data-date=day.date.to_s data-testid="day-#{day.id}"
+              - day_classes = class_names('day--current': day.date.today?, 'day--future': day.date > Date.current)
+              button.day class=day_classes data-action='click->day-popup#show' data-date=day.date.to_s data-testid="day-#{day.id}"
                 div = day.number
                 - if day.short_entry.present?
                   .day-note-indicator.day-short-note-indicator
