@@ -1,5 +1,5 @@
 .day {
-  --size: 3.6rem;
+  --size: 3.8rem;
 
   width: var(--size);
   height: var(--size);
@@ -8,13 +8,14 @@
   background-color: var(--op-color-neutral-plus-six);
   align-items: center;
   justify-content: center;
-  font-weight: var(--op-font-weight-bold);
+  font-weight: var(--op-font-weight-semi-bold);
   color: var(--op-color-neutral-base);
   border: solid 1px var(--op-color-primary-plus-four);
   position: relative;
   align-self: center;
   justify-self: center;
-  font-family: "Space Grotesk";
+  font-family: "Jersey 25";
+  font-size: var(--op-font-large);
 
   &:hover {
     background-color: var(--op-color-primary-plus-six);
