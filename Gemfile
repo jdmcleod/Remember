@@ -15,7 +15,6 @@ gem 'image_processing', '~> 1.2'
 gem 'requestjs-rails'
 gem 'importmap-rails' # rubocop:disable Bundler/OrderedGems - must come after requestjs-rails
 gem 'sprockets-rails'
-gem 'stimulus-rails'
 gem 'turbo-rails'
 gem "tzinfo-data", platforms: %i[ mswin mswin64 mingw x64_mingw jruby ]
 
@@ -30,6 +29,8 @@ gem 'omniauth-google-oauth2'
 gem 'omniauth-rails_csrf_protection'
 
 gem 'slim'
+
+gem "simple_form", "~> 5.3"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -55,23 +56,5 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
-end
-
-gem "simple_form", "~> 5.3"
-
-group :development, :test do
-  gem "factory_bot_rails"
-end
-
-group :development, :test do
-  gem "rspec-rails"
-end
-
-group :test do
-  gem "capybara"
-  # gem "webdrivers"
-end
-
-group :test do
   gem "test-prof"
 end
