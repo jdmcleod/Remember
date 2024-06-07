@@ -3,6 +3,10 @@ class Day < ApplicationRecord
 
   has_one :short_entry, as: :journalable, dependent: :destroy, class_name: 'Entry'
 
+  def self.on(date)
+    find_by(date:)
+  end
+
   def number
     date.mday
   end

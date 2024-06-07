@@ -1,4 +1,4 @@
-#day-popup-form class="#{local_assigns[:visible] ? '' : 'visibility-hidden'}" data-day-popup-target="container"
+#day-popup-form data-testid='day-popup-form' class="#{local_assigns[:visible] ? '' : 'visibility-hidden'}" data-day-popup-target="container"
   .day-popup data-day-popup-target="popup"
     - if @entry.present?
       .flex.gap-sm.items-center
@@ -13,4 +13,4 @@
 
         = f.hidden_field :user_id, value: @entry.user_id
 
-        = f.rich_text_area :content
+        = f.rich_text_area :content, data: { testid: 'short-entry-input' }

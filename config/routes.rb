@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   resources :sessions, only: [:new, :index, :destroy]
-  get '/auth/:provider/callback', to: 'sessions#create'
+  get '/auth/:provider/callback', as: :auth_google_callback, to: 'sessions#create'
 
   root to: 'years#current'
 
