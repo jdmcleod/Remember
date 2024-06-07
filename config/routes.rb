@@ -6,11 +6,15 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   resources :sessions, only: [:new, :index, :destroy]
-  get '/auth/:provider/callback', to: 'sessions#create'
+  get '/auth/:provider/callback', as: :auth_google_callback, to: 'sessions#create'
 
   root to: 'years#current'
 
   resources :years, only: [:index, :show] do
     get :current, on: :collection
+  end
+
+  resources :entries, only: %i[update] do
+    get 'day_popup_form/:date', to: 'entries#day_popup_form', as: :day_popup_form, on: :collection
   end
 end

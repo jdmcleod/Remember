@@ -12,6 +12,9 @@
   color: var(--op-color-neutral-plus-one);
   border: solid 1px var(--op-color-primary-plus-four);
   position: relative;
+  align-self: center;
+  justify-self: center;
+  font-family: "Space Grotesk";
 }
 
 .day-note-indicator {

@@ -3,7 +3,8 @@
 
   button.btn.btn--small = icon('adjustments-alt', classes: 'icon--large')
 
-.app-container
+.app-container data-controller="day-popup"
+  = render 'entries/day_popup_form'
   - @year.quarters.each do |quarter|
     .quarter
       - quarter.months.each do |month|
@@ -26,11 +27,11 @@
               div
 
             - month.days.each do |day|
-              .day
+              button.day data-action='click->day-popup#show' data-date=day.date.to_s data-testid="day-#{day.id}"
                 div = day.number
-                - if (rand(1..2) == 1)
+                - if day.short_entry.present?
                   .day-note-indicator.day-short-note-indicator
                     = icon('pencil', color: 'primary-minus-two')
-                - if (rand(1..5) == 5)
+                / - if (rand(1..5) == 5)
                   .day-note-indicator.day-long-note-indicator
                     = icon('book-2', color: 'alerts-notice-minus-two')

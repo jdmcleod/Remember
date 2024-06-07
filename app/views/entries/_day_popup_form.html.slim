@@ -1,0 +1,16 @@
+#day-popup-form data-testid='day-popup-form' class="#{local_assigns[:visible] ? '' : 'visibility-hidden'}" data-day-popup-target="container"
+  .day-popup data-day-popup-target="popup"
+    - if @entry.present?
+      .flex.gap-sm.items-center
+        button.day
+          div = @entry.journalable.number
+
+        div = "What I did on #{@entry.title}"
+
+      = simple_form_for @entry, url: entry_path(@entry), data: { method: :put, turbo: true, 'day-popup-target': 'form' } do |f|
+        = f.error_notification
+        = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+
+        = f.hidden_field :user_id, value: @entry.user_id
+
+        = f.rich_text_area :content, data: { testid: 'short-entry-input' }
