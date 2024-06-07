@@ -1,0 +1,11 @@
+.btn--no-bg {
+  background-color: unset;
+
+  &:hover {
+    background-color: unset;
+
+    .icon {
+      color: var(--op-color-primary-base) !important;
+    }
+  }
+}

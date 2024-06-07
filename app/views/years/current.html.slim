@@ -1,9 +1,6 @@
-.header.flex.items-center.justify-between
-  h2.margin-none = "Remember #{@year.year}"
-
-  button.btn.btn--small = icon('adjustments-alt', classes: 'icon--large')
-
 .app-container data-controller="day-popup"
+  = render 'header'
+
   = render 'entries/day_popup_form'
   - @year.quarters.each do |quarter|
     .quarter
