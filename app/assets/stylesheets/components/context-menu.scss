@@ -1,0 +1,61 @@
+.context-menu {
+  position: relative;
+  justify-self: end;
+}
+
+.context-menu__toggle{
+  height: 100%;
+  display: flex;
+  align-items: center;
+
+  &:hover {
+    color: var(--op-color-primary-base);
+  }
+}
+
+.context-menu__dropdown {
+  position: absolute;
+
+  transition: cubic-bezier(0.4, 0, 0.2, 1) 150ms all;
+  left: 0;
+
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  transform: translateX(var(--tw-translate-x)) translateY(var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  transform-origin: top right;
+
+  background-color: var(--op-color-neutral-plus-max);
+  padding: var(--op-space-2x-small);
+  box-shadow: var(--op-shadow-medium);
+  border: 1px solid var(--op-color-neutral-plus-six);
+  border-radius: var(--op-radius-large);
+  z-index: 1;
+  width: 12rem;
+
+  button {
+    width: 100%;
+  }
+}
+
+.context-menu__dropdown > *:not(:last-child) {
+  margin-bottom: var(--op-space-2x-small);
+}
+
+.context-menu__dropdown--closed {
+  display: none;
+}
+
+.context-menu__dropdown--enter-from, .context-menu__dropdown--leave-to {
+  opacity: 0;
+  scale: 95%;
+}
+
+.context-menu__dropdown--enter-to, .context-menu__dropdown--leave-from  {
+  opacity: 1;
+  scale: 100%;
+}

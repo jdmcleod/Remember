@@ -9,3 +9,16 @@
     }
   }
 }
+
+.btn-primary {
+  &.btn--text {
+    color: var(--op-color-primary-on-plus-eight);
+    background-color: var(--op-color-neutral-plus-max);
+
+    &:not(:disabled, .btn--disabled):hover {
+      background-color: var(--op-color-primary-plus-eight);
+      color: var(--op-color-primary-on-plus-eight);
+      box-shadow: inset var(--op-border-all) var(--op-color-primary-plus-five);
+    }
+  }
+}

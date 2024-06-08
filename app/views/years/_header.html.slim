@@ -11,5 +11,10 @@
   .flex.gap-xs.items-center
     .header__wing.header__wing--right
       button.btn.btn--small = icon('plane', classes: 'icon--medium', color: 'primary-minus-two')
-      button.btn.btn--small = icon('user-hexagon', classes: 'icon--medium', color: 'primary-minus-two')
+
+      = render 'shared/context_menu', locals: { icon: 'user-hexagon' }
+        = button_to sign_out_sessions_path, method: :delete, class: 'btn--small btn-primary btn--text' do
+          = icon('logout', classes: 'icon--medium', color: 'primary-minus-two')
+          | Logout
+
     button.btn.btn--no-bg.btn--icon = icon('circle-caret-right', classes: 'icon--x-large', color: 'neutral-plus-three')

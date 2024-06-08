@@ -4,3 +4,5 @@
 //= link application.js
 //= link_tree ../builds
 
+//= link @hotwired--stimulus.js
+//= link stimulus-use.js

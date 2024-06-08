@@ -1,0 +1,15 @@
+.context-menu data-controller='context-menu'
+  button.context-menu__toggle {
+    data-testid="#{locals[:name]}-menu-button"
+    type='button'
+    data-action='click->context-menu#toggle click@window->context-menu#hide'}
+    = icon(locals[:icon], classes: 'icon--medium', color: 'primary-minus-two')
+
+  .context-menu__dropdown.context-menu__dropdown--closed{
+    data-testid="#{locals[:name]}-menu-dropdown"
+    data-context-menu-target='menu'
+    data-transition-enter-from='context-menu__dropdown--enter-from'
+    data-transition-enter-to='context-menu__dropdown--enter-to'
+    data-transition-leave-from='context-menu__dropdown--leave-from'
+    data-transition-leave-to='context-menu__dropdown--leave-to'}
+    = yield
