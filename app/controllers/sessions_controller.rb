@@ -1,15 +1,21 @@
 class SessionsController < ApplicationController
-  skip_before_action :authenticate_oauth, only: [:create, :index]
+  skip_before_action :require_authentication!, only: [:create, :index]
   def index
     render layout: 'full_screen'
   end
 
   def create
     auth = request.env['omniauth.auth']
-    user = User.find_or_create_by(email: auth['info']['email'])
+
+    user = User.create_with(
+      name: auth['info']['email'],
+      profile_image_url: auth['info']['image']
+    ).find_or_create_by(
+      email: auth['info']['name']
+    )
 
     session[:current_user_id] = user.id
-    redirect_to root_url, notice: "Welcome, #{user.name}"
+    redirect_to current_years_path, notice: "Welcome, #{user.name}"
   end
 
   def failure

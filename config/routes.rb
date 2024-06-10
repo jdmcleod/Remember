@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :index] do
     delete :sign_out, action: :destroy, on: :collection
   end
+
+  get '/', to: 'sessions#index', as: :home
+
   get '/auth/:provider/callback', as: :auth_google_callback, to: 'sessions#create'
 
   root to: 'years#current'

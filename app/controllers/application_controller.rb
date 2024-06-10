@@ -1,11 +1,12 @@
 class ApplicationController < ActionController::Base
+  protect_from_forgery with: :exception
   helper_method :current_user
 
-  before_action :authenticate_oauth
+  before_action :require_authentication!
 
   protected
 
-  def authenticate_oauth
+  def require_authentication!
     return if current_user.present?
 
     redirect_to sessions_path

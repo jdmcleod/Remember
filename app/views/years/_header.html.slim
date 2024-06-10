@@ -6,7 +6,7 @@
       button.btn.btn--small = icon('notebook', classes: 'icon--medium', color: 'primary-minus-two')
 
   .header__content
-    h1.margin-none = "Remember #{@year.year}"
+    h1.margin-none = "Remember #{@year&.year && Date.current.year}"
 
   .flex.gap-xs.items-center
     .header__wing.header__wing--right
