@@ -1,6 +1,7 @@
 .home-page__header
   .home-page__header-content
     h1.margin-none = "Remember #{@year&.year && Date.current.year}"
+    = button_to 'Sign In With Google', '/auth/google', class: 'btn-primary btn--text', data: { turbo: false }
 
 .home-page__container
   .home-page__hero
@@ -8,11 +9,15 @@
       .flex.flex-col.justify-between
         .flex.flex-col.gap-lg
           .home-page__hero-title Journaling to remember
-          p.home-page__hero-message This unique take on journaling prioritizes connecting you to your past.
+          p.home-page__hero-message This unique take on journaling prioritizes connecting you to your past
 
         .flex.justify-center
-          = button_to 'Sign In With Google', '/auth/google', class: 'btn', data: { turbo: false }
-      .home-page__hero-card-image
-        = image_tag('/hero.png')
+          = button_to 'Sign In With Google', '/auth/google', class: 'btn-primary btn--text', data: { turbo: false }
+      = image_tag('/hero.png')
 
-
+  / .home-page__hero.home-page__hero--white
+    / .card.home-page__hero-card
+    .home-page__hero--graphic
+    .flex.flex-col.gap-lg
+      .home-page__hero-title Visualize each year at a glance
+      p.home-page__hero-message See your journal entries, photos, events, and trips all on one page

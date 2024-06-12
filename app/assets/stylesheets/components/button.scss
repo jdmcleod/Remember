@@ -12,12 +12,12 @@
 
 .btn-primary {
   &.btn--text {
-    color: var(--op-color-primary-on-plus-eight);
-    background-color: var(--op-color-neutral-plus-max);
+    color: var(--op-color-primary-base);
+    background-color: unset;
 
     &:not(:disabled, .btn--disabled):hover {
-      background-color: var(--op-color-primary-plus-eight);
-      color: var(--op-color-primary-on-plus-eight);
+      background-color: var(--op-color-primary-base);
+      color: var(--op-color-neutral-plus-max);
       box-shadow: inset var(--op-border-all) var(--op-color-primary-plus-five);
     }
   }
