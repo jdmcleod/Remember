@@ -53,7 +53,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_15_004918) do
   end
 
   create_table "badges", force: :cascade do |t|
-    t.string "icon"
+    t.string "name"
+    t.string "icon_name"
     t.string "color"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false

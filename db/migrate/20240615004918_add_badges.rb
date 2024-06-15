@@ -1,7 +1,8 @@
 class AddBadges < ActiveRecord::Migration[7.1]
   def change
     create_table :badges do |t|
-      t.string :icon
+      t.string :name
+      t.string :icon_name
       t.string :color
       t.belongs_to :user, null: false, foreign_key: true
 
