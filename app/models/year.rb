@@ -1,6 +1,9 @@
 class Year < ApplicationRecord
   belongs_to :user
+
   has_many :quarters, dependent: :destroy
+  has_many :months, through: :quarters
+  has_many :days, through: :months
 
   def self.current_year
     find_or_create_by(year: Date.today.year)

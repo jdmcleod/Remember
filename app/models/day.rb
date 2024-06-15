@@ -1,7 +1,14 @@
 class Day < ApplicationRecord
   belongs_to :month
 
+  has_one :quarter, through: :month
+  has_one :year, through: :quarter
+  has_one :user, through: :year
+
   has_one :short_entry, as: :journalable, dependent: :destroy, class_name: 'Entry'
+
+  has_many :day_badges
+  has_many :badges, through: :day_badges
 
   def self.on(date)
     find_by(date:)
