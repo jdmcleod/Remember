@@ -3,6 +3,7 @@ html
   = render 'layouts/head'
 
   body
+    = turbo_frame_tag 'modal'
     / = render 'shared/flash'
     - if current_user.present?
       / = render 'layouts/navigation'

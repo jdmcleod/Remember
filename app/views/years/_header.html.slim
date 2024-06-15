@@ -2,7 +2,8 @@
   .flex.gap-xs.items-center
     button.btn.btn--no-bg.btn--icon = icon('circle-caret-left', classes: 'icon--x-large', color: 'neutral-plus-three')
     .header__wing.header__wing--left
-      button.btn.btn--small = icon('badge', classes: 'icon--medium', color: 'primary-minus-two')
+      = button_to badges_path, class: 'btn btn--small' do
+        = icon('badge', classes: 'icon--medium', color: 'primary-minus-two')
       button.btn.btn--small = icon('notebook', classes: 'icon--medium', color: 'primary-minus-two')
 
   .header__content
