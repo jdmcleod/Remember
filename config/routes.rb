@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   end
 
   resources :months, only: [:show]
-  resources :badges, only: [:index, :create, :destroy]
+  resources :badges, only: [:index, :new, :edit, :create, :update, :destroy]
 
   resources :entries, only: %i[update] do
     get 'day_popup_form/:date', to: 'entries#day_popup_form', as: :day_popup_form, on: :collection

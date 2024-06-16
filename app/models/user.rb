@@ -12,4 +12,10 @@ class User < ApplicationRecord
   def be_real_connected?
     be_real_connection&.connected?
   end
+  
+  after_create :create_default_badges!
+
+  def create_default_badges!
+    badges.insert_all!(Badge.default_badges)
+  end
 end
