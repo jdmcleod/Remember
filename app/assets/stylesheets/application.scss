@@ -8,11 +8,13 @@
 @import 'core/theme/remember-theme-core.scss';
 
 // Core Customization
-@import 'core/utilities';
 @import 'core/base';
+@import 'core/layout';
+@import 'core/utilities';
 
 // Optics Component Customization
 @import 'components/optics-overrides/button';
+@import 'components/optics-overrides/navbar';
 
 // components
 @import 'components/header';

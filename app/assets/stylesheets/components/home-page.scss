@@ -1,29 +1,8 @@
-.home-page__header {
-  top: 0;
-  position: sticky;
-  width: 100%;
-  padding: var(--op-space-small);
-  z-index: 10;
-}
-
 .home-page__container {
   display: flex;
   align-items: center;
   flex-direction: column;
   gap: var(--op-space-3x-large);
-}
-
-.home-page__header-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: var(--op-color-neutral-plus-max);
-  border-radius: var(--op-radius-2x-large);
-  padding: var(--op-space-2x-large);
-  width: 100%;
-  h1 {
-    font-weight: var(--op-font-weight-extra-bold);
-  }
 }
 
 .home-page__hero {
