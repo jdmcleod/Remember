@@ -10,6 +10,10 @@
 // Core Customization
 @import 'core/utilities';
 @import 'core/base';
+
+// Optics Component Customization
+@import 'components/optics-overrides/button';
+
 // components
 @import 'components/header';
 @import 'components/icon';
@@ -18,6 +22,5 @@
 @import 'components/month';
 @import 'components/day';
 @import 'components/day_popup';
-@import 'components/button';
 @import 'components/context-menu';
 @import 'components/home-page';

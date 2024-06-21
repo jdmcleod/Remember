@@ -1,6 +1,6 @@
 .header
   .flex.gap-xs.items-center
-    button.btn.btn--no-bg.btn--icon = icon('circle-caret-left', classes: 'icon--x-large', color: 'neutral-plus-three')
+    button.btn.btn--icon.btn--pill.btn--no-background = icon('circle-caret-left', classes: 'icon--x-large')
     .header__wing.header__wing--left
       = button_to badges_path, class: 'btn btn--small' do
         = icon('badge', classes: 'icon--medium', color: 'primary-minus-two')
@@ -18,4 +18,4 @@
           = icon('logout', classes: 'icon--medium', color: 'primary-minus-two')
           | Logout
 
-    button.btn.btn--no-bg.btn--icon = icon('circle-caret-right', classes: 'icon--x-large', color: 'neutral-plus-three')
+    button.btn.btn--icon.btn--pill.btn--no-background = icon('circle-caret-right', classes: 'icon--x-large')

@@ -1,0 +1,39 @@
+%btn-global {
+  &.btn--no-background {
+    background-color: transparent;
+    box-shadow: none;
+    color: var(--op-color-neutral-plus-three);
+
+    &.btn--active {
+      color: var(--op-color-primary-base);
+    }
+
+    &:hover {
+      color: var(--op-color-primary-plus-one);
+    }
+
+    &:focus-visible {
+      background-color: var(--op-color-primary-plus-eight);
+      box-shadow: var(--op-input-focus-primary);
+      color: var(--op-color-primary-plus-one);
+    }
+  }
+}
+
+.btn-primary {
+  &.btn--no-border {
+    // Borderless + Active State
+    &.btn--active {
+      background-color: var(--op-color-primary-minus-one);
+      box-shadow: inset var(--op-border-all) var(--op-color-primary-plus-five);
+      color: var(--op-color-primary-on-minus-one);
+    }
+
+    // Borderless + Hover State
+    &:hover {
+      background-color: var(--op-color-primary-base);
+      box-shadow: inset var(--op-border-all) var(--op-color-primary-plus-five);
+      color: var(--op-color-primary-on-base);
+    }
+  }
+}

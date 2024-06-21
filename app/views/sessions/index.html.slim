@@ -1,7 +1,7 @@
 .home-page__header
   .home-page__header-content
     h1.margin-none = "Remember #{@year&.year && Date.current.year}"
-    = button_to 'Sign In With Google', '/auth/google', class: 'btn-primary btn--text', data: { turbo: false }
+    = button_to 'Sign In With Google', '/auth/google', class: 'btn-primary btn--no-border', data: { turbo: false }
 
 .home-page__container
   .home-page__hero
@@ -12,7 +12,7 @@
           p.home-page__hero-message This unique take on journaling prioritizes connecting you to your past
 
         .flex.justify-center
-          = button_to 'Sign In With Google', '/auth/google', class: 'btn-primary btn--text', data: { turbo: false }
+          = button_to 'Sign In With Google', '/auth/google', class: 'btn-primary btn--no-border', data: { turbo: false }
       = image_tag('/hero.png')
 
   / .home-page__hero.home-page__hero--white
