@@ -16,7 +16,12 @@
 @import 'components/optics-overrides/button';
 @import 'components/optics-overrides/navbar';
 
-// components
+// Layouts
+@import 'layouts/home-page';
+
+// Components
+@import 'components/hero';
+
 @import 'components/header';
 @import 'components/icon';
 
@@ -25,4 +30,3 @@
 @import 'components/day';
 @import 'components/day_popup';
 @import 'components/context-menu';
-@import 'components/home-page';

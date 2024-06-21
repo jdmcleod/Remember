@@ -6,21 +6,20 @@
     .navbar__content.navbar__content--justify-end
       = button_to 'Sign In With Google', '/auth/google', class: 'btn-primary btn--no-border', data: { turbo: false }
 
-.home-page__container
-  .home-page__hero
-    .card.home-page__hero-card
-      .flex.flex-col.justify-between
-        .flex.flex-col.gap-lg
-          .home-page__hero-title Journaling to remember
-          p.home-page__hero-message This unique take on journaling prioritizes connecting you to your past
-
+.home-page
+  .hero.hero--primary
+    .card.hero__card
+      .card__body
+        span.hero__title Journaling to remember
+        p.hero__message This unique take on journaling prioritizes connecting you to your past
         .flex.justify-center
           = button_to 'Sign In With Google', '/auth/google', class: 'btn-primary btn--no-border', data: { turbo: false }
-      = image_tag('/hero.png')
-
-  / .home-page__hero.home-page__hero--white
-    / .card.home-page__hero-card
-    .home-page__hero--graphic
-    .flex.flex-col.gap-lg
-      .home-page__hero-title Visualize each year at a glance
-      p.home-page__hero-message See your journal entries, photos, events, and trips all on one page
+      .card__body
+        = image_tag '/hero.png', class: 'hero__graphic'
+  / .hero
+  /   .card.hero__card
+  /     .card__body
+  /       span.hero__title Visualize each year at a glance
+  /       p.hero__message See your journal entries, photos, events, and trips all on one page
+  /     .card__body
+  /       .home-page__hero--graphic
