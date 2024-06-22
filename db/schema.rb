@@ -64,6 +64,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_22_020003) do
 
   create_table "be_real_connections", force: :cascade do |t|
     t.bigint "user_id", null: false
+    t.integer "status", default: 0
     t.string "session_info"
     t.string "bereal_access_token"
     t.string "firebase_refresh_token"

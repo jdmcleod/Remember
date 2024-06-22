@@ -9,7 +9,7 @@ class User < ApplicationRecord
   has_one :be_real_connection, dependent: :destroy
 
   def be_real_connected?
-    be_real_connection&.bereal_access_token.present?
+    be_real_connection&.connected?
   end
 
   # These should live in a presenter or something

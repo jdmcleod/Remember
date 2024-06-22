@@ -3,6 +3,7 @@ class CreateBeRealConnections < ActiveRecord::Migration[7.1]
     create_table :be_real_connections do |t|
       t.belongs_to :user, null: false, foreign_key: true
 
+      t.integer :status, default: 0
       t.string :session_info
 
       t.string :bereal_access_token

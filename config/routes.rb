@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   resources :users, only: [] do
     get :profile, on: :collection
 
-    resources :be_real_connections, only: [:new, :create] do
+    resources :be_real_connections, only: [:new, :create, :update] do
       get :otp, on: :member
       patch :submit_otp, on: :member
     end

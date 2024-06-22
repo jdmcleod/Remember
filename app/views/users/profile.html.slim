@@ -3,15 +3,14 @@
 
   h2 Hello, #{current_user.name}!
 
-  .text-pair
-    .text-pair__title BeReal
-    .text-pair__subtitle
-      .flex.gap-sm
-        span = current_user.be_real_status_message
-        = icon(current_user.be_real_status_icon, classes: 'icon--medium')
-
-  - if !current_user.be_real_connected?
-    div
-      = link_to new_user_be_real_connection_path(current_user), class: 'btn-primary' do
-        = icon('photo', classes: 'icon--medium')
-        | Connect to BeReal
+  .card
+    .card__header
+      .text-pair.text-pair--inline
+        .text-pair__title BeReal
+        .text-pair__subtitle data-tooltip-text=current_user.be_real_status_message data-tooltip-position='right'
+          = icon(current_user.be_real_status_icon, classes: 'icon--medium')
+    - if !current_user.be_real_connected?
+      .card__body
+        = link_to new_user_be_real_connection_path(current_user), class: 'btn-primary' do
+          = icon('photo', classes: 'icon--medium')
+          | Connect to BeReal
