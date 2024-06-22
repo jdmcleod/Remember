@@ -1,7 +1,7 @@
 module BeRealApi
   module V1
     module Models
-      class ProfilePicture
+      class Picture
         def initialize(data)
           @raw_data = data
         end
@@ -19,7 +19,7 @@ module BeRealApi
         end
       end
 
-      class NullProfilePicture
+      class NullPicture
         def url
           'https://picsum.photos/id/433/500'
         end

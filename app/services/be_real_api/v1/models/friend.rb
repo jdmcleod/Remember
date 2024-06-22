@@ -25,9 +25,9 @@ module BeRealApi
         def profile_picture
           data = @raw_data['profilePicture']
 
-          return NullProfilePicture.new if data.nil?
+          return NullPicture.new if data.nil?
 
-          ProfilePicture.new(data)
+          Picture.new(data)
         end
       end
     end

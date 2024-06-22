@@ -24,7 +24,7 @@ module BeRealApi
         end
 
         def profile_picture
-          ProfilePicture.new(@raw_data['profilePicture'])
+          Picture.new(@raw_data['profilePicture'])
         end
 
         def realmojis
