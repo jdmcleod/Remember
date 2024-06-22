@@ -9,8 +9,14 @@
         .text-pair__title BeReal
         .text-pair__subtitle data-tooltip-text=current_user.be_real_status_message data-tooltip-position='right'
           = icon(current_user.be_real_status_icon, classes: 'icon--medium')
-    - if !current_user.be_real_connected?
-      .card__body
+    .card__body
+      - if current_user.be_real_connected?
+        p Connected as #{@be_real_person.fullname}!
+
+        .avatar.avatar--large
+          = image_tag @be_real_person.profile_picture.url, alt: 'Avatar'
+
+      - if !current_user.be_real_connected?
         = link_to new_user_be_real_connection_path(current_user), class: 'btn-primary' do
           = icon('photo', classes: 'icon--medium')
           | Connect to BeReal

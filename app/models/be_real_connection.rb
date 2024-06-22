@@ -12,4 +12,13 @@ class BeRealConnection < ApplicationRecord
   def expired?
     expiration < DateTime.current
   end
+
+  def person_record
+    if @person_record
+      return @person_record
+    end
+
+    client = BeRealApi::V1::Client.new(bereal_access_token)
+    @person_record = client.person_record
+  end
 end
