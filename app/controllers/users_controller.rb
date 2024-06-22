@@ -5,6 +5,7 @@ class UsersController < ApplicationController
     if @user.be_real_connected?
       @be_real_connection = @user.be_real_connection
       @be_real_person = @be_real_connection.person_record
+      @be_real_friend_collection = @be_real_connection.friends
     end
   end
 end

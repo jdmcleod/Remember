@@ -15,16 +15,25 @@
           .flex.items-center.gap-sm
             span = @be_real_person.fullname
             .avatar.avatar--large
-              = image_tag @be_real_person.profile_picture.url, alt: 'Avatar'
+              = image_tag @be_real_person.profile_picture.url, alt: @be_real_person.fullname
 
-        section
-          span Realmojis
-          .flex.gap-sm
-            - @be_real_person.realmojis.each do |realmoji|
-              .realmoji
-                span.realmoji__emoji = realmoji.emoji
-                .avatar.avatar--large
-                  = image_tag realmoji.media.url, alt: 'Realmoji'
+        .flex.flex-col.gap-md
+          section
+            span Realmojis
+            .flex.gap-sm
+              - @be_real_person.realmojis.each do |realmoji|
+                .realmoji
+                  span.realmoji__emoji = realmoji.emoji
+                  .avatar.avatar--large
+                    = image_tag realmoji.media.url, alt: 'Realmoji'
+          section
+            span Friends (#{@be_real_friend_collection.total} total)
+            .flex.flex-wrap.gap-sm
+              - @be_real_friend_collection.friends.each do |friend|
+                .card-padded.card--condensed.flex.gap-sm.items-center
+                  span = friend.fullname
+                  .avatar.avatar--large
+                    = image_tag friend.profile_picture.url, alt: friend.fullname
 
       - if !current_user.be_real_connected?
         = link_to new_user_be_real_connection_path(current_user), class: 'btn-primary' do

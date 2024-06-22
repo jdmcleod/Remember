@@ -1,3 +1,5 @@
+# Based on https://github.com/s-alad/toofake
+
 module BeRealApi
   module V1
     class Client
@@ -13,6 +15,10 @@ module BeRealApi
 
       def person_record
         get("#{API_ENDPOINT}/person/me")
+      end
+
+      def friends
+        get("#{API_ENDPOINT}/relationships/friends")
       end
 
       private

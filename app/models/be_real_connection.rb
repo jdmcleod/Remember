@@ -13,6 +13,9 @@ class BeRealConnection < ApplicationRecord
     expiration < DateTime.current
   end
 
+  # API caching and retrieval
+  # TODO: How do we invalidate this cache?
+
   def person_record
     cached_data = cached_be_real_data['person_record']
 
@@ -24,5 +27,18 @@ class BeRealConnection < ApplicationRecord
     end
 
     BeRealApi::V1::Models::PersonRecord.new(cached_data)
+  end
+
+  def friends
+    cached_data = cached_be_real_data['friends']
+
+    if cached_data.nil?
+      client = BeRealApi::V1::Client.new(bereal_access_token)
+      cached_data = client.friends
+      cached_be_real_data['friends'] = cached_data
+      save
+    end
+
+    BeRealApi::V1::Models::FriendCollection.new(cached_data)
   end
 end
