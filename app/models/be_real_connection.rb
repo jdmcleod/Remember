@@ -5,6 +5,11 @@ class BeRealConnection < ApplicationRecord
 
   attr_reader :phone_number, :otp
 
+  # TODO: Something seems to get messed up.
+  # After a certain amount of time, all requests start to fail.
+  # I think it's because the access token expires. Even after we establish the connection,
+  # we probably need to refresh the token somehow. I need to figure out how to do that.
+
   def connected?
     status_connected? && bereal_access_token.present? && !expired?
   end
@@ -15,30 +20,34 @@ class BeRealConnection < ApplicationRecord
 
   # API caching and retrieval
   # TODO: How do we invalidate this cache?
+  # Set a expired_at field and check if it's expired
+  # Probably want to expire the cache every 5 minutes
 
   def person_record
-    cached_data = cached_be_real_data['person_record']
-
-    if cached_data.nil?
-      client = BeRealApi::V1::Client.new(bereal_access_token)
-      cached_data = client.person_record
-      cached_be_real_data['person_record'] = cached_data
-      save
-    end
-
+    cached_data = retrieve_from_be_real_cache(:person_record)
     BeRealApi::V1::Models::PersonRecord.new(cached_data)
   end
 
   def friends
-    cached_data = cached_be_real_data['friends']
+    cached_data = retrieve_from_be_real_cache(:friends)
+    BeRealApi::V1::Models::FriendCollection.new(cached_data)
+  end
+
+  private
+
+  def retrieve_from_be_real_cache(api_method = :person_record)
+    cached_data = cached_be_real_data[api_method.to_s]
 
     if cached_data.nil?
-      client = BeRealApi::V1::Client.new(bereal_access_token)
-      cached_data = client.friends
-      cached_be_real_data['friends'] = cached_data
+      cached_data = api_client.send(api_method)
+      cached_be_real_data[api_method.to_s] = cached_data
       save
     end
 
-    BeRealApi::V1::Models::FriendCollection.new(cached_data)
+    cached_data
+  end
+
+  def api_client
+    @api_client ||= BeRealApi::V1::Client.new(bereal_access_token)
   end
 end
