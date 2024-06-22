@@ -34,7 +34,15 @@
                   span = friend.fullname
                   .avatar.avatar--large
                     = image_tag friend.profile_picture.url, alt: friend.fullname
+          section
+            - shown_count = 15
+            span Memories (#{@be_real_memory_collection.memories.count} total. Showing the #{shown_count} most recent)
 
+            .be-real-memory-collection
+              - @be_real_memory_collection.memories[0..shown_count].each do |memory|
+                .be-real-memory
+                  = image_tag memory.primary.url, alt: memory.memory_day, class: 'be-real-memory__primary'
+                  = image_tag memory.secondary.url, alt: memory.memory_day, class: 'be-real-memory__secondary'
       - if !current_user.be_real_connected?
         = link_to new_user_be_real_connection_path(current_user), class: 'btn-primary' do
           = icon('photo', classes: 'icon--medium')
