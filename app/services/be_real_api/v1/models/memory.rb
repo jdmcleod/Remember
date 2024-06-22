@@ -2,6 +2,8 @@ module BeRealApi
   module V1
     module Models
       class Memory
+        attr_reader :raw_data
+
         def initialize(data)
           @raw_data = data
         end
