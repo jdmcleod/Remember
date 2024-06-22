@@ -14,11 +14,15 @@ class BeRealConnection < ApplicationRecord
   end
 
   def person_record
-    if @person_record
-      return @person_record
+    cached_data = cached_be_real_data['person_record']
+
+    if cached_data.nil?
+      client = BeRealApi::V1::Client.new(bereal_access_token)
+      cached_data = client.person_record
+      cached_be_real_data['person_record'] = cached_data
+      save
     end
 
-    client = BeRealApi::V1::Client.new(bereal_access_token)
-    @person_record = client.person_record
+    BeRealApi::V1::Models::PersonRecord.new(cached_data)
   end
 end

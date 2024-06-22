@@ -12,7 +12,7 @@ module BeRealApi
       end
 
       def person_record
-        PersonRecord.new(get("#{API_ENDPOINT}/person/me"))
+        get("#{API_ENDPOINT}/person/me")
       end
 
       private
