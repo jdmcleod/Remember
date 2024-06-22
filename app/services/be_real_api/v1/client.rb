@@ -21,6 +21,10 @@ module BeRealApi
         get("#{API_ENDPOINT}/relationships/friends")
       end
 
+      def memories
+        get("#{API_ENDPOINT}/feeds/memories")
+      end
+
       private
 
       def get(url, set_headers_method = :set_headers)

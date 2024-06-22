@@ -33,6 +33,11 @@ class BeRealConnection < ApplicationRecord
     BeRealApi::V1::Models::FriendCollection.new(cached_data)
   end
 
+  def memories
+    cached_data = retrieve_from_be_real_cache(:memories)
+    BeRealApi::V1::Models::MemoryCollection.new(cached_data)
+  end
+
   private
 
   def retrieve_from_be_real_cache(api_method = :person_record)
