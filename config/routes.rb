@@ -24,4 +24,14 @@ Rails.application.routes.draw do
   resources :entries, only: %i[update] do
     get 'day_popup_form/:date', to: 'entries#day_popup_form', as: :day_popup_form, on: :collection
   end
+
+  resources :users, only: [] do
+    get :profile, on: :collection
+
+    resources :be_real_connections, only: [:new, :create] do
+      get :otp, on: :member
+      patch :submit_otp, on: :member
+    end
+  end
+
 end
