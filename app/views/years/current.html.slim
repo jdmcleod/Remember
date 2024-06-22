@@ -1,6 +1,6 @@
-= render 'header'
-
 .app-container data-controller="day-popup"
+  = render 'shared/header'
+
   = render 'entries/day_popup_form'
   - @year.quarters.each do |quarter|
     .quarter

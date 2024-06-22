@@ -1,7 +1,10 @@
+- hide_nav = defined?(hide_nav) && hide_nav
+
 .app__header
   .header
     nav.header__nav
-      button.btn.btn--icon.btn--pill.btn--no-background = icon('circle-caret-left', classes: 'icon--x-large')
+      - if !hide_nav
+        button.btn.btn--icon.btn--pill.btn--no-background = icon('circle-caret-left', classes: 'icon--x-large')
       .header__wing.header__wing--left
         = button_to badges_path, class: 'btn btn--no-background btn--small' do
           = icon('badge', classes: 'icon--medium', color: 'primary-minus-two')
@@ -14,8 +17,12 @@
         button.btn.btn--no-background.btn--small = icon('plane', classes: 'icon--medium', color: 'primary-minus-two')
 
         = render 'shared/context_menu', locals: { icon: 'user-hexagon' }
+          = link_to profile_users_path, class: 'btn-primary btn--small btn--no-border' do
+            = icon('user', classes: 'icon--medium', color: 'primary-minus-two')
+            | Profile
           = button_to sign_out_sessions_path, method: :delete, class: 'btn-primary btn--small btn--no-border' do
             = icon('logout', classes: 'icon--medium', color: 'primary-minus-two')
             | Logout
 
-      button.btn.btn--icon.btn--pill.btn--no-background = icon('circle-caret-right', classes: 'icon--x-large')
+      - if !hide_nav
+        button.btn.btn--icon.btn--pill.btn--no-background = icon('circle-caret-right', classes: 'icon--x-large')
