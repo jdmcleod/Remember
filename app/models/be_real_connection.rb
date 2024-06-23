@@ -18,39 +18,23 @@ class BeRealConnection < ApplicationRecord
     expiration < DateTime.current
   end
 
-  # API caching and retrieval
-  # TODO: How do we invalidate this cache?
-  # Set a expired_at field and check if it's expired
-  # Probably want to expire the cache every 5 minutes
 
   def person_record
-    cached_data = retrieve_from_be_real_cache(:person_record)
-    BeRealApi::V1::Models::PersonRecord.new(cached_data)
+    data = api_client.person_record
+    BeRealApi::V1::Models::PersonRecord.new(data)
   end
 
   def friends
-    cached_data = retrieve_from_be_real_cache(:friends)
-    BeRealApi::V1::Models::FriendCollection.new(cached_data)
+    data = api_client.friends
+    BeRealApi::V1::Models::FriendCollection.new(data)
   end
 
   def memories
-    cached_data = retrieve_from_be_real_cache(:memories)
-    BeRealApi::V1::Models::MemoryCollection.new(cached_data)
+    data = api_client.memories
+    BeRealApi::V1::Models::MemoryCollection.new(data)
   end
 
   private
-
-  def retrieve_from_be_real_cache(api_method = :person_record)
-    cached_data = cached_be_real_data[api_method.to_s]
-
-    if cached_data.nil?
-      cached_data = api_client.send(api_method)
-      cached_be_real_data[api_method.to_s] = cached_data
-      save
-    end
-
-    cached_data
-  end
 
   def api_client
     @api_client ||= BeRealApi::V1::Client.new(bereal_access_token)
