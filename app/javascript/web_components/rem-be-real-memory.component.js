@@ -1,43 +1,64 @@
 import { LitElement, css, html } from "lit"
 
 export default class REMBeRealMemory extends LitElement {
-  //   drawingEditor: { type: Object, fromLCADContext: true, state: true },
-  //   activePerspective: { type: String, fromLCADContext: true, state: true }
   static properties = {
     memory: { type: Object },
-    swapped: { type: Boolean, state: true }
+    swapped: { type: Boolean, state: true },
+    dragging: { type: Boolean, state: true },
   }
 
   constructor() {
     super()
     this.memory = {}
     this.swapped = false
+    this.dragging = false
   }
 
-  #swapImages() {
-    this.swapped = !this.swapped
+  get secondary() {
+    return this.shadowRoot.getElementById('secondary')
   }
 
-  // #mouseDown(event) {
-  //   // event = event || window.event
-  //   event.preventDefault()
+  setupDrag(event) {
+    event.preventDefault()
 
-  //   const xPosition = event.clientX;
-  //   const yPosition = event.clientY;
+    document.onmousemove = this.elementDrag.bind(this)
+    document.onmouseup = this.finishDrag.bind(this)
+  }
 
-  //   this.onmousemove = (e) => {
-  //     console.log('mouse move', e.clientX, e.clientY)
-  //   }
-  // }
+  elementDrag(event) {
+    this.dragging = true
+    const overallRectangle = this.getBoundingClientRect()
+    const secondaryRectangle = this.secondary.getBoundingClientRect()
 
-  // #mouseUp(event) {
-  //   event.preventDefault()
+    const topPosition = event.clientY - overallRectangle.y - (secondaryRectangle.height / 2)
+    const topLimit = overallRectangle.height - secondaryRectangle.height
 
-  //   this.onmousemove = null
-  // }
+    const leftPosition = event.clientX - overallRectangle.x - (secondaryRectangle.width / 2)
+    const leftLimit = overallRectangle.width - secondaryRectangle.width
+
+    this.secondary.style.top = Math.min(Math.max(topPosition, 0), topLimit) + 'px'
+    this.secondary.style.left = Math.min(Math.max(leftPosition, 0), leftLimit) + 'px'
+  }
+
+  finishDrag() {
+    document.onmousemove = null
+    document.onmouseup = null
+
+    this.secondary.style.top = '16px'
+    this.secondary.style.left = '16px'
+  }
+
+  #handleClick() {
+    if (!this.dragging) {
+      this.swapped = !this.swapped
+    }
+
+    this.dragging = false
+  }
 
   render() {
     const images = [this.memory.primary, this.memory.secondary]
+
     if (this.swapped) {
       images.reverse()
     }
@@ -45,10 +66,12 @@ export default class REMBeRealMemory extends LitElement {
     return html`
       <img src="${images[0].url}" alt="${this.memory.memory_day}" class="primary">
       <img
+        id="secondary"
         src="${images[1].url}"
         alt="${this.memory.memory_day}"
         class="secondary"
-        @click="${this.#swapImages}"
+        @click="${this.#handleClick}"
+        @mousedown="${this.setupDrag}"
       >
     `
   }
@@ -60,6 +83,9 @@ export default class REMBeRealMemory extends LitElement {
 
       position: relative;
       display: block;
+      height: var(--primary-height);
+
+      overflow: hidden;
     }
 
     img {
