@@ -5,19 +5,37 @@ class BeRealConnection < ApplicationRecord
 
   attr_reader :phone_number, :otp
 
-  # TODO: Something seems to get messed up.
-  # After a certain amount of time, all requests start to fail.
-  # I think it's because the access token expires. Even after we establish the connection,
-  # we probably need to refresh the token somehow. I need to figure out how to do that.
-
   def connected?
-    status_connected? && bereal_access_token.present? && !expired?
+    status_connected? && bereal_access_token.present?
   end
 
-  def expired?
+  def firebase_expired?
     expiration < DateTime.current
   end
 
+  def refresh_connection(refresh_token = self.firebase_refresh_token, uid = self.uid, is_new_user = self.is_new_user)
+    google_client = GoogleApi::V1::Client.new
+    refresh_response = google_client.refresh_firebase(refresh_token)
+
+    return false if refresh_response['error']
+
+    authorize_response = google_client.authorize_with_bereal(refresh_response['id_token'])
+
+    return false if authorize_response['error']
+
+    update(
+      status: BeRealConnection.statuses[:connected],
+      bereal_access_token: authorize_response['access_token'],
+      firebase_refresh_token: refresh_token,
+      firebase_id_token: refresh_response['id_token'],
+      token_type: authorize_response['token_type'],
+      expiration: DateTime.current + refresh_response['expires_in'].to_i.seconds, # usually returns 3600 seconds or 1 hour
+      uid: uid,
+      is_new_user: is_new_user
+    )
+
+    valid?
+  end
 
   def person_record
     data = api_client.person_record

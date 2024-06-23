@@ -71,37 +71,13 @@ class BeRealConnectionsController < ApplicationController
       return
     end
 
-    refresh_response = google_client.refresh_firebase(otp_response['refreshToken'])
+    connection_refreshed = @be_real_connection.refresh_connection(otp_response['refreshToken'], otp_response['localId'], otp_response['isNewUser'])
 
-    if refresh_response['error']
-      # TODO: Flash message: "Failed to submit one-time password."
-      render :otp, status: :unprocessable_entity
-      return
-    end
-
-    authorize_response = google_client.authorize_with_bereal(refresh_response['id_token'])
-
-    if authorize_response['error']
-      # TODO: Flash message: "Failed to submit one-time password."
-      render :otp, status: :unprocessable_entity
-      return
-    end
-
-    if !authorize_response['error']
-      @be_real_connection.update(
-        status: BeRealConnection.statuses[:connected],
-        bereal_access_token: authorize_response['access_token'],
-        firebase_refresh_token: otp_response['refreshToken'],
-        firebase_id_token: refresh_response['id_token'],
-        token_type: authorize_response['token_type'],
-        expiration: DateTime.current + (refresh_response['expires_in'].to_i * 1000).seconds,
-        uid: otp_response['localId'],
-        is_new_user: otp_response['isNewUser']
-      )
-
+    if connection_refreshed
       redirect_to profile_users_url
-    else
-      render :otp
+      else
+      # TODO: Flash message: "Failed to establish connection."
+      render :otp, status: :unprocessable_entity
     end
   end
 
