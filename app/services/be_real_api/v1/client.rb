@@ -9,8 +9,8 @@ module BeRealApi
       CLIENT_SECRET = '962D357B-B134-4AB6-8F53-BEA2B7255420'.freeze
       DEVICE_ID = '820B5AA5-0FDE-4199-93C8-64B12D08D5EE'.freeze
 
-      def initialize(access_token)
-        @access_token = access_token
+      def initialize(be_real_connection)
+        @be_real_connection = be_real_connection
       end
 
       def person_record
@@ -43,7 +43,7 @@ module BeRealApi
       end
 
       def set_headers(request)
-        request['Authorization'] = "Bearer #{@access_token}"
+        request['Authorization'] = "Bearer #{@be_real_connection.bereal_access_token}"
 
         BeRealApi::V1::Headers.get.each do |header|
           request[header.first] = header.last

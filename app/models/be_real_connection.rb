@@ -37,6 +37,6 @@ class BeRealConnection < ApplicationRecord
   private
 
   def api_client
-    @api_client ||= BeRealApi::V1::Client.new(bereal_access_token)
+    @api_client ||= BeRealApi::V1::Client.new(self)
   end
 end
