@@ -28,6 +28,11 @@ module BeRealApi
       private
 
       def get(url, set_headers_method = :set_headers)
+        if (@be_real_connection.firebase_expired?)
+          connection_refreshed = @be_real_connection.refresh_connection
+          return unless connection_refreshed
+        end
+
         uri = URI(url)
 
         http = Net::HTTP.new(uri.host, uri.port)
