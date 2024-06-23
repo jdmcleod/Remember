@@ -17,6 +17,10 @@ module BeRealApi
         def memories_syncronized?
           @raw_data['memoriesSyncronized']
         end
+
+        def for_date(date=DateTime.current)
+          memories.find { |memory| memory.memory_day.to_date == date }
+        end
       end
     end
   end

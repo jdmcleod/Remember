@@ -52,6 +52,13 @@ class BeRealConnection < ApplicationRecord
     BeRealApi::V1::Models::MemoryCollection.new(data)
   end
 
+  def memory(date = DateTime.current)
+    data = api_client.memories
+    collection = BeRealApi::V1::Models::MemoryCollection.new(data)
+
+    collection.for_date(date)
+  end
+
   private
 
   def api_client
