@@ -19,7 +19,7 @@ module BeRealApi
         end
 
         def for_date(date=DateTime.current)
-          memories.find { |memory| memory.memory_day.to_date == date }
+          memories.select { |memory| memory.memory_day.to_date == date }
         end
       end
     end

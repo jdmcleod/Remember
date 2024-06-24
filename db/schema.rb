@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_22_175640) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_23_234957) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -79,6 +79,16 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_22_175640) do
     t.index ["user_id"], name: "index_be_real_connections_on_user_id"
   end
 
+  create_table "be_real_memories", force: :cascade do |t|
+    t.bigint "day_id", null: false
+    t.boolean "late", default: false
+    t.string "be_real_id"
+    t.jsonb "location"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["day_id"], name: "index_be_real_memories_on_day_id"
+  end
+
   create_table "day_badges", force: :cascade do |t|
     t.bigint "badge_id", null: false
     t.bigint "day_id", null: false
@@ -144,6 +154,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_22_175640) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "badges", "users"
   add_foreign_key "be_real_connections", "users"
+  add_foreign_key "be_real_memories", "days"
   add_foreign_key "day_badges", "badges"
   add_foreign_key "day_badges", "days"
   add_foreign_key "entries", "users"
