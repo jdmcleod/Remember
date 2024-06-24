@@ -2,14 +2,18 @@ import { LitElement, css, html } from "lit"
 
 export default class REMBeRealMemory extends LitElement {
   static properties = {
-    memory: { type: Object },
+    date: { type: String },
+    primarySrc: { type: String },
+    secondarySrc: { type: String },
     swapped: { type: Boolean, state: true },
     dragging: { type: Boolean, state: true },
   }
 
   constructor() {
     super()
-    this.memory = {}
+    this.date = ''
+    this.primarySrc = ''
+    this.secondarySrc = ''
     this.swapped = false
     this.dragging = false
   }
@@ -57,18 +61,18 @@ export default class REMBeRealMemory extends LitElement {
   }
 
   render() {
-    const images = [this.memory.primary, this.memory.secondary]
+    const images = [this.primarySrc, this.secondarySrc]
 
     if (this.swapped) {
       images.reverse()
     }
 
     return html`
-      <img src="${images[0].url}" alt="${this.memory.memory_day}" class="primary">
+      <img src="${images[0]}" alt="${this.date}" class="primary">
       <img
         id="secondary"
-        src="${images[1].url}"
-        alt="${this.memory.memory_day}"
+        src="${images[1]}"
+        alt="${this.date}"
         class="secondary"
         @click="${this.#handleClick}"
         @mousedown="${this.setupDrag}"
