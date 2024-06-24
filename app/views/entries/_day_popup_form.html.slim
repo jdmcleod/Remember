@@ -14,3 +14,13 @@
         = f.hidden_field :user_id, value: @entry.user_id
 
         = f.rich_text_area :content, data: { testid: 'short-entry-input' }
+
+      - if @memories.any?
+        .flex.flex-wrap.gap-sm
+          - @memories.each do |memory|
+            = image_tag rails_storage_proxy_path(memory.primary)
+            / p = rails_storage_proxy_path(memory.primary)
+
+            / rem-be-real-memory memory=memory.raw_data.to_json
+      - else
+        p asd
