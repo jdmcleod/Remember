@@ -1,19 +1,32 @@
 // Entry point for your Sass build
 
+// Optics
 @import '@rolemodel/optics/dist/scss/optics';
 //@import '@rolemodel/optics/dist/scss/addons/rails-modal-and-panel/modal';
 
-@import 'theme';
+// Theme Customization
+@import 'core/theme/remember-theme-core.scss';
+
+// Core Customization
+@import 'core/base';
+@import 'core/layout';
+@import 'core/utilities';
+
+// Optics Component Customization
+@import 'components/optics-overrides/button';
+@import 'components/optics-overrides/navbar';
+
+// Layouts
+@import 'layouts/home-page';
+
+// Components
+@import 'components/hero';
+
 @import 'components/header';
 @import 'components/icon';
 
-@import 'components/base';
 @import 'components/quarter';
 @import 'components/month';
 @import 'components/day';
 @import 'components/day_popup';
-@import 'components/button';
 @import 'components/context-menu';
-@import 'components/home-page';
-
-@import 'utilities';

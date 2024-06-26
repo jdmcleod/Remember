@@ -1,0 +1,20 @@
+%navbar-global {
+  --_op-navbar-background-color: var(--op-color-neutral-plus-max);
+  --_op-navbar-text-color: var(--op-color-neutral-on-plus-max);
+
+  border-radius: var(--op-radius-2x-large);
+  padding: var(--_op-navbar-horizontal-spacing);
+
+  .navbar__brand {
+    display: flex;
+    align-items: center;
+
+    color: var(--_op-navbar-text-color);
+    text-decoration: none;
+
+    h1 {
+      margin: 0;
+      font-weight: var(--op-font-weight-extra-bold);
+    }
+  }
+}

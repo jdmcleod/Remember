@@ -1,4 +1,5 @@
 // Initial Color Definitions
+
 @mixin color-varieties {
   // Primary HSL
   --op-color-primary-h: 348;
@@ -51,15 +52,20 @@
   --op-space-5x-large: calc(var(--op-space-scale-unit) * 8); // 80px
 }
 
+@mixin fonts {
+  --op-font-family: 'Ubuntu', sans-serif;
+}
+
+@mixin background {
+  --op-color-background: var(--op-color-neutral-plus-six);
+  --op-color-on-background: var(--op-color-neutral-on-plus-six);
+  --op-color-on-background-alt: var(--op-color-neutral-on-plus-six-alt);
+}
+
 :root {
   @include color-varieties;
   @include box-shadows;
   @include spacing-scales;
-
-  --op-font-family: 'Ubuntu', sans-serif;
-}
-
-// Resets
-body {
-  line-height: var(--op-line-height-densest);
+  @include fonts;
+  @include background;
 }

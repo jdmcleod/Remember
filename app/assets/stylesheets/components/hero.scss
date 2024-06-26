@@ -1,0 +1,75 @@
+.hero {
+  --_hero-card-width: calc(var(--op-size-unit) * 250); // 1000px
+  --_hero-card-radius: calc(var(--op-size-unit) * 13); // 52px
+  --_hero-graphic-width: calc(var(--op-size-unit) * 95); // 380px
+  --_hero-graphic-radius: var(--op-radius-2x-large);
+  --_hero-title-font-size: calc(var(--op-font-scale-unit) * 5.5); // 55px
+
+  display: flex;
+  justify-content: center;
+
+  padding-block: var(--op-space-5x-large);
+
+  background-color: var(--op-color-background);
+  color: var(--op-color-on-background);
+
+  // Elements
+
+  .hero__card {
+    display: flex;
+    justify-content: center;
+    max-width: var(--_hero-card-width);
+    width: 100%;
+
+    border-top-left-radius: var(--_hero-card-radius);
+    border-bottom-right-radius: var(--_hero-card-radius);
+
+    box-shadow: var(--op-color-primary-plus-three) 0px 6px 24px 0px, var(--op-color-primary-plus-four) 0px 0px 0px 1px;
+
+    .card__body {
+      display: flex;
+      flex-direction: column;
+      gap: var(--op-space-large);
+      justify-content: center;
+
+      padding: var(--op-space-3x-large);
+    }
+  }
+
+  .hero__title {
+    font-weight: var(--op-font-weight-extra-bold);
+    font-size: var(--_hero-title-font-size);
+    line-height: var(--op-line-height-denser);
+  }
+
+  .hero__message {
+    font-size: var(--op-font-x-large);
+  }
+
+  .hero__graphic {
+    max-width: var(--_hero-graphic-width);
+
+    box-shadow: 0 0 0 var(--op-border-width-large) var(--op-color-primary-plus-five);
+    border-top-left-radius: var(--_hero-graphic-radius);
+    border-bottom-right-radius: var(--_hero-graphic-radius);
+  }
+
+  // Modifiers
+
+  &.hero--primary {
+    background-color: var(--op-color-primary-base);
+    color: var(--op-color-primary-on-base);
+  }
+}
+
+// Note: Not used at the moment, but could be a modifier of the `hero__graphic` element
+// .home-page__hero--graphic {
+//   position: absolute;
+//   width: 600px;
+//   height: 350px;
+//   right: 200px;
+//   z-index: -1;
+//   border-radius: 63% 37% 24% 76% / 51% 56% 44% 49%;
+//   background-image: linear-gradient(43deg, var(--op-color-primary-plus-two) 0%, var(--op-color-primary-minus-one) 46%, var(--op-color-primary-base) 100%);
+//   opacity: 0.8;
+// }
