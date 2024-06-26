@@ -113,19 +113,3 @@ module GoogleApi
     end
   end
 end
-
-## receipt = get_ios_receipt
-# session_info = request_otp('+19196215974') <- user submits Phone Number
-# otp_response = submit_otp(session_info, <otp-sent-to-phone>) <- user submits OTP they got
-# refresh_response = refresh_firebase(otp_response['refreshToken'])
-# authorize_response = authorize_with_bereal(refresh_response['idToken'])
-
-# final_data = {
-#   bereal_access_token: authorize_response['access_token'],
-#   firebase_refresh_token: otp_response['refreshToken'],
-#   firebase_id_token: refresh_response['idToken'],
-#   token_type: authorize_response['token_type'],
-#   expiration: Date.now() + refresh_response['expires_in'] * 1000,
-#   uid: otp_response['localId'],
-#   is_new_user: otp_response['isNewUser'],
-# }
