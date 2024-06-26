@@ -24,16 +24,17 @@ module BeRealApi
             next if memory_data.empty?
 
             memory_data.each do |raw_memory|
-              # TODO: Probably should be a transaction so if one of the image attachments fails, the memory isn't created
-              new_memory = day.be_real_memories.create(
-                be_real_id: raw_memory.id,
-                location: raw_memory.location,
-                late: raw_memory.is_late?,
-              )
+              ActiveRecord::Base.transaction do
+                new_memory = day.be_real_memories.create(
+                  be_real_id: raw_memory.id,
+                  location: raw_memory.location,
+                  late: raw_memory.is_late?,
+                )
 
-              new_memory.attach_image_from(raw_memory.primary.url, :primary)
-              new_memory.attach_image_from(raw_memory.secondary.url, :secondary)
-              new_memory.attach_image_from(raw_memory.thumbnail.url, :thumbnail)
+                new_memory.attach_image_from(raw_memory.primary.url, :primary)
+                new_memory.attach_image_from(raw_memory.secondary.url, :secondary)
+                new_memory.attach_image_from(raw_memory.thumbnail.url, :thumbnail)
+              end
             end
 
             puts "Finished Importing memories for #{day.date.to_fs(:full_date)}"
