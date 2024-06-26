@@ -1,0 +1,9 @@
+h2 BeReal
+
+.flex.justify-between.items-center
+  .tab-group
+    = tab_link_to 'Profile', profile_user_be_real_connection_path(current_user, @be_real_connection)
+    = tab_link_to 'Friends', friends_user_be_real_connection_path(current_user, @be_real_connection)
+    = tab_link_to 'Memories', memories_user_be_real_connection_path(current_user, @be_real_connection)
+
+  rem-be-real-person name=@profile.fullname src=@profile.profile_picture.url

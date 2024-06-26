@@ -1,0 +1,8 @@
+= render 'shared/header', hide_nav: true
+
+.app-container.gap-md
+  = simple_form_for @be_real_connection, url: [:submit_otp, current_user, @be_real_connection], html: { class: 'card' } do |f|
+    .card__body
+      = f.input :otp, label: 'One-Time-Password', placeholder: 'OTP'
+    .card__footer
+      = f.submit 'Submit One-Time-Password', class: 'btn-primary'

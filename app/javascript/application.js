@@ -10,5 +10,7 @@ import "controllers"
 import "trix"
 import "@rails/actiontext"
 
+import "./web_components/index.js"
+
 // Rails.start()
 // ActiveStorage.start()

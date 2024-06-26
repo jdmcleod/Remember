@@ -9,6 +9,7 @@ class Day < ApplicationRecord
 
   has_many :day_badges
   has_many :badges, through: :day_badges
+  has_many :be_real_memories
 
   def self.on(date)
     find_by(date:)
@@ -21,7 +22,7 @@ class Day < ApplicationRecord
   def find_short_entry
     return short_entry if short_entry.present?
 
-    create_short_entry(user: month.quarter.year.user)
+    create_short_entry(user: month.quarter.year.user, date: date)
   end
 
   def title
