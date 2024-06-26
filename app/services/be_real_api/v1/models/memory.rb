@@ -24,8 +24,8 @@ module BeRealApi
           Picture.new(@raw_data['secondary'])
         end
 
-        def thumnail
-          Picture.new(@raw_data['thumnail'])
+        def thumbnail
+          Picture.new(@raw_data['thumbnail'])
         end
 
         def location
