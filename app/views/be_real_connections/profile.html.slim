@@ -1,0 +1,22 @@
+= render 'shared/header', hide_nav: true
+
+.app-container.gap-md
+  = render 'tab-navigation'
+
+  .text-pair.text-pair--inline
+    .text-pair__title Username
+    .text-pair__subtitle = @profile.username
+
+  .text-pair.text-pair--inline
+    .text-pair__title Streak Length
+    .text-pair__subtitle = @profile.streak_length
+
+  .text-pair.text-pair--inline
+    .text-pair__title Last Post
+    .text-pair__subtitle = @profile.last_bts_post_at.to_fs(:full_date)
+
+  .text-pair
+    .text-pair__title Realmojis
+  .flex.gap-sm
+    - @profile.realmojis.each do |realmoji|
+      rem-be-real-realmoji emoji=realmoji.emoji src=realmoji.media.url

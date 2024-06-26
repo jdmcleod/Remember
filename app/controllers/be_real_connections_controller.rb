@@ -1,4 +1,25 @@
 class BeRealConnectionsController < ApplicationController
+  def profile
+    set_be_real_connection
+
+    @profile = @be_real_connection.person_record
+  end
+
+  def friends
+    set_be_real_connection
+
+    @profile = @be_real_connection.person_record
+    @friend_collection = @be_real_connection.friends
+  end
+
+  def memories
+    set_be_real_connection
+
+    @profile = @be_real_connection.person_record
+    @memory_collection = @be_real_connection.memories
+    @memory_count = 15
+  end
+
   def new
     set_new_be_real_connection
   end

@@ -1,0 +1,10 @@
+= render 'shared/header', hide_nav: true
+
+.app-container.gap-md
+  = render 'tab-navigation'
+
+  .text-pair
+    .text-pair__title Friends
+  .flex.flex-wrap.gap-sm
+    - @friend_collection.friends.each do |friend|
+      rem-be-real-person name=friend.fullname src=friend.profile_picture.url

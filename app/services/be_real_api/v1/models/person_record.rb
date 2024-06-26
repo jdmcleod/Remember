@@ -2,6 +2,8 @@ module BeRealApi
   module V1
     module Models
       class PersonRecord
+        attr_reader :raw_data
+
         def initialize(data)
           @raw_data = data
         end
@@ -76,7 +78,7 @@ module BeRealApi
           @raw_data['userFreshness']
         end
 
-        def streakLength
+        def streak_length
           @raw_data['streakLength']
         end
 

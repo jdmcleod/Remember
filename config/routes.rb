@@ -29,8 +29,13 @@ Rails.application.routes.draw do
     get :profile, on: :collection
 
     resources :be_real_connections, only: [:new, :create, :update] do
-      get :otp, on: :member
-      patch :submit_otp, on: :member
+      member do
+        get :profile
+        get :friends
+        get :memories
+        get :otp
+        patch :submit_otp
+      end
     end
   end
 
