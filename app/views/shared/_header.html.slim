@@ -17,7 +17,7 @@
         button.btn.btn--no-background.btn--small = icon('plane', classes: 'icon--medium', color: 'primary-minus-two')
 
         = render 'shared/context_menu', locals: { icon: 'user-hexagon' }
-          = link_to profile_users_path, class: 'btn-primary btn--small btn--no-border' do
+          = link_to profile_users_path, class: 'btn-primary btn--small btn--no-border full-width' do
             = icon('user', classes: 'icon--medium', color: 'primary-minus-two')
             | Profile
           = button_to sign_out_sessions_path, method: :delete, class: 'btn-primary btn--small btn--no-border' do

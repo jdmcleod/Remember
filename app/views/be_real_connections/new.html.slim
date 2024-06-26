@@ -1,6 +1,6 @@
-.app-container.gap-md
-  = render 'shared/header', hide_nav: true
+= render 'shared/header', hide_nav: true
 
+.app-container.gap-md
   = simple_form_for @be_real_connection, url: [current_user, @be_real_connection], html: { class: 'card' } do |f|
     .card__body
       = f.input :phone_number, label: 'Phone Number', placeholder: '+1 ...'
