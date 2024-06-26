@@ -11,13 +11,4 @@ class User < ApplicationRecord
   def be_real_connected?
     be_real_connection&.connected?
   end
-
-  # These should live in a presenter or something
-  def be_real_status_icon
-    be_real_connected? ? 'plug-connected' : 'plug-connected-x'
-  end
-
-  def be_real_status_message
-    be_real_connected? ? 'Connected' : 'Not Connected'
-  end
 end

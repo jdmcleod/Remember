@@ -7,9 +7,11 @@
     .card__header
       .flex.justify-between.items-center
         .text-pair.text-pair--inline
+          - connection_icon = current_user.be_real_connected? ? 'plug-connected' : 'plug-connected-x'
+          - connection_status = current_user.be_real_connected? ? 'Connected' : 'Not Connected'
           .text-pair__title BeReal
-          .text-pair__subtitle data-tooltip-text=current_user.be_real_status_message data-tooltip-position='right'
-            = icon(current_user.be_real_status_icon, classes: 'icon--medium')
+          .text-pair__subtitle data-tooltip-text=connection_status data-tooltip-position='right'
+            = icon(connection_icon, classes: 'icon--medium')
         - if current_user.be_real_connected?
           rem-be-real-person name=@be_real_person.fullname src=@be_real_person.profile_picture.url
     .card__body
