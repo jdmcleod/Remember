@@ -9,7 +9,7 @@ class EntriesController < ApplicationController
   def update
     @entry = Entry.find_by(id: params[:id])
     @entry.update(entry_params)
-    @memories = @entry.user.days.find_by(date: @entry.date).be_real_memories
+    @memories = @entry.journalable.be_real_memories
 
     render turbo_stream: turbo_stream.replace('day-popup-form', partial: 'entries/day_popup_form')
   end
