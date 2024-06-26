@@ -14,7 +14,7 @@ class BeRealConnection < ApplicationRecord
   end
 
   def refresh_connection(refresh_token = self.firebase_refresh_token, uid = self.uid, is_new_user = self.is_new_user)
-    google_client = GoogleApi::V1::Client.new
+    google_client = BeRealApi::V1::GoogleClient.new
     refresh_response = google_client.refresh_firebase(refresh_token)
 
     return false if refresh_response['error']
@@ -55,6 +55,6 @@ class BeRealConnection < ApplicationRecord
   private
 
   def api_client
-    @api_client ||= BeRealApi::V1::Client.new(self)
+    @api_client ||= BeRealApi::V1::BeRealClient.new(self)
   end
 end

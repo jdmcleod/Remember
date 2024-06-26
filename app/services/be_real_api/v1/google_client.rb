@@ -1,12 +1,14 @@
-module GoogleApi
+# Based on https://github.com/s-alad/toofake
+
+module BeRealApi
   module V1
-    class Client
+    class GoogleClient
       API_ENDPOINT = 'https://www.googleapis.com/identitytoolkit/v3/relyingparty'.freeze
       FIREBASE_ENDPOINT = 'https://securetoken.googleapis.com/v1/token'.freeze
       API_KEY = 'AIzaSyCgNTZt6gzPMh-2voYXOvrt_UR_gpGl83Q'.freeze # Google API Key
 
       def get_ios_receipt
-        request_body = { "appToken": BeRealApi::V1::Client::APP_TOKEN }.to_json
+        request_body = { "appToken": BeRealClient::APP_TOKEN }.to_json
 
         response_body = post("#{API_ENDPOINT}/verifyClient", request_body)
 
@@ -53,11 +55,11 @@ module GoogleApi
         request_body = {
           "grant_type": "firebase",
           "client_id": "ios",
-          "client_secret": BeRealApi::V1::Client::CLIENT_SECRET,
+          "client_secret": BeRealClient::CLIENT_SECRET,
           "token": firebase_token
         }.to_json
 
-        response_body = post(BeRealApi::V1::Client::AUTH_ENDPOINT, request_body)
+        response_body = post(BeRealClient::AUTH_ENDPOINT, request_body)
 
         response_body
       end

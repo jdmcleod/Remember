@@ -2,7 +2,7 @@
 
 module BeRealApi
   module V1
-    class Client
+    class BeRealClient
       API_ENDPOINT = 'https://mobile.bereal.com/api'.freeze
       AUTH_ENDPOINT = 'https://auth.bereal.team/token?grant_type=firebase'.freeze
       APP_TOKEN = '54F80A258C35A916B38A3AD83CA5DDD48A44BFE2461F90831E0F97EBA4BB2EC7'.freeze
@@ -50,7 +50,7 @@ module BeRealApi
       def set_headers(request)
         request['Authorization'] = "Bearer #{@be_real_connection.bereal_access_token}"
 
-        BeRealApi::V1::Headers.get.each do |header|
+        Headers.get.each do |header|
           request[header.first] = header.last
         end
       end

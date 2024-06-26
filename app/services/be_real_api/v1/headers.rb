@@ -1,3 +1,5 @@
+# Based on https://github.com/s-alad/toofake
+
 module BeRealApi
   module V1
     class Headers
@@ -431,7 +433,7 @@ module BeRealApi
 
         [
           ["bereal-timezone", "Europe/Paris"],
-          ["bereal-device-id", Client::DEVICE_ID],
+          ["bereal-device-id", BeRealClient::DEVICE_ID],
           ["bereal-signature", last_item[:signature]],
         ]
       end

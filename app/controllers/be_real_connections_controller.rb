@@ -25,7 +25,7 @@ class BeRealConnectionsController < ApplicationController
   end
 
   def create
-    google_client = GoogleApi::V1::Client.new
+    google_client = BeRealApi::V1::GoogleClient.new
     session_info = google_client.request_otp(params[:be_real_connection][:phone_number])
 
     if session_info.nil?
@@ -52,7 +52,7 @@ class BeRealConnectionsController < ApplicationController
   def update
     set_be_real_connection
 
-    google_client = GoogleApi::V1::Client.new
+    google_client = BeRealApi::V1::GoogleClient.new
     session_info = google_client.request_otp(params[:be_real_connection][:phone_number])
 
     if session_info.nil?
@@ -83,7 +83,7 @@ class BeRealConnectionsController < ApplicationController
 
     one_time_password = params[:be_real_connection][:otp]
 
-    google_client = GoogleApi::V1::Client.new
+    google_client = BeRealApi::V1::GoogleClient.new
     otp_response = google_client.submit_otp(@be_real_connection.session_info, one_time_password)
 
     if otp_response['error']
