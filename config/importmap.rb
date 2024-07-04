@@ -10,3 +10,6 @@ pin "@rails/actiontext", to: "@rails--actiontext.js" # @7.0.8
 pin "application", preload: true
 
 pin "stimulus-use" # @0.52.2
+
+# Lit
+pin "lit", to: "https://esm.run/lit" # @3.1.4

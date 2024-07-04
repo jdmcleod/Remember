@@ -1,0 +1,25 @@
+= render 'shared/header', hide_nav: true
+
+.app-container.gap-md
+  h2 Hello, #{current_user.name}!
+
+  .card
+    .card__header
+      .flex.justify-between.items-center
+        .text-pair.text-pair--inline
+          - connection_icon = current_user.be_real_connected? ? 'plug-connected' : 'plug-connected-x'
+          - connection_status = current_user.be_real_connected? ? 'Connected' : 'Not Connected'
+          .text-pair__title BeReal
+          .text-pair__subtitle data-tooltip-text=connection_status data-tooltip-position='right'
+            = icon(connection_icon, classes: 'icon--medium')
+        - if current_user.be_real_connected?
+          rem-be-real-person name=@be_real_person.fullname src=@be_real_person.profile_picture.url
+    .card__body
+      - if current_user.be_real_connected?
+        = link_to profile_user_be_real_connection_path(current_user, @be_real_connection), class: 'btn-primary' do
+          = icon('photo', classes: 'icon--medium')
+          | View BeReal Data
+      - else
+        = link_to new_user_be_real_connection_path(current_user), class: 'btn-primary' do
+          = icon('photo', classes: 'icon--medium')
+          | Connect to BeReal
