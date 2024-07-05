@@ -16,6 +16,7 @@
   justify-self: center;
   font-family: "Jersey 25";
   font-size: var(--op-font-large);
+  overflow: hidden;
 
   &:hover {
     background-color: var(--op-color-primary-plus-six);
@@ -32,6 +33,21 @@
     border: none;
     background-color: var(--op-color-neutral-plus-seven);
     color: var(--op-color-neutral-plus-two);
+  }
+
+  .day__background-image {
+    position: absolute;
+    width: var(--size);
+    height: var(--size);
+    z-index: 1;
+  }
+
+  .day__number--on-image {
+    color: var(--op-color-neutral-plus-max);
+  }
+
+  .day__number {
+    z-index: 2;
   }
 }
 
