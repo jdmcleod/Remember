@@ -7,6 +7,11 @@
   --op-color-primary-s-alt: 51%;
   --op-color-primary-l: 63%;
 
+  // Secondary HSL
+  --op-color-secondary-h: 36;
+  --op-color-secondary-s: 100%;
+  --op-color-secondary-l: 50%;
+
   // Neutral HSL
   --op-color-neutral-h: 204;
   --op-color-neutral-s: 8%;
@@ -56,16 +61,9 @@
   --op-font-family: 'Ubuntu', sans-serif;
 }
 
-@mixin background {
-  --op-color-background: var(--op-color-neutral-plus-six);
-  --op-color-on-background: var(--op-color-neutral-on-plus-six);
-  --op-color-on-background-alt: var(--op-color-neutral-on-plus-six-alt);
-}
-
 :root {
   @include color-varieties;
   @include box-shadows;
   @include spacing-scales;
   @include fonts;
-  @include background;
 }

@@ -10,7 +10,7 @@
     border-radius: var(--op-radius-x-large);
     box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
 
-    background-image: linear-gradient(43deg, var(--op-color-primary-plus-two) 0%, #ff9900 46%, var(--op-color-primary-base) 100%);
+    background-image: linear-gradient(43deg, var(--op-color-primary-plus-two) 0%, var(--op-color-secondary-original) 46%, var(--op-color-primary-base) 100%);
     background-color: var(--op-color-primary-plus-seven);
     color: var(--op-color-neutral-plus-max);
 
