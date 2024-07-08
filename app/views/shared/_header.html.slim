@@ -10,7 +10,7 @@
           = icon('badge', classes: 'icon--medium', color: 'primary-minus-two')
         button.btn.btn--no-background.btn--small = icon('notebook', classes: 'icon--medium', color: 'primary-minus-two')
 
-    h1.header__label = "Remember #{@year&.year && Date.current.year}"
+    = link_to "Remember #{@year&.year && Date.current.year}", root_path, class: 'header__label'
 
     nav.header__nav
       .header__wing.header__wing--right
