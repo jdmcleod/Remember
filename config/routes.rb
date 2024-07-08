@@ -9,11 +9,7 @@ Rails.application.routes.draw do
     delete :sign_out, action: :destroy, on: :collection
   end
 
-  get '/', to: 'sessions#index', as: :home
-
   get '/auth/:provider/callback', as: :auth_google_callback, to: 'sessions#create'
-
-  root to: 'years#current'
 
   resources :years, only: [:index, :show] do
     get :current, on: :collection
@@ -39,4 +35,5 @@ Rails.application.routes.draw do
     end
   end
 
+  root to: 'years#current'
 end
