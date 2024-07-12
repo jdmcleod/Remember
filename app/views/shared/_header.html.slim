@@ -4,25 +4,32 @@
   .header
     nav.header__nav
       - if !hide_nav
-        button.btn.btn--icon.btn--pill.btn--no-background = icon('circle-caret-left', classes: 'icon--x-large')
+        = link_to year_path(@year.year.to_i - 1), class: 'button btn btn--icon btn--pill btn--no-background' do
+          = icon('circle-caret-left', classes: 'icon--x-large')
       .header__wing.header__wing--left
         = button_to badges_path, class: 'btn btn--no-background btn--small' do
           = icon('badge', classes: 'icon--medium', color: 'primary-minus-two')
+
         button.btn.btn--no-background.btn--small = icon('notebook', classes: 'icon--medium', color: 'primary-minus-two')
 
-    = link_to "Remember #{@year&.year && Date.current.year}", root_path, class: 'header__label'
+    = link_to root_path, class: 'header__label' do
+      .flex.gap-xs.items-end
+        = image_tag 'logo.svg', class: 'header__logo'
+        .header__year
+          = @year.year
 
     nav.header__nav
       .header__wing.header__wing--right
         button.btn.btn--no-background.btn--small = icon('plane', classes: 'icon--medium', color: 'primary-minus-two')
 
         = render 'shared/context_menu', locals: { icon: 'user-hexagon' }
-          = link_to profile_users_path, class: 'btn-primary btn--small btn--no-border full-width' do
+          = link_to profile_users_path, class: 'btn btn--small btn--no-border full-width' do
             = icon('user', classes: 'icon--medium', color: 'primary-minus-two')
             | Profile
-          = button_to sign_out_sessions_path, method: :delete, class: 'btn-primary btn--small btn--no-border' do
+          = button_to sign_out_sessions_path, method: :delete, class: 'btn btn--small btn--no-border' do
             = icon('logout', classes: 'icon--medium', color: 'primary-minus-two')
             | Logout
 
       - if !hide_nav
-        button.btn.btn--icon.btn--pill.btn--no-background = icon('circle-caret-right', classes: 'icon--x-large')
+        = link_to year_path(@year.year.to_i + 1), class: 'button btn btn--icon btn--pill btn--no-background' do
+          = icon('circle-caret-right', classes: 'icon--x-large')

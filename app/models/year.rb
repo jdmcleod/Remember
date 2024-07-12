@@ -5,6 +5,10 @@ class Year < ApplicationRecord
   has_many :months, through: :quarters
   has_many :days, through: :months
 
+  def to_param
+    year.to_s
+  end
+
   def self.current_year
     find_or_create_by(year: Date.today.year)
   end

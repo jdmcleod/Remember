@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
   skip_before_action :require_authentication!, only: [:create, :index]
   def index
+    return redirect_to current_years_path if current_user
     render layout: 'full_screen'
   end
 
