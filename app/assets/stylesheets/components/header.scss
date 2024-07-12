@@ -15,11 +15,16 @@
     box-shadow: var(--op-border-all) var(--op-color-primary-base);
 
     font-weight: var(--op-font-weight-semi-bold);
+    font-size: var(--op-font-3x-large);
     text-decoration: none;
   }
 
   .header__logo {
     width: 180px;
+  }
+
+  .header__year {
+    margin-bottom: -3px;
   }
 
   .header__nav {
