@@ -26,17 +26,19 @@
             - month.days.each do |day|
               - day_classes = class_names('day--current': day.date.today?, 'day--future': day.date > Date.current)
 
-              button.day class=day_classes data-action='click->day-popup#show' data-date=day.date.to_s data-testid="day-#{day.id}"
-                - if day.be_real_memories.any?
-                  .day__background-image
-                    = image_tag day.be_real_memories.first.thumbnail_url
-                  .day__number.day__number--on-image = day.number
-                - else
-                  .day__number = day.number
-
+              .day__wrapper
                 - if day.short_entry.present?
                   .day-note-indicator.day-short-note-indicator
                     = icon('pencil', color: 'primary-minus-two')
                   / - if (rand(1..5) == 5)
                   .day-note-indicator.day-long-note-indicator
                     = icon('book-2', color: 'alerts-notice-minus-two')
+
+                button.day class=day_classes data-action='click->day-popup#show' data-date=day.date.to_s data-testid="day-#{day.id}"
+                  - if day.be_real_memories.any?
+                    .day__background-image
+                      = image_tag day.be_real_memories.first.thumbnail_url
+                    .day__number.day__number--on-image = day.number
+                  - else
+                    .day__number = day.number
+
