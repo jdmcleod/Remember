@@ -10,17 +10,19 @@
           = icon('badge', classes: 'icon--medium', color: 'primary-minus-two')
         button.btn.btn--no-background.btn--small = icon('notebook', classes: 'icon--medium', color: 'primary-minus-two')
 
-    = link_to "Remember #{@year&.year && Date.current.year}", root_path, class: 'header__label'
+    = link_to root_path, class: 'header__label' do
+      = image_tag 'logo.svg', class: 'header__logo'
+      / "Remember #{@year&.year && Date.current.year}"
 
     nav.header__nav
       .header__wing.header__wing--right
         button.btn.btn--no-background.btn--small = icon('plane', classes: 'icon--medium', color: 'primary-minus-two')
 
         = render 'shared/context_menu', locals: { icon: 'user-hexagon' }
-          = link_to profile_users_path, class: 'btn-primary btn--small btn--no-border full-width' do
+          = link_to profile_users_path, class: 'btn btn--small btn--no-border full-width' do
             = icon('user', classes: 'icon--medium', color: 'primary-minus-two')
             | Profile
-          = button_to sign_out_sessions_path, method: :delete, class: 'btn-primary btn--small btn--no-border' do
+          = button_to sign_out_sessions_path, method: :delete, class: 'btn btn--small btn--no-border' do
             = icon('logout', classes: 'icon--medium', color: 'primary-minus-two')
             | Logout
 

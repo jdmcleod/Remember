@@ -5,18 +5,21 @@
 
   // Elements
   .header__label {
-    padding-block: var(--op-space-small); // top to bottom
-    padding-inline: var(--op-space-large); // left to right
+    padding: var(--op-space-x-small) var(--op-space-small) var(--op-space-small) var(--op-space-small);
     border-radius: var(--op-radius-x-large);
     box-shadow: var(--op-shadow-medium);
-
+    z-index: 1;
     background-image: linear-gradient(43deg, var(--op-color-primary-plus-two) 0%, var(--op-color-secondary-original) 46%, var(--op-color-primary-base) 100%);
     background-color: var(--op-color-primary-plus-seven);
     color: var(--op-color-neutral-plus-max);
+    box-shadow: var(--op-border-all) var(--op-color-primary-base);
 
     font-weight: var(--op-font-weight-semi-bold);
-    font-size: var(--op-font-3x-large);
     text-decoration: none;
+  }
+
+  .header__logo {
+    width: 180px;
   }
 
   .header__nav {

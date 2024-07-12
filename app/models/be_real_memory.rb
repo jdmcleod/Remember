@@ -15,7 +15,6 @@ class BeRealMemory < ApplicationRecord
   def thumbnail_url
     Rails.cache.fetch([thumbnail.cache_key, 'url']) do
       Rails.application.routes.url_helpers.rails_storage_proxy_path thumbnail, only_path: true
-      # proxy_url thumbnail.variant(resize: '30x30')
     end
   end
 end
