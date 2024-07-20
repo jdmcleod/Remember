@@ -1,4 +1,5 @@
 require_relative "boot"
+require_relative '../env'
 
 require "rails/all"
 
@@ -23,5 +24,12 @@ module Remember
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    #
+    config.active_record.encryption.support_unencrypted_data = true
+
+    config.active_support.key_generator_hash_digest_class = OpenSSL::Digest::SHA1
+    config.active_record.encryption.primary_key = ENV['ACTIVE_RECORD_ENCRYPTION_PRIMARY_KEY']
+    config.active_record.encryption.deterministic_key = ENV['ACTIVE_RECORD_ENCRYPTION_DETERMINISTIC_KEY']
+    config.active_record.encryption.key_derivation_salt = ENV['ACTIVE_RECORD_ENCRYPTION_KEY_DERIVATION_SALT']
   end
 end
