@@ -14,6 +14,10 @@ class EntriesController < ApplicationController
     render turbo_stream: turbo_stream.replace('day-popup-form', partial: 'entries/day_popup_form')
   end
 
+  def search
+    render layout: 'modal'
+  end
+
   private
 
   def entry_params
