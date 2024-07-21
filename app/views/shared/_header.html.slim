@@ -10,7 +10,7 @@
         = button_to badges_path, class: 'btn btn--no-background btn--small' do
           = icon('badge', classes: 'icon--medium', color: 'primary-minus-two')
 
-        = link_to search_entries_path, class: 'btn.btn--no-background.btn--small' do
+        = modal_link_to search_entries_path, class: 'btn.btn--no-background.btn--small' do
           = icon('search', classes: 'icon--medium', color: 'primary-minus-two')
 
     = link_to root_path, class: 'header__label', data: { turbo_frame: 'modal' } do

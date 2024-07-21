@@ -40,6 +40,11 @@
   dependencies:
     modern-css-reset "^1.4.0"
 
+"@rolemodel/turbo-confirm@^2.0.2":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@rolemodel/turbo-confirm/-/turbo-confirm-2.0.2.tgz#bea18fcd79e91fe2d2c08d529113a26d4e1812f4"
+  integrity sha512-IoZw7Z1ChRT9Xt0u7C2mIltrpk6FV866aSiz8u+95tmACYmyyS0S16SHynAdEmwJyLTJr3HrOVuErftGDvFRNg==
+
 "@tabler/icons-webfont@^2.4.0":
   version "2.47.0"
   resolved "https://registry.yarnpkg.com/@tabler/icons-webfont/-/icons-webfont-2.47.0.tgz#4b4303170d1ed616140044848d6ef99cc993abf9"

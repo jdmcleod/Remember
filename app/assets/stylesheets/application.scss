@@ -13,7 +13,9 @@
 @import 'core/layout';
 @import 'core/utilities';
 
+@import '@rolemodel/optics/dist/scss/addons/panel';
 @import '@rolemodel/optics/dist/scss/components/modal';
+
 
 // Optics Component Customization
 @import 'components/optics-overrides/button';
