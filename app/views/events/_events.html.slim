@@ -1,0 +1,16 @@
+#events
+  - if @events.any?
+    .flex.flex-col.gap-sm
+      - @events.each do |event|
+        .card-padded
+          .card__header
+            = event.name
+
+          flex.gap-sm
+            = event.start.strftime("%A, %B %d, %Y")
+            | —
+            = event.end.strftime("%A, %B %d, %Y")
+
+
+  - else
+    div You have not created any events yet. Click the new button above to create your first event.

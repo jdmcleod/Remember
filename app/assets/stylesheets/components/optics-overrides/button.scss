@@ -1,4 +1,6 @@
 %btn-global {
+  border-radius: var(--op-radius-large);
+
   &.btn--no-background {
     background-color: transparent;
     box-shadow: none;
@@ -21,6 +23,16 @@
 }
 
 .btn-primary {
+  background-color: var(--op-color-neutral-plus-max);
+  color: var(--op-color-neutral-on-plus-max);
+  box-shadow: var(--op-border-all) var(--op-color-primary-base);
+
+  &:hover {
+    color: var(--op-color-primary-minus-five);
+    background-color: var(--op-color-primary-plus-eight);
+    box-shadow: var(--op-border-all) var(--op-color-primary-base);
+  }
+
   &.btn--no-border {
     // Borderless + Active State
     &.btn--active {

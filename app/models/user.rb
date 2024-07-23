@@ -3,9 +3,8 @@ class User < ApplicationRecord
   has_many :quarters, through: :years
   has_many :months, through: :quarters
   has_many :days, through: :months
-
   has_many :badges, dependent: :destroy
-
+  has_many :events, dependent: :destroy
   has_many :entries, dependent: :destroy
 
   has_one :be_real_connection, dependent: :destroy

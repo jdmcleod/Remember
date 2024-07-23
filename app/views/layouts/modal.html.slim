@@ -15,7 +15,7 @@ html
         .modal data-testid="modal-content"
           .modal__header
             = yield :modal_title
-            = button_tag( icon('close'), class: 'btn btn--no-border btn--icon btn--pill', data: { action: "toggle#off" })
+            / = button_tag( icon('close'), class: 'btn btn--no-border btn--icon btn--pill', data: { action: "toggle#off" })
 
           .modal__body
             = yield

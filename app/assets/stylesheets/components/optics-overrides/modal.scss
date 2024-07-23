@@ -1,0 +1,17 @@
+.modal {
+  --_op-modal-width: 60rem;
+  border-radius: var(--op-radius-x-large);
+  transition-duration: 150ms;
+  background-color: var(--op-color-neutral-plus-eight);
+}
+
+.modal__body {
+  min-height: 15rem;
+  background-color: var(--op-color-neutral-plus-max);
+}
+
+dialog.modal {
+  &::backdrop {
+    animation: show-backdrop 150ms ease-in;
+  }
+}
