@@ -14,6 +14,12 @@ class EntriesController < ApplicationController
     render turbo_stream: turbo_stream.replace('day-popup-form', partial: 'entries/day_popup_form')
   end
 
+  def search
+    @search_term = params[:q]
+    @entries = current_user.entries.search(@search_term)
+    render layout: 'modal'
+  end
+
   private
 
   def entry_params

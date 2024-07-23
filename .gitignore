@@ -40,3 +40,5 @@
 /node_modules
 
 /remember.code-workspace
+
+spec/examples.txt

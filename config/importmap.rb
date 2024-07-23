@@ -10,6 +10,9 @@ pin "@rails/actiontext", to: "@rails--actiontext.js" # @7.0.8
 pin "application", preload: true
 
 pin "stimulus-use" # @0.52.2
+pin "@rolemodel/turbo-confirm"
 
 # Lit
 pin "lit", to: "https://esm.run/lit" # @3.1.4
+pin "hotkeys-js" # @3.13.7
+pin "stimulus-use/hotkeys", to: "stimulus-use--hotkeys.js" # @0.52.2

@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   has_many :badges, dependent: :destroy
 
+  has_many :entries, dependent: :destroy
+
   has_one :be_real_connection, dependent: :destroy
 
   def be_real_connected?

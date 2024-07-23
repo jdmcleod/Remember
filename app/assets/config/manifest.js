@@ -6,3 +6,5 @@
 
 //= link @hotwired--stimulus.js
 //= link stimulus-use.js
+//= link hotkeys-js.js
+//= link stimulus-use--hotkeys.js

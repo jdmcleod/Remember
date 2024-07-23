@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_23_234957) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_20_183147) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -75,7 +75,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_23_234957) do
     t.boolean "is_new_user"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "name"
     t.index ["user_id"], name: "index_be_real_connections_on_user_id"
   end
 
@@ -112,6 +111,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_23_234957) do
     t.string "journalable_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.tsvector "tsv"
+    t.index ["tsv"], name: "index_entries_on_tsv", using: :gin
     t.index ["user_id"], name: "index_entries_on_user_id"
   end
 
