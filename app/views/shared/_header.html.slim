@@ -1,6 +1,9 @@
 - hide_nav = defined?(hide_nav) && hide_nav
 
-.app__header
+div data-controller='hotkeys' data-hotkeys-bindings-value='{"command+/": ".app__header->search#toggle"}'
+
+.app__header data-controller='search'
+  = render 'shared/search_form'
   .header
     nav.header__nav
       - if !hide_nav
@@ -10,14 +13,14 @@
         = button_to badges_path, class: 'btn btn--no-background btn--small' do
           = icon('badge', classes: 'icon--medium', color: 'primary-minus-two')
 
-        = modal_link_to search_entries_path, class: 'btn.btn--no-background.btn--small' do
+        button.btn.btn--no-background.btn--small data-action="click->search#toggle" data-testid='search-button'
           = icon('search', classes: 'icon--medium', color: 'primary-minus-two')
 
     = link_to root_path, class: 'header__label', data: { turbo_frame: 'modal' } do
       .flex.gap-xs.items-end
         = image_tag 'logo.svg', class: 'header__logo'
         .header__year
-          = @year.year
+          = @year&.year
 
     nav.header__nav
       .header__wing.header__wing--right

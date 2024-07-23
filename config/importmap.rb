@@ -14,3 +14,5 @@ pin "@rolemodel/turbo-confirm"
 
 # Lit
 pin "lit", to: "https://esm.run/lit" # @3.1.4
+pin "hotkeys-js" # @3.13.7
+pin "stimulus-use/hotkeys", to: "stimulus-use--hotkeys.js" # @0.52.2

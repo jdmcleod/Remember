@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
       name: auth['info']['email'],
       profile_image_url: auth['info']['image']
     ).find_or_create_by(
-      email: auth['info']['name']
+      email: auth['info']['email']
     )
 
     session[:current_user_id] = user.id

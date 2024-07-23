@@ -15,6 +15,8 @@ class EntriesController < ApplicationController
   end
 
   def search
+    @search_term = params[:q]
+    @entries = current_user.entries.search(@search_term)
     render layout: 'modal'
   end
 

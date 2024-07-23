@@ -2,6 +2,7 @@ FactoryBot.define do
   factory :entry do
     content { nil }
     user
+    journalable { create(:day) }
 
     trait :with_content do
       after :build do |entry, evaluator|

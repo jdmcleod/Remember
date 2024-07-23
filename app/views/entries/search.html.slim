@@ -1,4 +1,12 @@
 = content_for(:modal_title) do
   div Search Results
 
-div Modal Body
+.search-results
+  - @entries.each do |entry|
+    .card-padded
+      .card__header
+        = entry.title
+
+      .search-result
+        = highlight_search_result(entry.content.to_plain_text, @search_term)
+

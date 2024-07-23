@@ -3,15 +3,16 @@
 // Optics
 @import '@rolemodel/optics/dist/scss/optics';
 
-// Theme Customization
-@import 'core/theme/remember-theme-core.scss';
-@import 'core/theme/remember-theme-light.scss';
 
 // Core Customization
 @import '@rolemodel/optics/dist/scss/core/tokens';
 @import 'core/base';
 @import 'core/layout';
 @import 'core/utilities';
+
+// Theme Customization
+@import 'core/theme/remember-theme-core.scss';
+@import 'core/theme/remember-theme-light.scss';
 
 @import '@rolemodel/optics/dist/scss/addons/panel';
 @import '@rolemodel/optics/dist/scss/components/modal';
@@ -32,6 +33,8 @@
 
 @import 'components/quarter';
 @import 'components/month';
+@import 'components/modal';
 @import 'components/day';
 @import 'components/day_popup';
 @import 'components/context-menu';
+@import 'components/search';
