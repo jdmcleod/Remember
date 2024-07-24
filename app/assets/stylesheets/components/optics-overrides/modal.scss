@@ -5,8 +5,11 @@
   background-color: var(--op-color-neutral-plus-eight);
 }
 
-.modal__body {
+.modal__body--min-height {
   min-height: 40rem;
+}
+
+.modal__body {
   background-color: var(--op-color-neutral-plus-max);
 }
 
