@@ -17,6 +17,10 @@
       .half-width
         = f.input :end_date, as: :date, html5: true
 
-    .full-width.flex.justify-center
+    .full-width.flex.justify-center.gap-sm
       - save_text = @event.persisted? ? 'Update' : 'Add Event'
       = f.submit save_text, class: 'btn-primary'
+
+      - if @event.persisted?
+        / button_to does not work with turbo streams for some reason
+        = link_to 'Delete', year_event_path(@year, @event), class: 'btn btn-delete', data: { turbo_method: :delete }

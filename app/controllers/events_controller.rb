@@ -13,7 +13,7 @@ class EventsController < ApplicationController
     @event = current_user.events.new(event_params)
 
     if @event.save
-      update_view
+      update_view_for_success
     else
       render turbo_stream: turbo_stream.replace('events', partial: 'events/event_form', locals: { event: @event })
     end
@@ -27,15 +27,24 @@ class EventsController < ApplicationController
     @event = current_user.events.find(params[:id])
 
     if @event.update(event_params)
-      update_view
+      update_view_for_success
     else
       render turbo_stream: turbo_stream.replace('events', partial: 'events/event_form', locals: { event: @event })
     end
   end
 
+  def destroy
+    @event = current_user.events.find(params[:id])
+    @event.destroy
+    respond_to do |format|
+      format.turbo_stream { update_view_for_success }
+      format.html { redirect_to current_years_path }
+    end
+  end
+
   private
 
-  def update_view
+  def update_view_for_success
     @events = current_user.events.in_year(@year)
     render turbo_stream: [
       turbo_stream.replace('events', partial: 'events/events', locals: { events: @events }),
