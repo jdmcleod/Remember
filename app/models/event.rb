@@ -1,7 +1,7 @@
 class Event < ApplicationRecord
   belongs_to :user
 
-  scope :in_year, -> (year) { where(arel_table[:start_date].gteq(year.start_date)).where(arel_table[:end_date].lteq(year.end_date)) }
+  scope :in_range, -> (year) { where(arel_table[:start_date].gteq(year.start_date)).where(arel_table[:end_date].lteq(year.end_date)) }
 
   validate :start_date_not_after_end_date
   validates :name, presence: true
@@ -10,6 +10,10 @@ class Event < ApplicationRecord
 
   def contains_date?(date)
     start_date <= date && end_date >= date
+  end
+
+  def month
+    user.months.find_by(start_date: start_date.beginning_of_month)
   end
 
   private

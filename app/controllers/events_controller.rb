@@ -5,7 +5,7 @@ class EventsController < ApplicationController
   end
 
   def index
-    @events = current_user.events.in_year(@year).order(:start_date)
+    @events = current_user.events.in_range(@year).order(:start_date)
     render layout: 'modal'
   end
 
@@ -51,10 +51,12 @@ class EventsController < ApplicationController
   private
 
   def update_view_for_success
-    @events = current_user.events.in_year(@year)
+    @events = current_user.events.in_range(@year)
+
     render turbo_stream: [
       turbo_stream.replace('events', partial: 'events/events', locals: { events: @events }),
       turbo_stream.replace('new-event-button', partial: 'events/new_button'),
+      turbo_stream.replace("month-#{@event.month.number}", partial: 'years/month', locals: { month: @event.month}),
     ].join
   end
 

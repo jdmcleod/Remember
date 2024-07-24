@@ -1,12 +1,10 @@
-- event = @events.detect { |event| event.contains_date?(day.date) }
-
 - day_classes = class_names('day--current': day.date.today?, 'day--future': day.date > Date.current)
 - wrapper_classes = class_names('day__wrapper', day.trip_class(event) => event.present?)
 - wrapper_style = event.present? ? "background-color: #{event&.color}" : nil
 
 div class=wrapper_classes style=wrapper_style
   - if event.present? && day.date == event.start_date
-    = modal_link_to year_event_path(@year, event) do
+    = modal_link_to year_event_path(month.year, event) do
       .event-handle style=wrapper_style
         = icon('plane', color: 'neutral-plus-max')
 

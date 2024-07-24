@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_23_213322) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_24_144356) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -131,8 +131,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_23_213322) do
   create_table "months", force: :cascade do |t|
     t.bigint "quarter_id"
     t.string "name"
-    t.date "start"
-    t.date "end"
+    t.date "start_date"
+    t.date "end_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["quarter_id"], name: "index_months_on_quarter_id"
@@ -140,8 +140,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_23_213322) do
 
   create_table "quarters", force: :cascade do |t|
     t.bigint "year_id"
-    t.date "start"
-    t.date "end"
+    t.date "start_date"
+    t.date "end_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["year_id"], name: "index_quarters_on_year_id"

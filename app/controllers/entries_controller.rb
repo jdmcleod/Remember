@@ -11,7 +11,12 @@ class EntriesController < ApplicationController
     @entry.update(entry_params)
     @memories = @entry.journalable.be_real_memories
 
-    render turbo_stream: turbo_stream.replace('day-popup-form', partial: 'entries/day_popup_form')
+    month = @entry.journalable.month
+    @events = current_user.events.in_range(month)
+    render turbo_stream: [
+      turbo_stream.replace('day-popup-form', partial: 'entries/day_popup_form'),
+      turbo_stream.replace("month-#{month.number}", partial: 'years/month', locals: { month: @entry.journalable.month }),
+    ].join
   end
 
   def search
