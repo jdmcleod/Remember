@@ -57,6 +57,17 @@
   --op-space-5x-large: calc(var(--op-space-scale-unit) * 8); // 80px
 }
 
+@mixin border-radius {
+  --op-radius-x-small: 2px;
+  --op-radius-small: 4px;
+  --op-radius-medium: 8px;
+  --op-radius-large: 12px;
+  --op-radius-x-large: 16px;
+  --op-radius-2x-large: 20px;
+  --op-radius-circle: 50%;
+  --op-radius-pill: 9999px;
+}
+
 @mixin fonts {
   --op-font-family: 'Ubuntu', sans-serif;
 }
@@ -66,4 +77,5 @@
   @include box-shadows;
   @include spacing-scales;
   @include fonts;
+  @include border-radius;
 }

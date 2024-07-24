@@ -1,0 +1,27 @@
+.card.event-card {
+  background-color: var(--op-color-primary-plus-eight);
+  border-radius: var(--op-radius-x-large);
+
+  &:hover {
+    box-shadow: var(--op-border-all) var(--op-color-primary-base);
+  }
+}
+
+.event-card__name {
+  color: var(--op-color-primary-base);
+  font-weight: var(--op-font-weight-bold);
+  font-size: var(--op-font-large);
+}
+
+.event-card__dates {
+  display: flex;
+  gap: var(--op-space-x-small);
+  color: var(--op-color-neutral-minus-one);
+  font-size: var(--op-font-small);
+}
+
+.event-card__color-swatch {
+  width: var(--op-space-2x-large);
+  height: var(--op-space-2x-large);
+  border-radius: var(--op-radius-small);
+}

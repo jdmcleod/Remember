@@ -5,7 +5,7 @@ class EventsController < ApplicationController
   end
 
   def index
-    @events = current_user.events.in_year(@year)
+    @events = current_user.events.in_year(@year).order(:start_date)
     render layout: 'modal'
   end
 
@@ -13,22 +13,35 @@ class EventsController < ApplicationController
     @event = current_user.events.new(event_params)
 
     if @event.save
-      @events = current_user.events.in_year(@year)
-      render turbo_stream: turbo_stream.replace('events', partial: 'events/events', locals: { events: @events })
+      update_view
     else
       render turbo_stream: turbo_stream.replace('events', partial: 'events/event_form', locals: { event: @event })
     end
   end
 
-  # def update
-  #   @entry = Entry.find_by(id: params[:id])
-  #   @entry.update(entry_params)
-  #   @memories = @entry.journalable.be_real_memories
-  #
-  #   render turbo_stream: turbo_stream.replace('day-popup-form', partial: 'entries/day_popup_form')
-  # end
+  def edit
+    @event = current_user.events.find(params[:id])
+  end
+
+  def update
+    @event = current_user.events.find(params[:id])
+
+    if @event.update(event_params)
+      update_view
+    else
+      render turbo_stream: turbo_stream.replace('events', partial: 'events/event_form', locals: { event: @event })
+    end
+  end
 
   private
+
+  def update_view
+    @events = current_user.events.in_year(@year)
+    render turbo_stream: [
+      turbo_stream.replace('events', partial: 'events/events', locals: { events: @events }),
+      turbo_stream.replace('new-event-button', partial: 'events/new_button'),
+    ].join
+  end
 
   def set_year
     @year = current_user.years.find_by(year: params[:year_id])

@@ -3,7 +3,8 @@
     = icon('chevron-left')
     | Back
 
-  = simple_form_for @event, url: year_events_url do |f|
+  - url = @event.persisted? ? year_event_url(@year, @event) : year_events_path
+  = simple_form_for @event, url: do |f|
     .flex.gap-sm
       .four-fifths-width
         = f.input :name
@@ -17,4 +18,5 @@
         = f.input :end_date, as: :date, html5: true
 
     .full-width.flex.justify-center
-      = f.submit 'Add Event', class: 'btn-primary'
+      - save_text = @event.persisted? ? 'Update' : 'Add Event'
+      = f.submit save_text, class: 'btn-primary'
