@@ -25,3 +25,15 @@
   height: var(--op-space-2x-large);
   border-radius: var(--op-radius-small);
 }
+
+.event-handle {
+  position: absolute;
+  background-color: var(--op-color-primary-plus-six);
+  border-radius: 5px;
+  padding: 1px;
+  font-size: var(--op-font-x-small);
+  cursor: pointer;
+  z-index: 4;
+  left: -5px;
+  top: -5px;
+}

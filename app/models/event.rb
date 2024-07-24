@@ -8,6 +8,10 @@ class Event < ApplicationRecord
   validates :start_date, presence: true
   validates :end_date, presence: true
 
+  def contains_date?(date)
+    start_date <= date && end_date >= date
+  end
+
   private
 
   def start_date_not_after_end_date

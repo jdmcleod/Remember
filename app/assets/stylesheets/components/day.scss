@@ -1,5 +1,5 @@
 .day {
-  --size: 3.8rem;
+  --size: 4rem;
 
   width: var(--size);
   height: var(--size);
@@ -53,22 +53,32 @@
 
 .day__wrapper {
   position: relative;
+  padding: 4px;
+  width: 100%;
 }
 
 .day-note-indicator {
   position: absolute;
   background-color: var(--op-color-primary-plus-six);
   border-radius: 50%;
+  font-size: var(--op-font-small);
   padding: 1px;
   z-index: 4;
-  left: -8px;
-  top: -8px;
-}
-
-.day-short-note-indicator {
+  left: -2px;
+  top: -2px;
 }
 
 .day-long-note-indicator {
   background-color: var(--op-color-alerts-notice-plus-six);
-  left: 10px;
+  left: 16px;
+}
+
+.day--trip-start {
+  border-top-left-radius: var(--op-radius-large);
+  border-bottom-left-radius: var(--op-radius-large);
+}
+
+.day--trip-end {
+  border-top-right-radius: var(--op-radius-large);
+  border-bottom-right-radius: var(--op-radius-large);
 }

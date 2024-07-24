@@ -3,7 +3,7 @@
     - if @entry.present?
       .flex.gap-sm.items-center
         button.day
-          div = @entry.journalable.number
+          = render 'years/day_image', day: @entry.journalable
 
         div = "What I did on #{@entry.title}"
 

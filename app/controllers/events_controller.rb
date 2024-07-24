@@ -9,6 +9,12 @@ class EventsController < ApplicationController
     render layout: 'modal'
   end
 
+  def show
+    @event = current_user.events.find(params[:id])
+    @entries = current_user.entries.in_range(@event.start_date, @event.end_date)
+    render layout: 'modal'
+  end
+
   def create
     @event = current_user.events.new(event_params)
 

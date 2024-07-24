@@ -1,0 +1,8 @@
+.card-padded {
+  .card__header { padding: 0; }
+}
+
+.card__header {
+  color: var(--op-color-primary-base);
+  font-weight: var(--op-font-weight-bold);
+}
