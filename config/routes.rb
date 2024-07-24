@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     resources :events
   end
 
+  resources :months, only: [:show]
   resources :badges, only: [:index, :create, :destroy]
 
   resources :entries, only: %i[update] do

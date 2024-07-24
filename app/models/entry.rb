@@ -24,6 +24,10 @@ class Entry < ApplicationRecord
     super
   end
 
+  def empty?
+    content.blank?
+  end
+
   private
 
   def tsvectorized_text

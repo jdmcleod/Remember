@@ -24,8 +24,9 @@ div data-controller='hotkeys' data-hotkeys-bindings-value='{"command+/": ".app__
 
     nav.header__nav
       .header__wing.header__wing--right
-        = modal_link_to year_events_path(@year), class: 'btn btn--no-background btn--small' do
-          = icon('plane', classes: 'icon--medium', color: 'primary-minus-two')
+        - if !hide_nav
+          = modal_link_to year_events_path(@year), class: 'btn btn--no-background btn--small' do
+            = icon('plane', classes: 'icon--medium', color: 'primary-minus-two')
 
         = render 'shared/context_menu', locals: { icon: 'user-hexagon' }
           = link_to profile_users_path, class: 'btn btn--small btn--no-border full-width' do
