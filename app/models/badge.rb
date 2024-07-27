@@ -14,7 +14,7 @@ class Badge < ApplicationRecord
         color: '#00bfd8'
       },
       {
-        name: 'Lovey-dovey',
+        name: 'Lovey dovey',
         icon_name: 'heart',
         color: '#ff2825'
       },
