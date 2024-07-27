@@ -17,7 +17,7 @@ html
             = yield :modal_title
             = button_tag( icon('close'), class: 'btn btn--no-border btn--icon btn--pill', data: { action: "toggle#off" })
 
-          .modal__body
+          .modal__body#modal-body
             = yield
 
           .modal__footer

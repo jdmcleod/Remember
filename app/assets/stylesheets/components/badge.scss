@@ -18,6 +18,8 @@
   text-decoration: none;
   transition: 0.2s;
 
+  font-size: var(--op-font-2x-large);
+
   &.badge--new {
     color: var(--op-color-neutral-base);
     border-style: dashed;
@@ -31,6 +33,21 @@
   &.badge--small {
     width: var(--op-space-3x-large);
     height: var(--op-space-3x-large);
+    font-size: var(--op-font-x-large);
+  }
+
+  &.badge--large {
+    width: calc(var(--op-space-4x-large) + var(--op-space-small));
+    height: calc(var(--op-space-4x-large) + var(--op-space-small));
+    font-size: var(--op-font-4x-large);
+    border-width: 2px;
+  }
+
+  &.badge--x-large {
+    width: calc(var(--op-space-4x-large) + var(--op-space-large));
+    height: calc(var(--op-space-4x-large) + var(--op-space-large));
+    border-width: 2px;
+    font-size: var(--op-font-5x-large);
   }
 
   &.badge--editable {

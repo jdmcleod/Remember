@@ -1,11 +1,4 @@
 = content_for(:modal_title) do
   | Your Badges
 
-.flex.flex-wrap.justify-start.items-center.gap-sm
-  - @badges.each do |badge|
-    = link_to edit_badge_path(badge), class: 'badge badge--editable', style: "--badge-color: #{badge.color}", data: { turbo_stream: true } do
-      = icon(badge.icon_name, classes: 'icon--x-large')
-    .badge-popup id="badge-popup--#{badge.id}"
-  = link_to new_badge_path, class: 'badge badge--new', data: { turbo_stream: true } do
-    = icon('plus', classes: 'icon--x-large')
-  .badge-popup id="badge-popup--new"
+= render 'badges'
