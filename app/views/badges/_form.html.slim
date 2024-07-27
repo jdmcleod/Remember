@@ -3,25 +3,34 @@
   | Back
 
 = simple_form_for @badge do |f|
-  div data-controller='badge'
-    .flex.gap-sm
-      .four-fifths-width
-        = f.input :name
-      .one-fifth-width
-        = f.input :color, as: :color, input_html: { data: { badge_target: 'colorField' } }
+  div data-controller='badge-preview'
+    = f.input :name
 
-    .flex.items-center.gap-sm
-      .four-fifths-width
-        = f.label :icon_name, class: 'form-label' do
-          | Tabler icon name (
-          a.text-decoration-none href='https://tablericons.com/' target="_blank" See library
-          | )
-        = f.input :icon_name, label: false, input_html: { data: { badge_target: 'iconNameField' } }
-      .one-fifth-width
-        .badge.badge--x-large style="--badge-color: #{@badge.color}" data-badge-target='badge'
-          = icon(@badge.icon_name)
+    .card-padded.card--white
+      .card__header Icon Settings
+      .flex.items-center.gap-sm
+        div.half-width
+          .form-group.padding-bottom-none
+            = f.label :icon_name, class: 'form-label' do
+              | Tabler icon name (
+              a.text-decoration-none href='https://tablericons.com/' target="_blank" See library
+              | )
+            = f.input_field :icon_name, data: { badge_preview_target: 'iconNameField' }
+          = f.input :color, as: :color, input_html: { data: { badge_preview_target: 'colorField' } }
+        .one-quarter-width.flex.justify-center.items-center.flex-col.gap-lg
+          .card__header Preview
+          .badge.badge--x-large style="--badge-color: #{@badge.color}" data-badge-preview-target='preview'
+            = icon(@badge.icon_name)
+        .one-quarter-width.flex.justify-center.items-center.flex-col.gap-lg
+          .card__header Live look
+          .day__preview
+            .day__wrapper
+              .day-badge-indicator style="--badge-color: #{@badge.color}"  data-badge-preview-target='preview'
+                = icon(@badge.icon_name)
+              .day
+                .day__number 24
 
-    .full-width.flex.justify-center.gap-sm
+    .full-width.flex.justify-center.gap-sm.margin-top-sm
       - if @badge.persisted?
         = link_to 'Delete', badge_path(@badge), class: 'btn', data: { turbo_method: :delete }
 

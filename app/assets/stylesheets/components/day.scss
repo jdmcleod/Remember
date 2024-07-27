@@ -57,6 +57,28 @@
   width: 100%;
 }
 
+.day__preview {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .day {
+    --size: calc(var(--op-space-4x-large) + var(--op-space-large));
+    font-size: var(--op-font-3x-large);
+  }
+}
+
+.day-badge-indicator {
+  position: absolute;
+  background-color: var(--op-color-neutral-plus-six);
+  color: var(--badge-color);
+  border-radius: 50%;
+  padding: 1px;
+  z-index: 4;
+  left: -8px;
+  top: -8px;
+}
+
 .day-note-indicator {
   position: absolute;
   background-color: var(--op-color-primary-plus-six);

@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ['iconNameField', 'colorField', 'badge']
+  static targets = ['iconNameField', 'colorField', 'preview']
 
   connect() {
     super.connect()
@@ -16,12 +16,12 @@ export default class extends Controller {
 
   _updateBadgeIcon(event) {
     const iconName = event.target.value
-    this.badgeTarget.querySelector('.icon').classList.replace(`ti-${this.currentIconName()}`, `ti-${iconName}`)
+    this.previewTargets.forEach(previewTarget => previewTarget.querySelector('.icon').classList.replace(`ti-${this.currentIconName()}`, `ti-${iconName}`))
     this.setCurrentIconName(iconName)
   }
 
   _updateBadgeColor(event) {
     const color = event.target.value
-    this.badgeTarget.style = `--badge-color: ${color}`
+    this.previewTargets.forEach(previewTarget => previewTarget.style = `--badge-color: ${color}`)
   }
 }
