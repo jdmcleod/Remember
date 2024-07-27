@@ -1,0 +1,24 @@
+= link_to badges_path, class: 'btn btn--pill btn--small', data: { turbo_stream: true } do
+  = icon('chevron-left')
+  | Back
+
+= simple_form_for @badge do |f|
+  .flex.gap-sm
+    .four-fifths-width
+      = f.input :name
+    .one-fifth-width
+      = f.input :color, as: :color
+
+  .flex.items-center.gap-sm
+    .four-fifths-width
+      = f.input :icon_name
+    .one-fifth-width
+      .badge.badge--x-large style="--badge-color: #{@badge.color}"
+        = icon(@badge.icon_name)
+
+  .full-width.flex.justify-center.gap-sm
+    - if @badge.persisted?
+      = link_to 'Delete', badge_path(@badge), class: 'btn', data: { turbo_method: :delete }
+
+    - save_text = @badge.persisted? ? 'Update' : 'Add'
+    = f.submit save_text, class: 'btn-primary'
