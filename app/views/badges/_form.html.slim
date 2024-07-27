@@ -19,8 +19,8 @@
           = f.input :color, as: :color, input_html: { data: { badge_preview_target: 'colorField' } }
         .one-quarter-width.flex.justify-center.items-center.flex-col.gap-lg
           .card__header Preview
-          .badge.badge--x-large style="--badge-color: #{@badge.color}" data-badge-preview-target='preview'
-            = icon(@badge.icon_name)
+          div data-badge-preview-target='preview'
+            = render 'shared/badge', locals: { badge: @badge, size: 'x-large' }
         .one-quarter-width.flex.justify-center.items-center.flex-col.gap-lg
           .card__header Live look
           .day__preview

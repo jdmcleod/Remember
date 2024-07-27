@@ -3,9 +3,8 @@
     data-testid="#{locals[:name]}-menu-button"
     type='button'
     data-action='click->context-menu#toggle click@window->context-menu#hide'}
-    - if locals[:badge].present?
-      .badge.badge--small.badge--new
-        = icon(locals[:icon])
+    - if locals[:toggle].present?
+      = locals[:toggle]
     - else
       = icon(locals[:icon], classes: 'icon--medium', color: 'primary-minus-two')
 

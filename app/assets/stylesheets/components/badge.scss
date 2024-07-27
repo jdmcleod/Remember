@@ -58,10 +58,10 @@
       cursor: pointer;
     }
   }
+
+  &.badge--deletable {
+    &::after {
+      content: 'test'
+    }
+  }
 }
-
-.badge-popup {
-  position: absolute;
-}
-
-
