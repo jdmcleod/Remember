@@ -1,14 +1,8 @@
 class DaysController < ApplicationController
-  def update
+  def add_badge
     @day = Day.find_by(id: params[:id])
-    @day.update(day_params)
+    @day.day_badges.find_or_create_by(badge_id: params[:badge_id])
 
     render turbo_stream: turbo_stream.replace('day-popup-form', partial: 'entries/day_popup_form')
-  end
-
-  private
-
-  def day_params
-    params.require(:day).permit(:badges)
   end
 end

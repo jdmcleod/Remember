@@ -24,7 +24,6 @@ Rails.application.routes.draw do
     get :search, on: :collection
   end
 
-
   resources :users, only: [] do
     get :profile, on: :collection
 
