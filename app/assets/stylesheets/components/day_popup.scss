@@ -5,7 +5,7 @@
   width: var(--hardcoded-width); // make loading stage less jumpy
   min-height: var(--hardcoded-height); // make loading stage less jumpy
   position: absolute;
-  padding: var(--op-space-2x-small) var(--op-space-x-small);
+  padding: var(--op-space-2x-small) var(--op-space-x-small) var(--op-space-x-small) var(--op-space-x-small);
   box-shadow: var(--op-shadow-large);
   background-color: var(--op-color-neutral-plus-max);
   border-radius: var(--op-radius-2x-large) var(--op-radius-large) var(--op-radius-large) var(--op-radius-large);

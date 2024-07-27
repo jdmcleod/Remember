@@ -1,0 +1,12 @@
+- classes = 'badge'
+- classes += " badge--#{locals[:size]}" if locals[:size].present?
+- classes += " badge--#{locals[:type]}" if locals[:type].present?
+- if locals[:badge].present?
+  - color = locals[:badge].color
+  - icon = locals[:badge].icon_name
+- else
+  - color = locals[:color]
+  - icon = locals[:icon]
+  - icon = 'plus' if locals[:type] == 'new'
+div class=classes style="--badge-color: #{color}"
+  = icon(icon)
