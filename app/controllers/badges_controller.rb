@@ -1,6 +1,7 @@
 class BadgesController < ApplicationController
   def index
     @badges = current_user.badges.order(created_at: :desc)
+    render layout: 'modal'
   end
 
   def new
