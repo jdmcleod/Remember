@@ -11,7 +11,11 @@
 
   .flex.items-center.gap-sm
     .four-fifths-width
-      = f.input :icon_name
+      = f.label :icon_name, class: 'form-label' do
+        | Tabler icon name (
+        a.text-decoration-none href='https://tablericons.com/' target="_blank" See library
+        | )
+      = f.input :icon_name, label: false
     .one-fifth-width
       .badge.badge--x-large style="--badge-color: #{@badge.color}"
         = icon(@badge.icon_name)
