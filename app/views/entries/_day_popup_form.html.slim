@@ -7,13 +7,27 @@
 
         div = "What I did on #{@entry.title}"
 
-      = simple_form_for @entry, url: entry_path(@entry), data: { method: :put, turbo: true, 'day-popup-target': 'form' } do |f|
-        = f.error_notification
-        = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+      .flex.gap-xs
+        .flex.flex-col.gap-xs.margin-top-xs
+          - @badges.each do |badge|
+            .badge.badge--small style="--badge-color: #{badge.color}"
+              = icon(badge.icon_name)
+          = render 'shared/context_menu', locals: { badge: true, icon: 'plus' }
+            .flex.items-center.gap-xs.flex-wrap
+              - current_user.badges.each do |badge|
+                .badge.badge--clickable.badge--small style="--badge-color: #{badge.color}"
+                  = icon(badge.icon_name)
+              = modal_link_to new_badge_path, class: 'badge badge--small badge--new', data: { turbo_stream: true } do
+                = icon('plus')
 
-        = f.hidden_field :user_id, value: @entry.user_id
+        .flex-grow-1
+          = simple_form_for @entry, url: entry_path(@entry), data: { method: :put, turbo: true, 'day-popup-target': 'form' } do |f|
+            = f.error_notification
+            = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
 
-        = f.rich_text_area :content, data: { testid: 'short-entry-input' }
+            = f.hidden_field :user_id, value: @entry.user_id
+
+            = f.rich_text_area :content, data: { testid: 'short-entry-input' }
 
       / - if @memories.any?
       /   .flex.flex-wrap.gap-sm

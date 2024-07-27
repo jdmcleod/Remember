@@ -1,9 +1,13 @@
 .context-menu data-controller='context-menu'
-  button.context-menu__toggle {
+  button.context-menu__toggle.padding-inline-none {
     data-testid="#{locals[:name]}-menu-button"
     type='button'
     data-action='click->context-menu#toggle click@window->context-menu#hide'}
-    = icon(locals[:icon], classes: 'icon--medium', color: 'primary-minus-two')
+    - if locals[:badge].present?
+      .badge.badge--small.badge--new
+        = icon(locals[:icon])
+    - else
+      = icon(locals[:icon], classes: 'icon--medium', color: 'primary-minus-two')
 
   .context-menu__dropdown.context-menu__dropdown--closed{
     data-testid="#{locals[:name]}-menu-dropdown"

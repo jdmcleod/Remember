@@ -6,6 +6,7 @@ class BadgesController < ApplicationController
 
   def new
     @badge = current_user.badges.build
+    render layout: 'modal'
   end
 
   def edit
