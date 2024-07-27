@@ -28,7 +28,7 @@ div data-controller='hotkeys' data-hotkeys-bindings-value='{"command+/": ".app__
           = modal_link_to year_events_path(@year), class: 'btn btn--no-background btn--small', 'data-testid': 'trips-button' do
             = icon('plane', classes: 'icon--medium', color: 'primary-minus-two')
 
-        = render 'shared/context_menu', locals: { icon: 'user-hexagon' }
+        .btn.btn--icon.btn--no-background = render 'shared/context_menu', locals: { icon: 'user-hexagon' }
           = link_to profile_users_path, class: 'btn btn--small btn--no-border full-width' do
             = icon('user', classes: 'icon--medium', color: 'primary-minus-two')
             | Profile

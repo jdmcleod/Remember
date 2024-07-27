@@ -14,7 +14,7 @@ html
         .modal-wrapper__backdrop data-action="click->toggle#off"
         .modal#modal-content data-testid="modal-content"
           .modal__header
-            = yield :modal_title
+            #modal-title = yield :modal_title
 
           .modal__body#modal-body
             = yield

@@ -20,6 +20,17 @@
             button data-action="click->day-popup#forwardOneMonth"
               = icon('chevrons-right', color: 'primary-base', classes: 'btn btn--icon btn--x-small')
 
+      .flex.gap-xs.margin-top-xs
+        - @badges.each do |badge|
+          .badge.badge--small style="--badge-color: #{badge.color}"
+            = icon(badge.icon_name)
+        = render 'shared/context_menu', locals: { badge: true, icon: 'plus' }
+          .flex.items-center.gap-xs.flex-wrap
+            - current_user.badges.each do |badge|
+              .badge.badge--clickable.badge--small style="--badge-color: #{badge.color}"
+                = icon(badge.icon_name)
+            = modal_link_to new_badge_path, class: 'badge badge--small badge--new', data: { turbo_stream: true } do
+              = icon('plus')
       .flex.gap-md
         - if @memories&.any?
           div

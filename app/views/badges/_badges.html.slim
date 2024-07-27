@@ -1,6 +1,6 @@
 .flex.flex-wrap.justify-start.items-center.gap-sm
   - @badges.each do |badge|
-    = link_to edit_badge_path(badge), class: 'badge badge--editable', style: "--badge-color: #{badge.color}", data: { turbo_stream: true } do
+    = link_to edit_badge_path(badge), class: 'badge badge--clickable', style: "--badge-color: #{badge.color}", data: { turbo_stream: true } do
       = icon(badge.icon_name)
   = link_to new_badge_path, class: 'badge badge--new', data: { turbo_stream: true } do
     = icon('plus')

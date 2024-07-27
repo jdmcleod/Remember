@@ -12,7 +12,7 @@
   background-color: transparent;
 
   border-radius: 100%;
-  border-width: 1px;
+  border-width: 1.5px;
   border-style: solid;
 
   text-decoration: none;
@@ -50,7 +50,7 @@
     font-size: var(--op-font-5x-large);
   }
 
-  &.badge--editable {
+  &.badge--clickable {
     &:hover {
       background-color: var(--badge-color);
       opacity: 0.5;
