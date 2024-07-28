@@ -2,6 +2,9 @@ class EntriesController < ApplicationController
   def day_popup_form
     date = Date.parse(params[:date])
     @day = current_user.days.find_by(date: date)
+    @day_badges = @day.badges
+    @addable_badges = current_user.badges - @day_badges
+    @recommended_badges = @addable_badges.first(3 - @day_badges.count)
     @entry = @day.find_short_entry
     @memories = @day.be_real_memories
   end

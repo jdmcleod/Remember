@@ -1,4 +1,5 @@
 .badge {
+  position: relative;
   width: var(--op-space-4x-large);
   height: var(--op-space-4x-large);
 
@@ -10,9 +11,7 @@
 
   color: var(--badge-color);
   background-color: transparent;
-
-  border-radius: 100%;
-  border: solid 1.5px var(--badge-color);
+  border-radius: 50%;
 
   text-decoration: none;
   transition: 0.2s;
@@ -20,14 +19,15 @@
 
   font-size: var(--op-font-2x-large);
 
-  &.badge--new {
-    color: var(--op-color-neutral-base);
-    border-style: dashed;
-
-    &:hover {
-      background-color: var(--op-color-neutral-plus-five);
-      cursor: pointer;
-    }
+  .badge__border {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: transparent;
+    border-radius: 50%;
+    border: solid 1.5px var(--badge-color);
   }
 
   &.badge--x-small {
@@ -56,19 +56,28 @@
     font-size: var(--op-font-5x-large);
   }
 
-  &.badge--clickable {
+  &.badge--new {
+    color: var(--op-color-neutral-base);
+
     &:hover {
-      background-color: var(--badge-color);
-      opacity: 0.5;
-      color: white;
+      background-color: var(--op-color-neutral-plus-five);
       cursor: pointer;
     }
   }
 
-  &.badge--deletable {
-    position: relative;
-
+  &.badge--clickable {
     &:hover {
+      background-color: var(--badge-color);
+      opacity: 0.5;
+      color: var(--op-color-white);
+      cursor: pointer;
+    }
+  }
+
+  &.badge--deletable, &.badge--addable {
+    &:hover {
+      cursor: pointer;
+
       &::after {
         visibility: visible;
       }
@@ -78,9 +87,6 @@
       visibility: hidden;
       position: absolute;
       font-family: $ti-font-family;
-      content: $ti-icon-trash;
-      background-color: var(--op-color-alerts-danger-plus-seven);
-      color: var(--op-color-alerts-danger-on-plus-seven);
       font-size: var(--op-font-small);
       padding: var(--op-space-3x-small);
       border-radius: 50%;
@@ -88,8 +94,71 @@
       right: -10px;
     }
   }
+
+  &.badge--deletable {
+    &::after {
+      content: $ti-icon-trash;
+      background-color: var(--op-color-alerts-danger-plus-seven);
+      color: var(--op-color-alerts-danger-on-plus-seven);
+    }
+  }
+
+  &.badge--addable {
+    &::after {
+      content: $ti-icon-plus;
+      background-color: var(--op-color-alerts-notice-plus-seven);
+      color: var(--op-color-alerts-notice-on-plus-seven);
+    }
+  }
+
+  &.badge--new, &.badge--addable {
+    opacity: 0.8;
+
+    .badge__border {
+      border-style: dashed;
+
+      -webkit-animation-name: Rotate;
+      -webkit-animation-duration: 10s;
+      -webkit-animation-iteration-count: infinite;
+      -webkit-animation-timing-function: linear;
+      -moz-animation-name: Rotate;
+      -moz-animation-duration: 10s;
+      -moz-animation-iteration-count: infinite;
+      -moz-animation-timing-function: linear;
+      -ms-animation-name: Rotate;
+      -ms-animation-duration: 10s;
+      -ms-animation-iteration-count: infinite;
+      -ms-animation-timing-function: linear;
+    }
+
+    @-webkit-keyframes Rotate {
+      from {
+        -webkit-transform: rotate(0deg);
+      }
+      to {
+        -webkit-transform: rotate(360deg);
+      }
+    }
+    @-moz-keyframes Rotate {
+      from {
+        -moz-transform: rotate(0deg);
+      }
+      to {
+        -moz-transform: rotate(360deg);
+      }
+    }
+    @-ms-keyframes Rotate {
+      from {
+        -ms-transform: rotate(0deg);
+      }
+      to {
+        -ms-transform: rotate(360deg);
+      }
+    }
+  }
 }
 
 a:has(.badge), button:has(.badge) {
   pointer-events: none;
+  cursor: pointer;
 }
