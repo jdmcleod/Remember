@@ -17,6 +17,7 @@
 
   text-decoration: none;
   transition: 0.2s;
+  pointer-events: all;
 
   font-size: var(--op-font-2x-large);
 
@@ -28,6 +29,12 @@
       background-color: var(--op-color-neutral-plus-five);
       cursor: pointer;
     }
+  }
+
+  &.badge--x-small {
+    width: var(--op-space-2x-large);
+    height: var(--op-space-2x-large);
+    font-size: var(--op-font-large);
   }
 
   &.badge--small {
@@ -70,8 +77,6 @@
 
     &::after {
       visibility: hidden;
-      pointer-events: all;
-      cursor: pointer;
       position: absolute;
       font-family: $ti-font-family;
       content: $ti-icon-trash;
@@ -86,10 +91,6 @@
   }
 }
 
-a:has(.badge--deletable), button:has(.badge--deletable) {
-  cursor: default;
-
-  &:active {
-    pointer-events: none;
-  }
+a:has(.badge), button:has(.badge) {
+  pointer-events: none;
 }
