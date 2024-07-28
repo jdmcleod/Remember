@@ -41,3 +41,8 @@
                   - else
                     .day__number = day.number
 
+                .day-badges
+                  - day.badges.each do |badge|
+                    .day-badge-indicator style="--badge-color: #{badge.color}"
+                      = icon(badge.icon_name)
+
