@@ -68,15 +68,20 @@
   }
 }
 
-.day-badge-indicator {
+.day-badges {
   position: absolute;
+  display: flex;
+  align-items: center;
+  left: -8px;
+  bottom: -12px;
+}
+
+.day-badge-indicator {
   background-color: var(--op-color-neutral-plus-six);
   color: var(--badge-color);
   border-radius: 50%;
   padding: 1px;
   z-index: 4;
-  left: -8px;
-  top: -8px;
 }
 
 .day-note-indicator {
