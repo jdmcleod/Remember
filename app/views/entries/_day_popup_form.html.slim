@@ -10,11 +10,12 @@
       .flex.gap-xs
         .flex.flex-col.gap-xs.margin-top-xs
           - @day.badges.each do |badge|
-            = render 'shared/badge', locals: { badge: badge, size: 'small' }
+            = button_to remove_badge_day_path(@day, badge), method: :delete, class: 'padding-inline-none' do
+              = render 'shared/badge', locals: { badge: badge, size: 'small', type: 'deletable' }
           = render 'shared/context_menu', locals: { toggle: capture { render 'shared/badge', locals: { size: 'small', type: 'new' } } }
             .flex.items-center.gap-xs.flex-wrap
               - current_user.badges.each do |badge|
-                = button_to add_day_badge_path(@day, badge), class: 'padding-inline-none' do
+                = button_to add_badge_day_path(@day, badge), class: 'padding-inline-none' do
                   = render 'shared/badge', locals: { badge: badge, size: 'small', type: 'clickable' }
               = modal_link_to new_badge_path, data: { turbo_stream: true } do
                 = render 'shared/badge', locals: { size: 'small', type: 'new' }
