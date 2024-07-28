@@ -61,8 +61,6 @@
 
   &.badge--deletable {
     position: relative;
-    cursor: pointer;
-    pointer-events: all;
 
     &:hover {
       &::after {
@@ -73,6 +71,7 @@
     &::after {
       visibility: hidden;
       pointer-events: all;
+      cursor: pointer;
       position: absolute;
       font-family: $ti-font-family;
       content: $ti-icon-trash;
@@ -88,5 +87,9 @@
 }
 
 a:has(.badge--deletable), button:has(.badge--deletable) {
-  pointer-events: none;
+  cursor: default;
+
+  &:active {
+    pointer-events: none;
+  }
 }
