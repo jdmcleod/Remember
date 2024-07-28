@@ -60,8 +60,33 @@
   }
 
   &.badge--deletable {
+    position: relative;
+    cursor: pointer;
+    pointer-events: all;
+
+    &:hover {
+      &::after {
+        visibility: visible;
+      }
+    }
+
     &::after {
-      content: 'test'
+      visibility: hidden;
+      pointer-events: all;
+      position: absolute;
+      font-family: $ti-font-family;
+      content: $ti-icon-trash;
+      background-color: var(--op-color-alerts-danger-plus-seven);
+      color: var(--op-color-alerts-danger-on-plus-seven);
+      font-size: var(--op-font-small);
+      padding: var(--op-space-3x-small);
+      border-radius: 50%;
+      top: -10px;
+      right: -10px;
     }
   }
+}
+
+a:has(.badge--deletable), button:has(.badge--deletable) {
+  pointer-events: none;
 }

@@ -24,6 +24,8 @@ Rails.application.routes.draw do
     get :search, on: :collection
   end
 
+  post 'days/:id/add_day_badge/:badge_id', to: 'days#add_badge', as: :add_day_badge
+
   resources :users, only: [] do
     get :profile, on: :collection
 

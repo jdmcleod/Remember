@@ -1,31 +1,24 @@
-- visible = local_assigns[:visible] && params[:visible]
 #day-popup-form data-testid='day-popup-form' class="#{local_assigns[:visible] ? '' : 'visibility-hidden'}" data-day-popup-target="container"
   .day-popup data-day-popup-target="popup"
     - if @entry.present?
-      .day-popup__header
-        .flex.gap-xxs.items-center
-          .flex
-            button data-action="click->day-popup#backOneMonth"
-              = icon('chevrons-left', color: 'primary-base', classes: 'btn btn--icon btn--x-small')
+      .flex.gap-sm.items-center
+        button.day
+          div = @entry.journalable.number
 
-            button data-action="click->day-popup#backOneDay"
-              = icon('chevron-left', color: 'primary-base', classes: 'btn btn--icon btn--x-small')
-
-          div = "What I did on #{@entry.journalable.date.strftime('%A')}, #{@entry.title}"
+        div = "What I did on #{@entry.title}"
 
       .flex.gap-xs
         .flex.flex-col.gap-xs.margin-top-xs
           - @day.badges.each do |badge|
-            .badge.badge--small style="--badge-color: #{badge.color}"
-              = icon(badge.icon_name)
-          = render 'shared/context_menu', locals: { badge: true, icon: 'plus' }
+            = button_to remove_badge_day_path(@day, badge), method: :delete, class: 'padding-inline-none' do
+              = render 'shared/badge', locals: { badge: badge, size: 'small', type: 'deletable' }
+          = render 'shared/context_menu', locals: { toggle: capture { render 'shared/badge', locals: { size: 'small', type: 'new' } } }
             .flex.items-center.gap-xs.flex-wrap
               - current_user.badges.each do |badge|
-                = button_to add_day_badge_path(@day, badge), class: 'padding-inline-none' do
-                  .badge.badge--clickable.badge--small style="--badge-color: #{badge.color}"
-                    = icon(badge.icon_name)
-              = modal_link_to new_badge_path, class: 'badge badge--small badge--new', data: { turbo_stream: true } do
-                = icon('plus')
+                = button_to add_badge_day_path(@day, badge), class: 'padding-inline-none' do
+                  = render 'shared/badge', locals: { badge: badge, size: 'small', type: 'clickable' }
+              = modal_link_to new_badge_path, data: { turbo_stream: true } do
+                = render 'shared/badge', locals: { size: 'small', type: 'new' }
 
         .flex-grow-1
           = simple_form_for @entry, url: entry_path(@entry), data: { method: :put, turbo: true, 'day-popup-target': 'form' } do |f|
