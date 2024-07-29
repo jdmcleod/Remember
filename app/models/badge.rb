@@ -1,6 +1,10 @@
 class Badge < ApplicationRecord
   belongs_to :user
 
+  validates :name, presence: true
+  validates :icon_name, presence: true
+  validates :color, presence: true
+
   def self.default_badges
     [
       {
