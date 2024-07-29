@@ -7,16 +7,14 @@
     = f.input :name
 
     .card-padded.card--white
-      .card__header Icon Settings
+      .card__header
+        | Icon Settings (
+        a.text-decoration-none href='https://tablericons.com/' target="_blank" See icon library
+        | )
       .flex.items-center.gap-sm
         div.half-width
-          .form-group.padding-bottom-none
-            = f.label :icon_name, class: 'form-label' do
-              | Tabler icon name (
-              a.text-decoration-none href='https://tablericons.com/' target="_blank" See library
-              | )
-            = f.input_field :icon_name, data: { badge_preview_target: 'iconNameField' }
-          = f.input :color, as: :color, input_html: { data: { badge_preview_target: 'colorField' } }
+          = f.input :icon_name, label: 'Tabler icon name', wrapper_html: { class: 'padding-bottom-none' }, input_html: { data: { badge_preview_target: 'iconNameField' } }
+          = f.input :color, as: :color, required: false, input_html: { data: { badge_preview_target: 'colorField' } }
         .one-quarter-width.flex.justify-center.items-center.flex-col.gap-lg
           .card__header Preview
           div data-badge-preview-target='preview'
