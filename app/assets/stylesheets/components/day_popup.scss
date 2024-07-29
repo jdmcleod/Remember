@@ -1,6 +1,6 @@
 .day-popup {
   --hardcoded-width: 385px;
-  --hardcoded-height: 250px;
+  --hardcoded-height: 265px;
   z-index: 10;
   width: var(--hardcoded-width); // make loading stage less jumpy
   min-height: var(--hardcoded-height); // make loading stage less jumpy
@@ -26,7 +26,7 @@
 
   trix-toolbar { display: none; }
   trix-editor {
-    height: 200px;
+    height: 210px;
     padding: var(--op-space-x-small);
     background-color: var(--op-color-neutral-plus-seven);
     overflow-y: auto;
