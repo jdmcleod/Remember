@@ -1,6 +1,6 @@
 .flex.flex-wrap.justify-start.items-center.gap-sm
   - @badges.each do |badge|
-    = link_to edit_badge_path(badge), data: { turbo_stream: true } do
+    = link_to edit_badge_path(badge), style: "--_op-tooltip-background-color: #{badge.color}", data: { turbo_stream: true, tooltip_text: badge.name, tooltip_position: "bottom" } do
       = render 'shared/badge', locals: { badge: badge, type: 'clickable' }
   = link_to new_badge_path, data: { turbo_stream: true } do
     = render 'shared/badge', locals: { type: 'new' }
