@@ -22,6 +22,9 @@ export default class extends Controller {
 
   _updateBadgeColor(event) {
     const color = event.target.value
-    this.previewTargets.forEach(previewTarget => previewTarget.style = `--badge-color: ${color}`)
+    this.previewTargets.forEach(previewTarget => {
+      const badge = previewTarget.querySelector('.badge') ?? previewTarget
+      badge.style = `--badge-color: ${color}`
+    })
   }
 }
