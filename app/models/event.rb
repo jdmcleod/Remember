@@ -16,6 +16,10 @@ class Event < ApplicationRecord
     user.months.find_or_create_by(start_date: start_date.beginning_of_month)
   end
 
+  def date_range_string
+    "#{start_date.strftime("%B %d, %Y")} - #{end_date.strftime("%B %d, %Y")}"
+  end
+
   private
 
   def start_date_not_after_end_date

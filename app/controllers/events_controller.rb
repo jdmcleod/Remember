@@ -56,6 +56,7 @@ class EventsController < ApplicationController
     render turbo_stream: [
       turbo_stream.replace('events', partial: 'events/events', locals: { events: @events }),
       turbo_stream.replace('new-event-button', partial: 'events/new_button'),
+      turbo_stream.replace('modal-actions', inline: '<div id="modal-actions"></div>'),
       turbo_stream.replace("month-#{@event.month.number}", partial: 'years/month', locals: { month: @event.month}),
     ].join
   end

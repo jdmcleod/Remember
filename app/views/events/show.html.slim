@@ -4,9 +4,7 @@
       div = @event.name
       .event-card__color-swatch style="background-color: #{@event.color}"
     .event-card__dates
-      = @event.start_date.strftime("%B %d, %Y")
-      | —
-      = @event.end_date.strftime("%B %d, %Y")
+      = @event.date_range_string
 
 .flex.flex-col.gap-sm
   - @entries.each do |entry|

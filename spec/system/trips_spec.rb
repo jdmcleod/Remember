@@ -18,7 +18,7 @@ RSpec.describe 'Trips', type: :system, js: true do
     fill_in 'Start date', with: "0111#{Date.current.year}"
     fill_in 'End date', with: "0114#{Date.current.year}"
     expect {
-      click_on 'Add'
+      click_on 'Create'
       expect(page).to have_content 'A trip'
     }.to change(Event, :count).by(1)
 
