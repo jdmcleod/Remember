@@ -5,6 +5,7 @@ export default class REMBeRealMemory extends LitElement {
     date: { type: String },
     primarySrc: { type: String },
     secondarySrc: { type: String },
+    size: { type: Number },
     swapped: { type: Boolean, state: true },
     dragging: { type: Boolean, state: true },
   }
@@ -13,6 +14,7 @@ export default class REMBeRealMemory extends LitElement {
     super()
     this.date = ''
     this.primarySrc = ''
+    this.size = 100
     this.secondarySrc = ''
     this.swapped = false
     this.dragging = false
@@ -67,12 +69,15 @@ export default class REMBeRealMemory extends LitElement {
       images.reverse()
     }
 
+    const primaryHeight = `calc(var(--op-size-unit) * ${this.size})`
+    const secondaryHeight = `calc(var(--op-size-unit) * ${this.size / 3.34})`
     return html`
-      <img src="${images[0]}" alt="${this.date}" class="primary">
+      <img src="${images[0]}" alt="${this.date}" class="primary" style="width: ${primaryHeight};">
       <img
         id="secondary"
         src="${images[1]}"
         alt="${this.date}"
+        style="width: ${secondaryHeight};"
         class="secondary"
         @click="${this.#handleClick}"
         @mousedown="${this.setupDrag}"
@@ -82,13 +87,8 @@ export default class REMBeRealMemory extends LitElement {
 
   static styles = css`
     :host {
-      --primary-height: calc(var(--op-size-unit) * 100); /* 400px */
-      --secondary-height: calc(var(--op-size-unit) * 30); /* 120px */
-
       position: relative;
       display: block;
-      height: var(--primary-height);
-
       overflow: hidden;
     }
 
@@ -98,7 +98,6 @@ export default class REMBeRealMemory extends LitElement {
     }
 
     .primary {
-      height: var(--primary-height);
       z-index: 1;
     }
 
@@ -106,8 +105,6 @@ export default class REMBeRealMemory extends LitElement {
       position: absolute;
       top: var(--op-space-medium);
       left: var(--op-space-medium);
-
-      height: var(--secondary-height);
 
       border: var(--op-border-width-large) solid var(--op-color-neutral-minus-max);
       cursor: pointer;

@@ -16,7 +16,10 @@ export default class DayPopupController extends Controller {
   static targets = ['popup', 'container', 'form']
 
   async show(event) {
-    if (this._popupOpen) return
+    if (this._popupOpen) {
+      const date = this.dayElement.dataset.date
+      await this._loadContent(date)
+    }
 
     this._popupOpen = true
     this.dayElement = event.target.closest('.day')
@@ -38,7 +41,6 @@ export default class DayPopupController extends Controller {
   }
 
   _movePopup() {
-    this._setPosition()
     animate(this.popupTarget, 'zoomIn')
   }
 
@@ -61,6 +63,8 @@ export default class DayPopupController extends Controller {
   }
 
   _handleClickOutsideDiv(target) {
+    if (target.closest('.day__wrapper')) return
+
     const clickOutsideNoteContainer = !target.closest('#day-popup-form')
     const isVisible = !this.element.classList.contains('visibility-hidden')
 
@@ -82,14 +86,5 @@ export default class DayPopupController extends Controller {
       freezeScrollOnNextRender()
       this.formTarget.requestSubmit()
     }
-  }
-
-  _setPosition() {
-    let { x, y } = this.dayElement.getBoundingClientRect()
-
-    if (x + this.popupTarget.clientWidth > document.body.clientWidth) x = x - this.popupTarget.clientWidth
-    if (y + this.popupTarget.clientHeight > document.body.clientHeight) y   = y - this.popupTarget.clientHeight
-
-    setElementLocation(this.popupTarget, x, y)
   }
 }

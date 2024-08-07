@@ -1,23 +1,40 @@
 #day-popup-form data-testid='day-popup-form' class="#{local_assigns[:visible] ? '' : 'visibility-hidden'}" data-day-popup-target="container"
   .day-popup data-day-popup-target="popup"
     - if @entry.present?
-      .flex.gap-sm.items-center
-        button.day
-          = render 'years/day_image', day: @entry.journalable
+      .day-popup__header
+        .flex.gap-xxs.items-center
+          .flex
+            = modal_link_to '#', class: 'btn btn--no-background btn--small' do
+              = icon('chevrons-left', color: 'on-primary-base')
 
-        div = "What I did on #{@entry.title}"
+            = modal_link_to '#', class: 'btn btn--no-background btn--small' do
+              = icon('chevron-left', color: 'on-primary-base')
 
-      = simple_form_for @entry, url: entry_path(@entry), data: { method: :put, turbo: true, 'day-popup-target': 'form' } do |f|
-        = f.error_notification
-        = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+          div = "What I did on #{@entry.title}"
 
-        = f.hidden_field :user_id, value: @entry.user_id
+          .flex
+            = modal_link_to '#', class: 'btn btn--no-background btn--small' do
+              = icon('chevron-right', color: 'on-primary-base')
 
-        = f.rich_text_area :content, data: { testid: 'short-entry-input' }
+            = modal_link_to '#', class: 'btn btn--no-background btn--small' do
+              = icon('chevrons-right', color: 'on-primary-base')
 
-      / - if @memories.any?
-      /   .flex.flex-wrap.gap-sm
-      /     - @memories.each do |memory|
-      /       rem-be-real-memory date=memory.day.date primarySrc=rails_storage_proxy_path(memory.primary) secondarySrc=rails_storage_proxy_path(memory.secondary)
-      / - else
-        p No Memories
+      .flex.gap-md
+
+        - if @memories&.any?
+          .flex.flex-wrap.gap-sm
+            - @memories.each do |memory|
+              rem-be-real-memory{
+                date=memory.day.date
+                primarySrc=rails_storage_proxy_path(memory.primary)
+                secondarySrc=rails_storage_proxy_path(memory.secondary)
+                size="60"}
+
+        div
+          = simple_form_for @entry, url: entry_path(@entry), data: { method: :put, turbo: true, 'day-popup-target': 'form' } do |f|
+            = f.error_notification
+            = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+
+            = f.hidden_field :user_id, value: @entry.user_id
+
+            = f.rich_text_area :content, data: { testid: 'short-entry-input' }

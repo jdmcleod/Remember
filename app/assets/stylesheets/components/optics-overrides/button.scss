@@ -4,8 +4,10 @@
   &.btn--no-background {
     background-color: transparent;
     box-shadow: none;
-    color: var(--op-color-neutral-plus-three);
+    color: var(--op-color-neutral-plus-max);
+  }
 
+  &.btn--no-background.btn-primary {
     &.btn--active {
       color: var(--op-color-primary-base);
     }
