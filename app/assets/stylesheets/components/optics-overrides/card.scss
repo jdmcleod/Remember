@@ -2,6 +2,10 @@
   .card__header { padding: 0; }
 }
 
+.card {
+  background-color: var(--op-color-neutral-plus-seven);
+}
+
 .card__header {
   color: var(--op-color-primary-base);
   font-weight: var(--op-font-weight-bold);

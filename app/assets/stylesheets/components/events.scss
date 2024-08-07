@@ -1,9 +1,11 @@
 .card.event-card {
-  background-color: var(--op-color-primary-plus-eight);
+  background-color: var(--op-color-primary-plus-max);
   border-radius: var(--op-radius-x-large);
-
+  box-shadow: var(--op-shadow-x-small);
+  transition: all 150ms;
+  border: none;
   &:hover {
-    box-shadow: var(--op-border-all) var(--op-color-primary-base);
+    background-color: var(--op-color-neutral-plus-seven);
   }
 }
 
