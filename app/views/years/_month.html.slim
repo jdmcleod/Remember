@@ -1,0 +1,21 @@
+.month id="month-#{month.number}"
+  .month-name--scribble class="month-name--scribble-#{rand(1..4)}"
+  .flex.justify-between
+    = modal_link_to month_path(month), class: 'btn btn--icon btn--small' do
+      = icon('book-2', classes: 'icon--large', color: 'neutral-minus-two')
+    .month-name = month.name
+    = icon('highlight', classes: 'icon--large', color: 'neutral-minus-two')
+  .month-day-names
+    div s
+    div m
+    div t
+    div w
+    div t
+    div f
+    div s
+  .month-days
+    - month.days.first.date.wday.times do |i|
+      div
+
+    - month.days.each do |day|
+      = render 'years/day', day:, month:, event: @events.detect { |event| event.contains_date?(day.date) }

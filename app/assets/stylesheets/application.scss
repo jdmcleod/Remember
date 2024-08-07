@@ -21,6 +21,8 @@
 // Optics Component Customization
 @import 'components/optics-overrides/button';
 @import 'components/optics-overrides/navbar';
+@import 'components/optics-overrides/modal';
+@import 'components/optics-overrides/card';
 
 // Layouts
 @import 'layouts/home-page';
@@ -33,7 +35,7 @@
 
 @import 'components/quarter';
 @import 'components/month';
-@import 'components/modal';
+@import 'components/events';
 @import 'components/day';
 @import 'components/day_popup';
 @import 'components/context-menu';

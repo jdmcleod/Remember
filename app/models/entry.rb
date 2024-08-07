@@ -8,6 +8,8 @@ class Entry < ApplicationRecord
 
   encrypts :title
 
+  scope :in_range, -> (start_date, end_date) { where(arel_table[:date].gteq(start_date)).where(arel_table[:date].lteq(end_date)) }
+
   before_save do
     self.tsv = tsvectorized_text
   end
@@ -20,6 +22,10 @@ class Entry < ApplicationRecord
     return journalable.title if journalable.respond_to?(:title)
 
     super
+  end
+
+  def empty?
+    content.blank?
   end
 
   private

@@ -10,8 +10,8 @@
   flex-direction: column;
   gap: var(--op-space-small);
   position: relative;
-  max-width: 38rem;
-  min-width: 34rem;
+  max-width: 40rem;
+  min-width: 36rem;
 }
 
 .month-name {
@@ -30,7 +30,6 @@
   right: calc(50% - var(--op-space-2x-large));
   z-index: 0;
 }
-
 
 .month-name--scribble-1 {
   background-image: url('scribbles/scribble_1.svg');

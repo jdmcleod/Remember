@@ -25,6 +25,18 @@ class Day < ApplicationRecord
     create_short_entry(user: month.quarter.year.user, date: date)
   end
 
+  def trip_class(event)
+    return unless event.present?
+
+    return 'day--trip-start' if event.start_date == date
+    return 'day--trip-end' if event.end_date == date
+    return 'day--trip'
+  end
+
+  def during_event?(event)
+    event.start_date <= date && event.end_date >= date
+  end
+
   def title
     suffix = if (11..13).include?(date.day % 100)
       "#{date.day}th"

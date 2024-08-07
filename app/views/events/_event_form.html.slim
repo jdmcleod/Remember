@@ -1,0 +1,18 @@
+#events
+  = link_to year_events_path, class: 'btn btn--pill btn--small', data: { turbo_stream: true } do
+    = icon('chevron-left')
+    | Back
+
+  - url = @event.persisted? ? year_event_url(@year, @event) : year_events_path
+  = simple_form_for @event, url: do |f|
+    .flex.gap-sm
+      .four-fifths-width
+        = f.input :name
+      .one-fifth-width
+        = f.input :color, as: :color
+
+    .flex.gap-sm
+      .half-width
+        = f.input :start_date, as: :date, html5: true
+      .half-width
+        = f.input :end_date, as: :date, html5: true

@@ -1,0 +1,5 @@
+#new-event-button
+  = link_to new_year_event_path(@year), class: 'btn-primary', data: { turbo_stream: true } do
+    = icon('plus', classes: 'icon--medium', color: 'primary-minus-two')
+    | New
+

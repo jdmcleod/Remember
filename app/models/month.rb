@@ -4,4 +4,8 @@ class Month < ApplicationRecord
   has_one :year, through: :quarter
   has_one :user, through: :year
   has_many :days, dependent: :destroy
+
+  def number
+    start_date.month
+  end
 end

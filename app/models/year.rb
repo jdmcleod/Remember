@@ -19,8 +19,8 @@ class Year < ApplicationRecord
 
   def generate_data
     (start_date..end_date).each do |date|
-      quarter = quarters.find_or_create_by(start: date.beginning_of_quarter, end: date.end_of_quarter)
-      month = quarter.months.find_or_create_by(name: date.strftime('%B'), start: date.beginning_of_month, end: date.end_of_month)
+      quarter = quarters.find_or_create_by(start_date: date.beginning_of_quarter, end_date: date.end_of_quarter)
+      month = quarter.months.find_or_create_by(name: date.strftime('%B'), start_date: date.beginning_of_month, end_date: date.end_of_month)
       month.days.find_or_create_by(date: date)
     end
   end

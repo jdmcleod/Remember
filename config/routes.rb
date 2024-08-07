@@ -13,14 +13,17 @@ Rails.application.routes.draw do
 
   resources :years, only: [:index, :show] do
     get :current, on: :collection
+    resources :events
   end
 
+  resources :months, only: [:show]
   resources :badges, only: [:index, :create, :destroy]
 
   resources :entries, only: %i[update] do
     get 'day_popup_form/:date', to: 'entries#day_popup_form', as: :day_popup_form, on: :collection
     get :search, on: :collection
   end
+
 
   resources :users, only: [] do
     get :profile, on: :collection

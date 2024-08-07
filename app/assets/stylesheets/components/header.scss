@@ -6,7 +6,7 @@
   // Elements
   .header__label {
     padding: var(--op-space-x-small) var(--op-space-small) var(--op-space-small) var(--op-space-small);
-    border-radius: var(--op-radius-x-large);
+    border-radius: var(--op-radius-large);
     box-shadow: var(--op-shadow-medium);
     z-index: 1;
     background-image: linear-gradient(43deg, var(--op-color-primary-plus-two) 0%, var(--op-color-secondary-original) 46%, var(--op-color-primary-base) 100%);
@@ -34,7 +34,7 @@
   }
 
   .header__wing {
-    --_header-wing-radius: var(--op-radius-x-large);
+    --_header-wing-radius: var(--op-radius-large);
     --_header-wing-height: calc(var(--op-size-unit) * 9); // 36px
 
     display: flex;

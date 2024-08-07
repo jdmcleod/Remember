@@ -1,0 +1,17 @@
+= content_for(:modal_title) do
+  .flex.justify-between.full-width.items-center
+    .flex.gap-sm.items-center
+      div = @event.name
+      .event-card__color-swatch style="background-color: #{@event.color}"
+    .event-card__dates
+      = @event.date_range_string
+
+.flex.flex-col.gap-sm
+  - @entries.each do |entry|
+    .card.card-padded
+      .card__header
+        = entry.title
+
+      .search-result
+        = entry.content.to_plain_text
+
