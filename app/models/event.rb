@@ -13,7 +13,7 @@ class Event < ApplicationRecord
   end
 
   def month
-    user.months.find_by(start_date: start_date.beginning_of_month)
+    user.months.find_or_create_by(start_date: start_date.beginning_of_month)
   end
 
   private

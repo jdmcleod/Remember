@@ -15,7 +15,7 @@ RSpec.configure do |config|
   end
 
   config.before(:each, type: :system, chrome: true) do
-    driven_by :selenium, using: :playwright
+    driven_by :selenium, using: :chrome
   end
 
   config.before(:each, type: :system, firefox: true) do
