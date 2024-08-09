@@ -1,14 +1,14 @@
 .day-popup {
-  //--hardcoded-width: 385px;
-  --hardcoded-height: 250px;
+  --hardcoded-height: 28.8rem;
+  --hardcoded-max-width: 65rem;
   --padding: var(--op-space-medium);
 
   position: relative;
   z-index: 10;
   width: calc(100vw - (var(--padding) * 2));
-  min-height: var(--hardcoded-height);
   bottom: var(--padding);
   left: var(--padding);
+  max-width: var(--hardcoded-max-width);
   position: fixed;
 
   padding: var(--op-space-x-small) var(--op-space-small);
@@ -27,7 +27,9 @@
 
   trix-toolbar { display: none; }
   trix-editor {
-    height: 200px;
+    border-radius: var(--op-radius-large);
+    width: 100%;
+    height: var(--hardcoded-height);
     padding: var(--op-space-x-small);
     background-color: var(--op-color-neutral-plus-seven);
     overflow-y: auto;
@@ -42,7 +44,7 @@
   position: absolute;
   background-color: var(--op-color-primary-base);
   color: var(--op-color-primary-plus-seven);
-  left: 28vw;
+  left: 4rem;
   padding: 0 var(--op-space-x-small);
   border-radius: var(--op-radius-medium) var(--op-radius-medium) 0 0;
   top: -2.9rem;

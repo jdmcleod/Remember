@@ -8,6 +8,7 @@ export default class REMBeRealMemory extends LitElement {
     size: { type: Number },
     swapped: { type: Boolean, state: true },
     dragging: { type: Boolean, state: true },
+    expanded: { type: Boolean, state: false },
   }
 
   constructor() {
@@ -18,6 +19,7 @@ export default class REMBeRealMemory extends LitElement {
     this.secondarySrc = ''
     this.swapped = false
     this.dragging = false
+    this.expanded = false
   }
 
   get secondary() {
@@ -54,6 +56,10 @@ export default class REMBeRealMemory extends LitElement {
     this.secondary.style.left = '16px'
   }
 
+  #expandImage() {
+    this.expanded = !this.expanded
+  }
+
   #handleClick() {
     if (!this.dragging) {
       this.swapped = !this.swapped
@@ -69,10 +75,18 @@ export default class REMBeRealMemory extends LitElement {
       images.reverse()
     }
 
-    const primaryHeight = `calc(var(--op-size-unit) * ${this.size})`
-    const secondaryHeight = `calc(var(--op-size-unit) * ${this.size / 3.34})`
+    let size = this.size
+
+    if (this.expanded) {
+      size = 120
+    }
+
+    const classes = `primary ${this.expanded ? 'expanded' : ''}`
+
+    const primaryHeight = `calc(var(--op-size-unit) * ${size})`
+    const secondaryHeight = `calc(var(--op-size-unit) * ${size / 3.34})`
     return html`
-      <img src="${images[0]}" alt="${this.date}" class="primary" style="width: ${primaryHeight};">
+      <img src="${images[0]}" @click="${this.#expandImage}" alt="${this.date}" class="${classes}" style="width: ${primaryHeight};">
       <img
         id="secondary"
         src="${images[1]}"
@@ -94,11 +108,21 @@ export default class REMBeRealMemory extends LitElement {
 
     img {
       aspect-ratio: 3 / 4;
-      border-radius: var(--op-radius-2x-large);
+      border-radius: var(--op-radius-large);
+      border: var(--op-border-width-large) solid var(--op-color-neutral-plus-seven);
+      &:hover {
+        border: var(--op-border-width-large) solid black;
+        cursor: pointer;
+      }
     }
 
     .primary {
       z-index: 1;
+    }
+    
+    .expanded {
+      position: fixed;
+      bottom: 30px;
     }
 
     .secondary {
