@@ -51,3 +51,9 @@
     }
   }
 }
+
+.btn--x-small {
+  --__op-btn-height: var(--_op-btn-height-x-small);
+  --__op-btn-font-size: var(--_op-btn-font-x-small);
+  --__op-btn-padding: var(--_op-btn-padding-x-small);
+}

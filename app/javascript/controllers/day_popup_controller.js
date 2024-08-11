@@ -13,20 +13,41 @@ const freezeScrollOnNextRender = () => {
 };
 
 export default class DayPopupController extends Controller {
-  static targets = ['popup', 'container', 'form']
+  static targets = ['popup', 'container', 'form', 'day']
 
   async show(event) {
     if (this._popupOpen) {
-      const date = this.dayElement.dataset.date
-      await this._loadContent(date)
+      this._dateString = this.dayElement.dataset.date
+      await this._loadContent(this._dateString)
     }
 
     this._popupOpen = true
     this.dayElement = event.target.closest('.day')
-    const date = this.dayElement.dataset.date
-    await this._loadContent(date)
+    this._dateString = this.dayElement.dataset.date
+    await this._loadContent(this._dateString)
     this._addEventListeners()
   }
+
+  #date() {
+    return new Date(this._dateString)
+  }
+
+  async changeDay(dayDifference, monthDifference) {
+    await this.save()
+    setTimeout(async () => {
+      const newDate = new Date(this._dateString)
+      const dateNumber = this.#date().getDate()
+      if (dayDifference) newDate.setDate(dateNumber + dayDifference)
+      if (monthDifference) newDate.setMonth(this.#date().getMonth() + monthDifference)
+      this._dateString = `${newDate.getFullYear()}-${newDate.getMonth() + 1}-${newDate.getDate()}`
+      await this._loadContent(this._dateString)
+    }, 200)
+  }
+
+  backOneDay() { this.changeDay(-1) }
+  backOneMonth() { this.changeDay(undefined, -1) }
+  forwardOneDay() { this.changeDay(1) }
+  forwardOneMonth() { this.changeDay(undefined, 1) }
 
   popupTargetConnected() {
     if (this.dayElement) this._movePopup()
@@ -41,6 +62,9 @@ export default class DayPopupController extends Controller {
   }
 
   _movePopup() {
+    if (this.containerTarget.classList.contains('visibility-hidden')) {
+      return this.containerTarget.classList.remove('visibility-hidden')
+    }
     animate(this.popupTarget, 'zoomIn')
   }
 

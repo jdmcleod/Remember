@@ -14,5 +14,5 @@ div class=wrapper_classes style=wrapper_style
     .day-note-indicator.day-long-note-indicator
       = icon('book-2', classes: 'icon--small', color: 'alerts-notice-minus-two')
 
-  button.day class=day_classes data-action='click->day-popup#show' data-date=day.date.to_s data-testid="day-#{day.id}"
+  button.day class=day_classes data-day-popup-target="day" data-action='click->day-popup#show' data-date=day.date.strftime("%Y-%-m-%-d") data-testid="day-#{day.id}"
     = render 'years/day_image', day: day

@@ -1,23 +1,24 @@
+- visible = local_assigns[:visible] && params[:visible]
 #day-popup-form data-testid='day-popup-form' class="#{local_assigns[:visible] ? '' : 'visibility-hidden'}" data-day-popup-target="container"
   .day-popup data-day-popup-target="popup"
     - if @entry.present?
       .day-popup__header
         .flex.gap-xxs.items-center
           .flex
-            = modal_link_to '#', class: 'btn btn--no-background btn--small' do
-              = icon('chevrons-left', color: 'on-primary-base')
+            button data-action="click->day-popup#backOneMonth"
+              = icon('chevrons-left', color: 'primary-base', classes: 'btn btn--icon btn--x-small')
 
-            = modal_link_to '#', class: 'btn btn--no-background btn--small' do
-              = icon('chevron-left', color: 'on-primary-base')
+            button data-action="click->day-popup#backOneDay"
+              = icon('chevron-left', color: 'primary-base', classes: 'btn btn--icon btn--x-small')
 
-          div = "What I did on #{@entry.title}"
+          div = "What I did on #{@entry.journalable.date.strftime('%A')}, #{@entry.title}"
 
           .flex
-            = modal_link_to '#', class: 'btn btn--no-background btn--small' do
-              = icon('chevron-right', color: 'on-primary-base')
+            button data-action="click->day-popup#forwardOneDay"
+              = icon('chevron-right', color: 'primary-base', classes: 'btn btn--icon btn--x-small')
 
-            = modal_link_to '#', class: 'btn btn--no-background btn--small' do
-              = icon('chevrons-right', color: 'on-primary-base')
+            button data-action="click->day-popup#forwardOneMonth"
+              = icon('chevrons-right', color: 'primary-base', classes: 'btn btn--icon btn--x-small')
 
       .flex.gap-md
         - if @memories&.any?
