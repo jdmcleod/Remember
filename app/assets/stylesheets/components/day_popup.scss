@@ -31,8 +31,14 @@
     width: 100%;
     height: var(--hardcoded-height);
     padding: var(--op-space-x-small);
+    line-height: var(--op-line-height-dense);
     background-color: var(--op-color-neutral-plus-seven);
     overflow-y: auto;
+
+    &:focus-visible {
+      outline: none;
+      box-shadow: var(--op-border-all) var(--op-color-neutral-plus-four);
+    }
   }
 }
 
