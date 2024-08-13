@@ -62,9 +62,9 @@ export default class DayPopupController extends Controller {
   }
 
   _movePopup() {
-    if (this.containerTarget.classList.contains('visibility-hidden')) {
-      return this.containerTarget.classList.remove('visibility-hidden')
-    }
+    // if (this.containerTarget.classList.contains('visibility-hidden')) {
+    //   return this.containerTarget.classList.remove('visibility-hidden')
+    // }
     animate(this.popupTarget, 'zoomIn')
   }
 
