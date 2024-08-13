@@ -4,8 +4,10 @@
   &.btn--no-background {
     background-color: transparent;
     box-shadow: none;
-    color: var(--op-color-neutral-plus-three);
+    color: var(--op-color-neutral-plus-max);
+  }
 
+  &.btn--no-background.btn-primary {
     &.btn--active {
       color: var(--op-color-primary-base);
     }
@@ -48,4 +50,10 @@
       color: var(--op-color-primary-on-base);
     }
   }
+}
+
+.btn--x-small {
+  --__op-btn-height: var(--_op-btn-height-x-small);
+  --__op-btn-font-size: var(--_op-btn-font-x-small);
+  --__op-btn-padding: var(--_op-btn-padding-x-small);
 }

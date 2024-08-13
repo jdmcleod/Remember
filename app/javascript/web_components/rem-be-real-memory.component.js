@@ -5,17 +5,21 @@ export default class REMBeRealMemory extends LitElement {
     date: { type: String },
     primarySrc: { type: String },
     secondarySrc: { type: String },
+    size: { type: Number },
     swapped: { type: Boolean, state: true },
     dragging: { type: Boolean, state: true },
+    expanded: { type: Boolean, state: false },
   }
 
   constructor() {
     super()
     this.date = ''
     this.primarySrc = ''
+    this.size = 100
     this.secondarySrc = ''
     this.swapped = false
     this.dragging = false
+    this.expanded = false
   }
 
   get secondary() {
@@ -52,6 +56,10 @@ export default class REMBeRealMemory extends LitElement {
     this.secondary.style.left = '16px'
   }
 
+  #expandImage() {
+    this.expanded = !this.expanded
+  }
+
   #handleClick() {
     if (!this.dragging) {
       this.swapped = !this.swapped
@@ -67,12 +75,23 @@ export default class REMBeRealMemory extends LitElement {
       images.reverse()
     }
 
+    let size = this.size
+
+    if (this.expanded) {
+      size = 120
+    }
+
+    const classes = `primary ${this.expanded ? 'expanded' : ''}`
+
+    const primaryHeight = `calc(var(--op-size-unit) * ${size})`
+    const secondaryHeight = `calc(var(--op-size-unit) * ${size / 3.34})`
     return html`
-      <img src="${images[0]}" alt="${this.date}" class="primary">
+      <img src="${images[0]}" @click="${this.#expandImage}" alt="${this.date}" class="${classes}" style="width: ${primaryHeight};">
       <img
         id="secondary"
         src="${images[1]}"
         alt="${this.date}"
+        style="width: ${secondaryHeight};"
         class="secondary"
         @click="${this.#handleClick}"
         @mousedown="${this.setupDrag}"
@@ -82,32 +101,34 @@ export default class REMBeRealMemory extends LitElement {
 
   static styles = css`
     :host {
-      --primary-height: calc(var(--op-size-unit) * 100); /* 400px */
-      --secondary-height: calc(var(--op-size-unit) * 30); /* 120px */
-
       position: relative;
       display: block;
-      height: var(--primary-height);
-
       overflow: hidden;
     }
 
     img {
       aspect-ratio: 3 / 4;
-      border-radius: var(--op-radius-2x-large);
+      border-radius: var(--op-radius-large);
+      border: var(--op-border-width-large) solid var(--op-color-neutral-plus-seven);
+      &:hover {
+        border: var(--op-border-width-large) solid black;
+        cursor: pointer;
+      }
     }
 
     .primary {
-      height: var(--primary-height);
       z-index: 1;
+    }
+    
+    .expanded {
+      position: fixed;
+      bottom: 30px;
     }
 
     .secondary {
       position: absolute;
       top: var(--op-space-medium);
       left: var(--op-space-medium);
-
-      height: var(--secondary-height);
 
       border: var(--op-border-width-large) solid var(--op-color-neutral-minus-max);
       cursor: pointer;

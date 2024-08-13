@@ -13,17 +13,41 @@ const freezeScrollOnNextRender = () => {
 };
 
 export default class DayPopupController extends Controller {
-  static targets = ['popup', 'container', 'form']
+  static targets = ['popup', 'container', 'form', 'day']
 
   async show(event) {
-    if (this._popupOpen) return
+    if (this._popupOpen) {
+      this._dateString = this.dayElement.dataset.date
+      await this._loadContent(this._dateString)
+    }
 
     this._popupOpen = true
     this.dayElement = event.target.closest('.day')
-    const date = this.dayElement.dataset.date
-    await this._loadContent(date)
+    this._dateString = this.dayElement.dataset.date
+    await this._loadContent(this._dateString)
     this._addEventListeners()
   }
+
+  #date() {
+    return new Date(this._dateString)
+  }
+
+  async changeDay(dayDifference, monthDifference) {
+    await this.save()
+    setTimeout(async () => {
+      const newDate = new Date(this._dateString)
+      const dateNumber = this.#date().getDate()
+      if (dayDifference) newDate.setDate(dateNumber + dayDifference)
+      if (monthDifference) newDate.setMonth(this.#date().getMonth() + monthDifference)
+      this._dateString = `${newDate.getFullYear()}-${newDate.getMonth() + 1}-${newDate.getDate()}`
+      await this._loadContent(this._dateString)
+    }, 200)
+  }
+
+  backOneDay() { this.changeDay(-1) }
+  backOneMonth() { this.changeDay(undefined, -1) }
+  forwardOneDay() { this.changeDay(1) }
+  forwardOneMonth() { this.changeDay(undefined, 1) }
 
   popupTargetConnected() {
     if (this.dayElement) this._movePopup()
@@ -38,7 +62,9 @@ export default class DayPopupController extends Controller {
   }
 
   _movePopup() {
-    this._setPosition()
+    // if (this.containerTarget.classList.contains('visibility-hidden')) {
+    //   return this.containerTarget.classList.remove('visibility-hidden')
+    // }
     animate(this.popupTarget, 'zoomIn')
   }
 
@@ -61,6 +87,8 @@ export default class DayPopupController extends Controller {
   }
 
   _handleClickOutsideDiv(target) {
+    if (target.closest('.day__wrapper')) return
+
     const clickOutsideNoteContainer = !target.closest('#day-popup-form')
     const isVisible = !this.element.classList.contains('visibility-hidden')
 
@@ -82,14 +110,5 @@ export default class DayPopupController extends Controller {
       freezeScrollOnNextRender()
       this.formTarget.requestSubmit()
     }
-  }
-
-  _setPosition() {
-    let { x, y } = this.dayElement.getBoundingClientRect()
-
-    if (x + this.popupTarget.clientWidth > document.body.clientWidth) x = x - this.popupTarget.clientWidth
-    if (y + this.popupTarget.clientHeight > document.body.clientHeight) y   = y - this.popupTarget.clientHeight
-
-    setElementLocation(this.popupTarget, x, y)
   }
 }

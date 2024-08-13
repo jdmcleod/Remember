@@ -6,13 +6,13 @@ div class=wrapper_classes style=wrapper_style
   - if event.present? && day.date == event.start_date
     = modal_link_to year_event_path(month.year, event) do
       .event-handle style=wrapper_style
-        = icon('plane', color: 'neutral-plus-max')
+        = icon('plane', classes: 'icon--small', color: 'neutral-plus-max')
 
   - if day.short_entry.present? && day.date != event&.start_date
     .day-note-indicator.day-short-note-indicator
-      = icon('pencil', color: 'primary-minus-two')
+      = icon('pencil', classes: 'icon--small', color: 'primary-minus-two')
     .day-note-indicator.day-long-note-indicator
-      = icon('book-2', color: 'alerts-notice-minus-two')
+      = icon('book-2', classes: 'icon--small', color: 'alerts-notice-minus-two')
 
-  button.day class=day_classes data-action='click->day-popup#show' data-date=day.date.to_s data-testid="day-#{day.id}"
+  button.day class=day_classes data-day-popup-target="day" data-action='click->day-popup#show' data-date=day.date.strftime("%Y-%-m-%-d") data-testid="day-#{day.id}"
     = render 'years/day_image', day: day

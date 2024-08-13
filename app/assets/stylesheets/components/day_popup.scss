@@ -1,24 +1,25 @@
 .day-popup {
-  --hardcoded-width: 385px;
-  --hardcoded-height: 250px;
+  --hardcoded-height: 28.8rem;
+  --hardcoded-max-width: 65rem;
+  --padding: var(--op-space-medium);
+
+  position: relative;
   z-index: 10;
-  width: var(--hardcoded-width); // make loading stage less jumpy
-  min-height: var(--hardcoded-height); // make loading stage less jumpy
-  position: absolute;
-  padding: var(--op-space-2x-small) var(--op-space-x-small);
-  box-shadow: var(--op-shadow-large);
+  width: calc(100vw - (var(--padding) * 2));
+  bottom: var(--padding);
+  left: var(--padding);
+  max-width: var(--hardcoded-max-width);
+  position: fixed;
+
+  padding: var(--op-space-x-small) var(--op-space-small);
+  box-shadow: var(--op-color-primary-base) 0px 20px 30px -10px;
   background-color: var(--op-color-neutral-plus-max);
-  border-radius: var(--op-radius-2x-large) var(--op-radius-large) var(--op-radius-large) var(--op-radius-large);
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 0px 9999px; box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 0px 9999px;
-  border: solid var(--op-border-width) var(--op-color-primary-base);
+  border-radius: var(--op-radius-2x-large);
+  border: var(--op-border-width-large) solid var(--op-color-primary-base);
+
   display: flex;
   flex-direction: column;
   gap: var(--op-space-2x-small);
-
-  button.day {
-    margin-left: -5px;
-    margin-top: -1px;
-  }
 
   .form__error {
     max-width: calc(calc(var(--hardcoded-width) / 2) - var(--op-space-x-large));
@@ -26,13 +27,31 @@
 
   trix-toolbar { display: none; }
   trix-editor {
-    height: 200px;
+    border-radius: var(--op-radius-large);
+    width: 100%;
+    height: var(--hardcoded-height);
     padding: var(--op-space-x-small);
+    line-height: var(--op-line-height-dense);
     background-color: var(--op-color-neutral-plus-seven);
     overflow-y: auto;
+
+    &:focus-visible {
+      outline: none;
+      box-shadow: var(--op-border-all) var(--op-color-neutral-plus-four);
+    }
   }
 }
 
 .animate__animated.animate__zoomIn, .animate__animated.animate__zoomOut {
   --animate-duration: 0.15s;
+}
+
+.day-popup__header {
+  position: absolute;
+  background-color: var(--op-color-primary-base);
+  color: var(--op-color-primary-plus-seven);
+  left: 4rem;
+  padding: var(--op-space-2x-small) var(--op-space-x-small);
+  border-radius: var(--op-radius-medium) var(--op-radius-medium) 0 0;
+  top: -2.9rem;
 }
