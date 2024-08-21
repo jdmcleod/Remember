@@ -24,4 +24,9 @@ class Badge < ApplicationRecord
       },
     ]
   end
+
+  def fill_color
+    rgb = color.match(/^#(..)(..)(..)$/).captures.map(&:hex)
+    "rgb(#{rgb[0]}, #{rgb[1]}, #{rgb[2]}, #{0.2})"
+  end
 end

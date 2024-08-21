@@ -1,5 +1,5 @@
 - day = local_assigns[:day]
 .day-badges id="year-day-badges--#{day.title.dasherize}"
   - day.badges.first(3).each do |badge|
-    .day-badge-indicator style="--badge-color: #{badge.color}"
-      = icon(badge.icon_name)
+    .day-badge-indicator style="--badge-color: #{badge.color}; --badge-fill-color: #{badge.fill_color}"
+      = icon(badge.icon_name, classes: 'icon--small')

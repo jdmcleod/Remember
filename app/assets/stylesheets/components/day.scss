@@ -72,13 +72,14 @@
   position: absolute;
   display: flex;
   align-items: center;
-  left: -8px;
-  bottom: -12px;
+  left: -2px;
+  bottom: -2px;
 }
 
 .day-badge-indicator {
-  background-color: var(--op-color-neutral-plus-six);
+  background-color: var(--badge-fill-color);
   color: var(--badge-color);
+  font-size: var(--op-font-small);
   border-radius: 50%;
   padding: 1px;
   z-index: 4;
