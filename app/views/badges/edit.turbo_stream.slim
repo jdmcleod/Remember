@@ -1,4 +1,12 @@
 = turbo_stream.update 'modal-title' do
   | Edit Badge
+
 = turbo_stream.update "modal-body" do
   = render 'form'
+
+= turbo_stream.update 'modal-footer-actions' do
+  .flex.gap-sm
+    = link_to 'Delete', badge_path(@badge), class: 'btn', data: { turbo_method: :delete }
+    = button_tag class: 'btn-primary', form: "edit_badge_#{@badge.id}" do
+      = icon('check', classes: 'icon--medium', color: 'primary-minus-two')
+      | Update

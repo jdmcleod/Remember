@@ -28,10 +28,3 @@
               .day-badges
                 .day-badge-indicator style="--badge-color: #{@badge.color}"  data-badge-preview-target='preview'
                   = icon(@badge.icon_name)
-
-    .full-width.flex.justify-center.gap-sm.margin-top-sm
-      - if @badge.persisted?
-        = link_to 'Delete', badge_path(@badge), class: 'btn', data: { turbo_method: :delete }
-
-      - save_text = @badge.persisted? ? 'Update' : 'Add'
-      = f.submit save_text, class: 'btn-primary'

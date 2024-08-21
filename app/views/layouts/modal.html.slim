@@ -15,10 +15,11 @@ html
         .modal#modal-content data-testid="modal-content"
           .modal__header
             #modal-title = yield :modal_title
+            #modal-header-actions = yield :modal_header_actions
 
           .modal__body#modal-body
             = yield
 
           .modal__footer
             = button_tag( 'Cancel', class: 'btn', data: { action: "toggle#off" })
-            = yield :modal_actions
+            #modal-footer-actions = yield :modal_footer_actions

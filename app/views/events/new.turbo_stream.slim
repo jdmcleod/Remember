@@ -1,11 +1,15 @@
-= turbo_stream.replace('events', partial: 'events/event_form')
-= turbo_stream.replace('new-event-button', inline: '<div id="new-event-button"></div>')
+= turbo_stream.update 'modal-title' do
+  | Trips and Events
 
-= turbo_stream.update 'modal-actions' do
+= turbo_stream.update 'modal-header-actions'
+
+= turbo_stream.update "modal-body" do
+  = render 'form'
+
+= turbo_stream.update 'modal-footer-actions' do
   = button_tag class: 'btn-primary', form: "new_event" do
     = icon('check', classes: 'icon--medium', color: 'primary-minus-two')
     | Create
 
-= turbo_stream.replace('events', partial: 'events/event_form')
 
-= turbo_stream.replace('new-event-button', inline: '<div id="new-event-button"></div>')
+

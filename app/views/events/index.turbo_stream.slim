@@ -1,4 +1,14 @@
-= turbo_stream.replace('events', partial: 'events/events')
-= turbo_stream.replace('new-event-button', partial: 'events/new_button')
-= turbo_stream.replace('modal-actions', inline: '<div id="modal-actions"></div>')
+= turbo_stream.update 'modal-title' do
+  | Trips and Events
+
+= turbo_stream.update 'modal-header-actions' do
+  = link_to new_year_event_path(@year), class: 'btn-primary', data: { turbo_stream: true } do
+    = icon('plus', classes: 'icon--medium', color: 'primary-minus-two')
+    | New
+
+= turbo_stream.update "modal-body" do
+  = render 'events'
+
+= turbo_stream.update 'modal-footer-actions'
+
 
