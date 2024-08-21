@@ -1,4 +1,4 @@
-.flex.flex-col.items-center.gap-xxs.margin-top-xs#entry-day-badges
+.flex.flex-col.items-center.gap-xxs#entry-day-badges
   - @day_badges.each do |badge|
     = button_to remove_badge_day_path(@day, badge), method: :delete, class: 'padding-inline-none' do
       = render 'shared/badge', locals: { badge: badge, size: 'x-small', type: 'deletable' }

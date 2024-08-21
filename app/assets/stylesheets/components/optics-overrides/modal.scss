@@ -3,18 +3,20 @@
   border-radius: var(--op-radius-x-large);
   transition-duration: 150ms;
   background-color: var(--op-color-neutral-plus-eight);
-}
+  contain: unset;
 
-.modal__body--min-height {
-  min-height: 40rem;
-}
+  .modal__body--min-height {
+    min-height: 40rem;
+  }
 
-.modal .modal__footer {
-  justify-content: space-between;
-}
+  .modal__footer {
+    justify-content: space-between;
+  }
 
-.modal__body {
-  background-color: var(--op-color-neutral-plus-max);
+  .modal__body {
+    background-color: var(--op-color-neutral-plus-max);
+    overflow-y: unset;
+  }
 }
 
 dialog.modal {

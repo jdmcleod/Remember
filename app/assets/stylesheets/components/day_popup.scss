@@ -1,6 +1,8 @@
 .day-popup {
-  --hardcoded-width: 385px;
-  --hardcoded-height: 250px;
+  --hardcoded-height: 28.8rem;	  --hardcoded-width: 385px;
+  --hardcoded-max-width: 65rem;	  --hardcoded-height: 250px;
+  --padding: var(--op-space-medium);
+
   z-index: 10;
   width: calc(100vw - (var(--padding) * 2));
   bottom: var(--padding);
@@ -24,7 +26,9 @@
 
   trix-toolbar { display: none; }
   trix-editor {
-    height: 200px;
+    border-radius: var(--op-radius-large);
+    width: 100%;
+    height: var(--hardcoded-height);
     padding: var(--op-space-x-small);
     line-height: var(--op-line-height-dense);
     background-color: var(--op-color-neutral-plus-seven);

@@ -4,9 +4,7 @@ class EntriesController < ApplicationController
     @day = current_user.days.find_by(date: date)
     @entry = @day.find_short_entry
     @memories = @day.be_real_memories
-    @day_badges = @day.badges
-    @addable_badges = current_user.badges - @day_badges
-    @recommended_badges = @day_badges.count >= 3 ? [] : @addable_badges.first(3 - @day_badges.count)
+    set_badges
   end
 
   def update
@@ -14,6 +12,7 @@ class EntriesController < ApplicationController
     @entry.update(entry_params)
     @day = @entry.journalable
     @memories = @day.be_real_memories
+    set_badges
 
     month = @entry.journalable.month
     @events = current_user.events.in_range(month)
@@ -30,6 +29,12 @@ class EntriesController < ApplicationController
   end
 
   private
+
+  def set_badges
+    @day_badges = @day.badges
+    @addable_badges = current_user.badges - @day_badges
+    @recommended_badges = @day_badges.count >= 3 ? [] : @addable_badges.first(3 - @day_badges.count)
+  end
 
   def entry_params
     params.require(:entry).permit(:content)
