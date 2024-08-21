@@ -24,7 +24,10 @@ Rails.application.routes.draw do
     get :search, on: :collection
   end
 
-  post 'days/:id/add_day_badge/:badge_id', to: 'days#add_badge', as: :add_day_badge
+  resources :days, only: [] do
+    post 'add_badge/:badge_id', on: :member, to: 'days#add_badge', as: :add_badge
+    delete 'remove_badge/:badge_id', on: :member, to: 'days#remove_badge', as: :remove_badge
+  end
 
   resources :users, only: [] do
     get :profile, on: :collection
