@@ -42,3 +42,5 @@
 /remember.code-workspace
 
 spec/examples.txt
+
+.yarn/releases/*

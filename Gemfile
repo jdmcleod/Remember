@@ -59,3 +59,7 @@ group :test do
   gem "selenium-webdriver"
   gem "test-prof"
 end
+
+gem "dockerfile-rails", ">= 1.6", :group => :development
+
+gem "aws-sdk-s3", "~> 1.159", :require => false
