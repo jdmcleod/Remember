@@ -26,5 +26,5 @@
               .day
                 .day__number 24
               .day-badges
-                .day-badge-indicator style="--badge-color: #{@badge.color}"  data-badge-preview-target='preview'
-                  = icon(@badge.icon_name)
+                .day-badge-indicator style="--badge-color: #{@badge.color}; --badge-fill-color: #{@badge.fill_color}" data-badge-preview-target='preview'
+                  = icon(@badge.icon_name, classes: 'icon--large')

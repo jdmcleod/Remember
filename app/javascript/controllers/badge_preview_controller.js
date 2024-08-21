@@ -25,6 +25,13 @@ export default class extends Controller {
     this.previewTargets.forEach(previewTarget => {
       const badge = previewTarget.querySelector('.badge') ?? previewTarget
       badge.style = `--badge-color: ${color}`
+
+      var num = parseInt(color, 16);
+      var r = (num >> 16) + 50;
+      var b = ((num >> 8) & 0x00FF) + 50;
+      var g = (num & 0x0000FF) + 50;
+      var newColor = g | (b << 8) | (r << 16);
+      badge.style = `--badge-fill-color: ${newColor.toString(16)}`
     })
   }
 }
