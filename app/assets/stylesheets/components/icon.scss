@@ -3,12 +3,6 @@
 $ti-font-path: 'https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/fonts';
 @import '../../../../node_modules/@tabler/icons-webfont/tabler-icons';
 
-.icon {
-  font-size: var(--op-font-large);
-
-  --op-mso-optical-sizing: 20;
-}
-
 .icon--small {
   font-size: var(--op-font-small);
   --op-mso-optical-sizing: 20;
