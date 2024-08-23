@@ -21,10 +21,9 @@
             = render 'shared/badge', locals: { badge: @badge, size: 'x-large' }
         .one-quarter-width.flex.justify-center.items-center.flex-col.gap-lg
           .card__header Live look
-          .day__preview
-            .day__wrapper
-              .day
-                .day__number 24
-              .day-badges
-                .day-badge-indicator style="--badge-color: #{@badge.color}" data-badge-preview-target='preview'
-                  = icon(@badge.icon_name, classes: 'icon--large')
+          .day__wrapper
+            .day
+              .day__number 24
+            .day-badges
+              .day-badge-indicator style="--badge-color: #{@badge.color}" data-badge-preview-target='preview'
+                = icon(@badge.icon_name, classes: 'icon--x-small icon--bold')
