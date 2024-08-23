@@ -57,6 +57,10 @@
   width: 100%;
 }
 
+.day__wrapper--no-entry {
+  filter: grayscale(var(--value, 100%));
+}
+
 .day__preview {
   display: flex;
   justify-content: center;
