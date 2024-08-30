@@ -23,6 +23,6 @@ export default class extends BadgeController {
 
   _updateBadgeColor(event) {
     const color = event.target.value
-    this._setBadgeColor(color)
+    this.previewTargets.forEach(previewTarget => this._setBadgeColor(previewTarget, color))
   }
 }
