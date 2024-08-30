@@ -3,10 +3,9 @@
 $ti-font-path: 'https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/fonts';
 @import '../../../../node_modules/@tabler/icons-webfont/tabler-icons';
 
-.icon {
-  font-size: var(--op-font-large);
-
-  --op-mso-optical-sizing: 20;
+.icon--x-small {
+  font-size: var(--op-font-x-small);
+  --op-mso-optical-sizing: 18;
 }
 
 .icon--small {
@@ -18,4 +17,8 @@ $ti-font-path: 'https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/fonts'
   font-size: var(--op-font-x-large);
 
   --op-mso-optical-sizing: 40;
+}
+
+.icon--bold {
+  font-weight: bold;
 }

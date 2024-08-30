@@ -1,15 +1,10 @@
 = turbo_stream.update 'modal-title' do
-  | Trips and Events
-
-= turbo_stream.update 'modal-header-actions'
+  | New Badge
 
 = turbo_stream.update "modal-body" do
   = render 'form'
 
 = turbo_stream.update 'modal-footer-actions' do
-  = button_tag class: 'btn-primary', form: "new_event" do
+  = button_tag class: 'btn-primary', form: "new_badge" do
     = icon('check', classes: 'icon--medium', color: 'primary-minus-two')
     | Create
-
-
-

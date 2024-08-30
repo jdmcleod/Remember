@@ -1,0 +1,9 @@
+= content_for(:modal_title) do
+  | New Badge
+
+= content_for(:modal_footer_actions) do
+  = button_tag class: 'btn-primary', form: "new_badge" do
+    = icon('check', classes: 'icon--medium', color: 'primary-minus-two')
+    | Create
+
+= render 'form'

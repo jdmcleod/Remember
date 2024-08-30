@@ -2,6 +2,10 @@ body {
   line-height: var(--op-line-height-densest);
 }
 
+a {
+  text-decoration: none !important;
+}
+
 .app-container {
   padding: var(--op-space-x-small) var(--op-space-x-large) var(--op-space-x-large) var(--op-space-x-large);
   display: flex;

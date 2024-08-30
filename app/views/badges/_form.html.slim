@@ -1,0 +1,29 @@
+= link_to badges_path, class: 'btn btn--pill btn--small', data: { turbo_stream: true } do
+  = icon('chevron-left')
+  | Back
+
+= simple_form_for @badge do |f|
+  div data-controller='badge-preview'
+    = f.input :name
+
+    .card-padded.card--white
+      .card__header
+        | Icon Settings (
+        a.text-decoration-none href='https://tablericons.com/' target="_blank" See icon library
+        | )
+      .flex.items-center.gap-sm
+        div.half-width
+          = f.input :icon_name, label: 'Tabler icon name', wrapper_html: { class: 'padding-bottom-none' }, input_html: { data: { badge_preview_target: 'iconNameField' } }
+          = f.input :color, as: :color, required: false, input_html: { data: { badge_preview_target: 'colorField' } }
+        .one-quarter-width.flex.justify-center.items-center.flex-col.gap-lg
+          .card__header Preview
+          div data-badge-preview-target='preview'
+            = render 'shared/badge', locals: { badge: @badge, size: 'x-large' }
+        .one-quarter-width.flex.justify-center.items-center.flex-col.gap-lg
+          .card__header Live look
+          .day__wrapper
+            .day
+              .day__number 24
+            .day-badges
+              .day-badge-indicator style="--badge-color: #{@badge.color}" data-badge-preview-target='preview'
+                = icon(@badge.icon_name, classes: 'icon--x-small icon--bold')

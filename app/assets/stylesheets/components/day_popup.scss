@@ -1,9 +1,8 @@
 .day-popup {
-  --hardcoded-height: 28.8rem;
-  --hardcoded-max-width: 65rem;
+  --hardcoded-height: 28.8rem;	  --hardcoded-width: 385px;
+  --hardcoded-max-width: 65rem;	  --hardcoded-height: 250px;
   --padding: var(--op-space-medium);
 
-  position: relative;
   z-index: 10;
   width: calc(100vw - (var(--padding) * 2));
   bottom: var(--padding);
@@ -11,7 +10,7 @@
   max-width: var(--hardcoded-max-width);
   position: fixed;
 
-  padding: var(--op-space-x-small) var(--op-space-small);
+  padding: var(--op-space-x-small) var(--op-space-small) var(--op-space-x-small) var(--op-space-x-small);
   box-shadow: var(--op-color-primary-base) 0px 20px 30px -10px;
   background-color: var(--op-color-neutral-plus-max);
   border-radius: var(--op-radius-2x-large);

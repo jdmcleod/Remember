@@ -18,4 +18,4 @@
       div
 
     - month.days.each do |day|
-      = render 'years/day', day:, month:, event: @events.detect { |event| event.contains_date?(day.date) }
+      = render 'years/day', day:, month:, event: @events&.detect { |event| event.contains_date?(day.date) }

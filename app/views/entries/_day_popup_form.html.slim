@@ -20,7 +20,7 @@
             button data-action="click->day-popup#forwardOneMonth"
               = icon('chevrons-right', color: 'primary-base', classes: 'btn btn--icon btn--x-small')
 
-      .flex.gap-md
+      .flex.gap-sm
         - if @memories&.any?
           div
             - memory = @memories.first
@@ -38,3 +38,6 @@
             = f.hidden_field :user_id, value: @entry.user_id
 
             = f.rich_text_area :content, data: { testid: 'short-entry-input' }
+
+        .margin-top-xs
+          = render 'day_badges'

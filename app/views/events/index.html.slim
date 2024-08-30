@@ -1,11 +1,9 @@
 = content_for(:modal_title) do
-  .flex.justify-between.full-width.items-center
-    div Trips and Events
+  | Trips and Events
 
-    = render 'new_button'
+= content_for(:modal_header_actions) do
+  = link_to new_year_event_path(@year), class: 'btn-primary', data: { turbo_stream: true } do
+    = icon('plus', classes: 'icon--medium', color: 'primary-minus-two')
+    | New
 
 = render 'events'
-
-= content_for(:modal_actions) do
-  #modal-actions
-

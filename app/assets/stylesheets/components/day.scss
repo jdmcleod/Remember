@@ -57,6 +57,43 @@
   width: 100%;
 }
 
+.day__wrapper--no-entry {
+  filter: grayscale(var(--value, 100%));
+}
+
+.day__preview {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .day {
+    --size: calc(var(--op-space-4x-large) + var(--op-space-large));
+    font-size: var(--op-font-3x-large);
+  }
+}
+
+.day-badges {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  left: 0;
+  top: -2px;
+}
+
+.day-badge-indicator {
+  background-color: var(--badge-fill-color);
+  color: var(--badge-color);
+  font-size: var(--op-font-small);
+  border-radius: 50%;
+  padding: 1px;
+  display: flex;
+  align-items: center;
+  width: 14px;
+  height: 14px;
+  z-index: 4;
+}
+
 .day-note-indicator {
   position: absolute;
   background-color: var(--op-color-primary-plus-six);

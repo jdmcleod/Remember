@@ -17,13 +17,17 @@ Rails.application.routes.draw do
   end
 
   resources :months, only: [:show]
-  resources :badges, only: [:index, :create, :destroy]
+  resources :badges, only: [:index, :new, :edit, :create, :update, :destroy]
 
   resources :entries, only: %i[update] do
     get 'day_popup_form/:date', to: 'entries#day_popup_form', as: :day_popup_form, on: :collection
     get :search, on: :collection
   end
 
+  resources :days, only: [] do
+    post 'add_badge/:badge_id', on: :member, to: 'days#add_badge', as: :add_badge
+    delete 'remove_badge/:badge_id', on: :member, to: 'days#remove_badge', as: :remove_badge
+  end
 
   resources :users, only: [] do
     get :profile, on: :collection

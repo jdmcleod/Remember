@@ -1,0 +1,2 @@
+= turbo_stream.replace 'entry-day-badges', partial: 'entries/day_badges'
+= turbo_stream.replace "year-day-badges--#{@day.title.dasherize}", partial: 'years/day_badges', locals: { day: @day }
