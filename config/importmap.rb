@@ -3,6 +3,9 @@ pin "@hotwired/stimulus", to: "@hotwired--stimulus.js" # @3.2.2
 pin "@hotwired/stimulus-loading", to: "stimulus-loading.js", preload: true
 
 pin_all_from "app/javascript/controllers", under: "controllers"
+pin_all_from "app/javascript/helpers", under: "helpers"
+# pin_all_from "app/javascript/web_components", under: "web_components"
+# pin "app/javascript/initializers/frame_missing_handler"
 
 pin "trix"
 pin "@rails/actiontext", to: "@rails--actiontext.js" # @7.0.8

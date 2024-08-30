@@ -10,9 +10,9 @@ import "controllers"
 import "trix"
 import "@rails/actiontext"
 
-import "./web_components/index.js"
+// import "./web_components/index.js"
 // import './initializers/turbo_confirm'
-import './initializers/frame_missing_handler'
+// import './initializers/frame_missing_handler.js'
 
 // Rails.start()
 // ActiveStorage.start()

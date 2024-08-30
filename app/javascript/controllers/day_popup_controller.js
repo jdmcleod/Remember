@@ -1,5 +1,5 @@
 import { Controller } from '@hotwired/stimulus'
-import { animate, setElementLocation, toggleVisible } from '../helpers/dom_helpers'
+import { animate, toggleVisible } from 'helpers/dom_helpers'
 import { get } from '@rails/request.js'
 
 const freeze = () => {
