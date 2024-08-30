@@ -36,20 +36,14 @@ class BadgesController < ApplicationController
   def destroy
     @badge = current_user.badges.find(params[:id])
     @badge.destroy
-    respond_to do |format|
-      format.turbo_stream { update_view_for_success }
-      format.html { redirect_to badges_path }
-    end
+    update_view_for_success
   end
 
   private
 
   def update_view_for_success
     @badges = current_user.badges.order(created_at: :desc)
-
-    render turbo_stream: [
-      turbo_stream.update('modal-body', partial: 'badges/badges'),
-    ].join
+    redirect_to badges_path
   end
 
   def badge_params

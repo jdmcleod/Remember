@@ -5,6 +5,9 @@ class Badge < ApplicationRecord
   validates :icon_name, presence: true
   validates :color, presence: true
 
+  has_many :day_badges, dependent: :destroy
+  has_many :days, through: :day_badges
+
   def self.default_badges
     [
       {

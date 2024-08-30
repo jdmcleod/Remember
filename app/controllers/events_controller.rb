@@ -21,7 +21,7 @@ class EventsController < ApplicationController
     if @event.save
       update_view_for_success
     else
-      render turbo_stream: turbo_stream.replace('events', partial: 'events/event_form', locals: { event: @event })
+      render turbo_stream: turbo_stream.update('modal-body', partial: 'events/form')
     end
   end
 
@@ -35,17 +35,14 @@ class EventsController < ApplicationController
     if @event.update(event_params)
       update_view_for_success
     else
-      render turbo_stream: turbo_stream.replace('events', partial: 'events/event_form', locals: { event: @event })
+      render turbo_stream: turbo_stream.update('modal-body', partial: 'events/form')
     end
   end
 
   def destroy
     @event = current_user.events.find(params[:id])
     @event.destroy
-    respond_to do |format|
-      format.turbo_stream { update_view_for_success }
-      format.html { redirect_to current_years_path }
-    end
+    update_view_for_success
   end
 
   private
@@ -53,12 +50,7 @@ class EventsController < ApplicationController
   def update_view_for_success
     @events = current_user.events.in_range(@year)
 
-    render turbo_stream: [
-      turbo_stream.replace('events', partial: 'events/events', locals: { events: @events }),
-      turbo_stream.replace('new-event-button', partial: 'events/new_button'),
-      turbo_stream.replace('modal-actions', inline: '<div id="modal-actions"></div>'),
-      turbo_stream.replace("month-#{@event.month.number}", partial: 'years/month', locals: { month: @event.month}),
-    ].join
+    redirect_to year_events_path
   end
 
   def set_year

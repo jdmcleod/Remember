@@ -7,7 +7,7 @@ class Day < ApplicationRecord
 
   has_one :short_entry, as: :journalable, dependent: :destroy, class_name: 'Entry'
 
-  has_many :day_badges
+  has_many :day_badges, dependent: :destroy
   has_many :badges, through: :day_badges
   has_many :be_real_memories
 
