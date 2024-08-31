@@ -7,10 +7,5 @@
   overflow-x: scroll;
   justify-content: space-around;
   gap: var(--op-space-medium);
-
-  ::-webkit-scrollbar {
-    display: none;
-  }
-  -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 }
