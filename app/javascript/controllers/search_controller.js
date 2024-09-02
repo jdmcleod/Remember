@@ -17,7 +17,6 @@ export default class extends Controller {
     const originalHref = this.linkTarget.href
     this.close()
     this.linkTarget.href += query
-    console.log(this.linkTarget)
     this.linkTarget.click()
     this.inputTarget.value = ''
     this.linkTarget.href = originalHref

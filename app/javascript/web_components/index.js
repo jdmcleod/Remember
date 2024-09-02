@@ -1,7 +1,7 @@
-import REMAvatar from './rem-avatar.component.js'
-import REMBeRealMemory from './rem-be-real-memory.component.js'
-import REMBeRealPerson from './rem-be-real-person.component.js'
-import REMBeRealRealmoji from './rem-be-real-realmoji.component.js'
+import REMAvatar from 'web_components/rem-avatar.component'
+import REMBeRealMemory from 'web_components/rem-be-real-memory.component'
+import REMBeRealPerson from 'web_components/rem-be-real-person.component'
+import REMBeRealRealmoji from 'web_components/rem-be-real-realmoji.component'
 
 customElements.define('rem-avatar', REMAvatar)
 customElements.define('rem-be-real-memory', REMBeRealMemory)

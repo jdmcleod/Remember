@@ -1,5 +1,5 @@
 import { Controller } from "@hotwired/stimulus"
-import linearShadeColor from '../helpers/linearShadeColor'
+import linearShadeColor from 'helpers/linearShadeColor'
 
 export default class BadgeController extends Controller {
   static values = { color: String }

@@ -7,15 +7,6 @@ ENV['RAILS_ENV'] ||= 'development'
 ENV["GOOGLE_CLIENT_ID"] ||= ''
 ENV["GOOGLE_CLIENT_SECRET"] ||= ''
 
-
-unless ENV['ACTIVE_RECORD_ENCRYPTION_PRIMARY_KEY']
-  raise 'Must set ACTIVE_RECORD_ENCRYPTION_PRIMARY_KEY env variable (for development, use .env_overrides.rb)'
-end
-
-unless ENV['ACTIVE_RECORD_ENCRYPTION_DETERMINISTIC_KEY']
-  raise 'Must set ACTIVE_RECORD_ENCRYPTION_DETERMINISTIC_KEY env variable (for development, use .env_overrides.rb)'
-end
-
-unless ENV['ACTIVE_RECORD_ENCRYPTION_KEY_DERIVATION_SALT']
-  raise 'Must set ACTIVE_RECORD_ENCRYPTION_KEY_DERIVATION_SALT env variable (for development, use .env_overrides.rb)'
-end
+ENV["AWS_ACCESS_KEY_ID"] ||= ''
+ENV["AWS_SECRET_ACCESS_KEY"] ||= ''
+ENV["BUCKET_NAME"] ||= ''
