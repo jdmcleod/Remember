@@ -11,10 +11,10 @@ div data-controller='hotkeys' data-hotkeys-bindings-value='{"command+/": ".app__
           = icon('circle-caret-left', color: 'primary-base', classes: 'icon--x-large')
       .header__wing.header__wing--left
         = modal_link_to badges_path, class: 'btn btn--no-background btn--small' do
-          = icon('badge', classes: 'icon--medium', color: 'primary-minus-two')
+          = icon('badge', classes: 'icon--large icon--bold', color: 'primary-minus-two')
 
         button.btn.btn--no-background.btn--small data-action="click->search#toggle" data-testid='search-button'
-          = icon('search', classes: 'icon--medium', color: 'primary-minus-two')
+          = icon('search', classes: 'icon--large icon--bold', color: 'primary-minus-two')
 
     = link_to root_path, class: 'header__label', data: { turbo_frame: 'modal' } do
       .flex.gap-xs.items-end
@@ -26,14 +26,14 @@ div data-controller='hotkeys' data-hotkeys-bindings-value='{"command+/": ".app__
       .header__wing.header__wing--right
         - if !hide_nav
           = modal_link_to year_events_path(@year), class: 'btn btn--no-background btn--small', 'data-testid': 'trips-button' do
-            = icon('plane', classes: 'icon--medium', color: 'primary-minus-two')
+            = icon('plane', classes: 'icon--large icon--bold', color: 'primary-minus-two')
 
         .btn.btn--icon.btn--no-background = render 'shared/context_menu', locals: { icon: 'user-hexagon' }
           = link_to profile_users_path, class: 'btn btn--small btn--no-border full-width' do
-            = icon('user', classes: 'icon--medium', color: 'primary-minus-two')
+            = icon('user', classes: 'icon--large icon--bold', color: 'primary-minus-two')
             | Profile
           = button_to sign_out_sessions_path, method: :delete, class: 'btn btn--small btn--no-border' do
-            = icon('logout', classes: 'icon--medium', color: 'primary-minus-two')
+            = icon('logout', classes: 'icon--large icon--bold', color: 'primary-minus-two')
             | Logout
 
       - if !hide_nav

@@ -1,7 +1,8 @@
 = render 'shared/header'
 .app-container data-controller="day-popup"
   = render 'entries/day_popup_form'
-  - @year.quarters.each do |quarter|
-    .quarter
-      - quarter.months.each do |month|
-        = render 'month', month:
+  .flex.flex-col.gap-xs
+    - @year.quarters.each do |quarter|
+        .quarter class="quarter--#{quarter.start_date.quarter}"
+          - quarter.months.each do |month|
+            = render 'month', month:
