@@ -6,11 +6,11 @@
 import "@hotwired/turbo-rails"
 // import * as ActiveStorage from "@rails/activestorage"
 import "controllers"
+import "web_components"
 
 import "trix"
 import "@rails/actiontext"
 
-// import "./web_components/index.js"
 // import './initializers/turbo_confirm'
 // import './initializers/frame_missing_handler.js'
 

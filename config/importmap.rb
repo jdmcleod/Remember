@@ -4,8 +4,7 @@ pin "@hotwired/stimulus-loading", to: "stimulus-loading.js", preload: true
 
 pin_all_from "app/javascript/controllers", under: "controllers"
 pin_all_from "app/javascript/helpers", under: "helpers"
-# pin_all_from "app/javascript/web_components", under: "web_components"
-# pin "app/javascript/initializers/frame_missing_handler"
+pin_all_from "app/javascript/web_components", under: "web_components"
 
 pin "trix"
 pin "@rails/actiontext", to: "@rails--actiontext.js" # @7.0.8
@@ -16,6 +15,7 @@ pin "stimulus-use" # @0.52.2
 pin "@rolemodel/turbo-confirm"
 
 # Lit
-pin "lit", to: "https://esm.run/lit" # @3.1.4
 pin "hotkeys-js" # @3.13.7
 pin "stimulus-use/hotkeys", to: "stimulus-use--hotkeys.js" # @0.52.2
+
+pin "lit", to: "https://cdn.jsdelivr.net/npm/lit@latest/+esm"
