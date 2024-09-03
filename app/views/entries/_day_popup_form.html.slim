@@ -37,7 +37,7 @@
 
             = f.hidden_field :user_id, value: @entry.user_id
 
-            = f.rich_text_area :content, data: { testid: 'short-entry-input' }
+            = f.rich_text_area :content, data: { testid: 'short-entry-input', action: 'click->day-popup#inputChange' }
 
         .margin-top-xs
           = render 'day_badges'

@@ -16,6 +16,8 @@ export default class DayPopupController extends Controller {
   static targets = ['popup', 'container', 'form', 'day']
 
   async show(event) {
+    this._changed = false
+
     if (this._popupOpen) {
       this._dateString = this.dayElement.dataset.date
       await this._loadContent(this._dateString)
@@ -53,6 +55,10 @@ export default class DayPopupController extends Controller {
     if (this.dayElement) this._movePopup()
   }
 
+  inputChange(_event) {
+    this._changed = true
+  }
+
   disconnect() {
     this._removeEventListeners()
   }
@@ -62,9 +68,6 @@ export default class DayPopupController extends Controller {
   }
 
   _movePopup() {
-    // if (this.containerTarget.classList.contains('visibility-hidden')) {
-    //   return this.containerTarget.classList.remove('visibility-hidden')
-    // }
     animate(this.popupTarget, 'zoomIn')
   }
 
@@ -98,7 +101,10 @@ export default class DayPopupController extends Controller {
   close() {
     animate(this.popupTarget, 'zoomOut')
     setTimeout(() => {
-      this.save()
+      if (this._changed) {
+        console.log('saving')
+        this.save()
+      }
       toggleVisible(this.popupTarget, false)
       this.disconnect()
       this._popupOpen = false

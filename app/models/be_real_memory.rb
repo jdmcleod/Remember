@@ -20,6 +20,6 @@ class BeRealMemory < ApplicationRecord
   end
 
   def storage_key(filename)
-    "user_#{day.user.id}/#{Date.current.year}/be_real/#{filename}"
+    "user_#{day.user.id}/#{day.date.year}/be_real/#{day.date.to_s}/#{filename}"
   end
 end
