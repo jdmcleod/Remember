@@ -17,10 +17,18 @@
     font-weight: var(--op-font-weight-semi-bold);
     font-size: var(--op-font-3x-large);
     text-decoration: none;
+
+    @media only screen and (max-width: $breakpoint-small) {
+      border-radius: var(--op-radius-small);
+    }
   }
 
   .header__logo {
     max-width: 180px;
+
+    @media only screen and (max-width: $breakpoint-small) {
+      display: none;
+    }
   }
 
   .header__year {
@@ -31,6 +39,9 @@
     display: flex;
     align-items: center;
     gap: var(--op-space-x-small);
+    @media only screen and (max-width: $breakpoint-small) {
+      gap: 0;
+    }
   }
 
   .header__wing {
@@ -57,6 +68,10 @@
     &.header__wing--right {
       border-top-right-radius: var(--_header-wing-radius);
       border-bottom-right-radius: var(--_header-wing-radius);
+    }
+
+    @media only screen and (max-width: $breakpoint-small) {
+      padding-inline: var(--op-space-3x-small);
     }
   }
 }

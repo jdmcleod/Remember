@@ -166,3 +166,9 @@ a:has(.badge), button:has(.badge) {
   pointer-events: none;
   cursor: pointer;
 }
+
+.badges-addable-section {
+  @media only screen and (max-width: $breakpoint-small) {
+    display: none;
+  }
+}

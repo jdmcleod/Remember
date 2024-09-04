@@ -1,5 +1,7 @@
 .month id="month-#{month.number}"
-  .month-name--scribble class="month-name--scribble-#{rand(1..4)}"
+  .month__illustration class="month__illustration--#{month.number}"
+  .month__illustration-indicator class="month__illustration-indicator--#{month.number}"
+
   .flex.justify-between
     = modal_link_to month_path(month), class: 'btn btn--icon btn--small' do
       = icon('book-2', classes: 'icon--large', color: 'neutral-minus-two')

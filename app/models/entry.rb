@@ -8,7 +8,7 @@ class Entry < ApplicationRecord
 
   encrypts :title
 
-  scope :in_range, -> (start_date, end_date) { where(arel_table[:date].gteq(start_date)).where(arel_table[:date].lteq(end_date)) }
+  scope :in_range, -> (start_date, end_date) { where(arel_table[:date].gteq(start_date)).where(arel_table[:date].lteq(end_date)).order(arel_table[:date]) }
 
   before_save do
     self.tsv = tsvectorized_text

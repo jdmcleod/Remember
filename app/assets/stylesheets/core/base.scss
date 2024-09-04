@@ -11,6 +11,11 @@ a {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  max-width: 140rem;
+  max-width: 129rem;
   margin-inline: auto;
+
+  @media only screen and (max-width: $breakpoint-small) {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }

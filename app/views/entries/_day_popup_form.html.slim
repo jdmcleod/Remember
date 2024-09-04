@@ -11,7 +11,8 @@
             button data-action="click->day-popup#backOneDay"
               = icon('chevron-left', color: 'primary-base', classes: 'btn btn--icon btn--x-small')
 
-          div = "What I did on #{@entry.journalable.date.strftime('%A')}, #{@entry.title}"
+          span.day-popup-title = "What I did on #{@entry.journalable.date.strftime('%A')}, "
+          span.day-popup-title-day = "#{@entry.title}"
 
           .flex
             button data-action="click->day-popup#forwardOneDay"
@@ -20,9 +21,9 @@
             button data-action="click->day-popup#forwardOneMonth"
               = icon('chevrons-right', color: 'primary-base', classes: 'btn btn--icon btn--x-small')
 
-      .flex.gap-sm
+      .day-popup__body
         - if @memories&.any?
-          div
+          .day-popup__photo
             - memory = @memories.first
             rem-be-real-memory{
               date=memory.day.date
@@ -37,7 +38,7 @@
 
             = f.hidden_field :user_id, value: @entry.user_id
 
-            = f.rich_text_area :content, data: { testid: 'short-entry-input' }
+            = f.rich_text_area :content, data: { testid: 'short-entry-input', action: 'click->day-popup#inputChange' }
 
         .margin-top-xs
           = render 'day_badges'

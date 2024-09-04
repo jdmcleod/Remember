@@ -1,6 +1,7 @@
 .day-popup {
-  --hardcoded-height: 28.8rem;	  --hardcoded-width: 385px;
-  --hardcoded-max-width: 65rem;	  --hardcoded-height: 250px;
+  --hardcoded-height: 28.8rem;
+  --hardcoded-width: 385px;
+  --hardcoded-max-width: 65rem;
   --padding: var(--op-space-medium);
 
   z-index: 10;
@@ -39,6 +40,11 @@
       box-shadow: var(--op-border-all) var(--op-color-neutral-plus-four);
     }
   }
+
+  @media only screen and (max-width: $breakpoint-small) {
+    width: 100%;
+    left: 0;
+  }
 }
 
 .animate__animated.animate__zoomIn, .animate__animated.animate__zoomOut {
@@ -52,5 +58,20 @@
   left: 4rem;
   padding: var(--op-space-2x-small) var(--op-space-x-small);
   border-radius: var(--op-radius-medium) var(--op-radius-medium) 0 0;
-  top: -2.9rem;
+  top: -2.8rem;
+}
+
+.day-popup-title, .day-popup__photo {
+  @media only screen and (max-width: $breakpoint-small) {
+    display: none;
+  }
+}
+
+.day-popup__body {
+  display: flex;
+  gap: var(--op-space-small);
+
+  @media only screen and (max-width: $breakpoint-small) {
+    gap: 0;
+  }
 }
