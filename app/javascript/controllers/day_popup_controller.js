@@ -102,7 +102,6 @@ export default class DayPopupController extends Controller {
     animate(this.popupTarget, 'zoomOut')
     setTimeout(() => {
       if (this._changed) {
-        console.log('saving')
         this.save()
       }
       toggleVisible(this.popupTarget, false)

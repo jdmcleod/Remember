@@ -12,6 +12,10 @@
   position: relative;
   max-width: 40rem;
   min-width: 36rem;
+
+  @media only screen and (max-width: $breakpoint-small) {
+    display: block;
+  }
 }
 
 .month__illustration {
