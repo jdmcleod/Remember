@@ -17,10 +17,18 @@
     font-weight: var(--op-font-weight-semi-bold);
     font-size: var(--op-font-3x-large);
     text-decoration: none;
+
+    @media only screen and (max-width: $breakpoint-small) {
+      border-radius: var(--op-radius-small);
+    }
   }
 
   .header__logo {
     max-width: 180px;
+
+    @media only screen and (max-width: $breakpoint-small) {
+      display: none;
+    }
   }
 
   .header__year {

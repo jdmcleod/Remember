@@ -9,6 +9,12 @@
   gap: var(--op-space-small);
   scrollbar-width: none;  /* Firefox */
   border-radius: var(--op-radius-large);
+
+  @media only screen and (max-width: $breakpoint-small) {
+    flex-direction: column;
+    height: 100%;
+    overflow-x: unset;
+  }
 }
 
 .quarter--1 {

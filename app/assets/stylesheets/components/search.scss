@@ -6,6 +6,11 @@
   left: 20%;
   top: 30%;
   transition: cubic-bezier(0.4, 0, 0.2, 1) 150ms all;
+
+  @media only screen and (max-width: $breakpoint-small) {
+    width: 100%;
+    left: 0;
+  }
 }
 
 .search-form__backdrop {
