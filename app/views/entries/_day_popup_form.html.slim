@@ -36,7 +36,6 @@
         - else
           = simple_form_for(@day) do |f|
             rem-uploader allowedFileExtensions=%w[png jpg jpeg svg webp heic]
-              div slot='label' = f.label :image, label: 'Upload an image'
               div slot='input' = f.input :image, as: :file
               div slot='errors' = f.object.errors[:image].join(', ') if f.object.errors[:image].any?
 

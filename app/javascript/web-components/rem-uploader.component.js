@@ -77,13 +77,6 @@ export default class REMUploader extends LitElement {
     this.requestUpdate()
   }
 
-  _deleteFile(event, fileIndex) {
-    this.dataTransfer.items.remove(fileIndex)
-    this.fileNames.splice(fileIndex, 1)
-    this._fileInput().files = this.dataTransfer.files
-    this.requestUpdate()
-  }
-
   _renderUploadError() {
     if (this.invalidFileExtensions.length === 0) return
 
@@ -92,36 +85,13 @@ export default class REMUploader extends LitElement {
     `
   }
 
-  _renderFile(fileName, index) {
-    return html`
-      <div class="file-row">
-        <span>${fileName}</span>
-        <lcad-button class="file-delete" size='small' noBorder='true' icon='true' @click=${event => this._deleteFile(event, index)}>
-          <ph-icon name="trash" class="file-delete__icon"></ph-icon>
-        </lcad-button>
-      </div>
-    `
-  }
-
-  _renderFilesContainer() {
-    if (this.fileNames.length === 0 && this.invalidFileExtensions.length === 0) return
-
-    return html`
-      <div class="files-container">
-        ${this.fileNames.map((fileName, index) => this._renderFile(fileName, index))}
-      </div>
-      ${this._renderUploadError()}
-    `
-  }
-
   render() {
     return html`
-      <slot name="label" class="files-label">Files To Upload</slot>
-      ${this._renderFilesContainer()}
+      ${this._renderUploadError()}
       <div class="upload-container" @click=${this._onClick} @drop=${this._onDrop} @dragover=${this._onDragover} @dragleave=${this._onDragleave}>
         <ph-icon name="plus" size="x-large" class="upload-container__add-icon"></ph-icon>
-        <div>Click to choose or drag and drop layer subfiles or folder</div>
-        <div>(.shp, .shx, .dbf, .prj)</div>
+        <div>Click to choose or drag and drop and image</div>
+        <div>(${this.allowedFileExtensions.map(fileExtension => `.${fileExtension}`).join(', ')})</div>
         <slot name="input" class="files-input"></slot>
       </div>
       <slot name="errors" class="files-errors"></slot>
