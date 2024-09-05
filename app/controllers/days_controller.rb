@@ -13,11 +13,22 @@ class DaysController < ApplicationController
     set_badges
   end
 
+  def update
+    @day = Day.find(params[:id])
+    if @day.update(day_params)
+      redirect_to day_popup_form_entries_path(@day.date)
+    end
+  end
+
   private
 
   def set_badges
     @day_badges = @day.badges
     @addable_badges = current_user.badges - @day_badges
     @recommended_badges = @day_badges.count >= 6 ? [] : @addable_badges.first(6  - @day_badges.count)
+  end
+
+  def day_params
+    params.require(:day).permit(:image)
   end
 end

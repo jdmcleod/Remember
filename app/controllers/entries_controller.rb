@@ -4,6 +4,7 @@ class EntriesController < ApplicationController
     @day = current_user.days.find_by(date: date)
     @entry = @day.find_short_entry
     @memories = @day.be_real_memories
+    @image = @day.image
     set_badges
   end
 
@@ -12,6 +13,7 @@ class EntriesController < ApplicationController
     @entry.update(entry_params)
     @day = @entry.journalable
     @memories = @day.be_real_memories
+    @image = @day.image
     set_badges
 
     month = @entry.journalable.month
