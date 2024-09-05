@@ -59,6 +59,18 @@
   height: 0;
 }
 
+.day-popup__photo {
+  max-width: 200px;
+  height: 100%;
+}
+
+.day-popup__photo-template {
+  width: 200px;
+  height: 100%;
+  border: 2x dashed var(--op-color-neutral-plus-eight);
+  border-radius: var(--op-radius-medium);
+}
+
 .day-popup__header {
   background-color: var(--op-color-primary-base);
   color: var(--op-color-primary-plus-seven);

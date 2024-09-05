@@ -35,8 +35,10 @@
               size="54"}
         - else
           = simple_form_for(@day) do |f|
-            = f.input :image, as: :file
-            = f.submit 'Add'
+            rem-uploader allowedFileExtensions=%w[png jpg jpeg svg webp heic]
+              div slot='label' = f.label :image, label: 'Upload an image'
+              div slot='input' = f.input :image, as: :file
+              div slot='errors' = f.object.errors[:image].join(', ') if f.object.errors[:image].any?
 
         .full-width.full-height
           = simple_form_for @entry, url: entry_path(@entry), data: { method: :put, turbo: true, 'day-popup-target': 'form' } do |f|
