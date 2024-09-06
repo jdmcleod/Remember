@@ -13,6 +13,7 @@
   @media only screen and (max-width: $breakpoint-small) {
     flex-direction: column;
     height: 100%;
+    align-items: center;
     overflow-x: unset;
   }
 }
