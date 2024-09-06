@@ -35,6 +35,7 @@ export default class DayPopupController extends Controller {
   }
 
   async changeDay(dayDifference, monthDifference) {
+    this._skipAnimation = true
     await this.save()
     setTimeout(async () => {
       const newDate = new Date(this._dateString)
@@ -68,6 +69,9 @@ export default class DayPopupController extends Controller {
   }
 
   _movePopup() {
+    if (this._skipAnimation) {
+      return this._skipAnimation = false
+    }
     animate(this.popupTarget, 'zoomIn')
   }
 
@@ -101,9 +105,7 @@ export default class DayPopupController extends Controller {
   close() {
     animate(this.popupTarget, 'zoomOut')
     setTimeout(() => {
-      if (this._changed) {
-        this.save()
-      }
+      this.save()
       toggleVisible(this.popupTarget, false)
       this.disconnect()
       this._popupOpen = false
@@ -111,7 +113,7 @@ export default class DayPopupController extends Controller {
   }
 
   save() {
-    if (this.formTarget) {
+    if (this.formTarget && this._changed) {
       freezeScrollOnNextRender()
       this.formTarget.requestSubmit()
     }

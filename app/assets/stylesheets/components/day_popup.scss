@@ -51,14 +51,19 @@
   --animate-duration: 0.15s;
 }
 
+.day-popup__header-wrapper {
+  display: flex;
+  justify-content: center;
+  height: 0;
+}
+
 .day-popup__header {
-  position: absolute;
   background-color: var(--op-color-primary-base);
   color: var(--op-color-primary-plus-seven);
-  left: 4rem;
+  transform: translateY(-34px);
+  height: 26px;
   padding: var(--op-space-2x-small) var(--op-space-x-small);
   border-radius: var(--op-radius-medium) var(--op-radius-medium) 0 0;
-  top: -2.8rem;
 }
 
 .day-popup-title, .day-popup__photo {
