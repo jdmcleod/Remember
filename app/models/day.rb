@@ -22,7 +22,7 @@ class Day < ApplicationRecord
   def find_short_entry
     return short_entry if short_entry.present?
 
-    create_entry(user: quarter.year.user, date: start_date)
+    create_short_entry(user: month.quarter.year.user, date: date)
   end
 
   def trip_class(event)
