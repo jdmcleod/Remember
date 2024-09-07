@@ -1,19 +1,22 @@
-.flex.flex-col.items-center.gap-xxs#entry-day-badges.badges-addable-section
-  - @day_badges.each do |badge|
-    = button_to remove_badge_day_path(@day, badge), method: :delete, class: 'padding-inline-none' do
-      = render 'shared/badge', locals: { badge: badge, size: 'x-small', type: 'deletable' }
-  - @recommended_badges.each do |badge|
-    = button_to add_badge_day_path(@day, badge), method: :post, class: 'padding-inline-none' do
-      = render 'shared/badge', locals: { badge: badge, size: 'x-small', type: 'addable' }
-  - if @day_badges.count < 7
-    - if @addable_badges.any?
-      = render 'shared/context_menu', locals: { toggle: capture { render 'shared/badge', locals: { size: 'x-small', type: 'new' } } }
-        .flex.items-center.gap-xs.flex-wrap
-          - @addable_badges.each do |badge|
-            = button_to add_badge_day_path(@day, badge), method: :post, class: 'padding-inline-none' do
-              = render 'shared/badge', locals: { badge: badge, size: 'x-small', type: 'clickable' }
-          = modal_link_to new_badge_path, data: { turbo_stream: true } do
-            = render 'shared/badge', locals: { size: 'x-small', type: 'new' }
-    - else
-      = modal_link_to new_badge_path, data: { turbo_stream: true } do
-        = render 'shared/badge', locals: { size: 'x-small', type: 'new' }
+.badges-addable-container
+  #entry-day-badges.badges-addable
+    - @day_badges.each do |badge|
+      = button_to remove_badge_day_path(@day, badge), method: :delete, class: 'padding-inline-none' do
+        = render 'shared/badge', locals: { badge: badge, size: 'x-small', type: 'deletable' }
+    - @recommended_badges.each do |badge|
+      = button_to add_badge_day_path(@day, badge), method: :post, class: 'padding-inline-none' do
+        = render 'shared/badge', locals: { badge: badge, size: 'x-small', type: 'addable' }
+    - if @day_badges.count < 7
+      - if @addable_badges.any?
+        = render 'shared/context_menu', locals: { toggle: capture { render 'shared/badge', locals: { size: 'x-small', type: 'new' } } }
+          .flex.items-center.gap-xs.flex-wrap
+            - @addable_badges.each do |badge|
+              = button_to add_badge_day_path(@day, badge), method: :post, class: 'padding-inline-none' do
+                = render 'shared/badge', locals: { badge: badge, size: 'x-small', type: 'clickable' }
+            = modal_link_to new_badge_path, data: { turbo_stream: true } do
+              = render 'shared/badge', locals: { size: 'x-small', type: 'new' }
+      - else
+        = modal_link_to new_badge_path, data: { turbo_stream: true } do
+          = render 'shared/badge', locals: { size: 'x-small', type: 'new' }
+
+  = yield

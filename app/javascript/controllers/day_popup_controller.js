@@ -18,14 +18,15 @@ export default class DayPopupController extends Controller {
   async show(event) {
     this._changed = false
 
+    this.dayElement = event.target.closest('.day')
+    this._dateString = this.dayElement.dataset.date
+
     if (this._popupOpen) {
-      this._dateString = this.dayElement.dataset.date
-      await this._loadContent(this._dateString)
+      this._skipAnimation = true
+      return this._loadContent(this._dateString)
     }
 
     this._popupOpen = true
-    this.dayElement = event.target.closest('.day')
-    this._dateString = this.dayElement.dataset.date
     await this._loadContent(this._dateString)
     this._addEventListeners()
   }
@@ -53,7 +54,10 @@ export default class DayPopupController extends Controller {
   forwardOneMonth() { this.changeDay(undefined, 1) }
 
   popupTargetConnected() {
-    if (this.dayElement) this._movePopup()
+    if (this.dayElement && !this._skipAnimation) {
+      this._skipAnimation = false
+      animate(this.popupTarget, 'zoomIn')
+    }
   }
 
   inputChange(_event) {
@@ -66,13 +70,6 @@ export default class DayPopupController extends Controller {
 
   async _loadContent(date) {
     await get(`/entries/day_popup_form/${date}`, { responseKind: 'turbo-stream' })
-  }
-
-  _movePopup() {
-    if (this._skipAnimation) {
-      return this._skipAnimation = false
-    }
-    animate(this.popupTarget, 'zoomIn')
   }
 
   _removeEventListeners() {
@@ -109,6 +106,7 @@ export default class DayPopupController extends Controller {
       toggleVisible(this.popupTarget, false)
       this.disconnect()
       this._popupOpen = false
+      this._skipAnimation = false
     }, 150)
   }
 

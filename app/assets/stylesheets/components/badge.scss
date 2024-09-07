@@ -167,8 +167,20 @@ a:has(.badge), button:has(.badge) {
   cursor: pointer;
 }
 
-.badges-addable-section {
+.badges-addable-container {
+  padding: var(--op-space-x-small) 0;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   @media only screen and (max-width: $breakpoint-small) {
     display: none;
   }
+}
+
+.badges-addable {
+  gap: var(--op-space-3x-small);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
