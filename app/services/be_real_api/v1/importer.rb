@@ -7,21 +7,20 @@ module BeRealApi
         users_to_import_count = users_to_import.count
 
         users_to_import.find_each.with_index do |user, user_index|
-          puts "Importing memories for #{user.name}. (#{user_index + 1}/#{users_to_import_count})"
-
           days_to_import = user.days.where('date <= ?', DateTime.current).where.missing(:be_real_memories)
           days_to_import_count = days_to_import.count
 
           next if days_to_import.count.zero?
 
+          puts "Importing memories for #{user.name}. (#{user_index + 1}/#{users_to_import_count})"
+
           memory_collection = user.be_real_connection.memories
 
           days_to_import.find_each.with_index do |day, day_index|
-            puts "Importing memories for #{day.date.to_fs(:full_date)}. (#{day_index + 1}/#{days_to_import_count})"
-
             memory_data = memory_collection.for_date(day.date)
-
             next if memory_data.empty?
+
+            puts "Importing memories for #{day.date.to_fs(:full_date)}. (#{day_index + 1}/#{days_to_import_count})"
 
             memory_data.each do |raw_memory|
               ActiveRecord::Base.transaction do
