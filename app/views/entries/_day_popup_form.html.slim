@@ -40,6 +40,7 @@
 
             = f.rich_text_area :content, data: { testid: 'short-entry-input', action: 'click->day-popup#inputChange' }
 
-        = render 'day_badges'
+        .badges-addable-container
+          = render 'day_badges'
           button.btn.btn-notice.btn--icon.btn--small title="Save" type="submit" name="commit" data-action="day-popup#close"
             = icon('discount-check', classes: 'icon--large', color: 'alerts-notice-plus-six')

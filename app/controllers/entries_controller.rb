@@ -33,7 +33,7 @@ class EntriesController < ApplicationController
   def set_badges
     @day_badges = @day.badges
     @addable_badges = current_user.badges - @day_badges
-    @recommended_badges = @day_badges.count >= 3 ? [] : @addable_badges.first(6 - @day_badges.count)
+    @recommended_badges = @day_badges.count >= 6 ? [] : @addable_badges.first(6 - @day_badges.count)
   end
 
   def entry_params
