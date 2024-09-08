@@ -5,6 +5,10 @@
   background-color: var(--op-color-neutral-plus-eight);
   contain: unset;
 
+  .modal__body--min-height-small {
+    min-height: 10rem;
+  }
+
   .modal__body--min-height {
     min-height: 40rem;
   }

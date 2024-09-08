@@ -6,7 +6,6 @@
     = modal_link_to month_path(month), class: 'btn btn--icon btn--small' do
       = icon('layout-list', classes: 'icon--large', color: 'neutral-minus-two')
     .month-name = month.name
-    div
     = modal_link_to entry_form_month_path(month), class: 'btn btn--icon btn--small', 'data-testid': "edit-month-entry-#{month.id}" do
       = icon('highlight', classes: 'icon--large', color: 'neutral-minus-two')
   .month-day-names
