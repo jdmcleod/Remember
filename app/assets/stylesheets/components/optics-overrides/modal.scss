@@ -24,3 +24,46 @@ dialog.modal {
     animation: show-backdrop 150ms ease-in;
   }
 }
+
+.modal--full {
+  .modal-wrapper__backdrop {
+    background: var(--op-color-primary-plus-four);
+  }
+
+  .modal {
+    --_op-modal-width: 60rem;
+
+
+    border-radius: var(--op-radius-2x-large);
+    border: var(--op-border-width-large) solid var(--op-color-primary-base);
+    box-shadow: var(--op-color-primary-base) 0px 20px 30px -10px;
+    width: 80vw;
+    max-width: 85rem;
+
+    .modal__body {
+      background-color: var(--op-color-neutral-plus-max);
+      --_op-modal-max-height: 70rem;
+    }
+
+    trix-editor {
+      --editor-hardcoded-height: 65vh;
+      --editor-hardcoded-max-height: 60rem;
+
+      border-radius: var(--op-radius-large);
+      height: var(--editor-hardcoded-height);
+      max-height: var(--editor-hardcoded-max-height);
+      padding: var(--op-space-x-small);
+      background-color: var(--op-color-neutral-plus-seven);
+      overflow-y: auto;
+
+      &:focus-visible {
+        outline: none;
+        box-shadow: var(--op-border-all) var(--op-color-neutral-plus-four);
+      }
+    }
+  }
+
+  .modal__footer {
+    padding: var(--op-space-small);
+  }
+}

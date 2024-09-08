@@ -33,6 +33,30 @@ RSpec.describe 'Entry', type: :system, js: true do
     end
   end
 
+  describe 'entering month entry' do
+    it 'allows the user to enter a short entry' do
+      visit current_years_path
+
+      month = user.months.first
+
+      text = 'hello, this is a cool day!'
+      find(data_test("edit-month-entry-#{month.id}")).click
+      expect {
+        within find('#modal') do
+          input = find(data_test('month-entry-text-area'))
+          input.set text
+        end
+      }.to change(Entry, :count).by(1)
+
+      click_on 'Save'
+      entry = Entry.last
+      expect(entry.journalable).to eq month
+      expect(page).to_not have_css('.modal-wrapper--active')
+      expect(entry.content.body.to_plain_text).to eq text
+      expect(page).to have_flash_notice 'Updated month entry'
+    end
+  end
+
   describe 'searching' do
     let(:day_1) { create(:day, date: Date.new(2024, 1, 1))}
     let(:day_2) { create(:day, date: Date.new(2024, 1, 2))}

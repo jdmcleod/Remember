@@ -89,3 +89,9 @@
     text-align: center;
   }
 }
+
+.month-form {
+  button[data-trix-action='decreaseNestingLevel'], button[data-trix-action='increaseNestingLevel'] {
+    display: none;
+  }
+}
