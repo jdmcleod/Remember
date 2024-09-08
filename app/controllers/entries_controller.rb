@@ -15,10 +15,10 @@ class EntriesController < ApplicationController
     set_badges
 
     month = @entry.journalable.month
-    @events = current_user.events.in_range(month)
+    @events = current_user.events.in_range(month.start_date, month.end_date)
     render turbo_stream: [
       turbo_stream.replace('day-popup-form', partial: 'entries/day_popup_form'),
-      turbo_stream.replace("month-#{month.number}", partial: 'years/month', locals: { month: @entry.journalable.month }),
+      turbo_stream.replace("month-#{month.number}", partial: 'months/month', locals: { month: @entry.journalable.month }),
     ].join
   end
 

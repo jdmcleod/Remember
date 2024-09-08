@@ -21,5 +21,4 @@
     - month.days.first.date.wday.times do |i|
       div
 
-    - month.days.each do |day|
-      = render 'years/day', day:, month:, event: @events&.detect { |event| event.contains_date?(day.date) }
+    = render month.days, month: month
