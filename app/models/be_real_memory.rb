@@ -11,6 +11,8 @@ class BeRealMemory < ApplicationRecord
     downloaded_image = URI.parse(url).open
     filename = "#{image_name}.webp"
     send(image_name).attach(key: storage_key(filename), io: downloaded_image, filename:)
+  rescue => e
+    Rails.logger.error { "Failed to download image: #{e}"}
   end
 
   def thumbnail_url

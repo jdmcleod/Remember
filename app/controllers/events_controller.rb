@@ -5,7 +5,7 @@ class EventsController < ApplicationController
   end
 
   def index
-    @events = current_user.events.in_range(@year).order(:start_date)
+    @events = current_user.events.in_range(@year.start_date, @year.end_date).order(:start_date)
     render layout: 'modal'
   end
 
@@ -48,7 +48,7 @@ class EventsController < ApplicationController
   private
 
   def update_view_for_success
-    @events = current_user.events.in_range(@year)
+    @events = current_user.events.in_range(@year.start_date, @year.end_date)
 
     redirect_to year_events_path
   end

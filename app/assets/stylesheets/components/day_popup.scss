@@ -1,5 +1,5 @@
 .day-popup {
-  --hardcoded-height: 28.8rem;
+  --editor-hardcoded-height: 28.8rem;
   --hardcoded-width: 385px;
   --hardcoded-max-width: 65rem;
   --padding: var(--op-space-medium);
@@ -10,8 +10,9 @@
   left: var(--padding);
   max-width: var(--hardcoded-max-width);
   position: fixed;
+  height: auto;
 
-  padding: var(--op-space-x-small) var(--op-space-small) var(--op-space-x-small) var(--op-space-x-small);
+  padding: var(--op-space-3x-small) var(--op-space-x-small) var(--op-space-x-small) var(--op-space-x-small);
   box-shadow: var(--op-color-primary-base) 0px 20px 30px -10px;
   background-color: var(--op-color-neutral-plus-max);
   border-radius: var(--op-radius-2x-large);
@@ -29,7 +30,7 @@
   trix-editor {
     border-radius: var(--op-radius-large);
     width: 100%;
-    height: var(--hardcoded-height);
+    height: var(--editor-hardcoded-height);
     padding: var(--op-space-x-small);
     line-height: var(--op-line-height-dense);
     background-color: var(--op-color-neutral-plus-seven);
@@ -43,6 +44,7 @@
 
   @media only screen and (max-width: $breakpoint-small) {
     width: 100%;
+    padding: var(--op-space-3x-small) var(--op-space-x-small) var(--op-space-x-small) var(--op-space-x-small);
     left: 0;
   }
 }
@@ -51,14 +53,19 @@
   --animate-duration: 0.15s;
 }
 
+.day-popup__header-wrapper {
+  display: flex;
+  justify-content: center;
+  height: 0;
+}
+
 .day-popup__header {
-  position: absolute;
   background-color: var(--op-color-primary-base);
   color: var(--op-color-primary-plus-seven);
-  left: 4rem;
+  transform: translateY(-29px);
+  height: 26px;
   padding: var(--op-space-2x-small) var(--op-space-x-small);
   border-radius: var(--op-radius-medium) var(--op-radius-medium) 0 0;
-  top: -2.8rem;
 }
 
 .day-popup-title, .day-popup__photo {
@@ -69,9 +76,13 @@
 
 .day-popup__body {
   display: flex;
-  gap: var(--op-space-small);
+  gap: var(--op-space-x-small);
 
   @media only screen and (max-width: $breakpoint-small) {
     gap: 0;
   }
+}
+
+.day-popup__save {
+  transform: translateX(-4.5rem) translateY(-0.5rem);
 }

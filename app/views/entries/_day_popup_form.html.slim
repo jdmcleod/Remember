@@ -1,25 +1,25 @@
-- visible = local_assigns[:visible] && params[:visible]
 #day-popup-form data-testid='day-popup-form' class="#{local_assigns[:visible] ? '' : 'visibility-hidden'}" data-day-popup-target="container"
   .day-popup data-day-popup-target="popup"
     - if @entry.present?
-      .day-popup__header
-        .flex.gap-xxs.items-center
-          .flex
-            button data-action="click->day-popup#backOneMonth"
-              = icon('chevrons-left', color: 'primary-base', classes: 'btn btn--icon btn--x-small')
+      .day-popup__header-wrapper
+        .day-popup__header
+          .flex.gap-xxs.items-center
+            .flex
+              button data-action="click->day-popup#backOneMonth"
+                = icon('chevrons-left', color: 'primary-base', classes: 'btn btn--icon btn--x-small')
 
-            button data-action="click->day-popup#backOneDay"
-              = icon('chevron-left', color: 'primary-base', classes: 'btn btn--icon btn--x-small')
+              button data-action="click->day-popup#backOneDay"
+                = icon('chevron-left', color: 'primary-base', classes: 'btn btn--icon btn--x-small')
 
-          span.day-popup-title = "What I did on #{@entry.journalable.date.strftime('%A')}, "
-          span.day-popup-title-day = "#{@entry.title}"
+            span.day-popup-title = "What I did on #{@entry.journalable.date.strftime('%A')}, "
+            span.day-popup-title-day = "#{@entry.title}"
 
-          .flex
-            button data-action="click->day-popup#forwardOneDay"
-              = icon('chevron-right', color: 'primary-base', classes: 'btn btn--icon btn--x-small')
+            .flex
+              button data-action="click->day-popup#forwardOneDay"
+                = icon('chevron-right', color: 'primary-base', classes: 'btn btn--icon btn--x-small')
 
-            button data-action="click->day-popup#forwardOneMonth"
-              = icon('chevrons-right', color: 'primary-base', classes: 'btn btn--icon btn--x-small')
+              button data-action="click->day-popup#forwardOneMonth"
+                = icon('chevrons-right', color: 'primary-base', classes: 'btn btn--icon btn--x-small')
 
       .day-popup__body
         - if @memories&.any?
@@ -40,5 +40,7 @@
 
             = f.rich_text_area :content, data: { testid: 'short-entry-input', action: 'click->day-popup#inputChange' }
 
-        .margin-top-xs
+        .badges-addable-container
           = render 'day_badges'
+          button.btn.btn-notice.btn--icon.btn--small.day-popup__save title="Save" type="submit" name="commit" data-action="day-popup#close"
+            = icon('discount-check', classes: 'icon--large', color: 'alerts-notice-plus-six')

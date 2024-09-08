@@ -1,0 +1,17 @@
+- during_event = @event_dates&.include?(day.date)
+
+- event = during_event ? @events.in_range(day.date, day.date).first : nil
+- day_classes = class_names('day--current': day.date.today?, 'day--future': day.date > Date.current)
+- wrapper_classes = class_names('day__wrapper', day.trip_class(event) => event.present?, 'day__wrapper--no-entry': (day.short_entry.blank? || day.short_entry.content.blank?))
+- wrapper_style = event.present? ? "background-color: #{event&.color}" : nil
+
+div class=wrapper_classes style=wrapper_style
+  - if event.present? && day.date == event.start_date
+    = modal_link_to year_event_path(month.year, event) do
+      .event-handle style=wrapper_style
+        = icon('plane', classes: 'icon--small', color: 'neutral-plus-max')
+
+  button.day class=day_classes data-day-popup-target="day" data-action='click->day-popup#show' data-date=day.date.strftime("%Y-%-m-%-d") data-testid="day-#{day.id}"
+    = render 'years/day_image', day: day
+
+  = render partial: 'years/day_badges', locals: { day: day }

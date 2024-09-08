@@ -3,6 +3,7 @@ html data-theme-mode="light"
   = render 'layouts/head'
 
   body
+    = render 'shared/flash'
     = turbo_frame_tag 'modal'
     = render 'confirm'
     - if current_user.present?

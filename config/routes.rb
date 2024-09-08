@@ -16,7 +16,10 @@ Rails.application.routes.draw do
     resources :events
   end
 
-  resources :months, only: [:show]
+  resources :months, only: [:show] do
+    get :entry_form, on: :member
+    patch :update_entry, on: :member
+  end
   resources :badges, only: [:index, :new, :edit, :create, :update, :destroy]
 
   resources :entries, only: %i[update] do

@@ -1,0 +1,6 @@
+turbo-frame#flash data-turbo-cache=false
+  - flash.each do |type, msg|
+    - if msg.present?
+      .alert--flash class="alert-#{type}"
+        = icon(icon_name_for_flash(type), classes: 'icon--large')
+        .alert__messages = msg

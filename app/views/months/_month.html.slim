@@ -4,9 +4,10 @@
 
   .flex.justify-between
     = modal_link_to month_path(month), class: 'btn btn--icon btn--small' do
-      = icon('book-2', classes: 'icon--large', color: 'neutral-minus-two')
+      = icon('layout-list', classes: 'icon--large', color: 'neutral-minus-two')
     .month-name = month.name
-    = icon('highlight', classes: 'icon--large', color: 'neutral-minus-two')
+    = modal_link_to entry_form_month_path(month), class: 'btn btn--icon btn--small', 'data-testid': "edit-month-entry-#{month.id}" do
+      = icon('highlight', classes: 'icon--large', color: 'neutral-minus-two')
   .month-day-names
     div s
     div m
@@ -19,5 +20,4 @@
     - month.days.first.date.wday.times do |i|
       div
 
-    - month.days.each do |day|
-      = render 'years/day', day:, month:, event: @events&.detect { |event| event.contains_date?(day.date) }
+    = render month.days, month: month

@@ -1,6 +1,17 @@
 module ApplicationHelper
   include IconHelper
 
+  def icon_name_for_flash(type)
+    case type
+    when 'notice'
+      'circle-check'
+    when 'alert'
+      'alert-circle'
+    else
+      type
+    end
+  end
+
   def tab_link_to(name, path)
     link_to(name, path, active_tab(path))
   end

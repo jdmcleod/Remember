@@ -1,6 +1,6 @@
 - if day.be_real_memories.any?
   .day__background-image
-    = image_tag day.be_real_memories.first.thumbnail_url
+    = image_tag day.be_real_memories.first.thumbnail_url, loading: "lazy"
   .day__number.day__number--on-image = day.number
 - else
   .day__number = day.number
