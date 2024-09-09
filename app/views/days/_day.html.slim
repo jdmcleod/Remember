@@ -1,6 +1,6 @@
 - during_event = @event_dates&.include?(day.date)
 
-- event = during_event ? @events.in_range(day.date, day.date).first : nil
+- event = during_event ? @events.contains_date(day.date).first : nil
 - day_classes = class_names('day--current': day.date.today?, 'day--future': day.date > Date.current)
 - wrapper_classes = class_names('day__wrapper', day.trip_class(event) => event.present?, 'day__wrapper--no-entry': (day.short_entry.blank? || day.short_entry.content.blank?))
 - wrapper_style = event.present? ? "background-color: #{event&.color}" : nil
