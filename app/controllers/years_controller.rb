@@ -13,7 +13,7 @@ class YearsController < ApplicationController
   private
 
   def query
-    current_user.years.includes(quarters: [{ months: [{ days: [:short_entry, :badges, :be_real_memories] }] }])
+    current_user.years.includes(quarters: [{ months: [{ days: [:short_entry, :badges, be_real_memories: [{ thumbnail_attachment: :blob }]] }] }])
   end
 
   def set_data
