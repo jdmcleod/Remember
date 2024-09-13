@@ -111,7 +111,7 @@ export default class REMUploader extends LitElement {
     }
       
     .upload-container {
-      width: 100%;
+      width: 215px;
       flex-grow: 1;
       display: flex;
       flex-direction: column;
@@ -129,7 +129,7 @@ export default class REMUploader extends LitElement {
       text-align: center;
 
       .upload-container__add-icon {
-        margin-bottom: var(--op-space-x-small);
+        margin-bottom: var(--op-space-2x-small);
       }
 
       .files-input {
@@ -148,18 +148,19 @@ export default class REMUploader extends LitElement {
 
     .files-errors {
       color: var(--op-color-alerts-danger-base);
-      font-size: var(--op-font-x-small);
+      font-size: var(--op-font-small);
     }
 
     .upload-error {
       color: var(--op-color-alerts-danger-base);
-      font-size: var(--op-font-x-small);
-      margin-bottom: var(--op-space-x-small);
+      font-size: var(--op-font-small);
+      margin: var(--op-space-2x-small);
+      margin-top: 0;
     }
       
     .allowed-file-extensions {
       color: var(--op-color-primary-on-plus-eight-alt);
-      font-size: var(--op-font-2x-small);
+      font-size: var(--op-font-x-small);
     }
   `
 }
