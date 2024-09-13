@@ -1,4 +1,4 @@
-#events
+#events data-controller="trips-form"
   .flex.full-width.justify-between
     = link_to year_events_path, class: 'btn btn--pill btn--small', data: { turbo_stream: true } do
       = icon('chevron-left')
@@ -18,8 +18,14 @@
       .one-fifth-width
         = f.input :color, as: :color
 
-    .flex.gap-sm
-      .half-width
-        = f.input :start_date, as: :date, html5: true
-      .half-width
-        = f.input :end_date, as: :date, html5: true
+    .flex.items-center.gap-md
+      .one-fifth-width
+        = f.input :single_day, input_html: { data: { action: 'click->trips-form#toggleSingleDay' } }
+
+      .two-fifths-width
+        = f.input :start_date, as: :date, html5: true, input_html: { data: { action: 'change->trips-form#startDateSelected' } }
+      .two-fifths-width data-trips-form-target='endDateInputWrapper'
+        = f.input :end_date, as: :date, html5: true, input_html: { 'data-trips-form-target': 'endDateInput' }
+
+      .two-fifths-width.hidden data-trips-form-target='decoratorInput'
+        = f.input :decorator, as: :select, collection: Event.decorators

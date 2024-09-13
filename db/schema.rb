@@ -126,6 +126,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_12_235932) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "icon_name"
+    t.boolean "single_day", default: false
     t.index ["user_id"], name: "index_events_on_user_id"
   end
 

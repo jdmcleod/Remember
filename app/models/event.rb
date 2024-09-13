@@ -9,6 +9,11 @@ class Event < ApplicationRecord
   validates :start_date, presence: true
   validates :end_date, presence: true
 
+  enum decorator: {
+    celebration: 'celebration',
+    sad: 'sad'
+  }.freeze
+
   def contains_date?(date)
     start_date <= date && end_date >= date
   end
