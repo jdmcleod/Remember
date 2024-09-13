@@ -34,6 +34,12 @@ class Day < ApplicationRecord
     return 'day--trip-end' if event.end_date == date
   end
 
+  def wrapper_class(event)
+    return "day__wrapper #{trip_class(event)}" if event.present? && event.decorator.blank?
+    return "day__wrapper day__wrapper--no-entry}" if short_entry.blank?
+    'day__wrapper'
+  end
+
   def during_event?(event)
     event.start_date <= date && event.end_date >= date
   end
