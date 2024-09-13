@@ -23,8 +23,9 @@
 
       .day-popup__body
         - if @image.present?
-          .day-popup__photo
-            = image_tag @image
+          = button_to delete_image_attachment_day_path(@day), method: :delete, class: 'padding-inline-none' do
+            .day-popup__photo.day-popup__photo--deletable
+              = image_tag @image
         - elsif @memories&.any?
           .day-popup__photo
             - memory = @memories.first
