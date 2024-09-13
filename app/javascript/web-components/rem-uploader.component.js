@@ -89,9 +89,9 @@ export default class REMUploader extends LitElement {
     return html`
       ${this._renderUploadError()}
       <div class="upload-container" @click=${this._onClick} @drop=${this._onDrop} @dragover=${this._onDragover} @dragleave=${this._onDragleave}>
-        <ph-icon name="plus" size="x-large" class="upload-container__add-icon"></ph-icon>
-        <div>Click to choose or drag and drop and image</div>
-        <div>(${this.allowedFileExtensions.map(fileExtension => `.${fileExtension}`).join(', ')})</div>
+        <ti-icon name="plus" size="x-large" class="upload-container__add-icon"></ti-icon>
+        <div>Click to choose or drag and drop an image</div>
+        <div class="allowed-file-extensions">(${this.allowedFileExtensions.map(fileExtension => `.${fileExtension}`).join(', ')})</div>
         <slot name="input" class="files-input"></slot>
       </div>
       <slot name="errors" class="files-errors"></slot>
@@ -99,56 +99,25 @@ export default class REMUploader extends LitElement {
   }
 
   static styles = css`
-    .files-container {
-      display: flex;
-      flex-direction: column;
-      max-height: 240px;
-      overflow-y: auto;
-
-      .file-row {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        transition: 0.2s;
-        padding: var(--op-space-2x-small) var(--op-space-x-small);
-
-        .file-delete {
-          visibility: hidden;
-
-          .file-delete__icon {
-            color: var(--op-color-alerts-danger-base);
-          }
-        }
-
-        &:hover {
-          background-color: var(--op-color-neutral-plus-eight);
-          border-radius: var(--op-radius-medium);;
-
-          .file-delete {
-            visibility: visible;
-          }
-        }
-      }
-    }
-
     .upload-container {
       width: 100%;
-      height: var(--op-space-5x-large);
+      height: 100%;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       cursor: pointer;
-      margin-block: var(--op-space-x-small);
-      padding-block: var(--op-space-small);
+      gap: var(--op-space-x-small);
 
       background-color: var(--op-color-primary-plus-eight);
       color: var(--op-color-primary-on-plus-eight-alt);
       border-radius: var(--op-radius-medium);
-      border: 1px dashed var(--op-color-primary-plus-six);
+      border: 3px dashed var(--op-color-primary-plus-six);
+      box-sizing: border-box;
+      font-size: var(--op-font-small);
+      text-align: center;
 
       .upload-container__add-icon {
-        color: var(--op-color-neutral-plus-three);
         margin-bottom: var(--op-space-x-small);
       }
 
@@ -158,17 +127,12 @@ export default class REMUploader extends LitElement {
 
       &.upload-container--dragover, &:hover {
         background-color: var(--op-color-primary-plus-seven);
-        border: 1px dashed var(--op-color-primary-plus-five);
+        border: 3px dashed var(--op-color-primary-plus-five);
       }
     }
 
     .upload-container * {
       pointer-events: none;
-    }
-
-    .files-label {
-      color: var(--op-color-on-background);
-      font-size: var(--op-font-x-small);
     }
 
     .files-errors {
@@ -178,6 +142,11 @@ export default class REMUploader extends LitElement {
 
     .upload-error {
       color: var(--op-color-alerts-danger-base)
+    }
+      
+    .allowed-file-extensions {
+      color: var(--op-color-primary-on-plus-eight-alt);
+      font-size: var(--op-font-2x-small);
     }
   `
 }
