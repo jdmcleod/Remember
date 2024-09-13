@@ -28,9 +28,10 @@ class Day < ApplicationRecord
   def trip_class(event)
     return unless event.present?
 
+    return 'day--event' if event.single_day?
+
     return 'day--trip-start' if event.start_date == date
     return 'day--trip-end' if event.end_date == date
-    return 'day--trip'
   end
 
   def during_event?(event)

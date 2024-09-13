@@ -16,7 +16,8 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = current_user.events.new(event_params)
+    attrs = event_params.to_h
+    @event = current_user.events.new(attrs)
 
     if @event.save
       update_view_for_success
@@ -58,6 +59,6 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:start_date, :end_date, :name, :color, :icon_name, :decorator)
+    params.require(:event).permit(:start_date, :end_date, :name, :color, :icon_name, :decorator, :single_day)
   end
 end

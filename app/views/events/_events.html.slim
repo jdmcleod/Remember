@@ -9,9 +9,7 @@
                 .event-card__name
                   = event.name
                 .event-card__dates
-                  = event.start_date.strftime("%B %d, %Y")
-                  | —
-                  = event.end_date.strftime("%B %d, %Y")
+                  = event.date_range_string
               .event-card__color-swatch style="background-color: #{event.color}"
 
   - else

@@ -1,13 +1,13 @@
 class Event < ApplicationRecord
   belongs_to :user
 
-  scope :in_range, -> (query_start_date, query_end_date) { where(arel_table[:start_date].gteq(query_start_date)).where(arel_table[:end_date].lteq(query_end_date)) }
+  scope :in_range, -> (query_start_date, query_end_date) { where(arel_table[:start_date].gteq(query_start_date)).where(arel_table[:start_date].lteq(query_end_date)) }
   scope :contains_date, -> (date) { where(arel_table[:start_date].lteq(date)).where(arel_table[:end_date].gteq(date)) }
 
   validate :start_date_not_after_end_date
   validates :name, presence: true
   validates :start_date, presence: true
-  validates :end_date, presence: true
+  validates :end_date, presence: true, if: :multiday?
 
   enum decorator: {
     celebration: 'celebration',
@@ -16,6 +16,14 @@ class Event < ApplicationRecord
 
   def contains_date?(date)
     start_date <= date && end_date >= date
+  end
+
+  def multiday?
+    !single_day
+  end
+
+  def end_date
+    super || start_date
   end
 
   def range
@@ -27,6 +35,8 @@ class Event < ApplicationRecord
   end
 
   def date_range_string
+    return start_date.strftime("%B %d, %Y") if single_day?
+
     "#{start_date.strftime("%B %d, %Y")} - #{end_date.strftime("%B %d, %Y")}"
   end
 

@@ -4,7 +4,7 @@ import { toggleDisplayed } from 'helpers/dom_helpers'
 export default class TripsFormController extends Controller {
   static targets = ['checkbox', 'endDateInput', 'endDateInputWrapper', 'decoratorInput']
 
-  toggleSingleDay() {
+  toggleFormVersion() {
     toggleDisplayed(this.endDateInputWrapperTarget)
     toggleDisplayed(this.decoratorInputTarget)
   }
