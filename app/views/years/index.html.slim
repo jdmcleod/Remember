@@ -1,0 +1,7 @@
+= render 'shared/header', hide_nav: true
+
+.app-container
+  .years-container
+    - @years.each do |year|
+      = link_to year_path(year) do
+        .year = year.year

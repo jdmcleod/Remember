@@ -1,0 +1,28 @@
+.years-container {
+  --min-width: 25rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(var(--min-width), auto));
+  gap: var(--op-space-2x-large);
+}
+
+.year {
+  min-height: 25rem;
+
+  font-size: 90px;
+  font-family: fantasy;
+  font-weight: lighter;
+  color: var(--op-color-primary-base);
+  background-color: var(--op-color-neutral-plus-max);
+  border-radius: var(--op-radius-2x-large);
+  box-shadow: 0.5px 1px 1px var(--op-color-neutral-plus-four);
+  padding: var(--op-space-2x-large);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    background-color: var(--op-color-primary-base);
+    color: var(--op-color-neutral-plus-max);
+    box-shadow: 0.5px 1px 1px var(--op-color-primary-plus-four);
+  }
+}

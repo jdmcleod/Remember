@@ -5,6 +5,10 @@ class YearsController < ApplicationController
     render :show
   end
 
+  def index
+    @years = current_user.years.where('years.year <= ?', Date.current.year.to_s).order(:year)
+  end
+
   def show
     @year = query.find_or_create_by(year: params[:id])
     set_data
