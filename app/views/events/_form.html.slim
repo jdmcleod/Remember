@@ -1,13 +1,20 @@
 #events
-  = link_to year_events_path, class: 'btn btn--pill btn--small', data: { turbo_stream: true } do
-    = icon('chevron-left')
-    | Back
+  .flex.full-width.justify-between
+    = link_to year_events_path, class: 'btn btn--pill btn--small', data: { turbo_stream: true } do
+      = icon('chevron-left')
+      | Back
+    div
+      | Icon Settings (
+      a.text-decoration-none href='https://tablericons.com/' target="_blank" See icon library
+      | )
 
   - url = @event.persisted? ? year_event_url(@year, @event) : year_events_path
   = simple_form_for @event, url: do |f|
     .flex.gap-sm
-      .four-fifths-width
+      .three-fifths-width
         = f.input :name
+      .one-fifth-width
+        = f.input :icon_name
       .one-fifth-width
         = f.input :color, as: :color
 

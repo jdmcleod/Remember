@@ -25,6 +25,10 @@ class Event < ApplicationRecord
     "#{start_date.strftime("%B %d, %Y")} - #{end_date.strftime("%B %d, %Y")}"
   end
 
+  def icon_name
+    super || 'plane'
+  end
+
   private
 
   def start_date_not_after_end_date
