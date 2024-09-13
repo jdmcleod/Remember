@@ -52,5 +52,9 @@ export default class TiIcon extends LitElement {
     :host([size='x-large']) {
       --font-size: var(--op-font-x-large);
     }
+    
+    :host([size='supa-large']) {
+      --font-size: 10rem;
+    }
   `
 }

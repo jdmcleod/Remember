@@ -72,8 +72,25 @@ export default class REMBeRealMemory extends LitElement {
     this.dragging = false
   }
 
+  _renderSecondary(height, image) {
+    if (this.secondarySrc) {
+      return html`
+        <img
+          id="secondary"
+          src="${image}"
+          alt="${this.date}"
+          style="width: ${height};"
+          class="secondary"
+          @click="${this.#handleClick}"
+          @mousedown="${this.setupDrag}"
+        >
+      `
+    }
+  }
+
   render() {
-    const images = [this.primarySrc, this.secondarySrc]
+    const images = [this.primarySrc]
+    if (this.secondarySrc) images.push(this.secondarySrc)
 
     if (this.swapped) {
       images.reverse()
@@ -91,15 +108,8 @@ export default class REMBeRealMemory extends LitElement {
     const secondaryHeight = `calc(var(--op-size-unit) * ${size / 3.34})`
     return html`
       <img src="${images[0]}" @click="${this.#expandImage}" alt="${this.date}" class="${classes}" style="width: ${primaryHeight};">
-      <img
-        id="secondary"
-        src="${images[1]}"
-        alt="${this.date}"
-        style="width: ${secondaryHeight};"
-        class="secondary"
-        @click="${this.#handleClick}"
-        @mousedown="${this.setupDrag}"
-      >
+      
+      ${this._renderSecondary(secondaryHeight, images[1])}
     `
   }
 

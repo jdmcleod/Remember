@@ -69,7 +69,8 @@ export default class REMUploader extends LitElement {
   }
 
   _addFile(file, fullPath = undefined) {
-    const fileExtension = file.name.split('.')[1]
+    const   split = file.name.split('.')
+    const fileExtension = split[split.length - 1]
     if (Boolean(this.allowedFileExtensions) && !this.allowedFileExtensions.includes(fileExtension)){
       return this.invalidFileExtensions.push(fileExtension)
     }
@@ -94,10 +95,7 @@ export default class REMUploader extends LitElement {
     return html`
       ${this._renderUploadError()}
       <div class="upload-container" @click=${this._onClick} @drop=${this._onDrop} @dragover=${this._onDragover} @dragleave=${this._onDragleave}>
-        <ti-icon name="plus" size="x-large" class="upload-container__add-icon"></ti-icon>
-        <div>Click to choose or drag and drop an image</div>
-        <div class="allowed-file-extensions">(${this.allowedFileExtensions.map(fileExtension => `.${fileExtension}`).join(', ')})</div>
-        <slot name="input" class="files-input"></slot>
+        <ti-icon name="camera" size="supa-large" class="upload-container__add-icon"></ti-icon>
       </div>
       <slot name="errors" class="files-errors"></slot>
     `
@@ -121,7 +119,7 @@ export default class REMUploader extends LitElement {
       gap: var(--op-space-x-small);
 
       background-color: var(--op-color-primary-plus-eight);
-      color: var(--op-color-primary-on-plus-eight-alt);
+      color: var(--op-color-primary-plus-six);
       border-radius: var(--op-radius-medium);
       border: 3px dashed var(--op-color-primary-plus-six);
       box-sizing: border-box;
