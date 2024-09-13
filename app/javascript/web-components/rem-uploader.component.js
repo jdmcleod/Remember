@@ -104,9 +104,15 @@ export default class REMUploader extends LitElement {
   }
 
   static styles = css`
+    :host {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+      
     .upload-container {
       width: 100%;
-      height: 100%;
+      flex-grow: 1;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -146,7 +152,9 @@ export default class REMUploader extends LitElement {
     }
 
     .upload-error {
-      color: var(--op-color-alerts-danger-base)
+      color: var(--op-color-alerts-danger-base);
+      font-size: var(--op-font-x-small);
+      margin-bottom: var(--op-space-x-small);
     }
       
     .allowed-file-extensions {
