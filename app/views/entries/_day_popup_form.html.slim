@@ -35,7 +35,7 @@
               size="54"}
         - else
           = simple_form_for(@day) do |f|
-            rem-uploader allowedFileExtensions=%w[png jpg jpeg svg webp heic]
+            rem-uploader formID="edit_day_#{@day.date.yday}" allowedFileExtensions=%w[png jpg jpeg svg webp heic]
               div slot='input' = f.input :image, as: :file
               div slot='errors' = f.object.errors[:image].join(', ') if f.object.errors[:image].any?
 

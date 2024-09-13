@@ -3,6 +3,7 @@ import { LitElement, css, html } from "lit"
 export default class REMUploader extends LitElement {
   static properties = {
     allowedFileExtensions: { type: Array, attribute: true, reflect: true },
+    formId: { type: String },
     invalidFileExtensions: { type: Array, state: true },
     dataTransfer: { type: Object, state: true },
     fileNames: { type: Array, state: true },
@@ -12,6 +13,7 @@ export default class REMUploader extends LitElement {
     super()
 
     this.allowedFileExtensions = undefined
+    this.formId = undefined
     this.invalidFileExtensions = []
     this.dataTransfer = new DataTransfer()
     this.fileNames = []
@@ -74,6 +76,9 @@ export default class REMUploader extends LitElement {
     this.dataTransfer.items.add(file)
     this.fileNames.push(fullPath ?? file.name)
     this._fileInput().files = this.dataTransfer.files
+
+    document.getElementById(this.formId).requestSubmit()
+
     this.requestUpdate()
   }
 
