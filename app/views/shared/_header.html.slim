@@ -3,7 +3,7 @@
 div data-controller='hotkeys' data-hotkeys-bindings-value='{"command+/": ".app__header->search#toggle"}'
 
 .app__header data-controller='search'
-  = render 'shared/search_form'
+  = render 'shared/search_form', year: @year
   .header
     nav.header__nav
       - if !hide_nav

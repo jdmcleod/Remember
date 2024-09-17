@@ -23,14 +23,6 @@
     }
   }
 
-  .header__logo {
-    max-width: 180px;
-
-    @media only screen and (max-width: $breakpoint-small) {
-      display: none;
-    }
-  }
-
   .header__year {
     margin-bottom: -3px;
   }
@@ -73,5 +65,13 @@
     @media only screen and (max-width: $breakpoint-small) {
       padding-inline: var(--op-space-3x-small);
     }
+  }
+}
+
+.header__logo {
+  max-width: 180px;
+
+  @media only screen and (max-width: $breakpoint-small) {
+    display: none;
   }
 }
