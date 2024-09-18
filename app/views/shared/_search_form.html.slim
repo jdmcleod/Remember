@@ -1,7 +1,7 @@
 .search-form__backdrop.hidden data-search-target='backdrop' data-action="click->search#toggle"
 .search-form.hidden data-search-target='form'
-  = modal_link_to '', search_entries_path, class: 'hidden', data: { size: 'x-large', search_target: 'link' }
+  = modal_link_to '', search_entries_path(year_id: try(:year)&.id), class: 'hidden', data: { size: 'x-large', search_target: 'link' }
   input.form-control.search-form__input{data-search-target="input"
     data-action="keydown.esc->search#close keydown.enter->search#search"
-    placeholder="Search term"
+    placeholder="Search term or date"
     data-testid="search-input"}

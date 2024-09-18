@@ -1,0 +1,20 @@
+.app__header data-controller='hotkeys' data-hotkeys-bindings-value='{"command+/": ".app__header->search#toggle"}'
+  .navbar.flex.justify-between data-controller='search'
+    = image_tag 'logo-red.svg', class: 'header__logo'
+
+    button.btn data-action="click->search#toggle" data-testid='search-button'
+      = icon('search', classes: 'icon--large icon--bold', color: 'primary-minus-two')
+    = render 'shared/search_form'
+
+.app-container
+
+  .years-container
+    - @years.each do |year|
+      .year
+        = link_to year_path(year) do
+          .flex.flex-col.items-center.gap-sm
+            .year-label = year.year
+
+            .year-actions
+              .year-action.year-action--open
+                = icon('arrow-big-right-filled', classes: 'icon--medium', color: 'alerts-notice-minus-four')

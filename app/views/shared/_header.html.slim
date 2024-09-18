@@ -3,7 +3,7 @@
 div data-controller='hotkeys' data-hotkeys-bindings-value='{"command+/": ".app__header->search#toggle"}'
 
 .app__header data-controller='search'
-  = render 'shared/search_form'
+  = render 'shared/search_form', year: @year
   .header
     nav.header__nav
       - if !hide_nav
@@ -24,16 +24,22 @@ div data-controller='hotkeys' data-hotkeys-bindings-value='{"command+/": ".app__
 
     nav.header__nav
       .header__wing.header__wing--right
-        = modal_link_to year_events_path(@year), class: 'btn btn--no-background btn--small', 'data-testid': 'trips-button' do
+        = modal_link_to year_events_path(@year || current_user.years.current_year), class: 'btn btn--no-background btn--small', 'data-testid': 'trips-button' do
           = icon('plane', classes: 'icon--large icon--bold', color: 'primary-minus-two')
 
-        .btn.btn--icon.btn--no-background = render 'shared/context_menu', locals: { icon: 'user-hexagon' }
-          = link_to profile_users_path, class: 'btn btn--small btn--no-border full-width' do
-            = icon('user', classes: 'icon--large icon--bold', color: 'primary-minus-two')
-            | Profile
-          = button_to sign_out_sessions_path, method: :delete, class: 'btn btn--small btn--no-border' do
-            = icon('logout', classes: 'icon--large icon--bold', color: 'primary-minus-two')
-            | Logout
+        .btn.btn--icon.btn--no-background
+          = render 'shared/context_menu', locals: { icon: 'user-hexagon' }
+            = link_to years_path, class: 'btn btn--small btn--no-border full-width' do
+              = icon('home', classes: 'icon--large icon--bold', color: 'primary-minus-two')
+              | Home
+
+            = link_to profile_users_path, class: 'btn btn--small btn--no-border full-width' do
+              = icon('user', classes: 'icon--large icon--bold', color: 'primary-minus-two')
+              | Profile
+
+            = button_to sign_out_sessions_path, method: :delete, class: 'btn btn--small btn--no-border' do
+              = icon('logout', classes: 'icon--large icon--bold', color: 'primary-minus-two')
+              | Logout
 
       - if !hide_nav
         = link_to year_path(@year.year.to_i + 1), class: 'button btn btn--icon btn--pill btn--no-background' do

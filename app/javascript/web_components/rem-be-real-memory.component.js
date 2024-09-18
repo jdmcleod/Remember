@@ -9,6 +9,7 @@ export default class REMBeRealMemory extends LitElement {
     swapped: { type: Boolean, state: true },
     dragging: { type: Boolean, state: true },
     expanded: { type: Boolean, state: false },
+    disableExpand: { type: Boolean, state: false }
   }
 
   constructor() {
@@ -20,6 +21,7 @@ export default class REMBeRealMemory extends LitElement {
     this.swapped = false
     this.dragging = false
     this.expanded = false
+    this.disableExpand = false
   }
 
   get secondary() {
@@ -57,6 +59,8 @@ export default class REMBeRealMemory extends LitElement {
   }
 
   #expandImage() {
+    if (this.disableExpand) return
+
     this.expanded = !this.expanded
   }
 
