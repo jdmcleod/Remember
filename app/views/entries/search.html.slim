@@ -3,10 +3,15 @@
 
 .search-results
   - @entries.each do |entry|
-    .card-padded
+    .card-padded.flex.flex-col.gap-sm
       .card__header.flex.justify-between
         div = "#{entry.title}, #{entry.date.strftime('%Y')}"
-        div = entry.journalable_type.humanize
+
+        .flex.gap-sm
+          div = entry.journalable_type.humanize
+          .search__open-day
+            = link_to year_path(entry.date.year) do
+              = icon('arrow-big-right-filled', classes: 'icon--medium', color: 'alerts-notice-minus-four')
 
       .search-result
         - if entry.journalable_type == 'Day' && entry.journalable.be_real_memories.any?

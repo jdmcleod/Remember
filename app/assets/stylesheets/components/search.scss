@@ -61,3 +61,22 @@
   background-color: var(--op-color-primary-plus-five);
   box-shadow: inset 0 calc(-1 * var(--op-border-width)) 0 0 var(--op-color-primary-minus-three);
 }
+
+.search__open-day {
+  --size: 3rem;
+  width: var(--size);
+  height: var(--size);
+  display: flex;
+  padding: var(--op-space-small);
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: var(--op-radius-2x-large);
+  background-color: var(--op-color-alerts-notice-plus-four);
+  color: var(--op-color-alerts-notice-minus-four);
+
+  &:hover {
+    background-color: var(--op-color-alerts-notice-plus-two);
+    color: var(--op-color-alerts-notice-minus-four);
+  }
+}

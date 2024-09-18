@@ -11,11 +11,10 @@
   .years-container
     - @years.each do |year|
       .year
-        .flex.flex-col.items-center.gap-sm
-          = link_to year_path(year) do
+        = link_to year_path(year) do
+          .flex.flex-col.items-center.gap-sm
             .year-label = year.year
 
-          .year-actions
-            .year-action.year-action--open
-              = link_to year_path(year) do
+            .year-actions
+              .year-action.year-action--open
                 = icon('arrow-big-right-filled', classes: 'icon--medium', color: 'alerts-notice-minus-four')
