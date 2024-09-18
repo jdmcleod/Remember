@@ -25,7 +25,7 @@
                 disableExpand=true
                 size="54"}
             div
-              = highlight_search_result(entry.content.to_plain_text, @search_term)
+              = highlight_search_result(entry.content.to_plain_text.truncate(800), @search_term)
         - else
-          = highlight_search_result(entry.content.to_plain_text, @search_term)
+          = highlight_search_result(entry.content.to_plain_text.truncate(800), @search_term)
 
