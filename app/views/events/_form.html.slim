@@ -1,18 +1,32 @@
-#events
-  = link_to year_events_path, class: 'btn btn--pill btn--small', data: { turbo_stream: true } do
-    = icon('chevron-left')
-    | Back
+#events data-controller="trips-form"
+  .flex.full-width.justify-between
+    = link_to year_events_path, class: 'btn btn--pill btn--small', data: { turbo_stream: true } do
+      = icon('chevron-left')
+      | Back
+    div
+      | Icon Settings (
+      a.text-decoration-none href='https://tablericons.com/' target="_blank" See icon library
+      | )
 
   - url = @event.persisted? ? year_event_url(@year, @event) : year_events_path
   = simple_form_for @event, url: do |f|
-    .flex.gap-sm
+    .flex.gap-sm.items-center
       .four-fifths-width
         = f.input :name
+      .one-fifths-width
+        = f.input :single_day, input_html: { data: { action: 'click->trips-form#toggleFormVersion', 'trips-form-target': 'checkbox' } }
+
+    .flex.items-center.gap-md data-trips-form-target='hideForDecoration' class=class_names('hidden' => @event.single_day? )
+      .one-fifth-width
+        = f.input :icon_name
       .one-fifth-width
         = f.input :color, as: :color
 
-    .flex.gap-sm
-      .half-width
-        = f.input :start_date, as: :date, html5: true
-      .half-width
-        = f.input :end_date, as: :date, html5: true
+    .flex.items-center.gap-md
+      .two-fifths-width
+        = f.input :start_date, as: :date, html5: true, input_html: { data: { action: 'change->trips-form#startDateSelected' } }
+      .two-fifths-width data-trips-form-target='hideForDecoration' class=class_names('hidden' => @event.single_day? )
+        = f.input :end_date, as: :date, html5: true, input_html: { 'data-trips-form-target': 'endDateInput' }
+
+      .two-fifths-width data-trips-form-target='decoratorInput' class=class_names('hidden' => !@event.single_day? )
+        = f.input :decorator, as: :select, collection: Event.decorators

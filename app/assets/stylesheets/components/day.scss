@@ -117,3 +117,16 @@
   border-top-right-radius: var(--op-radius-large);
   border-bottom-right-radius: var(--op-radius-large);
 }
+
+.day--event {
+  border-radius: var(--op-radius-large);
+}
+
+.day-decoration-image {
+  position: absolute;
+  width: 8rem;
+  height: 8rem;
+  max-width: unset;
+  left: -1.5rem;
+  top: -1.5rem;
+}
