@@ -5,7 +5,7 @@ class EventsController < ApplicationController
   end
 
   def index
-    @events = current_user.events.in_range(@year.start_date, @year.end_date).order(:start_date)
+    find_events
     render layout: 'modal'
   end
 
@@ -49,9 +49,15 @@ class EventsController < ApplicationController
   private
 
   def update_view_for_success
-    @events = current_user.events.in_range(@year.start_date, @year.end_date)
-
-    redirect_to year_events_path
+    find_events
+    @event_dates = @events.flat_map(&:range).uniq
+    months = current_user.months.contains_date(@event.start_date).contains_date(@event.end_date)
+    render turbo_stream: [
+      months.map do |month|
+        turbo_stream.replace("month-#{month.number}", partial: 'months/month', locals: { month: })
+      end,
+      turbo_stream.update('modal-body', partial: 'events/events')
+    ].join
   end
 
   def set_year
@@ -60,5 +66,9 @@ class EventsController < ApplicationController
 
   def event_params
     params.require(:event).permit(:start_date, :end_date, :name, :color, :icon_name, :decorator, :single_day)
+  end
+
+  def find_events
+    @events = current_user.events.in_range(@year.start_date, @year.end_date).order(:start_date)
   end
 end

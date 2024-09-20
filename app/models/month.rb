@@ -7,6 +7,8 @@ class Month < ApplicationRecord
 
   has_one :entry, as: :journalable, dependent: :destroy, class_name: 'Entry'
 
+  scope :contains_date, -> (date) { where(arel_table[:start_date].lteq(date)).where(arel_table[:end_date].gteq(date)) }
+
   def number
     start_date.month
   end
