@@ -10,8 +10,7 @@ class Event < ApplicationRecord
   validates :end_date, presence: true, if: :multiday?
 
   enum decorator: {
-    celebration: 'celebration',
-    sad: 'sad'
+    celebration: 'celebration'
   }.freeze
 
   def contains_date?(date)
