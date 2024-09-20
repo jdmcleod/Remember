@@ -13,7 +13,7 @@
 
   .text-pair.text-pair--inline
     .text-pair__title Last Post
-    .text-pair__subtitle = @profile.last_bts_post_at.to_fs(:full_date)
+    .text-pair__subtitle = @profile.last_bts_post_at&.to_fs(:full_date)
 
   .text-pair
     .text-pair__title Realmojis
