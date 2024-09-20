@@ -22,6 +22,12 @@ RSpec.describe 'Trips', type: :system, js: true do
       expect(page).to have_content 'A trip'
     }.to change(Event, :count).by(1)
 
+    day = user.days.find_by(date: Date.new(Date.current.year, 1, 11))
+    within find(data_test("month-#{day.month.id}")) do
+      expect(page).to have_css '.day--trip-start'
+      expect(page).to have_css '.day--trip-end'
+    end
+
     click_on 'A trip'
     fill_in 'Name', with: 'Updated trip'
     click_on 'Update'
@@ -30,5 +36,10 @@ RSpec.describe 'Trips', type: :system, js: true do
       click_on 'Delete'
       expect(page).to have_no_content 'Updated trip'
     }.to change(Event, :count).by(-1)
+
+    within find(data_test("month-#{day.month.id}")) do
+      expect(page).to have_no_css '.day--trip-start'
+      expect(page).to have_no_css '.day--trip-end'
+    end
   end
 end

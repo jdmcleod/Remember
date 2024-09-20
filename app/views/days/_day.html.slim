@@ -4,7 +4,7 @@
 - day_classes = class_names('day--current': day.date.today?, 'day--future': day.date > Date.current)
 - wrapper_style = event.present? && event.decorator.blank? ? "background-color: #{event&.color}" : nil
 
-div class=day.wrapper_class(event) style=wrapper_style
+div class=day.wrapper_class(event) style=wrapper_style data-testid="day-wrapper-#{day.id}"
   - if event.present? && event.single_day? && event.decorator.present?
     = image_tag "#{event.decorator}.svg", class: 'day-decoration-image'
 
