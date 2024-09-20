@@ -44,6 +44,17 @@ class Event < ApplicationRecord
     super || 'plane'
   end
 
+  def contains_date(date)
+    if end_date.blank?
+      return date.beginning_of_day == start_date.beginning_of_day
+    end
+    start_date <= date && end_date >= date
+  end
+
+  def single_day?
+    super || (start_date.present? && end_date == start_date)
+  end
+
   private
 
   def start_date_not_after_end_date

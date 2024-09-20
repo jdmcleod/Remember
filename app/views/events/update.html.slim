@@ -1,9 +1,0 @@
-= turbo_stream.update('modal-body', partial: 'events/events')
-
-- @months.each do |month|
-  = turbo_stream.replace("month-#{month.number}", partial: 'months/month', locals: { month: })
-
-= turbo_stream.update 'modal-footer-actions' do
-  = link_to new_year_event_path(@year), class: 'btn-primary', data: { turbo_stream: true } do
-    = icon('plus', classes: 'icon--medium', color: 'primary-minus-two')
-    | New

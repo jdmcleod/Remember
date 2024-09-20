@@ -16,7 +16,7 @@
       .one-fifths-width
         = f.input :single_day, input_html: { data: { action: 'click->trips-form#toggleFormVersion', 'trips-form-target': 'checkbox' } }
 
-    .flex.items-center.gap-md
+    .flex.items-center.gap-md data-trips-form-target='hideForDecoration' class=class_names('hidden' => @event.single_day? )
       .one-fifth-width
         = f.input :icon_name
       .one-fifth-width
@@ -25,7 +25,7 @@
     .flex.items-center.gap-md
       .two-fifths-width
         = f.input :start_date, as: :date, html5: true, input_html: { data: { action: 'change->trips-form#startDateSelected' } }
-      .two-fifths-width data-trips-form-target='endDateInputWrapper' class=class_names('hidden' => @event.single_day? )
+      .two-fifths-width data-trips-form-target='hideForDecoration' class=class_names('hidden' => @event.single_day? )
         = f.input :end_date, as: :date, html5: true, input_html: { 'data-trips-form-target': 'endDateInput' }
 
       .two-fifths-width data-trips-form-target='decoratorInput' class=class_names('hidden' => !@event.single_day? )
