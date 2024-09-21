@@ -3,7 +3,7 @@ class Month < ApplicationRecord
 
   has_one :year, through: :quarter
   has_one :user, through: :year
-  has_many :days, dependent: :destroy
+  has_many :days, -> { order(date: :asc) }, dependent: :destroy
 
   has_one :entry, as: :journalable, dependent: :destroy, class_name: 'Entry'
 

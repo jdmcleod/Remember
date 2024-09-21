@@ -4,6 +4,7 @@ class EntriesController < ApplicationController
     @day = current_user.days.find_by(date: date)
     @entry = @day.find_short_entry
     @memories = @day.be_real_memories
+    @image = @day.image
     set_badges
   end
 
@@ -12,6 +13,7 @@ class EntriesController < ApplicationController
     @entry.update(entry_params)
     @day = @entry.journalable
     @memories = @day.be_real_memories
+    @image = @day.image
     set_badges
 
     month = @entry.journalable.month
@@ -49,7 +51,7 @@ class EntriesController < ApplicationController
   def set_badges
     @day_badges = @day.badges
     @addable_badges = current_user.badges - @day_badges
-    @recommended_badges = @day_badges.count >= 6 ? [] : @addable_badges.first(6 - @day_badges.count)
+    @recommended_badges = @day_badges.count >= 7 ? [] : @addable_badges.first(7 - @day_badges.count)
   end
 
   def entry_params

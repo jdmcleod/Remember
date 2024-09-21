@@ -1,7 +1,7 @@
 class Year < ApplicationRecord
   belongs_to :user
 
-  has_many :quarters, dependent: :destroy
+  has_many :quarters, -> { order(start_date: :asc) }, dependent: :destroy
   has_many :months, through: :quarters
   has_many :days, through: :months
 

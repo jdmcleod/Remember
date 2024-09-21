@@ -82,7 +82,7 @@ module BeRealApi
 
         def last_bts_post_at
           date = @raw_data['lastBtsPostAt']
-          date.nil? ? '' : DateTime.parse(date)
+          date.nil? ? nil : DateTime.parse(date)
         end
 
         def type

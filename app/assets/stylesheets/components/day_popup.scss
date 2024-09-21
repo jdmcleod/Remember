@@ -1,11 +1,11 @@
 .day-popup {
   --editor-hardcoded-height: 28.8rem;
   --hardcoded-width: 385px;
-  --hardcoded-max-width: 65rem;
+  --hardcoded-max-width: 80rem;
   --padding: var(--op-space-medium);
 
   z-index: 10;
-  width: calc(100vw - (var(--padding) * 2));
+  width: calc((100vw - (var(--padding) * 2)) / 2);
   bottom: var(--padding);
   left: var(--padding);
   max-width: var(--hardcoded-max-width);
@@ -57,6 +57,55 @@
   display: flex;
   justify-content: center;
   height: 0;
+}
+
+.day-popup__photo {
+  width: 215px;
+  height: 100%;
+  position: relative;
+
+  &.day-popup__photo--deletable {
+    &:hover {
+      cursor: pointer;
+
+      &::after {
+        visibility: visible;
+      }
+    }
+
+    &::after {
+      content: $ti-icon-trash;
+      background-color: var(--op-color-alerts-danger-plus-seven);
+      color: var(--op-color-alerts-danger-on-plus-seven);
+      visibility: hidden;
+      position: absolute;
+      font-family: $ti-font-family;
+      font-size: var(--op-font-small);
+      padding: var(--op-space-3x-small);
+      border-radius: 50%;
+      top: -10px;
+      right: -10px;
+    }
+  }
+
+  .delete-image-button {
+    padding-inline: 0;
+    width: 100%;
+    background-color: var(--op-color-alerts-danger-plus-four);
+    color: var(--op-color-alerts-danger-on-plus-four);
+
+    &:hover {
+      background-color: var(--op-color-alerts-danger-plus-five);
+      color: var(--op-color-alerts-danger-on-plus-five);
+    }
+  }
+}
+
+.day-popup__photo-template {
+  width: 200px;
+  height: 100%;
+  border: 2x dashed var(--op-color-neutral-plus-eight);
+  border-radius: var(--op-radius-medium);
 }
 
 .day-popup__header {
