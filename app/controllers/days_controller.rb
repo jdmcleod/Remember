@@ -24,7 +24,6 @@ class DaysController < ApplicationController
   def delete_image_attachment
     @day = Day.find(params[:id])
     @day.image&.purge
-    redirect_to day_popup_form_entries_path(@day.date)
   end
 
   private

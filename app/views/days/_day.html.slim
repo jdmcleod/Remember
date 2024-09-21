@@ -13,7 +13,7 @@ div class=day.wrapper_class(event) style=wrapper_style data-testid="day-wrapper-
       .event-handle style=wrapper_style
         = icon(event.icon_name, classes: 'icon--small', color: 'neutral-plus-max')
 
-  button.day class=day_classes data-day-popup-target="day" data-action='click->day-popup#show' data-date=day.date.strftime("%Y-%-m-%-d") data-testid="day-#{day.id}"
-    = render 'years/day_image', day: day
+  button.day class=day_classes id="day-widget-#{day.date.yday}" data-day-popup-target="day" data-action='click->day-popup#show' data-date=day.date.strftime("%Y-%-m-%-d") data-testid="day-#{day.id}"
+    = render 'years/day_widget', day: day
 
   = render partial: 'years/day_badges', locals: { day: day }
