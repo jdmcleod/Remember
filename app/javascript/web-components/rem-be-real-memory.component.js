@@ -121,7 +121,6 @@ export default class REMBeRealMemory extends LitElement {
     }
 
     img {
-      aspect-ratio: 3 / 4;
       border-radius: var(--op-radius-large);
       border: var(--op-border-width-large) solid var(--op-color-neutral-plus-seven);
       &:hover {
