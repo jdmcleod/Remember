@@ -1,6 +1,6 @@
 - if day.image.present?
   .day__background-image
-    = image_tag day.image.variant(:thumb).processed, loading: "lazy"
+    = image_tag day.image.variant(:thumb).processed.image, loading: "lazy"
   .day__number.day__number--on-image = day.number
 - elsif day.be_real_memories.any?
   .day__background-image

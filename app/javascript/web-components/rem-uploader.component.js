@@ -69,8 +69,8 @@ export default class REMUploader extends LitElement {
   }
 
   _addFile(file, fullPath = undefined) {
-    const   split = file.name.split('.')
-    const fileExtension = split[split.length - 1]
+    const fileNameSplit = file.name.split('.')
+    const fileExtension = fileNameSplit[fileNameSplit.length - 1]
     if (Boolean(this.allowedFileExtensions) && !this.allowedFileExtensions.includes(fileExtension)){
       return this.invalidFileExtensions.push(fileExtension)
     }
