@@ -1,11 +1,11 @@
 .day-popup {
   --editor-hardcoded-height: 28.8rem;
   --hardcoded-width: 385px;
-  --hardcoded-max-width: 65rem;
+  --hardcoded-max-width: 80rem;
   --padding: var(--op-space-medium);
 
   z-index: 10;
-  width: calc(100vw - (var(--padding) * 2));
+  width: calc((100vw - (var(--padding) * 2)) / 2);
   bottom: var(--padding);
   left: var(--padding);
   max-width: var(--hardcoded-max-width);
