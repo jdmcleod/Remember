@@ -143,7 +143,7 @@ const importString = exportsList => {
   const importLine = ({ symbol, file }) => {
     const [_filename, importStatement] = getImportNameFrom(symbol)
 
-    return `import ${importStatement} from './${file}'`
+    return `import ${importStatement} from 'web-components/${file}'`
   }
 
   return `${exportsList.map(importLine).join('\n')}\n`

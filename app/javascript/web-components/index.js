@@ -3,12 +3,12 @@
 
 /* eslint-disable import/order */
 
-import REMAvatar from './rem-avatar.component'
-import REMBeRealMemory from './rem-be-real-memory.component'
-import REMBeRealPerson from './rem-be-real-person.component'
-import REMBeRealRealmoji from './rem-be-real-realmoji.component'
-import REMUploader from './rem-uploader.component'
-import TIIcon from './ti-icon.component'
+import REMAvatar from 'web-components/rem-avatar.component'
+import REMBeRealMemory from 'web-components/rem-be-real-memory.component'
+import REMBeRealPerson from 'web-components/rem-be-real-person.component'
+import REMBeRealRealmoji from 'web-components/rem-be-real-realmoji.component'
+import REMUploader from 'web-components/rem-uploader.component'
+import TIIcon from 'web-components/ti-icon.component'
 
 customElements.define('rem-avatar', REMAvatar)
 customElements.define('rem-be-real-memory', REMBeRealMemory)
