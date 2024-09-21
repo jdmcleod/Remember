@@ -87,6 +87,18 @@
       right: -10px;
     }
   }
+
+  .delete-image-button {
+    padding-inline: 0;
+    width: 100%;
+    background-color: var(--op-color-alerts-danger-plus-four);
+    color: var(--op-color-alerts-danger-on-plus-four);
+
+    &:hover {
+      background-color: var(--op-color-alerts-danger-plus-five);
+      color: var(--op-color-alerts-danger-on-plus-five);
+    }
+  }
 }
 
 .day-popup__photo-template {

@@ -23,12 +23,14 @@
 
       .day-popup__body
         - if @image.present?
-          / = button_to delete_image_attachment_day_path(@day), method: :delete, class: 'padding-inline-none' do
           .day-popup__photo
             rem-be-real-memory{
              date=@day.date
              primarySrc=rails_storage_proxy_path(@image)
-             size="54"}
+             size="47.5"}
+            = button_to delete_image_attachment_day_path(@day), method: :delete, class: 'btn btn--small delete-image-button' do
+              = icon('trash')
+              | Delete
         - elsif @memories&.any?
           .day-popup__photo
             - memory = @memories.first
