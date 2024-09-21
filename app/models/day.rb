@@ -12,7 +12,7 @@ class Day < ApplicationRecord
   has_many :be_real_memories
 
   has_one_attached :image do |attachable|
-    attachable.variant :thumb, resize_to_limit: [40, 40]
+    attachable.variant :thumb, resize_to_limit: [54, 54]
   end
 
   def self.on(date)
