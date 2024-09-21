@@ -107,7 +107,7 @@ export default class REMBeRealMemory extends LitElement {
     const primaryHeight = `calc(var(--op-size-unit) * ${size})`
     const secondaryHeight = `calc(var(--op-size-unit) * ${size / 3.34})`
     return html`
-      <img src="${images[0]}" loading="lazy" @click="${this.#expandImage}" alt="${this.date}" class="${classes}" style="width: ${primaryHeight};">
+      <img src="${images[0]}" @click="${this.#expandImage}" alt="${this.date}" class="${classes}" style="width: ${primaryHeight};">
       
       ${this._renderSecondary(secondaryHeight, images[1])}
     `
@@ -121,8 +121,8 @@ export default class REMBeRealMemory extends LitElement {
     }
 
     img {
+      aspect-ratio: 3 / 4;
       border-radius: var(--op-radius-large);
-      max-height: 28.8rem;
       border: var(--op-border-width-large) solid var(--op-color-neutral-plus-seven);
       &:hover {
         border: var(--op-border-width-large) solid black;

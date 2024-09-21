@@ -7,4 +7,4 @@
     .text-pair__title Memories (#{@memory_count} most recent)
   .flex.flex-wrap.gap-sm
     - @memory_collection.memories[0..@memory_count - 1].each do |memory|
-      rem-be-real-memory date=memory.memory_day primarySrc=memory.primary.url secondarySrc=memory.secondary.url
+      rem-be-real-memory date=memory.memory_day primarySrc=memory.primary.url secondarySrc=memory.secondary.url size=54
