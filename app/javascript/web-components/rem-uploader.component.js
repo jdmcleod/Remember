@@ -71,16 +71,22 @@ export default class REMUploader extends LitElement {
   _addFile(file, fullPath = undefined) {
     const fileNameSplit = file.name.split('.')
     const fileExtension = fileNameSplit[fileNameSplit.length - 1]
-    if (Boolean(this.allowedFileExtensions) && !this.allowedFileExtensions.includes(fileExtension)){
-      return this.invalidFileExtensions.push(fileExtension)
-    }
+    if (!this._fileExtensionIsValid(fileExtension)) return this.invalidFileExtensions.push(fileExtension)
+
     this.dataTransfer.items.add(file)
     this.fileNames.push(fullPath ?? file.name)
     this._fileInput().files = this.dataTransfer.files
 
-    document.getElementById(this.formId).requestSubmit()
+    if (!!this.formId) document.getElementById(this.formId).requestSubmit()
 
     this.requestUpdate()
+  }
+
+  _fileExtensionIsValid(fileExtension) {
+    if (!this.allowedFileExtensions) return true
+
+    const allowedFileExtensions = this.allowedFileExtensions.map(allowedFileExtension => allowedFileExtension.toLowerCase())
+    return allowedFileExtensions.includes(fileExtension.toLowerCase())
   }
 
   _renderUploadError() {
