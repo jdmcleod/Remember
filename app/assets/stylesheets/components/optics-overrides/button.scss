@@ -1,5 +1,10 @@
 %btn-global {
   border-radius: var(--op-radius-large);
+  background-color: var(--op-color-neutral-plus-seven);
+
+  &:hover {
+    background-color: var(--op-color-neutral-plus-five);
+  }
 
   &.btn--no-background {
     background-color: transparent;

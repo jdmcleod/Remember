@@ -29,6 +29,10 @@ class Event < ApplicationRecord
     (start_date..end_date).to_a
   end
 
+  def year
+    user.years.detect { |year| year.year.to_i == start_date.year }
+  end
+
   def month
     user.months.find_or_create_by(start_date: start_date.beginning_of_month)
   end
