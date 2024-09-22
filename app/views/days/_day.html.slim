@@ -1,7 +1,7 @@
 - during_event = @event_dates&.include?(day.date)
 
 - event = during_event ? @events.detect { |e| e.contains_date(day.date) } : nil
-- day_classes = class_names('day--current': day.date.today?, 'day--future': day.date > Date.current)
+- day_classes = class_names('day--current': day.date == Date.today, 'day--future': day.date > Date.today)
 - wrapper_style = event.present? && event.decorator.blank? ? "background-color: #{event&.color}" : nil
 
 div class=day.wrapper_class(event) style=wrapper_style data-testid="day-wrapper-#{day.id}"
