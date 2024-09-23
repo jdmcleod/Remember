@@ -89,14 +89,17 @@
   }
 
   .delete-image-button {
-    padding-inline: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--op-space-x-small);
     width: 100%;
-    background-color: var(--op-color-alerts-danger-plus-four);
-    color: var(--op-color-alerts-danger-on-plus-four);
+    background-color: var(--op-color-alerts-danger-plus-five);
+    color: var(--op-color-alerts-danger-on-plus-five);
 
     &:hover {
-      background-color: var(--op-color-alerts-danger-plus-five);
-      color: var(--op-color-alerts-danger-on-plus-five);
+      background-color: var(--op-color-alerts-danger-plus-four);
+      color: var(--op-color-alerts-danger-on-plus-four);
     }
   }
 }

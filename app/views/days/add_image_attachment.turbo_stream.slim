@@ -1,2 +1,2 @@
-= turbo_stream.replace "edit_day_#{@day.date.yday}", partial: 'entries/day_popup_image'
+= turbo_stream.replace "day-popup-image", partial: 'entries/day_popup_image'
 = turbo_stream.update "day-widget-#{@day.date.yday}", partial: 'years/day_widget', locals: { day: @day }

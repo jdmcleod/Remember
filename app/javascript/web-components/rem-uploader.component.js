@@ -3,6 +3,7 @@ import { LitElement, css, html } from "lit"
 export default class REMUploader extends LitElement {
   static properties = {
     allowedFileExtensions: { type: Array, attribute: true, reflect: true },
+    variant: { type: String },
     formId: { type: String },
     invalidFileExtensions: { type: Array, state: true },
     dataTransfer: { type: Object, state: true },
@@ -13,6 +14,7 @@ export default class REMUploader extends LitElement {
     super()
 
     this.allowedFileExtensions = undefined
+    this.variant = 'full'
     this.formId = undefined
     this.invalidFileExtensions = []
     this.dataTransfer = new DataTransfer()
@@ -97,12 +99,27 @@ export default class REMUploader extends LitElement {
     `
   }
 
-  render() {
+  _renderUploadContainer() {
+    if (this.variant === 'mini') {
+      return html`
+        <div class="upload-container" @click=${this._onClick} @drop=${this._onDrop} @dragover=${this._onDragover} @dragleave=${this._onDragleave}>
+          <ti-icon name="camera" size="large" class="upload-container__add-icon"></ti-icon>
+          <div>Replace Image</div>
+        </div>
+      `
+    }
+
     return html`
-      ${this._renderUploadError()}
       <div class="upload-container" @click=${this._onClick} @drop=${this._onDrop} @dragover=${this._onDragover} @dragleave=${this._onDragleave}>
         <ti-icon name="camera" size="supa-large" class="upload-container__add-icon"></ti-icon>
       </div>
+    `
+  }
+
+  render() {
+    return html`
+      ${this._renderUploadError()}
+      ${this._renderUploadContainer()}
       <slot name="errors" class="files-errors"></slot>
     `
   }
@@ -114,27 +131,37 @@ export default class REMUploader extends LitElement {
       flex-direction: column;
     }
       
+    :host([variant='mini']) {
+      .upload-container {
+        width: 100%;
+        background-color: var(--op-color-primary-plus-six);
+        color: var(--op-color-primary-on-plus-six);
+        border: 2px dashed var(--op-color-primary-plus-four);
+          
+        &.upload-container--dragover, &:hover {
+          background-color: var(--op-color-primary-plus-five);
+          border: 2px dashed var(--op-color-primary-plus-four);
+        }
+      }
+    }
+      
     .upload-container {
       width: 215px;
       flex-grow: 1;
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
       cursor: pointer;
       gap: var(--op-space-x-small);
 
       background-color: var(--op-color-primary-plus-eight);
-      color: var(--op-color-primary-plus-six);
+      color: var(--op-color-primary-plus-five);
       border-radius: var(--op-radius-medium);
       border: 3px dashed var(--op-color-primary-plus-six);
       box-sizing: border-box;
       font-size: var(--op-font-small);
       text-align: center;
-
-      .upload-container__add-icon {
-        margin-bottom: var(--op-space-2x-small);
-      }
+      padding: var(--op-space-2x-small);
 
       .files-input {
         display: none;

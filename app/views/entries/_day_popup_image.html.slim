@@ -8,15 +8,19 @@
       = icon('trash')
       | Delete
 - elsif @memories&.any?
-  .day-popup__photo
+  .day-popup__photo#day-popup-image
     - memory = @memories.first
     rem-be-real-memory{
       date=memory.day.date
       primarySrc=rails_storage_proxy_path(memory.primary)
       secondarySrc=rails_storage_proxy_path(memory.secondary)
       size="54"}
+    = simple_form_for(@day, url: add_image_attachment_day_path(@day), html: { id: "edit_day_#{@day.date.yday}" }) do |f|
+      rem-uploader variant='mini' formId="edit_day_#{@day.date.yday}" allowedFileExtensions=%w[png jpg jpeg svg webp heic]
+        div slot='input' = f.input :image, as: :file
+        div slot='errors' = f.object.errors[:image].join(', ') if f.object.errors[:image].any?
 - else
-  = simple_form_for(@day, url: add_image_attachment_day_path(@day), html: { id: "edit_day_#{@day.date.yday}" }) do |f|
-    rem-uploader formId="edit_day_#{@day.date.yday}" allowedFileExtensions=%w[png jpg jpeg svg webp heic]
+  = simple_form_for(@day, url: add_image_attachment_day_path(@day), html: { id: "day-popup-image" }) do |f|
+    rem-uploader formId="day-popup-image" allowedFileExtensions=%w[png jpg jpeg svg webp heic]
       div slot='input' = f.input :image, as: :file
       div slot='errors' = f.object.errors[:image].join(', ') if f.object.errors[:image].any?
