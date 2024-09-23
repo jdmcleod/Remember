@@ -6,11 +6,11 @@
 
 div class=day.wrapper_class(event) style=wrapper_style data-testid="day-wrapper-#{day.id}"
   - if event.present? && event.single_day? && event.decorator.present?
-    = image_tag "#{event.decorator}.svg", class: 'day-decoration-image'
+    = image_tag "#{event.decorator}.svg", class: class_names('day-decoration-image', "day-decoration-image--#{event.decorator}")
 
   - if event.present? && day.date == event.start_date && event.decorator.blank?
     = modal_link_to year_event_path(month.year, event) do
-      .event-handle style=wrapper_style
+      .event-handle style=wrapper_style data-tooltip-text=event.name
         = icon(event.icon_name, classes: 'icon--small', color: 'neutral-plus-max')
 
   button.day class=day_classes id="day-widget-#{day.date.yday}" data-day-popup-target="day" data-action='click->day-popup#show' data-date=day.date.strftime("%Y-%-m-%-d") data-testid="day-#{day.id}"
