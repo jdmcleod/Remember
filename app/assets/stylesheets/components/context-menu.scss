@@ -42,6 +42,10 @@
   button {
     width: 100%;
   }
+
+  @media only screen and (max-width: $breakpoint-small) {
+    left: -3rem;
+  }
 }
 
 .context-menu__dropdown > *:not(:last-child) {

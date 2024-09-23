@@ -120,13 +120,29 @@
 
 .day--event {
   border-radius: var(--op-radius-large);
+  max-width: 4.8rem;
 }
 
 .day-decoration-image {
   position: absolute;
-  width: 8rem;
-  height: 8rem;
   max-width: unset;
-  left: -1.5rem;
-  top: -1.5rem;
+}
+
+.day-decoration-image--celebration {
+  width: 7rem;
+  height: 7rem;
+  left: -1.2rem;
+  top: -1rem;
+}
+
+.day-decoration-image--arrow {
+  width: 8rem;
+  height: 6.5rem;
+  left: -1.6rem;
+  top: -0.8rem;
+}
+
+.day-decoration-image--star {
+  top: -1.2rem;
+  left: -1.2rem;
 }
