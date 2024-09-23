@@ -24,6 +24,7 @@ class DaysController < ApplicationController
   def delete_image_attachment
     @day = Day.find(params[:id])
     @day.image&.purge
+    @memories = @day.be_real_memories
   end
 
   private
