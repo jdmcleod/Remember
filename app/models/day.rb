@@ -19,6 +19,26 @@ class Day < ApplicationRecord
     find_by(date:)
   end
 
+  def events
+    year.events.contains_date(date)
+  end
+
+  def valid_events
+    [primary_event, secondary_event, decorator_event].compact
+  end
+
+  def primary_event
+    events&.where(secondary: false).first
+  end
+
+  def secondary_event
+    events&.where(secondary: true).first
+  end
+
+  def decorator_event
+    events&.where(decorator: true).first
+  end
+
   def number
     date.mday
   end

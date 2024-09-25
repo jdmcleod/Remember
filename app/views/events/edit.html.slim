@@ -1,0 +1,11 @@
+= content_for(:modal_title) do
+  | Trips and Events
+
+= render 'form'
+
+= content_for(:modal_footer_actions) do
+  .flex.gap-sm
+    = link_to 'Delete', year_event_path(@year, @event), class: 'btn', data: { turbo_method: :delete }
+    = button_tag class: 'btn-primary', form: "edit_event_#{@event.id}" do
+      = icon('check', classes: 'icon--medium', color: 'primary-minus-two')
+      | Update

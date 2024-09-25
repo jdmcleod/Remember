@@ -1,5 +1,5 @@
 .badges-addable#entry-day-badges
-  - if @day_badges.count < 7
+  - if @day_badges.count < 5
     - if @addable_badges.any?
       = render 'shared/context_menu', locals: { toggle: capture { render 'shared/badge', locals: { size: 'x-small', type: 'new' } } }
         .flex.items-center.gap-xs.flex-wrap

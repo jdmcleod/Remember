@@ -35,5 +35,7 @@
 
         .badges-addable-container
           = render 'day_badges'
+          = render 'day_event_buttons'
+
           button.btn.btn-notice.btn--icon.btn--small.day-popup__save title="Save" type="submit" name="commit" data-action="day-popup#close"
             = icon('discount-check', classes: 'icon--large', color: 'alerts-notice-plus-six')

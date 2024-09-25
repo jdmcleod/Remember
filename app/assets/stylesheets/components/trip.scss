@@ -20,11 +20,6 @@
   width: 100%;
 }
 
-.trip__secondary--start {
-  border-top-left-radius: var(--op-radius-small);
-  border-bottom-left-radius: var(--op-radius-small);
-}
-
 .trip__secondary--end {
   border-top-right-radius: var(--op-radius-small);
   border-bottom-right-radius: var(--op-radius-small);
@@ -45,6 +40,7 @@
 .trip__handle--secondary {
   top: unset;
   bottom: -11px;
+  left: -9px;
   font-size: var(--op-font-2x-small);
 }
 

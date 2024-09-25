@@ -1,0 +1,7 @@
+- if event.present?
+  = modal_link_to edit_year_event_path(@day.year, event) do
+    button.btn-info.btn--x-small.day-popup__event-button data-tooltip-text=event.name style="background-color: #{event&.color}"
+      - if event.decorator.present?
+        = icon('trip', classes: 'icon--medium')
+      - else
+        = icon(event.icon_name, classes: 'icon--medium')

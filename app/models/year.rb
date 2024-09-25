@@ -9,6 +9,10 @@ class Year < ApplicationRecord
     year.to_s
   end
 
+  def events
+    user.events.in_range(start_date, end_date)
+  end
+
   def self.current_year
     find_or_create_by(year: Date.today.year)
   end

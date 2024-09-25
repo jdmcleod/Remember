@@ -1,0 +1,10 @@
+.flex.flex-col.gap-xs.items-center
+  .day-popup__event-label Events
+  .day-popup__event-buttons
+    - @events.each do |event|
+     = render 'event_button', event:
+
+    = modal_link_to new_year_event_path(@day.year, start_date: @day.date) do
+      button.btn-info.btn--x-small.day-popup__event-button data-tooltip-text="Add Event"
+        = icon('plus', classes: 'icon--medium')
+

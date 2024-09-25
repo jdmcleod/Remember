@@ -79,6 +79,9 @@
   }
 
   &.badge--deletable, &.badge--addable {
+    width: var(--op-space-x-large);
+    height: var(--op-space-x-large);
+
     &:hover {
       cursor: pointer;
 
@@ -173,6 +176,7 @@ a:has(.badge), button:has(.badge) {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  gap: var(--op-space-x-small);
   @media only screen and (max-width: $breakpoint-small) {
     display: none;
   }
