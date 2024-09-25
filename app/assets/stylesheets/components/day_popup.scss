@@ -47,6 +47,10 @@
     padding: var(--op-space-3x-small) var(--op-space-x-small) var(--op-space-x-small) var(--op-space-x-small);
     left: 0;
   }
+
+  @media only screen and (min-width: $breakpoint-small) {
+    min-width: 65rem;
+  }
 }
 
 .animate__animated.animate__zoomIn, .animate__animated.animate__zoomOut {

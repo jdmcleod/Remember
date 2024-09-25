@@ -13,14 +13,16 @@
     .flex.gap-sm.items-center
       .four-fifths-width
         = f.input :name
-      .one-fifths-width
-        = f.input :single_day, input_html: { data: { action: 'click->trips-form#toggleFormVersion', 'trips-form-target': 'checkbox' } }
+      .one-fifth-width
+        = f.input :single_day, input_html: { data: { action: 'click->trips-form#toggleFormVersion', 'trips-form-target': 'checkbox' } }, wrapper_html: { class: 'form-group--no-padding' }
 
     .flex.items-center.gap-md data-trips-form-target='hideForDecoration' class=class_names('hidden' => @event.single_day? )
-      .one-fifth-width
+      .two-fifths-width
         = f.input :icon_name
       .one-fifth-width
         = f.input :color, as: :color
+      .two-fifths-width
+        = f.input :secondary, label: 'Secondary Style', wrapper_html: { class: 'form-group--no-padding' }
 
     .flex.items-center.gap-md
       .two-fifths-width

@@ -18,6 +18,7 @@ class EntriesController < ApplicationController
 
     month = @entry.journalable.month
     @events = current_user.events.in_range(month.start_date, month.end_date)
+    @event_dates = @events.flat_map(&:range).uniq
     render turbo_stream: [
       turbo_stream.replace('day-popup-form', partial: 'entries/day_popup_form'),
       turbo_stream.replace("month-#{month.number}", partial: 'months/month', locals: { month: @entry.journalable.month }),

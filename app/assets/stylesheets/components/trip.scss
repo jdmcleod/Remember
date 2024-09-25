@@ -1,0 +1,75 @@
+.trip {
+  border-radius: var(--op-radius-large);
+  max-width: 4.8rem;
+}
+
+.trip__primary--start {
+  border-top-left-radius: var(--op-radius-large);
+  border-bottom-left-radius: var(--op-radius-large);
+}
+
+.trip__primary--end {
+  border-top-right-radius: var(--op-radius-large);
+  border-bottom-right-radius: var(--op-radius-large);
+}
+
+.trip__secondary {
+  height: 0.6rem;
+  position: absolute;
+  bottom: -6px;
+  width: 100%;
+}
+
+.trip__secondary--start {
+  border-top-left-radius: var(--op-radius-small);
+  border-bottom-left-radius: var(--op-radius-small);
+}
+
+.trip__secondary--end {
+  border-top-right-radius: var(--op-radius-small);
+  border-bottom-right-radius: var(--op-radius-small);
+}
+
+.trip__handle {
+  position: absolute;
+  background-color: var(--op-color-primary-plus-six);
+  border-radius: 5px;
+  padding: 1px;
+  font-size: var(--op-font-x-small);
+  cursor: pointer;
+  z-index: 4;
+  left: -5px;
+  top: -5px;
+}
+
+.trip__handle--secondary {
+  top: unset;
+  bottom: -11px;
+  font-size: var(--op-font-2x-small);
+}
+
+// Decorations
+
+.trip__decoration {
+  position: absolute;
+  max-width: unset;
+}
+
+.trip__decoration--celebration {
+  width: 7rem;
+  height: 7rem;
+  left: -1.2rem;
+  top: -1rem;
+}
+
+.trip__decoration--arrow {
+  width: 8rem;
+  height: 6.5rem;
+  left: -1.6rem;
+  top: -0.8rem;
+}
+
+.trip__decoration--star {
+  top: -1.2rem;
+  left: -1.2rem;
+}
