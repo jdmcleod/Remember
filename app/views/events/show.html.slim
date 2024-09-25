@@ -3,7 +3,7 @@
     .flex.gap-sm.items-center
       div = @event.name
       .event-card__color-swatch style="background-color: #{@event.color}"
-    .event-card__dates
+    .event__row-text
       = @event.date_range_string
 
 .flex.flex-col.gap-sm

@@ -8,9 +8,15 @@
               .flex.items-center.gap-md
                 .event-card__name
                   = event.name
-                .event-card__dates
+                .event__row-text
                   = event.date_range_string
-              .event-card__color-swatch style="background-color: #{event.color}"
+              - if event.decorator.present?
+                = image_tag "#{event.decorator}.svg", class: 'event__decorator'
+              - else
+                .flex.gap-xs.items-center
+                  - if event.secondary?
+                    .event__row-text Secondary style
+                    .event-card__color-swatch style="background-color: #{event.color}"
 
   - else
     div You have not created any events yet. Click the new button above to create your first event.

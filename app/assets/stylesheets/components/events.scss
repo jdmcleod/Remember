@@ -15,14 +15,14 @@
   font-size: var(--op-font-large);
 }
 
-.event-card__dates {
+.event__row-text {
   display: flex;
   gap: var(--op-space-x-small);
   color: var(--op-color-neutral-minus-one);
   font-size: var(--op-font-small);
 }
 
-.event-card__color-swatch {
+.event-card__color-swatch, .event__decorator {
   width: var(--op-space-2x-large);
   height: var(--op-space-2x-large);
   border-radius: var(--op-radius-small);
