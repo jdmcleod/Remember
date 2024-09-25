@@ -77,6 +77,11 @@
   gap: 2px;
   left: 0;
   top: -2px;
+  width: 100%
+}
+
+.day-badges--during-event {
+  justify-content: flex-end;
 }
 
 .day-badge-indicator {

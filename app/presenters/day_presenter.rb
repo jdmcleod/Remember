@@ -28,6 +28,10 @@ class DayPresenter < ApplicationPresenter
     primary_event.present? && day.date == primary_event.start_date && primary_event.decorator.blank?
   end
 
+  def during_primary_event_start
+    primary_event.present? && primary_event.start_date == day.date
+  end
+
   def show_secondary_trip_handle?
     secondary_event.present? && day.date == secondary_event.start_date && secondary_event.decorator.blank?
   end

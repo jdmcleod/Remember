@@ -22,4 +22,4 @@ div class=p.wrapper_class(p.primary_event) style=p.primary_style data-testid="da
   button.day class=p.classes id="day-widget-#{day.date.yday}" data-day-popup-target="day" data-action='click->day-popup#show' data-date=p.date data-testid="day-#{day.id}"
     = render 'years/day_widget', day: day
 
-  = render partial: 'years/day_badges', locals: { day: day }
+  = render partial: 'years/day_badges', locals: { day: day, during_event: p.during_primary_event_start }
