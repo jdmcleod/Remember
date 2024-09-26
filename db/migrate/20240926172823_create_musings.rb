@@ -3,6 +3,7 @@ class CreateMusings < ActiveRecord::Migration[7.1]
     create_table :musings do |t|
       t.string :name
       t.string :description
+      t.integer :type, default: 0
       t.belongs_to :day, null: false, foreign_key: true
 
       t.timestamps
