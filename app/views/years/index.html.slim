@@ -2,12 +2,15 @@
   .navbar.flex.justify-between data-controller='search'
     = image_tag 'logo-red.svg', class: 'header__logo'
 
-    button.btn data-action="click->search#toggle" data-testid='search-button'
-      = icon('search', classes: 'icon--large icon--bold', color: 'primary-minus-two')
-    = render 'shared/search_form'
+    .flex.gap-sm.items-center
+      - if current_user.admin?
+        = link_to 'Admin', admin_index_path, class: 'btn'
+      button.btn data-action="click->search#toggle" data-testid='search-button'
+        = icon('search', classes: 'icon--large icon--bold', color: 'primary-minus-two')
+      = render 'shared/search_form'
+
 
 .app-container
-
   .years-container
     - @years.each do |year|
       .year
