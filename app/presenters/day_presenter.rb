@@ -45,7 +45,7 @@ class DayPresenter < ApplicationPresenter
   end
 
   def classes
-    class_names('day--current': day.date == Date.today, 'day--future': day.date > Date.today)
+    class_names('day--current': day.date == Date.current, 'day--future': day.date > Date.current)
   end
 
   def trip_class(event, secondary = false)

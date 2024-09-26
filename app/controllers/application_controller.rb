@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user, :presenter, :presenter_for
 
   before_action :require_authentication!
+  around_action :set_time_zone, if: :current_user
 
   attr_reader :presenter
 
@@ -14,6 +15,10 @@ class ApplicationController < ActionController::Base
 
   def presenter_for(resource)
     ApplicationPresenter.presenter_for(resource)
+  end
+
+  def set_time_zone(&block)
+    Time.use_zone(current_user.time_zone, &block)
   end
 
   def require_authentication!

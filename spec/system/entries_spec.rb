@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Entry', type: :system, js: true do
-  let(:date) { Date.today.beginning_of_year }
+  let(:date) { Date.current.beginning_of_year }
   let(:user) { create(:user) }
 
   before do

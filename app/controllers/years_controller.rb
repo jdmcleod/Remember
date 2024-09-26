@@ -6,7 +6,7 @@ class YearsController < ApplicationController
   end
 
   def index
-    @years = current_user.years.where('years.year <= ?', Date.today.year.to_s).order(:year)
+    @years = current_user.years.where('years.year <= ?', Date.current.year.to_s).order(:year)
   end
 
   def show

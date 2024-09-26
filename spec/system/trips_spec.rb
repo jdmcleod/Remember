@@ -15,14 +15,14 @@ RSpec.describe 'Trips', type: :system, js: true do
     find(data_test('trips-button')).click
     click_on 'New'
     fill_in 'Name', with: 'A trip'
-    fill_in 'Start date', with: "0111#{Date.today.year}"
-    fill_in 'End date', with: "0114#{Date.today.year}"
+    fill_in 'Start date', with: "0111#{Date.current.year}"
+    fill_in 'End date', with: "0114#{Date.current.year}"
     expect {
       click_on 'Create'
       expect(page).to have_content 'A trip'
     }.to change(Event, :count).by(1)
 
-    day = user.days.find_by(date: Date.new(Date.today.year, 1, 11))
+    day = user.days.find_by(date: Date.new(Date.current.year, 1, 11))
     within find(data_test("month-#{day.month.id}")) do
       expect(page).to have_css '.trip__primary--start'
       expect(page).to have_css '.trip__primary--end'

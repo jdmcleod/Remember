@@ -1,7 +1,7 @@
 .app__header
   .navbar
     = link_to root_path, class: 'navbar__brand' do
-      h1 = "Remember #{@year&.year && Date.today.year}"
+      h1 = "Remember #{@year&.year && Date.current.year}"
 
     .navbar__content.navbar__content--justify-end
       = button_to 'Sign In With Google', '/auth/google', class: 'btn-primary btn--no-border', data: { turbo: false }

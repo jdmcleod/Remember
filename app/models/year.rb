@@ -14,7 +14,7 @@ class Year < ApplicationRecord
   end
 
   def self.current_year
-    find_or_create_by(year: Date.today.year)
+    find_or_create_by(year: Date.current.year)
   end
 
   def missing_data?
