@@ -1,0 +1,12 @@
+= content_for(:modal_title) do
+  | Trips and Events
+
+= render 'form'
+
+= content_for(:modal_footer_actions) do
+  = button_tag class: 'btn-primary', form: "new_event" do
+    = icon('check', classes: 'icon--medium', color: 'primary-minus-two')
+    | Create
+
+
+

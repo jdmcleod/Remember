@@ -4,6 +4,7 @@ class EntriesController < ApplicationController
     @day = current_user.days.find_by(date: date)
     @entry = @day.find_short_entry
     @memories = @day.be_real_memories
+    @events = @day.valid_events
     @image = @day.image
     set_badges
   end
@@ -18,6 +19,7 @@ class EntriesController < ApplicationController
 
     month = @entry.journalable.month
     @events = current_user.events.in_range(month.start_date, month.end_date)
+    @event_dates = @events.flat_map(&:range).uniq
     render turbo_stream: [
       turbo_stream.replace('day-popup-form', partial: 'entries/day_popup_form'),
       turbo_stream.replace("month-#{month.number}", partial: 'months/month', locals: { month: @entry.journalable.month }),

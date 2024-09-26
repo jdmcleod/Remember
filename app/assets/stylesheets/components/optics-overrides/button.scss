@@ -120,3 +120,32 @@
     color: var(--op-color-alerts-notice-on-base);
   }
 }
+
+.btn-info {
+  @extend %btn-global;
+
+  background-color: var(--op-color-alerts-info-base);
+  box-shadow: inset var(--op-border-all) var(--op-color-alerts-info-base);
+  color: var(--op-color-alerts-info-on-base);
+
+  // Active State
+  &.btn--active {
+    background-color: var(--op-color-alerts-info-plus-five);
+    box-shadow: inset var(--op-border-all) var(--op-color-alerts-info-plus-three);
+    color: var(--op-color-alerts-info-on-plus-five);
+  }
+
+  // Hover State
+  &:hover {
+    background-color: var(--op-color-alerts-info-minus-two);
+    box-shadow: inset var(--op-border-all) var(--op-color-alerts-info-minus-two);
+    color: var(--op-color-alerts-info-on-minus-two);
+  }
+
+  // Focus State
+  &:focus-visible {
+    background-color: var(--op-color-alerts-info-base);
+    box-shadow: var(--op-input-focus-info);
+    color: var(--op-color-alerts-info-on-base);
+  }
+}

@@ -60,6 +60,10 @@ class Event < ApplicationRecord
     super || (start_date.present? && end_date == start_date)
   end
 
+  def primary?
+    !secondary
+  end
+
   private
 
   def start_date_not_after_end_date

@@ -47,6 +47,10 @@
     padding: var(--op-space-3x-small) var(--op-space-x-small) var(--op-space-x-small) var(--op-space-x-small);
     left: 0;
   }
+
+  @media only screen and (min-width: $breakpoint-small) {
+    min-width: 65rem;
+  }
 }
 
 .animate__animated.animate__zoomIn, .animate__animated.animate__zoomOut {
@@ -136,5 +140,26 @@
 }
 
 .day-popup__save {
+  position: absolute;
+  bottom: 1.6rem;
   transform: translateX(-4.5rem) translateY(-0.5rem);
+}
+
+.day-popup__event-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--op-space-2x-small);
+  border-radius: var(--op-radius-large);
+  background-color: var(--op-color-neutral-plus-seven);
+  gap: var(--op-space-2x-small);
+}
+
+.day-popup__event-label {
+  color: var(--op-color-neutral-on-plus-six-alt);
+  font-size: var(--op-font-2x-small);
+}
+
+.day-popup__event-button  {
+  padding: var(--op-space-3x-small);
 }

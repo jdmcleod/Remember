@@ -2,7 +2,14 @@ class EventsController < ApplicationController
   before_action :set_event, only: %i[show edit update destroy]
   before_action :set_year
   def new
-    @event = current_user.events.new
+    @start_date = Date.parse(params[:start_date]) if params[:start_date].present?
+    @event = current_user.events.new(start_date: @start_date, end_date: @start_date + 1.week)
+
+    respond_to do |format|
+      format.html {
+        render layout: 'modal'
+      }
+    end
   end
 
   def index
@@ -26,6 +33,11 @@ class EventsController < ApplicationController
   end
 
   def edit
+    respond_to do |format|
+      format.html {
+        render layout: 'modal'
+      }
+    end
   end
 
   def update
@@ -66,7 +78,7 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:start_date, :end_date, :name, :color, :icon_name, :decorator, :single_day)
+    params.require(:event).permit(:start_date, :end_date, :name, :color, :icon_name, :decorator, :single_day, :secondary)
   end
 
   def event_attrs

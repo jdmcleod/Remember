@@ -112,6 +112,9 @@ export default class REMUploader extends LitElement {
     return html`
       <div class="upload-container" @click=${this._onClick} @drop=${this._onDrop} @dragover=${this._onDragover} @dragleave=${this._onDragleave}>
         <ti-icon name="camera" size="supa-large" class="upload-container__add-icon"></ti-icon>
+        <button class="mobile-upload-button">
+          <ti-icon name="camera" />
+        </button>
       </div>
     `
   }
@@ -146,22 +149,31 @@ export default class REMUploader extends LitElement {
     }
       
     .upload-container {
-      width: 215px;
-      flex-grow: 1;
-      display: flex;
-      justify-content: center;
+      @media only screen and (min-width: 712px) {
+        width: 215px;
+        flex-grow: 1;
+        display: flex;
+        justify-content: center;
       align-items: center;
       cursor: pointer;
       gap: var(--op-space-x-small);
 
-      background-color: var(--op-color-primary-plus-eight);
-      color: var(--op-color-primary-plus-five);
-      border-radius: var(--op-radius-medium);
-      border: 3px dashed var(--op-color-primary-plus-six);
-      box-sizing: border-box;
-      font-size: var(--op-font-small);
-      text-align: center;
-      padding: var(--op-space-2x-small);
+        background-color: var(--op-color-primary-plus-eight);
+        color: var(--op-color-primary-plus-six);
+        border-radius: var(--op-radius-medium);
+        border: 3px dashed var(--op-color-primary-plus-six);
+        box-sizing: border-box;
+        font-size: var(--op-font-small);
+        text-align: center;
+        pointer-events: none;
+      }
+
+      .upload-container__add-icon {
+        margin-bottom: var(--op-space-2x-small);
+        @media only screen and (max-width: 712px) { 
+          display: none;
+        }
+      }
 
       .files-input {
         display: none;
@@ -171,10 +183,30 @@ export default class REMUploader extends LitElement {
         background-color: var(--op-color-primary-plus-seven);
         border: 3px dashed var(--op-color-primary-plus-five);
       }
-    }
 
-    .upload-container * {
-      pointer-events: none;
+      @media only screen and (max-width: 712px) {
+        position: absolute;
+        bottom: 2rem;
+        right: 2rem;
+      }
+    }
+    
+    .mobile-upload-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 3rem;
+      height: 3rem;
+      border: none;
+      background-color: var(--op-color-primary-base);
+      border-radius: var(--op-radius-2x-large);
+      color: var(--op-color-neutral-plus-max);
+      ti-icon {
+        --font-size: var(--op-font-large);
+      }
+      @media only screen and (min-width: 712px) {
+        display: none;
+      }
     }
 
     .files-errors {
