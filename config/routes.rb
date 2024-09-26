@@ -48,5 +48,7 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :admin, only: [:index]
+
   root to: 'years#current'
 end

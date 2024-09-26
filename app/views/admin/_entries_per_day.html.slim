@@ -1,0 +1,11 @@
+table.table
+  thead
+    tr
+      th Date
+      th Entry count
+  tbody
+    - @entries_per_day.each do |date, entry_count|
+      tr
+        td = date
+        td = entry_count
+
