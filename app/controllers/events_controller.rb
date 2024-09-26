@@ -2,7 +2,7 @@ class EventsController < ApplicationController
   before_action :set_event, only: %i[show edit update destroy]
   before_action :set_year
   def new
-    @start_date = Date.parse(params[:start_date]) if params[:start_date].present?
+    @start_date = params[:start_date].present? ? Date.parse(params[:start_date]) : Date.current
     @event = current_user.events.new(start_date: @start_date, end_date: @start_date + 1.week)
 
     respond_to do |format|
