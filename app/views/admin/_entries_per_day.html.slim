@@ -1,11 +1,11 @@
 table.table
   thead
     tr
-      th Date
+      th Last 30 days
       th Entry count
   tbody
     - @entries_per_day.each do |date, entry_count|
       tr
-        td = date
+        td = date.strftime("%B %-d, %Y")
         td = entry_count
 

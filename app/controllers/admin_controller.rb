@@ -2,7 +2,8 @@ class AdminController < ApplicationController
   before_action :ensure_admin!
 
   def index
-    @users = User.includes(:entries, :badges, :events)
+    @users = User.includes(:entries, :badges, :events).order(:name)
+
     @entries_per_day = Entry
       .where
       .not('tsv = ?', '')
@@ -11,7 +12,7 @@ class AdminController < ApplicationController
       .to_a
       .sort_by { _1 }
       .reverse
-      .take(10)
+      .take(30)
   end
 
   private
