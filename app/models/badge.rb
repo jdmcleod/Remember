@@ -1,4 +1,5 @@
 class Badge < ApplicationRecord
+  ADDABLE_COUNT = 5
   belongs_to :user
 
   validates :name, presence: true

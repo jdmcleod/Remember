@@ -32,7 +32,7 @@ class DaysController < ApplicationController
   def set_badges
     @day_badges = @day.badges
     @addable_badges = current_user.badges - @day_badges
-    @recommended_badges = @day_badges.count >= 7 ? [] : @addable_badges.first(7  - @day_badges.count)
+    @recommended_badges = @day_badges.count >= Badge::ADDABLE_COUNT ? [] : @addable_badges.first(Badge::ADDABLE_COUNT  - @day_badges.count)
   end
 
   def storage_key(filename)
