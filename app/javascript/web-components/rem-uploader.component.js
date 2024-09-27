@@ -100,21 +100,9 @@ export default class REMUploader extends LitElement {
   }
 
   _renderUploadContainer() {
-    if (this.variant === 'mini') {
-      return html`
-        <div class="upload-container" @click=${this._onClick} @drop=${this._onDrop} @dragover=${this._onDragover} @dragleave=${this._onDragleave}>
-          <ti-icon name="camera" size="large" class="upload-container__add-icon"></ti-icon>
-          <div>Replace Image</div>
-        </div>
-      `
-    }
-
     return html`
       <div class="upload-container" @click=${this._onClick} @drop=${this._onDrop} @dragover=${this._onDragover} @dragleave=${this._onDragleave}>
-        <ti-icon name="camera" size="supa-large" class="upload-container__add-icon"></ti-icon>
-        <button class="mobile-upload-button">
-          <ti-icon name="camera" />
-        </button>
+        <ti-icon name="camera" class="upload-container__add-icon"></ti-icon>
       </div>
     `
   }
@@ -133,30 +121,42 @@ export default class REMUploader extends LitElement {
       display: flex;
       flex-direction: column;
     }
-      
-    :host([variant='mini']) {
+
+    :host([variant='floating']) {
       .upload-container {
-        width: 100%;
-        background-color: var(--op-color-primary-plus-six);
-        color: var(--op-color-primary-on-plus-six);
-        border: 2px dashed var(--op-color-primary-plus-four);
-          
+        position: absolute;
+        bottom: var(--op-space-small);
+        right: var(--op-space-small);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 3rem;
+        height: 3rem;
+        border: none;
+        background-color: var(--op-color-primary-base);
+        border-radius: var(--op-radius-2x-large);
+        color: var(--op-color-neutral-plus-max);
+
+        ti-icon {
+          --font-size: var(--op-font-large);
+        }
+
         &.upload-container--dragover, &:hover {
-          background-color: var(--op-color-primary-plus-five);
-          border: 2px dashed var(--op-color-primary-plus-four);
+          background-color: var(--op-color-primary-minus-one);
+          color: var(--op-color-primary-on-minus-one);
         }
       }
     }
-      
-    .upload-container {
-      @media only screen and (min-width: 712px) {
+
+    @media only screen and (min-width: 712px) {
+      .upload-container {
         width: 215px;
         flex-grow: 1;
         display: flex;
         justify-content: center;
-      align-items: center;
-      cursor: pointer;
-      gap: var(--op-space-x-small);
+        align-items: center;
+        cursor: pointer;
+        gap: var(--op-space-x-small);
 
         background-color: var(--op-color-primary-plus-eight);
         color: var(--op-color-primary-plus-six);
@@ -165,50 +165,43 @@ export default class REMUploader extends LitElement {
         box-sizing: border-box;
         font-size: var(--op-font-small);
         text-align: center;
-        pointer-events: none;
-      }
 
-      .upload-container__add-icon {
-        margin-bottom: var(--op-space-2x-small);
-        @media only screen and (max-width: 712px) { 
+        ti-icon {
+          --font-size: 10rem;
+        }
+
+        .files-input {
           display: none;
         }
-      }
 
-      .files-input {
-        display: none;
+        &.upload-container--dragover, &:hover {
+          background-color: var(--op-color-primary-plus-seven);
+          border: 3px dashed var(--op-color-primary-plus-five);
+        }
       }
+    }
 
-      &.upload-container--dragover, &:hover {
-        background-color: var(--op-color-primary-plus-seven);
-        border: 3px dashed var(--op-color-primary-plus-five);
-      }
-
-      @media only screen and (max-width: 712px) {
+    @media only screen and (max-width: 712px) {
+      .upload-container {
         position: absolute;
         bottom: 2rem;
         right: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 3rem;
+        height: 3rem;
+        border: none;
+        background-color: var(--op-color-primary-base);
+        border-radius: var(--op-radius-2x-large);
+        color: var(--op-color-neutral-plus-max);
+          
+        ti-icon {
+          --font-size: var(--op-font-large);
+        }
       }
     }
-    
-    .mobile-upload-button {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 3rem;
-      height: 3rem;
-      border: none;
-      background-color: var(--op-color-primary-base);
-      border-radius: var(--op-radius-2x-large);
-      color: var(--op-color-neutral-plus-max);
-      ti-icon {
-        --font-size: var(--op-font-large);
-      }
-      @media only screen and (min-width: 712px) {
-        display: none;
-      }
-    }
-
+      
     .files-errors {
       color: var(--op-color-alerts-danger-base);
       font-size: var(--op-font-small);
