@@ -140,6 +140,11 @@ export default class REMUploader extends LitElement {
         ti-icon {
           --font-size: var(--op-font-large);
         }
+
+        &.upload-container--dragover, &:hover {
+          background-color: var(--op-color-primary-minus-one);
+          color: var(--op-color-primary-on-minus-one);
+        }
       }
     }
 
