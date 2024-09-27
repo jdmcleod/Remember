@@ -93,11 +93,12 @@
   }
 
   .delete-image-button {
+    position: absolute;
+    bottom: var(--op-space-small);
+    right: var(--op-space-small);
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: var(--op-space-x-small);
-    width: 100%;
     background-color: var(--op-color-alerts-danger-plus-five);
     color: var(--op-color-alerts-danger-on-plus-five);
 

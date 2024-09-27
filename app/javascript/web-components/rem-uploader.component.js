@@ -154,9 +154,9 @@ export default class REMUploader extends LitElement {
         flex-grow: 1;
         display: flex;
         justify-content: center;
-      align-items: center;
-      cursor: pointer;
-      gap: var(--op-space-x-small);
+        align-items: center;
+        cursor: pointer;
+        gap: var(--op-space-x-small);
 
         background-color: var(--op-color-primary-plus-eight);
         color: var(--op-color-primary-plus-six);
