@@ -9,7 +9,7 @@
     "@rolemodel/optics": "1.0.0",
     "@rolemodel/turbo-confirm": "^2.0.2",
     "@tabler/icons-webfont": "^2.4.0",
-    "sass": "^1.77.4",
+    "sass": "^1.79.3",
     "trix": "^2.1.1",
     "turbolinks": "^5.2.0"
   },
