@@ -10,6 +10,7 @@ class Day < ApplicationRecord
   has_many :day_badges, dependent: :destroy
   has_many :badges, through: :day_badges
   has_many :be_real_memories
+  has_many :musings, dependent: :destroy
 
   has_one_attached :image do |attachable|
     attachable.variant :thumb, resize_to_limit: [54, 54]
