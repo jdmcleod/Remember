@@ -9,7 +9,7 @@ class Event < ApplicationRecord
   validates :start_date, presence: true
   validates :end_date, presence: true, if: :multiday?
 
-  enum decorator: {
+  enum :decorator, {
     celebration: 'celebration',
     arrow: 'arrow',
     star: 'star',

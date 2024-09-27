@@ -66,13 +66,15 @@ RSpec.describe 'Entry', type: :system, js: true do
     let!(:entry_3) { create(:entry, :with_content, journalable: day_3, user:, content: 'Take your dog for a walk bro')}
 
     it 'shows entries with content matching search term' do
-      visit current_years_path
+      Timecop.travel(day_1.date) do
+        visit current_years_path
 
-      find(data_test('search-button')).click
-      find(data_test('search-input')).send_keys(['dog', :enter])
-      expect(page).to have_content entry_1.title
-      expect(page).to have_content entry_3.title
-      expect(page).to_not have_content entry_2.title
+        find(data_test('search-button')).click
+        find(data_test('search-input')).send_keys(['dog', :enter])
+        expect(page).to have_content entry_1.title
+        expect(page).to have_content entry_3.title
+        expect(page).to_not have_content entry_2.title
+      end
     end
   end
 end

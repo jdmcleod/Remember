@@ -5,7 +5,7 @@
   - @entries.each do |entry|
     .card-padded.flex.flex-col.gap-sm
       .card__header.flex.justify-between
-        div = "#{entry.title}, #{entry.date.strftime('%Y')}"
+        div = "#{entry.title}, #{entry.date&.strftime('%Y')}"
 
         .flex.gap-sm
           div = entry.journalable_type.humanize
