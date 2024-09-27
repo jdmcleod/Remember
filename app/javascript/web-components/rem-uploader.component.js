@@ -129,18 +129,19 @@ export default class REMUploader extends LitElement {
         justify-content: center;
         width: 3rem;
         height: 3rem;
-        border: none;
-        background-color: var(--op-color-primary-base);
-        border-radius: var(--op-radius-2x-large);
-        color: var(--op-color-neutral-plus-max);
+        background-color: var(--op-color-primary-plus-max);
+        color: var(--op-color-primary-base);
+        border-radius: var(--op-radius-medium);
+        border: 1.5px dashed var(--op-color-primary-base);
+        box-sizing: border-box;
 
         ti-icon {
           --font-size: var(--op-font-large);
         }
 
         &.upload-container--dragover, &:hover {
-          background-color: var(--op-color-primary-minus-one);
-          color: var(--op-color-primary-on-minus-one);
+          background-color: var(--op-color-primary-plus-seven);
+          border: 1.5px dashed var(--op-color-primary-minus-two);
         }
       }
     }
