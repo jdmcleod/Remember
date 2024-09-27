@@ -17,6 +17,11 @@ Rails.application.routes.draw do
     resources :events
   end
 
+  resources :year_highlights do
+    patch :add_image_attachment, on: :member
+    delete :delete_image_attachment, on: :member
+  end
+
   resources :months, only: [:show] do
     get :entry_form, on: :member
     patch :update_entry, on: :member

@@ -65,6 +65,36 @@
       padding-inline: var(--op-space-3x-small);
     }
   }
+
+  .year-highlight__photo {
+    width: 215px;
+    height: 100%;
+    position: relative;
+
+    &.year-highlight__photo--deletable {
+      &:hover {
+        cursor: pointer;
+
+        &::after {
+          visibility: visible;
+        }
+      }
+
+      &::after {
+        content: $ti-icon-trash;
+        background-color: var(--op-color-alerts-danger-plus-seven);
+        color: var(--op-color-alerts-danger-on-plus-seven);
+        visibility: hidden;
+        position: absolute;
+        font-family: $ti-font-family;
+        font-size: var(--op-font-small);
+        padding: var(--op-space-3x-small);
+        border-radius: 50%;
+        top: -10px;
+        right: -10px;
+      }
+    }
+  }
 }
 
 .header__logo {
