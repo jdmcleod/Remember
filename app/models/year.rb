@@ -5,7 +5,7 @@ class Year < ApplicationRecord
   has_many :months, through: :quarters
   has_many :days, through: :months
 
-  has_many :year_highlights, dependent: :destroy
+  has_many :highlights, class_name: 'YearHighlight', dependent: :destroy
 
   def to_param
     year.to_s
