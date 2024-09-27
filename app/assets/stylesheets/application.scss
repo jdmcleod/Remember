@@ -3,6 +3,7 @@
 // Optics
 @import '@rolemodel/optics/dist/scss/optics';
 
+@import 'actiontext';
 
 // Core Customization
 @import '@rolemodel/optics/dist/scss/core/tokens';
@@ -43,7 +44,6 @@
 @import 'components/day';
 @import 'components/day_popup';
 @import 'components/context-menu';
-@import 'components/actiontext';
 @import 'components/search';
 @import 'components/year';
 @import 'components/trip';

@@ -2,19 +2,11 @@
   "name": "remember",
   "private": true,
   "dependencies": {
-    "@rails/actioncable": "^6.0.0",
-    "@rails/actiontext": "^7.0.8-3",
-    "@rails/activestorage": "^6.0.0",
-    "@rails/ujs": "^6.0.0",
     "@rolemodel/optics": "1.0.0",
-    "@rolemodel/turbo-confirm": "^2.0.2",
     "@tabler/icons-webfont": "^2.4.0",
-    "sass": "^1.79.3",
-    "trix": "^2.1.1",
-    "turbolinks": "^5.2.0"
+    "sass": "^1.79.3"
   },
   "scripts": {
-    "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets",
     "build:css": "sass ./app/assets/stylesheets/application.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules",
     "web_components:index": "yarn web_components:index:clean && tools/generate_web_component_indexes.js",
     "web_components:index:clean": "find app/javascript/web-components -name index.js -exec rm {} \\;"

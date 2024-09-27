@@ -19,3 +19,5 @@ pin "hotkeys-js" # @3.13.7
 pin "stimulus-use/hotkeys", to: "stimulus-use--hotkeys.js" # @0.52.2
 
 pin "lit", to: "https://cdn.jsdelivr.net/npm/lit@latest/+esm"
+pin "trix"
+pin "@rails/actiontext", to: "actiontext.esm.js"
