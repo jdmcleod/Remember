@@ -144,7 +144,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_26_020633) do
   create_table "musings", force: :cascade do |t|
     t.string "name"
     t.string "description"
-    t.integer "type", default: 0
+    t.string "type", default: "generic"
     t.bigint "day_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
