@@ -5,7 +5,7 @@ class Year < ApplicationRecord
   has_many :months, through: :quarters
   has_many :days, through: :months
 
-  has_many_attched :images do |attachable|
+  has_many_attached :image_highlights do |attachable|
     attachable.variant :thumb, resize_to_limit: [52, 52]
   end
 
