@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_09_26_174754) do
+ActiveRecord::Schema[8.0].define(version: 2024_09_27_181813) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  enable_extension "pg_catalog.plpgsql"
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -141,6 +141,16 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_26_174754) do
     t.index ["quarter_id"], name: "index_months_on_quarter_id"
   end
 
+  create_table "musings", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.string "type", default: "generic"
+    t.bigint "day_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["day_id"], name: "index_musings_on_day_id"
+  end
+
   create_table "quarters", force: :cascade do |t|
     t.bigint "year_id"
     t.date "start_date"
@@ -176,4 +186,5 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_26_174754) do
   add_foreign_key "day_badges", "badges"
   add_foreign_key "day_badges", "days"
   add_foreign_key "entries", "users"
+  add_foreign_key "musings", "days"
 end
