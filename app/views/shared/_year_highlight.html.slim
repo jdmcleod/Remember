@@ -1,0 +1,13 @@
+- if year_highlight.image.present?
+  .year-highlight__photo id="year-highlight-photo--#{year_highlight.id}"
+    rem-be-real-memory{
+      date=year_highlight.date
+      primarySrc=rails_storage_proxy_path(year_highlight.image)
+      size="10"}
+    = button_to delete_image_attachment_year_highlight_path(year_highlight), method: :delete, class: 'btn btn--small year-highlight__photo--deletable' do
+      = icon('trash')
+- else
+  = simple_form_for(year_highlight, url: add_image_attachment_year_highlight_path(year_highlight), html: { id: "edit_year_highlight_#{year_highlight.id}" }) do |f|
+    rem-uploader variant='mini' formId="edit_year_highlight_#{year_highlight.id}" allowedFileExtensions=%w[png jpg jpeg svg webp heic]
+      div slot='input' = f.input :image, as: :file
+      div slot='errors' = f.object.errors[:image].join(', ') if f.object.errors[:image].any?

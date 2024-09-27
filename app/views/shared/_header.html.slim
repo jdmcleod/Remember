@@ -6,7 +6,8 @@ div data-controller='hotkeys' data-hotkeys-bindings-value='{"command+/": ".app__
   = render 'shared/search_form', year: @year
   .header.header--main
     nav.header__nav
-      / = render 'shared/image_highlight', image: @year.image_highlights.first
+      - year.highlights.take(3).each do |year_highlight|
+        = render 'shared/year_highlight', year_highlight: year_highlight
       - if !hide_nav
         = link_to year_path(@year.year.to_i - 1), class: 'btn btn--icon btn--pill btn--no-background' do
           = icon('circle-caret-left', color: 'primary-base', classes: 'icon--x-large')
