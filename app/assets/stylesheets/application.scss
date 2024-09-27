@@ -18,6 +18,8 @@
 @import '@rolemodel/optics/dist/scss/addons/panel';
 @import '@rolemodel/optics/dist/scss/components/modal';
 
+// needed first for Tabler icons to be imported
+@import 'components/icon';
 
 // Optics Component Customization
 @import 'components/optics-overrides/button';
@@ -33,10 +35,7 @@
 
 // Components
 @import 'components/hero';
-
 @import 'components/header';
-@import 'components/icon';
-
 @import 'components/badge';
 @import 'components/quarter';
 @import 'components/month';
