@@ -15,8 +15,8 @@ gem 'cssbundling-rails'
 gem 'image_processing', '~> 1.2'
 gem 'requestjs-rails'
 gem 'importmap-rails' # rubocop:disable Bundler/OrderedGems - must come after requestjs-rails
-gem 'sprockets-rails'
 gem 'turbo-rails'
+gem 'propshaft'
 gem "tzinfo-data", platforms: %i[ mswin mswin64 mingw x64_mingw jruby ]
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
