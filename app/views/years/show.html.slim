@@ -7,6 +7,7 @@ div{data-controller="scroll-to-day"
   data-scroll-to-day-date-value=@highlight_day}
 
 .app-container data-controller="day-popup"
+  = render 'musings/handles'
   = render 'days/popup_form'
   .flex.flex-col.gap-xs
     = render @year.quarters
