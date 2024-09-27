@@ -122,6 +122,29 @@ export default class REMUploader extends LitElement {
       flex-direction: column;
     }
 
+    :host([variant='mini']) {
+      .upload-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 3rem;
+        height: 3rem;
+        border: none;
+        background-color: var(--op-color-primary-base);
+        border-radius: var(--op-radius-2x-large);
+        color: var(--op-color-neutral-plus-max);
+
+        ti-icon {
+          --font-size: var(--op-font-large);
+        }
+
+        &.upload-container--dragover, &:hover {
+          background-color: var(--op-color-primary-minus-one);
+          color: var(--op-color-primary-on-minus-one);
+        }
+      }
+    }
+
     :host([variant='floating']) {
       .upload-container {
         position: absolute;
