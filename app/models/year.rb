@@ -7,6 +7,12 @@ class Year < ApplicationRecord
 
   has_many :highlights, class_name: 'YearHighlight', dependent: :destroy
 
+  after_create :create_highlights!
+
+  def create_highlights!
+    6.times { |i| highlights.find_or_create_by(position: i + 1) }
+  end
+
   def to_param
     year.to_s
   end

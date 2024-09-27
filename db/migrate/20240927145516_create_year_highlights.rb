@@ -7,5 +7,19 @@ class CreateYearHighlights < ActiveRecord::Migration[7.1]
 
       t.timestamps
     end
+
+    Year.find_each { |year| year.create_highlights! }
   end
+end
+
+class Year < ApplicationRecord
+  has_many :highlights, class_name: 'YearHighlight', dependent: :destroy
+
+  def create_highlights!
+    6.times { |i| highlights.find_or_create_by(position: i + 1) }
+  end
+end
+
+class YearHighlight < ApplicationRecord
+  belongs_to :year
 end
