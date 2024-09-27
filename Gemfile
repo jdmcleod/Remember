@@ -64,3 +64,5 @@ end
 group :production do
   gem "aws-sdk-s3", "~> 1.159", :require => false
 end
+
+gem "rails-erd", "~> 1.7"
