@@ -3,5 +3,15 @@ class Musing < ApplicationRecord
 
   has_one :entry, as: :journalable, dependent: :destroy, class_name: 'Entry'
 
-  enum type: [ :book, :movie, :album, :bible_verse, :realization, :perplexity, :resolution, :testimony ]
+  enum type: {
+    generic: 'generic',
+    book: 'book',
+    album: 'album',
+    movie: 'movie',
+    bible_verse: 'bible_verse',
+    realization: 'realization',
+    perplexity: 'perplexity',
+    resolution: 'resolution',
+    testimony: 'testimony',
+  }
 end
