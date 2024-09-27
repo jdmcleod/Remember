@@ -15,6 +15,9 @@ Rails.application.routes.draw do
     get :current, on: :collection
     get :mobile_view, on: :collection
     resources :events
+    resources :musings, only: %i[] do
+      get :in_year, on: :collection
+    end
   end
 
   resources :months, only: [:show] do

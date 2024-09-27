@@ -89,6 +89,6 @@ class EventsController < ApplicationController
   end
 
   def find_events
-    @events = current_user.events.in_range(@year.start_date, @year.end_date).order(:start_date)
+    @events = current_user.events.range_in_range(@year.start_date, @year.end_date).order(:start_date)
   end
 end
