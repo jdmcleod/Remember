@@ -14,6 +14,9 @@ Rails.application.routes.draw do
   resources :years, only: [:index, :show] do
     get :current, on: :collection
     resources :events
+    resources :musings, only: %i[] do
+      get :in_year, on: :collection
+    end
   end
 
   resources :months, only: [:show] do

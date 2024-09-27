@@ -1,5 +1,11 @@
 class MusingsController < ApplicationController
-  before_action :set_day
+  before_action :set_day, except: [:in_year]
+
+  def in_year
+    year = current_user.years.find_by(year: params[:year_id])
+    @musings = current_user.musings.in_range(year.start_date, year.end_date)
+    render layout: 'panel'
+  end
 
   def new
     @musing = @day.musings.new

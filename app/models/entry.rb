@@ -1,5 +1,6 @@
 class Entry < ApplicationRecord
   include PgSearch::Model
+  include DateScopes
 
   has_rich_text :content, encrypted: true
   belongs_to :user
@@ -7,8 +8,6 @@ class Entry < ApplicationRecord
   belongs_to :journalable, polymorphic: true
 
   encrypts :title
-
-  scope :in_range, -> (start_date, end_date) { where(arel_table[:date].gteq(start_date)).where(arel_table[:date].lteq(end_date)).order(arel_table[:date]) }
 
   before_save do
     self.tsv = tsvectorized_text

@@ -1,0 +1,19 @@
+.musing-handle__wrapper {
+  position: fixed;
+  background-color: var(--op-color-neutral-plus-max);
+  border-top-left-radius: var(--op-radius-medium);
+  border-top-right-radius: var(--op-radius-medium);
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  padding: 0 var(--op-space-2x-small) var(--op-space-2x-small) var(--op-space-2x-small);
+  box-shadow: var(--op-shadow-x-small);
+  font-size: var(--op-space-small);
+}
+
+.musing-handle__wrapper--position-1 {
+  top: 20%;
+  left: -1.2rem;
+  color: var(--op-color-netural-base);
+
+  transform: rotate(90deg);
+}
