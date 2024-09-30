@@ -4,4 +4,4 @@
     td = user.entries.size
     td = user.badges.size
     td = user.events.size
-    td = user.entries.last&.created_at.strftime("%B %-d, %Y")
+    td = user.entries.order(:created_at).last&.created_at.strftime("%B %-d, %Y")
