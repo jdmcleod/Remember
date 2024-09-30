@@ -2,6 +2,7 @@ FactoryBot.define do
   factory :entry do
     content { nil }
     user
+    date { Date.current }
     journalable { create(:day) }
 
     trait :with_content do

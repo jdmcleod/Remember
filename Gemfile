@@ -1,9 +1,9 @@
 source "https://rubygems.org"
 
-ruby "3.1.4"
+ruby "3.3.4"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 7.1.3", ">= 7.1.3.3"
+gem "rails", "~> 8.0.0.beta1"
 
 gem "pg", '>= 1.1'
 gem "puma", ">= 5.0"
@@ -15,8 +15,8 @@ gem 'cssbundling-rails'
 gem 'image_processing', '~> 1.2'
 gem 'requestjs-rails'
 gem 'importmap-rails' # rubocop:disable Bundler/OrderedGems - must come after requestjs-rails
-gem 'sprockets-rails'
 gem 'turbo-rails'
+gem 'propshaft'
 gem "tzinfo-data", platforms: %i[ mswin mswin64 mingw x64_mingw jruby ]
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
@@ -58,6 +58,7 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
+  gem 'timecop'
   gem "test-prof"
 end
 

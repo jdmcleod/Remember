@@ -1,6 +1,6 @@
 //= link_tree ../images
 //= link_tree ../../javascript .js
-//= link @rails--actiontext.js
+//= link_directory ../stylesheets
 //= link application.js
 //= link_tree ../builds
 
