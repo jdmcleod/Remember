@@ -110,6 +110,7 @@ export default class REMBeRealMemory extends LitElement {
       <img src="${images[0]}" @click="${this.#expandImage}" alt="${this.date}" class="${classes}" style="width: ${primaryHeight};">
       
       ${this._renderSecondary(secondaryHeight, images[1])}
+      <slot name="actions"></slot>
     `
   }
 
