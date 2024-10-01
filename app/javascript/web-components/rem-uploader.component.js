@@ -4,6 +4,7 @@ export default class REMUploader extends LitElement {
   static properties = {
     allowedFileExtensions: { type: Array, attribute: true, reflect: true },
     variant: { type: String },
+    icon: { type: String },
     formId: { type: String },
     invalidFileExtensions: { type: Array, state: true },
     dataTransfer: { type: Object, state: true },
@@ -15,6 +16,7 @@ export default class REMUploader extends LitElement {
 
     this.allowedFileExtensions = undefined
     this.variant = 'full'
+    this.icon = 'camera'
     this.formId = undefined
     this.invalidFileExtensions = []
     this.dataTransfer = new DataTransfer()
@@ -102,7 +104,7 @@ export default class REMUploader extends LitElement {
   _renderUploadContainer() {
     return html`
       <div class="upload-container" @click=${this._onClick} @drop=${this._onDrop} @dragover=${this._onDragover} @dragleave=${this._onDragleave}>
-        <ti-icon name="camera" class="upload-container__add-icon"></ti-icon>
+        <ti-icon name=${this.icon} class="upload-container__add-icon"></ti-icon>
       </div>
     `
   }
@@ -142,6 +144,26 @@ export default class REMUploader extends LitElement {
         &.upload-container--dragover, &:hover {
           background-color: var(--op-color-primary-plus-seven);
           border: 1.5px dashed var(--op-color-primary-minus-two);
+        }
+      }
+    }
+
+    :host([variant='icon']) {
+      .upload-container {
+        width: 3rem;
+        height: 3rem;
+        border: none;
+        background-color: var(--op-color-primary-base);
+        border-radius: var(--op-radius-2x-large);
+        color: var(--op-color-neutral-plus-max);
+
+        ti-icon {
+          --font-size: var(--op-font-large);
+        }
+
+        &.upload-container--dragover, &:hover {
+          background-color: var(--op-color-primary-minus-one);
+          color: var(--op-color-primary-on-minus-one);
         }
       }
     }
