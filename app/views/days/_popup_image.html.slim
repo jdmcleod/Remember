@@ -4,8 +4,12 @@
       date=@day.date
       primarySrc=rails_storage_proxy_path(@image)
       size="52"}
-    = button_to delete_image_attachment_day_path(@day), method: :delete, class: 'btn btn--small delete-image-button' do
-      = icon('trash')
+    .day-popup__photo-actions
+      = simple_form_for(@day, url: add_image_attachment_day_path(@day), html: { id: "swap-day-popup-image" }) do |f|
+        rem-uploader variant='icon' icon='switch-vertical' formId="swap-day-popup-image" allowedFileExtensions=%w[png jpg jpeg svg webp heic]
+          div slot='input' = f.input :image, as: :file
+      = button_to delete_image_attachment_day_path(@day), method: :delete, class: 'btn btn--small delete-image-button' do
+        = icon('trash')
 - elsif @memories&.any?
   .day-popup__photo#day-popup-image
     - memory = @memories.first
