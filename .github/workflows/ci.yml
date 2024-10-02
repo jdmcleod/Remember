@@ -95,16 +95,6 @@ jobs:
           name: test-logs
           path: log
 
-      - name: Publish Rspec Test Results
-        uses: mikepenz/action-junit-report@v4
-        if: success() || failure()
-        with:
-          check_name: Rspec Test Results
-          report_paths: tmp/rspec.xml
-          detailed_summary: true
-        env:
-          GITHUB_STEP_SUMMARY: true
-
   system_test:
     name: System Tests
     runs-on: ubuntu-latest-16-cores
@@ -169,16 +159,6 @@ jobs:
       - name: Execute tests
         shell: bash
         run: bundle exec parallel_rspec --verbose-command spec/system
-
-      - name: Publish System Test Results
-        uses: mikepenz/action-junit-report@v4
-        if: success() || failure()
-        with:
-          check_name: System Test Results
-          report_paths: tmp/rspec-*.xml
-          detailed_summary: true
-        env:
-          GITHUB_STEP_SUMMARY: true
 
       - name: Upload screenshots
         if: failure()
