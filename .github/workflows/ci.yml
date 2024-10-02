@@ -41,7 +41,7 @@ jobs:
 
   model_test:
     name: Ruby Tests
-    runs-on: ubuntu-latest-8-cores
+    runs-on: ubuntu-latest
     timeout-minutes: 20
     needs: setup
     env:
