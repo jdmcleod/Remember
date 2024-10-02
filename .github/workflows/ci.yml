@@ -119,13 +119,23 @@ jobs:
           POSTGRES_PASSWORD: password
 
     steps:
+      - name: Setup Chrome
+        uses: browser-actions/setup-chrome@v1
+        id: setup-chrome
+
+      - name: Install Libvips
+        uses: awalsh128/cache-apt-pkgs-action@v1.3.0
+        with:
+          packages: libvips42
+          version: 1.0
+
       - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Retrieve built assets
         uses: actions/download-artifact@v4
         with:
-          name: public-assets
+          name: build-assets
           path: app/assets/builds
 
       - name: Install Ruby and gems
@@ -139,26 +149,19 @@ jobs:
           node-version-file: .node-version
           cache: yarn
 
-      - name: Setup vips
+      - name: Run Yarn Install
+        run: yarn install --frozen-lockfile
+
+      - name: Setup database
         run: |
-          sudo apt-get update
-          sudo apt-get install -y libvips
+          bundle exec rake db:setup
+          bundle exec rake db:test:prepare
 
-      - name: Load previous turbo test runtime stats
-        id: restore-parallel-spec
-        uses: actions/cache@v4
-        with:
-          path: tmp/turbo_rspec_runtime.log
-          key: ${{ runner.os }}-parallel-spec-runtimes-${{ github.sha }}_${{ github.run_attempt }}
-          restore-keys: ${{ runner.os }}-parallel-spec-runtimes-
-
-      - name: Setup parallel databases
+      - name: Execute system tests
         shell: bash
-        run: bundle exec rake environment parallel:setup
-
-      - name: Execute tests
-        shell: bash
-        run: bundle exec parallel_rspec --verbose-command spec/system
+        run: bundle exec rspec spec/system/**/*_spec.rb --format documentation
+        env:
+          GOOGLE_CHROME_BIN: ${{ steps.setup-chrome.outputs.chrome-path }}
 
       - name: Upload screenshots
         if: failure()
