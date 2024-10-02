@@ -1,0 +1,175 @@
+name: "CI"
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  setup:
+    name: Setup Dependencies
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      CI: true
+      RAILS_ENV: test
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .node-version
+          cache: yarn
+
+      - name: Install Ruby and gems
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+
+      - name: Build assets
+        run: bundle exec rails test:prepare
+
+      - name: Store built assets
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-assets
+          path: app/assets/builds
+
+  model_test:
+    name: Ruby Tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    needs: setup
+    env:
+      CI: true
+      RAILS_ENV: test
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      ACTIVE_RECORD_ENCRYPTION_PRIMARY_KEY: XXXXXXXXXXX
+      ACTIVE_RECORD_ENCRYPTION_DETERMINISTIC_KEY: XXXXXXXXXXX
+      ACTIVE_RECORD_ENCRYPTION_KEY_DERIVATION_SALT: XXXXXXXXXXX
+
+    services:
+      postgres:
+        image: postgres:16
+        ports:
+          - "5432:5432"
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: password
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .node-version
+          cache: yarn
+
+      - name: Run Yarn Install
+        run: yarn install --frozen-lockfile
+
+      - name: Install Ruby and gems
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+
+      - name: Setup database
+        run: |
+          bundle exec rake db:setup
+          bundle exec rake db:test:prepare
+
+      - name: Run non-system tests
+        run: bundle exec rspec --exclude-pattern "spec/system/**/*_spec.rb" --format documentation --format RspecJunitFormatter --out tmp/rspec.xml
+
+      - name: Upload logs
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-logs
+          path: log
+
+  system_test:
+    name: System Tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    needs: setup
+    env:
+      CI: true
+      RAILS_ENV: test
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      ACTIVE_RECORD_ENCRYPTION_PRIMARY_KEY: XXXXXXXXXXX
+      ACTIVE_RECORD_ENCRYPTION_DETERMINISTIC_KEY: XXXXXXXXXXX
+      ACTIVE_RECORD_ENCRYPTION_KEY_DERIVATION_SALT: XXXXXXXXXXX
+
+    services:
+      postgres:
+        image: postgres:16
+        ports:
+          - "5432:5432"
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: password
+
+    steps:
+      - name: Install Libvips
+        uses: awalsh128/cache-apt-pkgs-action@v1.3.0
+        with:
+          packages: libvips42
+          version: 1.0
+
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Retrieve built assets
+        uses: actions/download-artifact@v4
+        with:
+          name: build-assets
+          path: app/assets/builds
+
+      - name: Install Ruby and gems
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+
+      - name: Set up node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .node-version
+          cache: yarn
+
+      - name: Run Yarn Install
+        run: yarn install --frozen-lockfile
+
+      - name: Setup database
+        run: |
+          bundle exec rake db:setup
+          bundle exec rake db:test:prepare
+
+      - name: Execute system tests
+        shell: bash
+        run: bundle exec rspec spec/system/*_spec.rb --format documentation
+
+      - name: Upload screenshots
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: screenshots
+          path: tmp/capybara
+
+      - name: Upload logs
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: system-logs
+          path: log

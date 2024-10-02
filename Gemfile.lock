@@ -327,6 +327,8 @@ GEM
       rspec-mocks (~> 3.13)
       rspec-support (~> 3.13)
     rspec-support (3.13.1)
+    rspec_junit_formatter (0.6.0)
+      rspec-core (>= 2, < 4, != 2.12.0)
     ruby-graphviz (1.2.5)
       rexml
     ruby-vips (2.2.2)
@@ -421,6 +423,7 @@ DEPENDENCIES
   requestjs-rails
   rolemodel_rails!
   rspec-rails
+  rspec_junit_formatter
   selenium-webdriver
   simple_form (~> 5.3)
   slim
