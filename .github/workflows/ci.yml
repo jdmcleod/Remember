@@ -33,10 +33,13 @@ jobs:
         with:
           bundler-cache: true
 
+      - name: Build assets
+        run: bundle exec rails test:prepare
+
       - name: Store built assets
         uses: actions/upload-artifact@v4
         with:
-          name: public-assets
+          name: build-assets
           path: app/assets/builds
 
   model_test:
