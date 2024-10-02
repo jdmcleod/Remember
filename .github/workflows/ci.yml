@@ -97,7 +97,7 @@ jobs:
 
   system_test:
     name: System Tests
-    runs-on: ubuntu-latest-16-cores
+    runs-on: ubuntu-latest
     timeout-minutes: 20
     needs: setup
     env:
