@@ -33,11 +33,6 @@ jobs:
         with:
           bundler-cache: true
 
-      - name: Build assets
-        run: |
-          yarn install --frozen-lockfile
-          yarn build
-
       - name: Store built assets
         uses: actions/upload-artifact@v4
         with:
@@ -179,7 +174,7 @@ jobs:
 
       - name: Execute tests
         shell: bash
-        run: bundle exec rspec --verbose-command
+        run: bundle exec parallel_rspec --verbose-command spec/system
 
       - name: Publish System Test Results
         uses: mikepenz/action-junit-report@v4
