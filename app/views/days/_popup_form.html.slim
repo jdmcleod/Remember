@@ -22,7 +22,7 @@
                 = icon('chevrons-right', color: 'primary-base', classes: 'btn btn--icon btn--x-small')
 
       .day-popup__body
-        = render 'day_popup_image'
+        = render 'popup_image'
 
         .full-width.full-height
           = simple_form_for @entry, url: entry_path(@entry), data: { method: :put, turbo: true, 'day-popup-target': 'form' } do |f|
@@ -34,8 +34,8 @@
             = f.rich_text_area :content, data: { testid: 'short-entry-input', action: 'click->day-popup#inputChange' }
 
         .badges-addable-container
-          = render 'day_badges'
-          = render 'day_event_buttons'
+          = render 'popup_badges'
+          = render 'popup_event_buttons'
 
           button.btn.btn-notice.btn--icon.btn--small.day-popup__save title="Save" type="submit" name="commit" data-action="day-popup#close"
             = icon('discount-check', classes: 'icon--large', color: 'alerts-notice-plus-six')

@@ -1,29 +1,7 @@
 class EntriesController < ApplicationController
-  def day_popup_form
-    date = Date.parse(params[:date])
-    @day = current_user.days.find_by(date: date)
-    @entry = @day.find_short_entry
-    @memories = @day.be_real_memories
-    @events = @day.valid_events
-    @image = @day.image
-    set_badges
-  end
-
   def update
     @entry = Entry.find_by(id: params[:id])
     @entry.update(entry_params)
-    @day = @entry.journalable
-    @memories = @day.be_real_memories
-    @image = @day.image
-    set_badges
-
-    month = @entry.journalable.month
-    @events = current_user.events.in_range(month.start_date, month.end_date)
-    @event_dates = @events.flat_map(&:range).uniq
-    render turbo_stream: [
-      turbo_stream.replace('day-popup-form', partial: 'entries/day_popup_form'),
-      turbo_stream.replace("month-#{month.number}", partial: 'months/month', locals: { month: @entry.journalable.month }),
-    ].join
   end
 
   def search
@@ -48,12 +26,6 @@ class EntriesController < ApplicationController
       @search_date ||= Date.parse(@search_term)
     rescue ArgumentError
     end
-  end
-
-  def set_badges
-    @day_badges = @day.badges
-    @addable_badges = current_user.badges - @day_badges
-    @recommended_badges = @day_badges.count >= Badge::ADDABLE_COUNT ? [] : @addable_badges.first(Badge::ADDABLE_COUNT - @day_badges.count)
   end
 
   def entry_params
