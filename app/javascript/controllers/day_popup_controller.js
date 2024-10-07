@@ -69,7 +69,7 @@ export default class DayPopupController extends Controller {
   }
 
   async _loadContent(date) {
-    await get(`/entries/day_popup_form/${date}`, { responseKind: 'turbo-stream' })
+    await get(`/days/popup_form/${date}`, { responseKind: 'turbo-stream' })
   }
 
   _removeEventListeners() {

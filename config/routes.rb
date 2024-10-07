@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   end
 
   resources :days do
-    get :popup_form, on: :member
+    get 'popup_form/:date', to: 'days#popup_form', as: :popup_form, on: :collection
     post 'add_badge/:badge_id', on: :member, to: 'days#add_badge', as: :add_badge
     delete 'remove_badge/:badge_id', on: :member, to: 'days#remove_badge', as: :remove_badge
     patch :add_image_attachment, on: :member

@@ -1,6 +1,7 @@
 class DaysController < ApplicationController
   def popup_form
-    @day = current_user.days.find(params[:id])
+    date = Date.parse(params[:date])
+    @day = current_user.days.find_by(date: date)
     @entry = @day.find_short_entry
     @memories = @day.be_real_memories
     @events = @day.valid_events
