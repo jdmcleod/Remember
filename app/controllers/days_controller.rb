@@ -1,4 +1,14 @@
 class DaysController < ApplicationController
+  def popup_form
+    date = Date.parse(params[:date])
+    @day = current_user.days.find_by(date: date)
+    @entry = @day.find_short_entry
+    @memories = @day.be_real_memories
+    @events = @day.valid_events
+    @image = @day.image
+    set_badges
+  end
+
   def add_badge
     @day = Day.find(params[:id])
     @day.badges << Badge.find(params[:badge_id])

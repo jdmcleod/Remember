@@ -23,11 +23,11 @@ Rails.application.routes.draw do
   resources :badges, only: [:index, :new, :edit, :create, :update, :destroy]
 
   resources :entries, only: %i[update] do
-    get 'day_popup_form/:date', to: 'entries#day_popup_form', as: :day_popup_form, on: :collection
     get :search, on: :collection
   end
 
   resources :days do
+    get 'popup_form/:date', to: 'days#popup_form', as: :popup_form, on: :collection
     post 'add_badge/:badge_id', on: :member, to: 'days#add_badge', as: :add_badge
     delete 'remove_badge/:badge_id', on: :member, to: 'days#remove_badge', as: :remove_badge
     patch :add_image_attachment, on: :member
