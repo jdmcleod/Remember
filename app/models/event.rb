@@ -56,7 +56,6 @@ class Event < ApplicationRecord
 
   def contains_date(date)
     if end_date.blank?
-      binding.pry
       return date.beginning_of_day == start_date.beginning_of_day
     end
     start_date <= date && end_date >= date
