@@ -2,7 +2,12 @@ class Event < ApplicationRecord
   belongs_to :user
 
   scope :in_range, -> (query_start_date, query_end_date) { where(arel_table[:start_date].gteq(query_start_date)).where(arel_table[:start_date].lteq(query_end_date)) }
-  scope :contains_date, -> (date) { where(arel_table[:start_date].lteq(date)).where(arel_table[:end_date].gteq(date)) }
+
+  scope :contains_date, -> (date) do
+    where(arel_table[:start_date].lteq(date))
+      .where(arel_table[:end_date].gteq(date))
+      .or(where(arel_table[:start_date].eq(date)))
+  end
 
   validate :start_date_not_after_end_date
   validates :name, presence: true
