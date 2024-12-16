@@ -122,11 +122,10 @@ jobs:
           POSTGRES_PASSWORD: password
 
     steps:
-      - name: Install Libvips
-        uses: awalsh128/cache-apt-pkgs-action@v1.3.0
-        with:
-          packages: libvips42
-          version: 1.0
+      - name: Setup vips
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libvips
 
       - name: Checkout code
         uses: actions/checkout@v4
