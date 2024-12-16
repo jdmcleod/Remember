@@ -1,17 +1,27 @@
+@keyframes hero-transform {
+  0% {transform: scale(1.0);}
+  50% {transform: scale(0.98);}
+  100% {transform: scale(1.03);}
+}
+
+@keyframes hero-untransform {
+  0% {transform: scale(1.03);}
+  100% {transform: scale(1.00);}
+}
+
 .hero {
   --_hero-card-width: calc(var(--op-size-unit) * 250); // 1000px
   --_hero-card-radius: calc(var(--op-size-unit) * 13); // 52px
-  --_hero-graphic-width: calc(var(--op-size-unit) * 95); // 380px
+  --_hero-graphic-width: 80%;
+  --_hero-graphic-max-height: 70vh;
   --_hero-graphic-radius: var(--op-radius-2x-large);
-  --_hero-title-font-size: calc(var(--op-font-scale-unit) * 5.5); // 55px
+  --_hero-title-font-size: calc(var(--op-font-scale-unit) * 7.2); // 55px
+  --_hero-graphic-box-shadow: 0px 0px 20px 3px rgba(0, 0, 0, 0.12), 0px 0px 100px 32px rgba(0, 0, 0, 0.12);
 
   display: flex;
+  flex-direction: column;
   justify-content: center;
-
-  padding-block: var(--op-space-5x-large);
-
-  background-color: var(--op-color-background);
-  color: var(--op-color-on-background);
+  align-items: center;
 
   // Elements
 
@@ -36,28 +46,46 @@
     }
   }
 
+  .hero__content {
+    padding: var(--op-space-3x-large);
+    padding-top: var(--op-space-5x-large);
+    display: flex;
+    flex-direction: column;
+    gap: var(--op-space-small);
+    text-align: center;
+  }
+
   .hero__title {
-    font-weight: var(--op-font-weight-extra-bold);
+    font-family: var(--op-font-family-secondary);
+    font-weight: var(--op-font-weight-normal);
     font-size: var(--_hero-title-font-size);
     line-height: var(--op-line-height-denser);
   }
 
   .hero__message {
     font-size: var(--op-font-x-large);
+    font-family: var(--op-font-family-tertiary);
   }
 
   .hero__graphic {
+    animation: hero-untransform ease-out 0.25s;
+    max-height: var(--_hero-graphic-max-height);
     max-width: var(--_hero-graphic-width);
+    position: absolute;
+    bottom: calc(var(--op-space-5x-large) * -1);
+    box-shadow: var(--_hero-graphic-box-shadow);
 
-    box-shadow: 0 0 0 var(--op-border-width-large) var(--op-color-primary-plus-five);
     border-top-left-radius: var(--_hero-graphic-radius);
-    border-bottom-right-radius: var(--_hero-graphic-radius);
+    border-top-right-radius: var(--_hero-graphic-radius);
+
+    &:hover {
+      animation: hero-transform ease-in-out 0.25s forwards;
+    }
   }
 
   // Modifiers
 
   &.hero--primary {
-    background-color: var(--op-color-primary-base);
     color: var(--op-color-primary-on-base);
   }
 }

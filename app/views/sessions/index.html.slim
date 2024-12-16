@@ -1,21 +1,19 @@
 .app__header
-  .navbar
+  .navbar.navbar--login
     = link_to root_path, class: 'navbar__brand' do
-      h1 = "Remember #{@year&.year && Date.current.year}"
+      = image_tag 'logo-white.svg', class: 'header__logo'
 
     .navbar__content.navbar__content--justify-end
-      = button_to 'Sign In With Google', '/auth/google', class: 'btn-primary btn--no-border', data: { turbo: false }
+      = button_to '/auth/google', class: 'sign-in-with-google-button', data: { turbo: false } do
+        = image_tag 'sign-in-with-google.svg'
 
 .home-page
+  = image_tag '/path.png', class: 'login-page__path'
   .hero.hero--primary
-    .card.hero__card
-      .card__body
-        span.hero__title Journaling to remember
-        p.hero__message This unique take on journaling prioritizes connecting you to your past
-        .flex.justify-center
-          = button_to 'Sign In With Google', '/auth/google', class: 'btn-primary btn--no-border', data: { turbo: false }
-      .card__body
-        = image_tag '/hero.png', class: 'hero__graphic'
+    .hero__content
+      span.hero__title Journaling to remember
+      p.hero__message This unique take on journaling prioritizes connecting you to your past
+    = image_tag '/hero.png', class: 'hero__graphic'
   / .hero
   /   .card.hero__card
   /     .card__body

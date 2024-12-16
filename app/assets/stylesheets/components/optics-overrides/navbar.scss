@@ -18,3 +18,9 @@
     }
   }
 }
+
+.navbar--login {
+  box-shadow: none;
+  padding: var(--op-space-small) var(--op-space-2x-large);
+  background-color: transparent;
+}
