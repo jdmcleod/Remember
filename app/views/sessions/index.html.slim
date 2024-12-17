@@ -6,6 +6,8 @@
     .navbar__content.navbar__content--justify-end
       = button_to '/auth/google', class: 'sign-in-with-google-button', data: { turbo: false } do
         = image_tag 'sign-in-with-google.svg'
+      = button_to '/auth/google', class: 'sign-in-with-google-icon', data: { turbo: false } do
+        = image_tag 'sign-in-with-google-icon.svg'
 
 .home-page
   = image_tag '/path.png', class: 'login-page__path'
@@ -14,6 +16,7 @@
       span.hero__title Journaling to remember
       p.hero__message This unique take on journaling prioritizes connecting you to your past
     = image_tag '/hero.png', class: 'hero__graphic'
+    = image_tag '/hero--mobile.png', class: 'hero__graphic--mobile'
   / .hero
   /   .card.hero__card
   /     .card__body

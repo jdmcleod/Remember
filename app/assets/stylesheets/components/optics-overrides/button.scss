@@ -152,4 +152,22 @@
 
 .sign-in-with-google-button {
   padding: 0;
+
+  @media only screen and (max-width: $breakpoint-small) {
+    display: none;
+  }
+}
+
+.sign-in-with-google-icon {
+  padding: 0;
+  display: none;
+
+  img {
+    min-height: var(--op-space-4x-large);
+    min-width: var(--op-space-4x-large);
+  }
+
+  @media only screen and (max-width: $breakpoint-small) {
+    display: inline-block;
+  }
 }
