@@ -1,0 +1,21 @@
+.app-body--login {
+  position: relative;
+  background-color: var(--op-color-primary-base);
+  overflow: hidden;
+}
+
+.home-page {
+  display: grid;
+  gap: var(--op-space-3x-large);
+}
+
+.login-page__path {
+  z-index: -1;
+  margin: auto;
+  width: 80%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
