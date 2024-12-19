@@ -47,8 +47,7 @@
   }
 
   .hero__content {
-    padding: var(--op-space-3x-large);
-    padding-top: var(--op-space-5x-large);
+    padding: var(--op-space-5x-large) var(--op-space-3x-large);
     display: flex;
     flex-direction: column;
     gap: var(--op-space-small);
@@ -105,8 +104,7 @@
     display: none;
     animation: hero-untransform ease-out 0.25s;
     max-height: var(--_hero-graphic-max-height);
-    position: absolute;
-    bottom: calc(var(--op-space-scale-unit) * -40);
+
     box-shadow: var(--_hero-graphic-box-shadow);
 
     border-top-left-radius: var(--_hero-graphic-radius);
