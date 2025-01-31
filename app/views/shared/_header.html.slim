@@ -41,6 +41,11 @@ div data-controller='hotkeys' data-hotkeys-bindings-value='{"command+/": ".app__
               = icon('logout', classes: 'icon--large icon--bold', color: 'primary-minus-two')
               | Logout
 
+            .desktop-hidden
+              = link_to mobile_view_years_path, class: 'btn btn--small btn--no-border full-width' do
+                = icon('device-mobile', classes: 'icon--large icon--bold', color: 'primary-minus-two')
+                | Mobile
+
       - if !hide_nav
         = link_to year_path(@year.year.to_i + 1), class: 'button btn btn--icon btn--pill btn--no-background' do
           = icon('circle-caret-right', color: 'primary-base', classes: 'icon--x-large')
