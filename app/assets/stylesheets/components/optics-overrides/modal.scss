@@ -71,7 +71,7 @@ dialog.modal {
 
     @media only screen and (max-width: $breakpoint-small) {
       width: 100%;
-      height: 100%;
+      height: 97vh;
       trix-editor {
         height: 62vh;
       }
@@ -80,5 +80,8 @@ dialog.modal {
 
   .modal__footer {
     padding: var(--op-space-small);
+    @media only screen and (max-width: $breakpoint-small) {
+      padding: var(--op-space-x-small);
+    }
   }
 }

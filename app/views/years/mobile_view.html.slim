@@ -1,0 +1,19 @@
+div data-controller="search"
+  .btn-primary.btn--icon.btn--large.mobile-search-button data-action="click->search#toggle"
+    = icon('search', color: 'primary-plus-five', classes: 'icon--x-large')
+
+  = render 'shared/search_form'
+
+.mobile-view
+  .app__header
+    .navbar.navbar--mobile
+      = link_to root_path, class: 'navbar__brand' do
+        = image_tag 'logo-white.svg', class: 'header__logo'
+
+  .app-container data-controller="day-popup"
+    = render 'days/popup_form'
+    .flex.flex-col.gap-xs
+      = render @current_quarter
+
+      .mobile-load-all-button
+        = link_to "Load All", current_years_path, class: 'btn-primary'

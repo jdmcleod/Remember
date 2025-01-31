@@ -3,7 +3,7 @@
 
 .search-results
   - @entries.each do |entry|
-    .card-padded.flex.flex-col.gap-sm
+    .flex.flex-col
       .card__header.flex.justify-between
         div = "#{entry.title}, #{entry.date&.strftime('%Y')}"
 
@@ -28,4 +28,3 @@
               = highlight_search_result(entry.content.to_plain_text.truncate(800), @search_term)
         - else
           = highlight_search_result(entry.content.to_plain_text.truncate(800), @search_term)
-

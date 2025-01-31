@@ -12,7 +12,7 @@
       .card__header
         = entry.title
 
-      .search-result.flex.gap-sm
+      .search-result.flex.gap-sm.flex-wrap
         - if entry.journalable_type == 'Day' && entry.journalable.be_real_memories.any?
           .flex.gap-sm
             - memory = entry.journalable.be_real_memories.first

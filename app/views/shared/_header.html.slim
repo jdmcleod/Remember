@@ -4,7 +4,7 @@ div data-controller='hotkeys' data-hotkeys-bindings-value='{"command+/": ".app__
 
 .app__header data-controller='search'
   = render 'shared/search_form', year: @year
-  .header
+  .header.header--main
     nav.header__nav
       - if !hide_nav
         = link_to year_path(@year.year.to_i - 1), class: 'btn btn--icon btn--pill btn--no-background' do
