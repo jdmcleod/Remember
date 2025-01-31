@@ -19,6 +19,12 @@ $ti-font-path: 'https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/fonts'
   --op-mso-optical-sizing: 40;
 }
 
+.icon--x-large {
+  font-size: var(--op-font-3x-large);
+
+  --op-mso-optical-sizing: 60;
+}
+
 .icon--bold {
   font-weight: bold;
 }

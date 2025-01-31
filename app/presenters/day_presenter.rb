@@ -67,9 +67,11 @@ class DayPresenter < ApplicationPresenter
     class_names('trip__decoration', "trip__decoration--#{decorator_event.decorator}")
   end
 
-  def wrapper_class(event)
-    return "day__wrapper #{trip_class(event)}" if event.present? && event.decorator.blank?
-    return "day__wrapper day__wrapper--no-entry}" if short_entry.blank?
-    'day__wrapper'
+  def wrapper_class(event, highlight_day)
+    css_class = 'day__wrapper'
+    css_class += ' day__wrapper--highlighted' if highlight_day == day.date
+    return "#{css_class} #{trip_class(event)}" if event.present? && event.decorator.blank?
+    return "#{css_class} day__wrapper--no-entry}" if short_entry.blank?
+    css_class
   end
 end

@@ -30,14 +30,12 @@
 }
 
 .btn-primary {
-  background-color: var(--op-color-neutral-plus-max);
-  color: var(--op-color-neutral-on-plus-max);
-  box-shadow: var(--op-border-all) var(--op-color-primary-base);
+  background-color: var(--op-color-primary-base);
+  color: var(--op-color-neutral-on-base);
 
   &:hover {
-    color: var(--op-color-primary-minus-five);
-    background-color: var(--op-color-primary-plus-eight);
-    box-shadow: var(--op-border-all) var(--op-color-primary-base);
+    color: var(--op-color-primary-on-plus-one);
+    background-color: var(--op-color-primary-plus-one);
   }
 
   &.btn--no-border {

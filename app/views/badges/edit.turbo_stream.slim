@@ -8,5 +8,5 @@
   .flex.gap-sm
     = link_to 'Delete', badge_path(@badge), class: 'btn', data: { turbo_method: :delete }
     = button_tag class: 'btn-primary', form: "edit_badge_#{@badge.id}" do
-      = icon('check', classes: 'icon--medium', color: 'primary-minus-two')
+      = icon('check', classes: 'icon--medium')
       | Update

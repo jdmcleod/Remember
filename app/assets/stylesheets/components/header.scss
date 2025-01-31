@@ -7,7 +7,6 @@
   .header__label {
     padding: var(--op-space-x-small) var(--op-space-small) var(--op-space-small) var(--op-space-small);
     border-radius: var(--op-radius-large);
-    box-shadow: var(--op-shadow-medium);
     z-index: 1;
     background-image: linear-gradient(43deg, var(--op-color-primary-plus-two) 0%, var(--op-color-secondary-original) 46%, var(--op-color-primary-base) 100%);
     background-color: var(--op-color-primary-plus-seven);
@@ -70,8 +69,10 @@
 
 .header__logo {
   max-width: 180px;
+}
 
-  .navbar:not(.navbar--login) & {
+.header--main {
+  .header__logo {
     @media only screen and (max-width: $breakpoint-small) {
       display: none;
     }

@@ -5,12 +5,23 @@
   position: fixed;
   left: 20%;
   top: 30%;
+  z-index: 3;
   transition: cubic-bezier(0.4, 0, 0.2, 1) 150ms all;
 
   @media only screen and (max-width: $breakpoint-small) {
     width: 100%;
     left: 0;
   }
+}
+
+.mobile-search-button {
+  --size: 5rem;
+  --__op-btn-height: var(--size) !important;
+  position: fixed;
+  z-index: 9; // one less than day popup
+  border-radius: 40%;
+  bottom: var(--op-space-medium);
+  right: calc(50vw - calc(var(--size) / 2));
 }
 
 .search-form__backdrop {
@@ -21,7 +32,7 @@
   height: 100vh;
   background-color: var(--op-color-primary-base);
   opacity: 0.2;
-  z-index: 0;
+  z-index: 2;
 }
 
 .form-control.search-form__input:not([type=radio], [type=checkbox]) {
@@ -43,7 +54,7 @@
 .search-results {
   display: flex;
   flex-direction: column;
-  gap: var(--op-space-small);
+  gap: var(--op-space-2x-large);
 
   .card-padded {
     background-color: var(--op-color-neutral-plus-max);

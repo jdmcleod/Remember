@@ -61,6 +61,13 @@
   width: 100%;
 }
 
+.day__wrapper--highlighted {
+  .day {
+    border: var(--op-border-width-large) solid var(--op-color-alerts-warning-plus-three);
+    filter: sepia(60%);
+  }
+}
+
 .day__wrapper--no-entry {
   filter: grayscale(var(--value, 100%));
 }

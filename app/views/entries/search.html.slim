@@ -3,14 +3,14 @@
 
 .search-results
   - @entries.each do |entry|
-    .card-padded.flex.flex-col.gap-sm
+    .flex.flex-col
       .card__header.flex.justify-between
         div = "#{entry.title}, #{entry.date&.strftime('%Y')}"
 
         .flex.gap-sm
           div = entry.journalable_type.humanize
           .search__open-day
-            = link_to year_path(entry.date.year) do
+            = link_to year_path(entry.date.year, highlight_day: entry.date.utc.to_date.to_s) do
               = icon('arrow-big-right-filled', classes: 'icon--medium', color: 'alerts-notice-minus-four')
 
       .search-result
@@ -28,4 +28,3 @@
               = highlight_search_result(entry.content.to_plain_text.truncate(800), @search_term)
         - else
           = highlight_search_result(entry.content.to_plain_text.truncate(800), @search_term)
-

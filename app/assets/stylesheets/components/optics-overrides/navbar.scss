@@ -24,3 +24,15 @@
   padding: var(--op-space-small) var(--op-space-2x-large);
   background-color: transparent;
 }
+
+.navbar--mobile {
+  box-shadow: none;
+  padding: 0 var(--op-space-x-large);
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+
+  .header__logo {
+    z-index: -10;
+  }
+}

@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   resources :years, only: [:index, :show] do
     get :current, on: :collection
+    get :mobile_view, on: :collection
     resources :events
   end
 

@@ -1,0 +1,10 @@
+.alert--flash {
+  border-radius: var(--op-radius-x-large);
+  box-shadow: var(--op-shadow-large);
+  backdrop-filter: blur(3rem);
+  background-color: rgba(218, 159, 245, 0.11);
+  padding: var(--op-space-small);
+  .alert__description {
+    color: var(--op-color-neutral-minus-one);
+  }
+}
