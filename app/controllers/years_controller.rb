@@ -11,6 +11,7 @@ class YearsController < ApplicationController
 
   def show
     @year = query.find_or_create_by(year: params[:id])
+    @highlight_day = Date.parse(params[:highlight_day]) if params[:highlight_day].present?
     set_data
   end
 

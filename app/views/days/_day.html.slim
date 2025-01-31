@@ -2,7 +2,7 @@
 - p = presenter_for day
 - p.set_events(@event_dates, @events)
 
-div class=p.wrapper_class(p.primary_event) style=p.primary_style data-testid="day-wrapper-#{day.id}"
+div class=p.wrapper_class(p.primary_event, @highlight_day) style=p.primary_style data-testid="day-wrapper-#{day.id}"
   - if p.decorator_event.present?
     = image_tag "#{p.decorator_event.decorator}.svg", class: p.decorator_class
 

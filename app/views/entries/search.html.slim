@@ -10,7 +10,7 @@
         .flex.gap-sm
           div = entry.journalable_type.humanize
           .search__open-day
-            = link_to year_path(entry.date.year) do
+            = link_to year_path(entry.date.year, highlight_day: entry.date.utc.to_date.to_s) do
               = icon('arrow-big-right-filled', classes: 'icon--medium', color: 'alerts-notice-minus-four')
 
       .search-result
