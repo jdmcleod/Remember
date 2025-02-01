@@ -9,7 +9,7 @@ class EntriesController < ApplicationController
     @entries = current_user.entries.order(:date).includes(journalable: [{ be_real_memories: [{ primary_attachment: :blob, secondary_attachment: :blob }] }])
 
     if search_date
-      @entries = @entries.in_range(search_date, search_date)
+      @entries = @entries.where("date(date) = ?", search_date)
     elsif params[:year_id].present?
       @year = Year.find(params[:year_id])
       @entries = @entries.in_range(@year.start_date, @year.end_date).search(@search_term)
