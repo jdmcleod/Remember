@@ -17,11 +17,10 @@ class YearsController < ApplicationController
   end
 
   def mobile_view
-    if session[:last_redirected_mobile].present?
-      if (Time.now - session[:last_redirected_mobile]) > 5.minutes
-        session[:last_redirected_mobile] = Time.now.to_i
-      end
+    if session[:last_redirected_mobile].blank? || (Time.now - last_redirected_to_mobile) > 20.minutes
+      session[:last_redirected_mobile] = Time.now.to_i
     end
+
     @year = current_user.years.current_year
     @current_quarter = @year
       .quarters
@@ -61,7 +60,11 @@ class YearsController < ApplicationController
     end
   end
 
+  def last_redirected_to_mobile
+    session[:last_redirected_mobile] || 0
+  end
+
   def check_mobile
-    @should_redirect_to_mobile = (Time.now.to_i - (session[:last_redirected_mobile] || 0)) > 5.minutes
+    @should_redirect_to_mobile = (Time.now.to_i - last_redirected_to_mobile) > 5.minutes
   end
 end
