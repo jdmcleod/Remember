@@ -106,3 +106,21 @@
 .visibility-hidden {
   visibility: hidden;
 }
+
+.mobile-hidden {
+  @media(max-width: $breakpoint-small) {
+    display: none;
+  }
+}
+
+.tablet-hidden {
+  @media(max-width: $breakpoint-medium) {
+    display: none;
+  }
+}
+
+.desktop-hidden {
+  @media(min-width: $breakpoint-small) {
+    display: none;
+  }
+}

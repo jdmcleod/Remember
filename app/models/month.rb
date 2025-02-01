@@ -13,6 +13,10 @@ class Month < ApplicationRecord
     start_date.month
   end
 
+  def title
+    name
+  end
+
   def find_entry
     return entry if entry.present?
 

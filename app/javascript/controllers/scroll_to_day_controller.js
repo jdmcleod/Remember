@@ -9,7 +9,7 @@ export default class extends StimulusController {
     if (this.dateValue) {
       const node = document.querySelector(`[data-date="${this.dateValue}"]`)
       node.scrollIntoView({ behavior: 'smooth', block: 'center' })
-      node.click()
+      setTimeout(() => node.click(), 1000)
     }
   }
 }

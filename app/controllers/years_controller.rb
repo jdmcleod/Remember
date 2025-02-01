@@ -2,6 +2,7 @@ class YearsController < ApplicationController
   def current
     @year = query.current_year
     set_data
+    check_mobile
     render :show
   end
 
@@ -11,12 +12,15 @@ class YearsController < ApplicationController
 
   def show
     @year = query.find_or_create_by(year: params[:id])
-    @highlight_day = Date.parse(params[:highlight_day]) if params[:highlight_day].present?
+    check_mobile
     set_data
   end
 
   def mobile_view
-    session[:already_redirected] = true
+    if session[:last_redirected_mobile].blank? || (Time.now - last_redirected_to_mobile) > 20.minutes
+      session[:last_redirected_mobile] = Time.now.to_i
+    end
+
     @year = current_user.years.current_year
     @current_quarter = @year
       .quarters
@@ -50,5 +54,17 @@ class YearsController < ApplicationController
     @events = current_user.events.in_range(@year.start_date, @year.end_date)
     @event_dates = @events.flat_map(&:range).uniq
     @year.generate_data if @year.missing_data?
+
+    if params[:highlight_day].present?
+      @highlight_day = Date.parse(params[:highlight_day])
+    end
+  end
+
+  def last_redirected_to_mobile
+    session[:last_redirected_mobile] || 0
+  end
+
+  def check_mobile
+    @should_redirect_to_mobile = (Time.now.to_i - last_redirected_to_mobile) > 5.minutes
   end
 end
