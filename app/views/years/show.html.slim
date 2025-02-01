@@ -1,7 +1,7 @@
 = render 'shared/header'
 div{data-controller="redirect-by-device"
   data-redirect-by-device-url-value=mobile_view_years_path
-  data-redirect-by-device-first-visit-value=session[:already_redirected]}
+  data-redirect-by-device-should-redirect-value=@should_redirect_to_mobile}
 
 div{data-controller="scroll-to-day"
   data-scroll-to-day-date-value=@highlight_day}

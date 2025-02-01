@@ -4,10 +4,10 @@ import { isMobile } from 'helpers/screenSizeHelper'
 export default class RedirectByDeviceController extends StimulusController {
   static values = {
     url: String,
-    firstVisit: Boolean,
+    shouldRedirect: Boolean,
   }
 
   connect() {
-    if (isMobile() && !this.firstVisitValue) window.location.href = this.urlValue
+    if (isMobile() && this.shouldRedirectValue) window.location.href = this.urlValue
   }
 }
