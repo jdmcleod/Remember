@@ -39,11 +39,12 @@ export default class DayPopupController extends Controller {
     this._skipAnimation = true
     await this.save()
     setTimeout(async () => {
-      const newDate = new Date(this._dateString)
-      const dateNumber = this.#date().getDate()
-      if (dayDifference) newDate.setDate(dateNumber + dayDifference)
+      const newDate = this.#date()
+      const dayNumber = parseInt(this._dateString.split('-')[2])
+      const newDayNumber = dayNumber + dayDifference
+      if (dayDifference) newDate.setDate(newDayNumber)
       if (monthDifference) newDate.setMonth(this.#date().getMonth() + monthDifference)
-      this._dateString = `${newDate.getFullYear()}-${newDate.getMonth() + 1}-${newDate.getDate()}`
+      this._dateString = `${newDate.getFullYear()}-${newDate.getMonth() + 1}-${newDayNumber}`
       await this._loadContent(this._dateString)
     }, 200)
   }
@@ -115,5 +116,16 @@ export default class DayPopupController extends Controller {
       freezeScrollOnNextRender()
       this.formTarget.requestSubmit()
     }
+  }
+
+  #dateToUtc(date) {
+    return new Date(Date.UTC(
+      date.getFullYear(),
+      date.getMonth(),
+      date.getDate(),
+      date.getHours(),
+      date.getMinutes(),
+      date.getSeconds()
+    ));
   }
 }
