@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 require "rails/application_controller"
 
-class PwaController < ApplicationController
+class Rails::PwaController < ApplicationController
   skip_forgery_protection
 
   def service_worker

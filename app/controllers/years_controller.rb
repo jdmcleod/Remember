@@ -62,6 +62,6 @@ class YearsController < ApplicationController
   end
 
   def check_mobile
-    @should_redirect_to_mobile = (Time.now.to_i - session[:last_redirected_mobile] || 0) > 5.minutes
+    @should_redirect_to_mobile = (Time.now.to_i - (session[:last_redirected_mobile] || 0)) > 5.minutes
   end
 end
