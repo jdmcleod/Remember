@@ -114,6 +114,11 @@
   }
 }
 
+.day-popup__photo-floating {
+  float: left;
+  padding-right: var(--op-space-small);
+}
+
 .day-popup__photo-template {
   width: 200px;
   height: 100%;

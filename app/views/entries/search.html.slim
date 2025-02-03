@@ -24,7 +24,6 @@
                 secondarySrc=rails_storage_proxy_path(memory.secondary)
                 disableExpand=true
                 size="54"}
-            div
-              = highlight_search_result(entry.content.to_plain_text.truncate(800), @search_term)
+            p = highlight_search_result(entry.content.to_plain_text.truncate(800), @search_term)
         - else
-          = highlight_search_result(entry.content.to_plain_text.truncate(800), @search_term)
+          p = highlight_search_result(entry.content.to_plain_text.truncate(800), @search_term)

@@ -12,9 +12,9 @@
       .card__header
         = entry.title
 
-      .search-result.flex.gap-sm.flex-wrap
+      .search-result
         - if entry.journalable_type == 'Day' && entry.journalable.be_real_memories.any?
-          .flex.gap-sm
+          .day-popup__photo-floating
             - memory = entry.journalable.be_real_memories.first
             rem-be-real-memory{
               date=memory.day.date
@@ -22,7 +22,7 @@
               secondarySrc=rails_storage_proxy_path(memory.secondary)
               disableExpand=true
               size="36"}
-        = entry.content.to_plain_text
+        p = entry.content.to_plain_text
 
 = content_for(:modal_footer_actions) do
   = link_to 'Edit', edit_year_event_path(@event.year, @event), class: 'btn', data: { turbo_stream: true }
