@@ -35,16 +35,24 @@ export default class DayPopupController extends Controller {
     return new Date(this._dateString)
   }
 
+  /**
+   * Its honestly insane how hard it is to do this in Javascript. The timezones get crazy.
+   * @param dayDifference
+   * @param monthDifference
+   * @returns {Promise<void>}
+   */
   async changeDay(dayDifference, monthDifference) {
     this._skipAnimation = true
     await this.save()
     setTimeout(async () => {
       const newDate = this.#date()
       const dayNumber = parseInt(this._dateString.split('-')[2])
-      const newDayNumber = dayNumber + dayDifference
+      const newDayNumber = dayNumber + (dayDifference ?? 0)
       if (dayDifference) newDate.setDate(newDayNumber)
       if (monthDifference) newDate.setMonth(this.#date().getMonth() + monthDifference)
-      this._dateString = `${newDate.getFullYear()}-${newDate.getMonth() + 1}-${newDayNumber}`
+      let nextMonth = newDate.getMonth() + 1
+      nextMonth = nextMonth < 10 ? `0${nextMonth}` : nextMonth.toString()
+      this._dateString = `${newDate.getFullYear()}-${nextMonth}-${newDayNumber}`
       await this._loadContent(this._dateString)
     }, 200)
   }
