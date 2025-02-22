@@ -28,6 +28,18 @@ class Entry < ApplicationRecord
     super
   end
 
+  def as_json(options = nil)
+    {
+      title:,
+      date:,
+      user_id:,
+      journalable_id:,
+      journalable_type:,
+      created_at:,
+      content: content&.body&.to_plain_text
+    }
+  end
+
   def empty?
     content.blank?
   end

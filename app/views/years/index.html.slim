@@ -5,6 +5,9 @@
     .flex.gap-sm.items-center
       - if current_user.admin?
         = link_to 'Admin', admin_index_path, class: 'btn'
+
+      = modal_link_to 'Export', new_export_path, class: 'btn'
+
       button.btn data-action="click->search#toggle" data-testid='search-button'
         = icon('search', classes: 'icon--large icon--bold', color: 'primary-minus-two')
       = render 'shared/search_form'
