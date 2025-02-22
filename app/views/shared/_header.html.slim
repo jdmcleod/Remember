@@ -41,6 +41,10 @@ div data-controller='hotkeys' data-hotkeys-bindings-value='{"command+/": ".app__
               = icon('logout', classes: 'icon--large icon--bold', color: 'primary-minus-two')
               | Logout
 
+            = modal_link_to new_export_path, class: 'btn btn--small btn--no-border full-width' do
+              = icon('download', classes: 'icon--large icon--bold', color: 'primary-minus-two')
+              | Export
+
             .desktop-hidden
               = link_to mobile_view_years_path, class: 'btn btn--small btn--no-border full-width' do
                 = icon('device-mobile', classes: 'icon--large icon--bold', color: 'primary-minus-two')

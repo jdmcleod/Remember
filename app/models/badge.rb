@@ -9,6 +9,10 @@ class Badge < ApplicationRecord
   has_many :day_badges, dependent: :destroy
   has_many :days, through: :day_badges
 
+  def as_json(options = nil)
+    super.merge(dates: days.map(&:date))
+  end
+
   def self.default_badges
     [
       {

@@ -50,6 +50,7 @@ Rails.application.routes.draw do
   end
 
   resources :admin, only: [:index]
+  resources :exports, only: [:new, :create]
 
   root to: 'years#current'
 
