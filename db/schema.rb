@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_09_26_172823) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_23_203114) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -144,11 +144,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_26_172823) do
   create_table "musings", force: :cascade do |t|
     t.string "name"
     t.string "description"
-    t.string "type", default: "generic"
-    t.bigint "day_id", null: false
+    t.string "kind", default: "generic"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["day_id"], name: "index_musings_on_day_id"
+    t.bigint "user_id"
+    t.datetime "date"
   end
 
   create_table "quarters", force: :cascade do |t|
@@ -186,5 +186,5 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_26_172823) do
   add_foreign_key "day_badges", "badges"
   add_foreign_key "day_badges", "days"
   add_foreign_key "entries", "users"
-  add_foreign_key "musings", "days"
+  add_foreign_key "musings", "users"
 end

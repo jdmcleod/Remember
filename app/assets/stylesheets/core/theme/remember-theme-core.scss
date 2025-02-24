@@ -86,4 +86,7 @@
   @include spacing-scales;
   @include fonts;
   @include border-radius;
+
+  --op-transition-modal: all 150ms ease-in;
+  --op-z-index-drawer-backdrop: 699;
 }

@@ -1,0 +1,22 @@
+#musings
+  = simple_form_for @musing do |f|
+    = f.hidden_field :kind, value: @kind
+
+    .flex.gap-sm
+      .three-fifths-width
+        div
+          = f.input :name
+        div
+          = f.input :date, as: :date, html5: true, input_html: { value: Date.current }
+      .two-fifths-width
+        div
+          label.form-label Image
+          rem-uploader allowedFileExtensions=%w[png jpg jpeg svg webp heic]
+            div slot='input' = f.input :image, as: :file
+            div slot='errors' = f.object.errors[:image].join(', ') if f.object.errors[:image].any?
+
+    .flex.full-width
+      = f.input :description, as: :text, wrapper_html: { class: 'full-width' }
+
+
+

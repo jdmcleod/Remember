@@ -1,14 +1,15 @@
 class MusingsController < ApplicationController
-  before_action :set_day, except: [:in_year]
+  before_action :set_kind
 
   def in_year
-    year = current_user.years.find_by(year: params[:year_id])
+    year = current_user.years.find(params[:year_id])
     @musings = current_user.musings.in_range(year.start_date, year.end_date)
     render layout: 'panel'
   end
 
   def new
-    @musing = @day.musings.new
+    @musing = current_user.musings.new(kind: @kind)
+    render layout: 'modal'
   end
 
   def edit
@@ -19,15 +20,39 @@ class MusingsController < ApplicationController
     @musing = Musing.find(params[:id])
 
     if @musing.update(musing_params)
-      # turbo
+      render turbo_stream: [
+        turbo_stream.update('modal')
+      ]
+    else
+
     end
   end
 
   def create
-    @musing = @day.musings.build(musing_params)
+    @musing = current_user.musings.build(musing_params)
 
-    if @musing.save
-      # turbo
+    ActiveRecord::Base.transaction do |transaction|
+      @musing.save
+
+      if musing_params[:image].present?
+        image = musing_params[:image]
+        filename = image.original_filename
+        @musing.image.attach(key: storage_key(filename), io: image, filename:)
+      end
+
+      transaction.after_commit do
+        binding.irb
+        flash.now[:notice] = "Created new #{@musing.kind_humanized}"
+
+        render turbo_stream: [
+          turbo_stream.update('modal'),
+          turbo_stream.update('flash', partial: 'shared/flash')
+        ]
+      end
+
+      transaction.after_rollback do
+        render turbo_stream: turbo_stream.update('modal-body', partial: 'musings/form')
+      end
     end
   end
 
@@ -41,11 +66,15 @@ class MusingsController < ApplicationController
 
   private
 
-  def set_day
-    @day = Day.find(params[:day_id])
+  def set_kind
+    @kind = params[:kind]
+  end
+
+  def storage_key(filename)
+    "user_#{current_user.id}/#{@musing.date.year}/#{@musing.kind.to_s}/#{filename}"
   end
 
   def musing_params
-    params.require(:musing).permit(:name, :description, :type)
+    params.require(:musing).permit(:name, :description, :date, :kind, :image)
   end
 end

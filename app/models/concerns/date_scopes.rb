@@ -3,11 +3,11 @@ module DateScopes
 
   included do
     scope :in_range, -> (query_start_date, query_end_date) do
-      if defined? date
-        where(arel_table[:date].gteq(query_start_date)).where(arel_table[:date].lteq(query_end_date)).order(arel_table[:date])
-      else
-        where(arel_table[:start_date].gteq(query_start_date)).where(arel_table[:start_date].lteq(query_end_date))
-      end
+      where(arel_table[:date].gteq(query_start_date)).where(arel_table[:date].lteq(query_end_date)).order(arel_table[:date])
+    end
+
+    scope :range_in_range, -> (query_start_date, query_end_date) do
+      where(arel_table[:start_date].gteq(query_start_date)).where(arel_table[:start_date].lteq(query_end_date))
     end
 
     scope :contains_date, -> (date) do

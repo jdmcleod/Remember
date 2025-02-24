@@ -1,9 +1,9 @@
-= content_for(:modal_title) do
-  | Books
+= content_for(:panel_title) do
+  = @kind.to_s.humanize.pluralize
 
-div CONTENT
+= content_for(:panel_header_actions) do
+  = modal_link_to new_musing_path(kind: @kind), class: 'btn-primary btn--icon btn--small' do
+    = icon('square-rounded-plus', classes: 'icon--large')
 
-= content_for(:modal_footer_actions) do
-  = button_tag class: 'btn-primary', form: "new_badge" do
-    = icon('check', classes: 'icon--medium', color: 'primary-minus-two')
-    | Create
+- @musings.each do |musing|
+  .card = musing.name
