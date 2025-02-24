@@ -1,19 +1,27 @@
 class Musing < ApplicationRecord
   include DateScopes
 
-  belongs_to :day
-
   has_one :entry, as: :journalable, dependent: :destroy, class_name: 'Entry'
 
-  enum type: {
-    generic: 'generic',
-    book: 'book',
-    album: 'album',
-    movie: 'movie',
-    bible_verse: 'bible_verse',
-    realization: 'realization',
-    perplexity: 'perplexity',
-    resolution: 'resolution',
-    testimony: 'testimony',
-  }
+  has_one_attached :image do |attachable|
+    attachable.variant :thumb, resize_to_limit: [54, 54]
+  end
+
+  validates :name, :date, presence: true
+
+  enum :kind, [
+    :generic,
+    :book,
+    :album,
+    :movie,
+    :bible_verse,
+    :realization,
+    :perplexity,
+    :resolution,
+    :testimony,
+  ]
+
+  def kind_humanized
+    kind.to_s.humanize
+  end
 end

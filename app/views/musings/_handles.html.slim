@@ -1,2 +1,2 @@
-= panel_link_to in_year_year_musings_path(@year), class: 'button btn btn--small musing-handle__wrapper musing-handle__wrapper--position-1' do
-  div Books
+= panel_link_to in_year_musings_path(year_id: @year.id, kind: :book), class: 'btn-primary btn--small musing-handle__wrapper musing-handle__wrapper--position-1' do
+  = icon('book', color: 'neutral-plus-max', classes: 'icon--large icon--bold')

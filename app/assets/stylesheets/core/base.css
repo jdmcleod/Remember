@@ -7,7 +7,7 @@ a {
 }
 
 .app-container {
-  padding: var(--op-space-x-small) var(--op-space-2x-large) var(--op-space-x-large) var(--op-space-2x-large);
+  padding: var(--op-space-x-small) calc(2 * var(--op-space-x-large)) var(--op-space-x-large) calc(2 * var(--op-space-x-large));
   display: flex;
   flex-direction: column;
   justify-content: center;
