@@ -1,5 +1,5 @@
 .day {
-  --size: 4.2rem;
+  --size: 4.4rem;
 
   width: var(--size);
   height: var(--size);
@@ -18,7 +18,7 @@
 
   &:hover {
     background-color: var(--op-color-primary-plus-six);
-    border: dashed var(--op-border-width-large) var(--op-color-primary-plus-two);
+    border: dashed var(--op-border-width-large) var(--op-color-primary-plus-two) !important;
   }
 
   &.day--current {
@@ -28,7 +28,7 @@
   }
 
   &.day--future {
-    border: none;
+    //border: none;
     color: var(--op-color-neutral-plus-one);
   }
 
@@ -56,8 +56,13 @@
 
 .day__wrapper {
   position: relative;
-  padding: 4px;
+  padding: 3px;
   width: 100%;
+  &.day__wrapper--no-entry {
+    .day:not(.day--future, .day--current) {
+      border: var(--op-border-width-large) dotted orange;
+    }
+  }
 }
 
 .day__wrapper--highlighted {
@@ -65,10 +70,6 @@
     border: var(--op-border-width-large) solid var(--op-color-alerts-warning-plus-three);
     filter: sepia(60%);
   }
-}
-
-.day__wrapper--no-entry {
-  filter: grayscale(var(--value, 100%));
 }
 
 .day__preview {

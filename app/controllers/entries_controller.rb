@@ -2,6 +2,9 @@ class EntriesController < ApplicationController
   def update
     @entry = Entry.find_by(id: params[:id])
     @entry.update(entry_params)
+
+    month = current_user.months.contains_date(@entry.date).first
+    render turbo_stream: turbo_stream.replace("month-#{month.number}", partial: 'months/month', locals: { month: })
   end
 
   def search
