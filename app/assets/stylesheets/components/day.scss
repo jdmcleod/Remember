@@ -1,14 +1,14 @@
 .day {
-  --size: 4rem;
+  --size: 4.2rem;
 
   width: var(--size);
   height: var(--size);
   border-radius: 14px;
   display: flex;
-  background-color: var(--op-color-neutral-plus-seven);
+  background-color: var(--op-color-transparent-6);
   align-items: center;
   justify-content: center;
-  color: var(--op-color-neutral-minus-three);
+  color: var(--op-color-neutral-minus-five);
   position: relative;
   align-self: center;
   justify-self: center;
@@ -29,8 +29,7 @@
 
   &.day--future {
     border: none;
-    background-color: var(--op-color-neutral-plus-seven);
-    color: var(--op-color-neutral-plus-two);
+    color: var(--op-color-neutral-plus-one);
   }
 
   .day__background-image {
