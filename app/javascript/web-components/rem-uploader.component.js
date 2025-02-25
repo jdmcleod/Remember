@@ -126,7 +126,7 @@ export default class REMUploader extends LitElement {
       .upload-container {
         position: absolute;
         bottom: var(--op-space-small);
-        right: var(--op-space-small);
+        left: var(--op-space-small);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -185,7 +185,7 @@ export default class REMUploader extends LitElement {
       .upload-container {
         position: absolute;
         bottom: 2rem;
-        right: 2rem;
+        left: 2rem;
         display: flex;
         align-items: center;
         justify-content: center;

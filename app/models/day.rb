@@ -46,7 +46,7 @@ class Day < ApplicationRecord
   def find_short_entry
     return short_entry if short_entry.present?
 
-    create_short_entry(user: month.quarter.year.user, date: date)
+    build_short_entry(user: month.quarter.year.user, date: date)
   end
 
   def during_event?(event)

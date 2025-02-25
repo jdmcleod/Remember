@@ -71,7 +71,7 @@ class DayPresenter < ApplicationPresenter
     css_class = 'day__wrapper'
     css_class += ' day__wrapper--highlighted' if highlight_day == day.date
     return "#{css_class} #{trip_class(event)}" if event.present? && event.decorator.blank?
-    return "#{css_class} day__wrapper--no-entry}" if short_entry.blank?
+    return "#{css_class} day__wrapper--no-entry" if short_entry.blank?
     css_class
   end
 end

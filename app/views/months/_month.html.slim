@@ -3,10 +3,10 @@
   .month__illustration-indicator class="month__illustration-indicator--#{month.number}"
 
   .flex.justify-between
-    = modal_link_to month_path(month), class: 'btn btn--icon btn--small' do
+    = modal_link_to month_path(month), class: 'btn btn--icon btn--small btn--transparent' do
       = icon('layout-list', classes: 'icon--large', color: 'neutral-minus-two')
     .month-name = month.name
-    = modal_link_to entry_form_month_path(month), class: 'btn btn--icon btn--small', 'data-testid': "edit-month-entry-#{month.id}" do
+    = modal_link_to entry_form_month_path(month), class: 'btn btn--icon btn--small btn--transparent', 'data-testid': "edit-month-entry-#{month.id}" do
       = icon('highlight', classes: 'icon--large', color: 'neutral-minus-two')
   .month-day-names
     div s

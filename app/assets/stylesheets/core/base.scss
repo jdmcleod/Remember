@@ -23,6 +23,10 @@ a {
 .mobile-view {
   background-color: var(--op-color-primary-base);
 
+  .month {
+    background-color: var(--op-color-neutral-plus-five);
+  }
+
   & .app__header {
     background-color: var(--op-color-primary-base);
   }

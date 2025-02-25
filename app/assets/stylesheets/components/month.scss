@@ -1,7 +1,7 @@
 .month {
   border-radius: var(--op-radius-x-large);
   box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
-  background-color: var(--op-color-neutral-plus-max);
+  background-color: var(--op-color-transparent-7);
   padding: var(--op-space-small);
   width: 100%;
   flex-grow: 1;
@@ -26,17 +26,17 @@
 }
 
 .month__illustration--1 { border-color: rgba(166, 108, 231, 0.22); }
-.month__illustration--2 { border-color: rgba(91, 115, 211, 0.24); }
+.month__illustration--2 { border-color: rgba(91, 115, 211, 0.22); }
 .month__illustration--3 { border-color: rgba(66, 176, 180, 0.29); }
-.month__illustration--4 { border-color: rgba(222, 55, 214, 0.37); }
-.month__illustration--5 { border-color: rgba(0, 128, 9, 0.27); }
-.month__illustration--6 { border-color: rgba(146, 187, 0, 0.55); }
-.month__illustration--7 { border-color: rgba(255, 229, 63, 0.87); }
-.month__illustration--8 { border-color: rgba(255, 183, 0, 0.83); }
-.month__illustration--9 { border-color: rgba(189, 113, 0, 0.79); }
-.month__illustration--10 { border-color: rgba(187, 36, 36, 0.94); }
-.month__illustration--11 { border-color: rgba(168, 88, 0, 0.91); }
-.month__illustration--12 { border-color: rgba(28, 60, 231, 0.78); }
+.month__illustration--4 { border-color: rgba(222, 55, 214, 0.18); }
+.month__illustration--5 { border-color: rgba(0, 128, 9, 0.17); }
+.month__illustration--6 { border-color: rgba(146, 187, 0, 0.28); }
+.month__illustration--7 { border-color: rgba(255, 188, 63, 0.78); }
+.month__illustration--8 { border-color: rgba(255, 183, 0, 0.42); }
+.month__illustration--9 { border-color: rgba(189, 113, 0, 0.29); }
+.month__illustration--10 { border-color: rgba(187, 36, 36, 0.16); }
+.month__illustration--11 { border-color: rgba(194, 110, 17, 0.23); }
+.month__illustration--12 { border-color: rgba(28, 60, 231, 0.18); }
 
 .month__illustration-indicator {
   position: absolute;
@@ -64,7 +64,6 @@
   font-weight: var(--op-font-weight-bold);
   text-align: center;
   z-index: 1;
-  background-color: var(--op-color-neutral-plus-max);
 }
 
 .month-days {
@@ -83,7 +82,7 @@
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 
   div {
-    color: var(--op-color-neutral-plus-two);
+    color: var(--op-color-neutral-plus-one);
     font-size: var(--op-font-small);
     text-align: center;
   }

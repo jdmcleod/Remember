@@ -16,13 +16,15 @@ export default class DayPopupController extends Controller {
   static targets = ['popup', 'container', 'form', 'day']
 
   async show(event) {
-    this._changed = false
+    if (this._popupOpen) await this.save()
 
+    this._changed = false
     this.dayElement = event.target.closest('.day')
     this._dateString = this.dayElement.dataset.date
 
     if (this._popupOpen) {
       this._skipAnimation = true
+      await this.save()
       return this._loadContent(this._dateString)
     }
 
