@@ -1,4 +1,4 @@
-.badges-addable#day-popup-badges
+.badges__gutter#day-popup-badges
   - if @day_badges.count < Badge::ADDABLE_COUNT
     - if @addable_badges.any?
       = render 'shared/context_menu', locals: { toggle: capture { render 'shared/badge', locals: { size: 'x-small', type: 'new' } } }

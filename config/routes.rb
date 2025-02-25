@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   end
   resources :badges, only: [:index, :new, :edit, :create, :update, :destroy]
 
-  resources :entries, only: %i[update] do
+  resources :entries, only: %i[create update] do
     get :search, on: :collection
   end
 

@@ -177,14 +177,14 @@ a:has(.badge), button:has(.badge) {
   flex-direction: column;
   justify-content: space-between;
   gap: var(--op-space-x-small);
-  @media only screen and (max-width: $breakpoint-small) {
-    display: none;
-  }
 }
 
-.badges-addable {
+.badges__gutter {
   gap: var(--op-space-3x-small);
   display: flex;
   flex-direction: column;
   align-items: center;
+  @media only screen and (max-width: $breakpoint-small) {
+    padding-left: var(--op-space-x-small);
+  }
 }
