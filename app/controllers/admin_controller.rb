@@ -2,7 +2,7 @@ class AdminController < ApplicationController
   before_action :ensure_admin!
 
   def index
-    @users = User.includes(:entries, :badges, :events).order(:name)
+    @users = User.left_joins(:entries).includes(:badges, :events).order('COUNT(entries.id) DESC').group('users.id')
 
     @entries_per_day = Entry
       .where
@@ -13,6 +13,10 @@ class AdminController < ApplicationController
       .sort_by { _1 }
       .reverse
       .take(30)
+  end
+
+  def sync_be_real
+    BeRealApi::V1::Importer.import
   end
 
   private
