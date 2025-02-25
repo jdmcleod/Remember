@@ -49,7 +49,10 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :admin, only: [:index]
+  resources :admin, only: [:index] do
+    post :sync_be_real, on: :collection
+  end
+
   resources :exports, only: [:new, :create]
 
   root to: 'years#current'

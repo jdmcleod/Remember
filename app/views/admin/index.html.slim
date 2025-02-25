@@ -2,9 +2,14 @@
   .navbar.flex.justify-between
     = image_tag 'logo-red.svg', class: 'header__logo'
 
-    = link_to years_path, class: 'btn' do
-      = icon('house', classes: 'icon--large icon--bold')
-      | Home
+    .flex.gap-sm
+      = button_to sync_be_real_admin_index_path, class: 'btn' do
+        = icon('sync', classes: 'icon--large icon--bold')
+        | Sync Be Real
+
+      = link_to years_path, class: 'btn' do
+        = icon('house', classes: 'icon--large icon--bold')
+        | Home
 
 .app-container
   .flex.flex-col.gap-lg

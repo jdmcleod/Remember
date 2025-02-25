@@ -15,6 +15,10 @@ class AdminController < ApplicationController
       .take(30)
   end
 
+  def sync_be_real
+    BeRealApi::V1::Importer.import
+  end
+
   private
 
   def ensure_admin!
