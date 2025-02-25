@@ -37,13 +37,13 @@ div data-controller='hotkeys' data-hotkeys-bindings-value='{"command+/": ".app__
               = icon('user', classes: 'icon--large icon--bold', color: 'primary-minus-two')
               | Profile
 
-            = button_to sign_out_sessions_path, method: :delete, class: 'btn btn--small btn--no-border' do
-              = icon('logout', classes: 'icon--large icon--bold', color: 'primary-minus-two')
-              | Logout
-
             = modal_link_to new_export_path, class: 'btn btn--small btn--no-border full-width' do
               = icon('download', classes: 'icon--large icon--bold', color: 'primary-minus-two')
               | Export
+
+            = button_to sign_out_sessions_path, method: :delete, class: 'btn btn--small btn--no-border' do
+              = icon('logout', classes: 'icon--large icon--bold', color: 'primary-minus-two')
+              | Logout
 
             .desktop-hidden
               = link_to mobile_view_years_path, class: 'btn btn--small btn--no-border full-width' do
