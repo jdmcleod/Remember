@@ -44,7 +44,7 @@ class EntriesController < ApplicationController
   private
 
   def update_month_ui
-    flash.now[:alert] = "Updated entry on #{@entry.date&.strftime("%B %d, %Y")}"
+    flash.now[:notice] = "Updated entry on #{@entry.date&.strftime("%B %d, %Y")}"
 
     month = current_user.months.contains_date(@entry.date).first
     @events = current_user

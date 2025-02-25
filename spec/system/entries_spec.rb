@@ -23,6 +23,8 @@ RSpec.describe 'Entry', type: :system, js: true do
           input = find(data_test'short-entry-input')
           input.set text
         end
+        find(data_test('save-short-entry')).click
+        expect(page).to have_flash_notice "Updated entry on #{day.date&.strftime("%B %d, %Y")}"
       }.to change(Entry, :count).by(1)
 
       find('.header').click
