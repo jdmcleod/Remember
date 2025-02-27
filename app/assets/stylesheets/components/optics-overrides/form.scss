@@ -1,3 +1,21 @@
 .form-group.form-group--no-padding {
   padding: 0;
 }
+
+.form-control:not([type=radio], [type=checkbox]).form-control--live-update {
+  box-shadow: unset;
+  background-color: unset;
+
+  &.form-control--large-text {
+    font-size: var(--op-font-2x-large);
+  }
+
+  &:focus-visible:not([readonly]) {
+    background-color: unset;
+    box-shadow: unset;
+  }
+}
+
+textarea.form-control.form-control__text-area--tall {
+  height: 24rem;
+}

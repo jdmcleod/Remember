@@ -5,5 +5,5 @@
   = modal_link_to new_musing_path(kind: @kind), class: 'btn-primary btn--icon btn--small' do
     = icon('square-rounded-plus', classes: 'icon--large')
 
-- @musings.each do |musing|
-  .card = musing.name
+.flex.flex-col.gap-sm
+  = render @musings

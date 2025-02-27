@@ -1,0 +1,62 @@
+.image-upload {
+  width: 215px;
+  height: 100%;
+  position: relative;
+
+  &.image-upload--deletable {
+    &:hover {
+      cursor: pointer;
+
+      &::after {
+        visibility: visible;
+      }
+    }
+
+    &::after {
+      content: $ti-icon-trash;
+      background-color: var(--op-color-alerts-danger-plus-seven);
+      color: var(--op-color-alerts-danger-on-plus-seven);
+      visibility: hidden;
+      position: absolute;
+      font-family: $ti-font-family;
+      font-size: var(--op-font-small);
+      padding: var(--op-space-3x-small);
+      border-radius: 50%;
+      top: -10px;
+      right: -10px;
+    }
+  }
+
+  .delete-image-button {
+    position: absolute;
+    bottom: var(--op-space-small);
+    right: var(--op-space-small);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    border: none;
+    background-color: var(--op-color-primary-base);
+    border-radius: var(--op-radius-2x-large);
+    color: var(--op-color-neutral-plus-max);
+    font-size: var(--op-font-large);
+
+    &:hover {
+      background-color: var(--op-color-primary-minus-one);
+      color: var(--op-color-primary-on-minus-one);
+    }
+  }
+}
+
+.image-upload-floating {
+  float: left;
+  padding-right: var(--op-space-small);
+}
+
+.image-upload-template {
+  width: 200px;
+  height: 100%;
+  border: 2x dashed var(--op-color-neutral-plus-eight);
+  border-radius: var(--op-radius-medium);
+}

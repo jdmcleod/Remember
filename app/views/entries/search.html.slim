@@ -16,7 +16,7 @@
       .search-result
         - if entry.journalable_type == 'Day' && entry.journalable.be_real_memories.any?
           .flex.gap-sm
-            .day-popup__photo
+            .image-upload
               - memory = entry.journalable.be_real_memories.first
               rem-be-real-memory{
                 date=memory.day.date

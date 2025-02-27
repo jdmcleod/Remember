@@ -14,7 +14,7 @@
 
       .search-result
         - if entry.journalable_type == 'Day' && entry.journalable.be_real_memories.any?
-          .day-popup__photo-floating
+          .image-upload-floating
             - memory = entry.journalable.be_real_memories.first
             rem-be-real-memory{
               date=memory.day.date
