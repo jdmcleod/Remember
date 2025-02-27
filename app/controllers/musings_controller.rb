@@ -19,9 +19,16 @@ class MusingsController < ApplicationController
   def update
     @musing = Musing.find(params[:id])
 
+    if musing_params[:image].present?
+      image = musing_params[:image]
+      filename = image.original_filename
+      @musing.image.attach(key: storage_key(filename), io: image, filename:)
+    end
+
     if @musing.update(musing_params)
       render turbo_stream: [
-        turbo_stream.update('modal')
+        turbo_stream.update(@musing),
+        turbo_stream.update('musing-image', partial: 'musings/image')
       ]
     else
 
@@ -41,7 +48,6 @@ class MusingsController < ApplicationController
       end
 
       transaction.after_commit do
-        binding.irb
         flash.now[:notice] = "Created new #{@musing.kind_humanized}"
 
         render turbo_stream: [
@@ -56,12 +62,24 @@ class MusingsController < ApplicationController
     end
   end
 
+  def show
+    @musing = Musing.find(params[:id])
+    render layout: 'modal'
+  end
+
   def destroy
     @musing = Musing.find(params[:id])
 
     if @musing.destroy
       # turbo
     end
+  end
+
+  def delete_image_attachment
+    @musing = Musing.find(params[:id])
+    @musing.image&.purge
+
+    render turbo_stream: turbo_stream.update('musing-image', 'musings/image')
   end
 
   private

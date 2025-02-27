@@ -22,7 +22,11 @@
                 = icon('chevrons-right', color: 'primary-base', classes: 'btn btn--icon btn--x-small')
 
       .day-popup__body
-        = render 'popup_image'
+        = render 'shared/image_uploader',
+          resource: @day,
+          memory: @memories.first,
+          delete_path: delete_image_attachment_day_path(@day),
+          upload_path: add_image_attachment_day_path(@day)
 
         .full-width.full-height
           = simple_form_for @entry, data: { turbo: true, 'day-popup-target': 'form' } do |f|

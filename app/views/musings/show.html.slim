@@ -1,0 +1,23 @@
+= content_for(:modal_title) do
+  = simple_form_for @musing, data: { controller: 'turbo-fetch', turbo_fetch_url_value: musing_path(@musing) } do |f|
+    .flex.justify-between
+      = f.input :name, label: false, input_html: {\
+        class: 'form-control--live-update form-control--large-text',
+        data: { action: 'blur->turbo-fetch#perform' } },
+        wrapper_html: { class: 'form-group--no-padding' }
+
+      = f.input :date, as: :date, html5: true, label: false, input_html: {\
+        class: 'form-control--live-update',
+        value: @musing.date,
+        data: { action: 'blur->turbo-fetch#perform' } },
+        wrapper_html: { class: 'form-group--no-padding' }
+
+
+= render 'form'
+
+= content_for(:modal_footer_actions) do
+  = button_tag class: 'btn', form: "new_musing" do
+    | Delete
+
+
+

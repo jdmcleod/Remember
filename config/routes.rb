@@ -38,7 +38,9 @@ Rails.application.routes.draw do
     patch :add_image_attachment, on: :member
     delete :delete_image_attachment, on: :member
 
-    resources :musings
+    resources :musings do
+      delete :delete_image_attachment, on: :member
+    end
   end
 
   resources :users, only: [] do
