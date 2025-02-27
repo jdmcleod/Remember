@@ -28,7 +28,10 @@ class MusingsController < ApplicationController
     if @musing.update(musing_params)
       render turbo_stream: [
         turbo_stream.update(@musing),
-        turbo_stream.update('musing-image', partial: 'musings/image')
+        turbo_stream.update(
+          'image-uploader',
+          partial: 'shared/image-ploader',
+          locals: {  resource: @musing, delete_path: delete_image_attachment_musing_path(@musing), upload_path: musing_path(@musing) } )
       ]
     else
 
