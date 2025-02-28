@@ -67,7 +67,7 @@ export default class DayPopupController extends Controller {
   popupTargetConnected() {
     if (this.dayElement && !this._skipAnimation) {
       this._skipAnimation = false
-      animate(this.popupTarget, 'zoomIn')
+      animate(this.popupTarget, 'backInUp')
     }
   }
 
