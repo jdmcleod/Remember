@@ -27,10 +27,9 @@ class MusingsController < ApplicationController
 
     if @musing.update(musing_params)
       render turbo_stream: [
-        turbo_stream.update(@musing),
         turbo_stream.update(
           'image-uploader',
-          partial: 'shared/image-ploader',
+          partial: 'shared/image-uploader',
           locals: {  resource: @musing, delete_path: delete_image_attachment_musing_path(@musing), upload_path: musing_path(@musing) } )
       ]
     else
@@ -40,28 +39,10 @@ class MusingsController < ApplicationController
 
   def create
     @musing = current_user.musings.build(musing_params)
+    @musing.date = Date.current
 
-    ActiveRecord::Base.transaction do |transaction|
-      @musing.save
-
-      if musing_params[:image].present?
-        image = musing_params[:image]
-        filename = image.original_filename
-        @musing.image.attach(key: storage_key(filename), io: image, filename:)
-      end
-
-      transaction.after_commit do
-        flash.now[:notice] = "Created new #{@musing.kind_humanized}"
-
-        render turbo_stream: [
-          turbo_stream.update('modal'),
-          turbo_stream.update('flash', partial: 'shared/flash')
-        ]
-      end
-
-      transaction.after_rollback do
-        render turbo_stream: turbo_stream.update('modal-body', partial: 'musings/form')
-      end
+    if @musing.save
+      render turbo_stream: turbo_stream.append(:musings, @musing)
     end
   end
 
