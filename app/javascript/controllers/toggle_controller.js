@@ -23,7 +23,7 @@ export default class extends Controller {
 
   perform() {
     if (this.hasElementTarget) {
-      this.elementTargets.forEach(this._toggleActiveClass)
+      this.elementTargets.forEach(this._toggleActiveClass.bind(this))
     } else {
       this._toggleActiveClass(this.element)
     }

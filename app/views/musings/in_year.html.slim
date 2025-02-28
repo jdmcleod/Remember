@@ -1,9 +1,16 @@
 = content_for(:panel_title) do
   = @kind.to_s.humanize.pluralize
 
-= content_for(:panel_header_actions) do
-  = modal_link_to new_musing_path(kind: @kind), class: 'btn-primary btn--icon btn--small' do
-    = icon('square-rounded-plus', classes: 'icon--large')
-
 .flex.flex-col.gap-sm
-  = render @musings
+  = simple_form_for current_user.musings.new(kind: @kind), method: :post, data: { turbo_stream: true, controller: 'submit' }, html: { class: 'full-width' } do |f|
+    .flex.gap-sm.items-center.full-width
+      = f.input :name,
+        label: false,
+        placeholder: "Add new #{@kind.to_s.humanize.pluralize}",
+        wrapper_html: { class: 'form-group--no-padding full-width' }
+
+      button.btn-primary.btn--icon.btn--small data-action="click->submit#execute"
+        = icon('square-rounded-plus', classes: 'icon--large')
+
+  #musings
+    = render @musings
