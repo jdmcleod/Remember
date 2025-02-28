@@ -143,7 +143,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_23_203114) do
 
   create_table "musings", force: :cascade do |t|
     t.string "name"
-    t.string "description"
     t.string "kind", default: "generic"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

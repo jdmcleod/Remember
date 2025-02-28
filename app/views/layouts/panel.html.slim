@@ -7,8 +7,10 @@ html
       .panel(
         data-testid='panel'
         class=class_names('panel--active' => response.message == 'Unprocessable Entity')
-        data-controller="toggle"
+        data-controller="toggle panel"
         data-toggle-perform-on-connect-value=(response.message == 'OK')
+        data-toggle-close-on-click-outside-value=true
+        data-action="keydown.esc@window->toggle#off toggle:click:outside->toggle#off"
         data-toggle-active-class="panel--active"
         data-turbo-cache="false")
 

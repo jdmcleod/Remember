@@ -1,13 +1,14 @@
 #musings
   .flex.gap-md
-    = render 'shared/image_uploader',
-      resource: @musing,
-      delete_path: delete_image_attachment_musing_path(@musing),
-      upload_path: musing_path(@musing)
+    - if @musing.persisted?
+      = render 'shared/image_uploader',
+        resource: @musing,
+        delete_path: delete_image_attachment_musing_path(@musing),
+        upload_path: musing_path(@musing)
 
     .three-fifths-width
-      = simple_form_for @musing, data: { controller: 'turbo-fetch', turbo_fetch_url_value: musing_path(@musing) } do |f|
-        = f.input :description, as: :text, label: 'Thoughts',\
+      = simple_form_for @musing.entry, data: { controller: 'turbo-fetch', turbo_fetch_url_value: entry_path(@musing.entry) } do |f|
+        = f.rich_text_area :content, as: :text, label: 'Thoughts',\
           wrapper_html: { class: 'full-width' },
           input_html: { class: 'form-control--live-update form-control__text-area--tall'}
 

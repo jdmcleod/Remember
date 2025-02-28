@@ -1,17 +1,24 @@
 import { Controller } from "@hotwired/stimulus"
+import { useClickOutside } from 'stimulus-use'
 
 export default class extends Controller {
   static targets = ['element']
   static classes = ['active']
+
   static values = {
     performOnConnect: {
       type: Boolean,
       default: false,
-    }
+    },
+    closeOnClickOutside: Boolean
   }
 
   connect() {
     if (this.performOnConnectValue) this.perform()
+
+    if (this.closeOnClickOutsideValue) {
+      useClickOutside(this, { element: this.element })
+    }
   }
 
   perform() {
