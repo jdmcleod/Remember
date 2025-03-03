@@ -37,7 +37,6 @@
         - else
           = render 'shared/image_uploader',
             resource: @day,
-            memory: @memories.first,
             delete_path: delete_image_attachment_day_path(@day),
             upload_path: add_image_attachment_day_path(@day)
 
