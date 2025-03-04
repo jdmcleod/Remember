@@ -1,6 +1,8 @@
 # Remember
 The journaling app I've always wanted
 
+![CleanShot 2025-03-04 at 13 21 48@2x](https://github.com/user-attachments/assets/51cb996c-9d7f-4a26-9c3b-0671b7546f03)
+
 Bouta be lit
 Stay zen
 
