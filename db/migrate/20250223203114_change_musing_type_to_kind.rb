@@ -7,5 +7,7 @@ class ChangeMusingTypeToKind < ActiveRecord::Migration[8.0]
     remove_column :musings, :day_id, :bigint
     add_column :musings, :date, :datetime
     remove_column :musings, :description, :string
+
+    add_column :musings, :custom_fields, :jsonb
   end
 end

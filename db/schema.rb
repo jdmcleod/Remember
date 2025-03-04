@@ -13,6 +13,7 @@
 ActiveRecord::Schema[8.0].define(version: 2025_02_23_203114) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+  enable_extension "pg_trgm"
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -148,6 +149,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_23_203114) do
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.datetime "date"
+    t.jsonb "custom_fields"
   end
 
   create_table "quarters", force: :cascade do |t|
