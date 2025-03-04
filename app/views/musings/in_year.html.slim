@@ -2,14 +2,16 @@
   = @kind.to_s.humanize.pluralize
 
 .flex.flex-col.gap-sm
-  = simple_form_for current_user.musings.new(kind: @kind), method: :post, data: { turbo_stream: true, controller: 'submit' }, html: { class: 'full-width' } do |f|
+  = simple_form_for current_user.musings.new(kind: @kind), method: :post, data: { turbo_stream: true, controller: 'clear-input' }, html: { class: 'full-width' } do |f|
+    = f.hidden_field :date, value: @year.start_date
     .flex.gap-sm.items-center.full-width
       = f.input :name,
         label: false,
-        placeholder: "Add new #{@kind.to_s.humanize.pluralize}",
+        placeholder: "New #{@kind.to_s.humanize.pluralize} name",
+        input_html: { data: { clear_input_target: 'input'}},
         wrapper_html: { class: 'form-group--no-padding full-width' }
 
-      button.btn-primary.btn--icon.btn--small data-action="click->submit#execute"
+      button.btn-primary.btn--icon.btn--small data-action="click->clear-input#execute"
         = icon('square-rounded-plus', classes: 'icon--large')
 
   #musings

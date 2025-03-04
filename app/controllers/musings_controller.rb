@@ -2,14 +2,9 @@ class MusingsController < ApplicationController
   before_action :set_kind
 
   def in_year
-    year = current_user.years.find(params[:year_id])
-    @musings = current_user.musings.in_range(year.start_date, year.end_date)
+    @year = current_user.years.find(params[:year_id])
+    @musings = current_user.musings.in_range(@year.start_date, @year.end_date)
     render layout: 'panel'
-  end
-
-  def new
-    @musing = current_user.musings.new(kind: @kind)
-    render layout: 'modal'
   end
 
   def edit
@@ -39,7 +34,6 @@ class MusingsController < ApplicationController
 
   def create
     @musing = current_user.musings.build(musing_params)
-    @musing.date = Date.current
 
     if @musing.save
       render turbo_stream: turbo_stream.append(:musings, @musing)
