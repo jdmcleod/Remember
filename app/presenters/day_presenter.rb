@@ -29,7 +29,7 @@ class DayPresenter < ApplicationPresenter
   end
 
   def during_primary_event_start
-    primary_event.present? && primary_event.start_date == day.date
+    primary_event.present? && primary_event.start_date == day.date && primary_event.multiday?
   end
 
   def show_secondary_trip_handle?

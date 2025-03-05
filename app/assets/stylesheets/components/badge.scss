@@ -119,9 +119,12 @@
   }
 
   &.badge--new, &.badge--addable {
-    opacity: 0.5;
+    :not(.badge__tooltip) {
+      opacity: 0.5;
+    }
 
     .badge__border {
+      opacity: 0.5;
       border-style: dashed;
 
       -webkit-animation-name: Rotate;
@@ -187,4 +190,11 @@ a:has(.badge), button:has(.badge) {
   @media only screen and (max-width: $breakpoint-small) {
     padding-left: var(--op-space-x-small);
   }
+}
+
+.badge__tooltip {
+  position: absolute;
+  z-index: 1;
+  width: var(--op-space-2x-large);
+  height: var(--op-space-2x-large);
 }
