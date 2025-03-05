@@ -9,5 +9,6 @@
   - icon = locals[:icon]
   - icon = 'plus' if locals[:type] == 'new'
 div class=classes style="--badge-color: #{color}"
+  .badge__tooltip data-tooltip-text=locals[:badge]&.name data-tooltip-position="left"
   .badge__border
   = icon(icon)
