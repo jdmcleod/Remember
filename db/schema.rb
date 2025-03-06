@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_23_203114) do
+ActiveRecord::Schema[8.0].define(version: 2024_09_27_181813) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pg_trgm"
@@ -40,10 +40,10 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_23_203114) do
     t.string "filename", null: false
     t.string "content_type"
     t.text "metadata"
-    t.string "service_name", null: false
     t.bigint "byte_size", null: false
     t.string "checksum"
     t.datetime "created_at", null: false
+    t.string "service_name", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
@@ -143,13 +143,14 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_23_203114) do
   end
 
   create_table "musings", force: :cascade do |t|
+    t.bigint "user_id", null: false
     t.string "name"
-    t.string "kind", default: "generic"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "user_id"
+    t.string "type"
     t.datetime "date"
     t.jsonb "custom_fields"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_musings_on_user_id"
   end
 
   create_table "quarters", force: :cascade do |t|

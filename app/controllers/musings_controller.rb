@@ -1,19 +1,18 @@
 class MusingsController < ApplicationController
-  before_action :set_kind
+  before_action :set_type
+  before_action :set_collection, only: %i[in_year create]
+  before_action :find_musing, only: %i[edit update show destroy delete_image_attachment]
 
   def in_year
     @year = current_user.years.find(params[:year_id])
-    @musings = current_user.musings.in_range(@year.start_date, @year.end_date)
+    @musings = @collection.in_range(@year.start_date, @year.end_date)
     render layout: 'panel'
   end
 
   def edit
-    @musing = Musing.find(params[:id])
   end
 
   def update
-    @musing = Musing.find(params[:id])
-
     if musing_params[:image].present?
       image = musing_params[:image]
       filename = image.original_filename
@@ -33,7 +32,7 @@ class MusingsController < ApplicationController
   end
 
   def create
-    @musing = current_user.musings.build(musing_params)
+    @musing = @collection.build(musing_params)
 
     if @musing.save
       render turbo_stream: turbo_stream.append(:musings, @musing)
@@ -41,29 +40,32 @@ class MusingsController < ApplicationController
   end
 
   def show
-    @musing = Musing.find(params[:id])
     render layout: 'modal'
   end
 
   def destroy
-    @musing = Musing.find(params[:id])
-
     if @musing.destroy
       # turbo
     end
   end
 
   def delete_image_attachment
-    @musing = Musing.find(params[:id])
     @musing.image&.purge
-
     render turbo_stream: turbo_stream.update('musing-image', 'musings/image')
   end
 
   private
 
-  def set_kind
-    @kind = params[:kind]
+  def set_type
+    @type = params[:type]
+  end
+
+  def set_collection
+    @collection ||= current_user.public_send(@type.to_s.pluralize)
+  end
+
+  def find_musing
+    @musing = current_user.public_send(@type.to_s.pluralize).find(params[:id])
   end
 
   def storage_key(filename)
@@ -71,6 +73,6 @@ class MusingsController < ApplicationController
   end
 
   def musing_params
-    params.require(:musing).permit(:name, :description, :date, :kind, :image)
+    params.require(@type).permit(:name, :date, :image, custom_fields: {})
   end
 end

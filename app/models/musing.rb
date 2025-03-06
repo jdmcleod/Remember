@@ -1,4 +1,6 @@
 class Musing < ApplicationRecord
+  self.abstract_class = true
+  self.table_name = :musings
   include DateScopes
 
   has_one :entry, as: :journalable, dependent: :destroy, class_name: 'Entry'
@@ -9,19 +11,5 @@ class Musing < ApplicationRecord
 
   validates :name, :date, presence: true
 
-  enum :kind, [
-    :generic,
-    :book,
-    :album,
-    :movie,
-    :bible_verse,
-    :realization,
-    :perplexity,
-    :resolution,
-    :testimony,
-  ]
-
-  def kind_humanized
-    kind.to_s.humanize
-  end
+  # attribute :custom_fields, CustomFields.new(custom_field_keys)
 end
