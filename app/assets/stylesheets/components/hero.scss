@@ -73,7 +73,7 @@
   .hero__message {
     font-size: var(--op-font-x-large);
     font-family: var(--op-font-family-tertiary);
-    
+
     @media only screen and (max-width: $breakpoint-small) {
       font-size: var(--op-font-large);
     }
@@ -123,6 +123,11 @@
 
   &.hero--primary {
     color: var(--op-color-primary-on-base);
+  }
+
+  a {
+    color: var(--op-color-white);
+    text-decoration: underline;
   }
 }
 
