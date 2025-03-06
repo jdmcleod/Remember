@@ -1,0 +1,5 @@
+- if book.persisted?
+  div id=dom_id(book)
+    = modal_link_to musing_path(book.id, type: :book) do
+      .card.card--padded
+        = book.name
