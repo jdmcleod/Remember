@@ -1,0 +1,19 @@
+{
+  "name": "RememberJournal",
+  "scripts": {
+    "postdeploy": "bin/rails db:seed"
+  },
+  "env": {},
+  "addons": [
+    "heroku-postgresql",
+    "papertrail"
+  ],
+  "buildpacks": [
+    {
+      "url":"heroku/metrics"
+    },
+    {
+      "url": "heroku/ruby"
+    }
+  ]
+}
