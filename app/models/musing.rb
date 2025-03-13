@@ -10,6 +10,4 @@ class Musing < ApplicationRecord
   end
 
   validates :name, :date, presence: true
-
-  # attribute :custom_fields, CustomFields.new(custom_field_keys)
 end

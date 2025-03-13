@@ -23,7 +23,7 @@ class MusingsController < ApplicationController
       render turbo_stream: [
         turbo_stream.update(
           'image-uploader',
-          partial: 'shared/image-uploader',
+          partial: 'shared/image_uploader',
           locals: {  resource: @musing, delete_path: delete_image_attachment_musing_path(@musing), upload_path: musing_path(@musing) } )
       ]
     else
@@ -65,7 +65,7 @@ class MusingsController < ApplicationController
   end
 
   def find_musing
-    @musing = current_user.public_send(@type.to_s.pluralize).find(params[:id])
+    @musing = current_user.musings.find(params[:id])
   end
 
   def storage_key(filename)
@@ -73,6 +73,6 @@ class MusingsController < ApplicationController
   end
 
   def musing_params
-    params.require(@type).permit(:name, :date, :image, custom_fields: {})
+    params.require(:musing).permit(:name, :date, :image, custom_fields: {})
   end
 end

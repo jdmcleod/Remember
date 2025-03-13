@@ -7,6 +7,8 @@ class User < ApplicationRecord
   has_many :events, dependent: :destroy
   has_many :entries, dependent: :destroy
 
+  has_many :musings
+
   has_many :books, dependent: :destroy
 
   has_one :be_real_connection, dependent: :destroy
