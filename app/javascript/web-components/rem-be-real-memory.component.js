@@ -58,13 +58,13 @@ export default class REMBeRealMemory extends LitElement {
     this.secondary.style.left = '16px'
   }
 
-  #expandImage() {
+  _expandImage() {
     if (this.disableExpand) return
 
     this.expanded = !this.expanded
   }
 
-  #handleClick() {
+  _handleClick() {
     if (!this.dragging) {
       this.swapped = !this.swapped
     }
@@ -81,7 +81,7 @@ export default class REMBeRealMemory extends LitElement {
           alt="${this.date}"
           style="width: ${height};"
           class="secondary"
-          @click="${this.#handleClick}"
+          @click="${this._handleClick}"
           @mousedown="${this.setupDrag}"
         >
       `
@@ -107,7 +107,7 @@ export default class REMBeRealMemory extends LitElement {
     const primaryHeight = `calc(var(--op-size-unit) * ${size})`
     const secondaryHeight = `calc(var(--op-size-unit) * ${size / 3.34})`
     return html`
-      <img src="${images[0]}" @click="${this.#expandImage}" alt="${this.date}" class="${classes}" style="width: ${primaryHeight};">
+      <img src="${images[0]}" @click="${this._expandImage}" alt="${this.date}" class="${classes}" style="width: ${primaryHeight};">
       
       ${this._renderSecondary(secondaryHeight, images[1])}
       <slot name="actions"></slot>

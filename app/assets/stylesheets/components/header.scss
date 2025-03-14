@@ -67,31 +67,32 @@
   }
 
   .year-highlight__photo {
-    width: 215px;
     height: 100%;
     position: relative;
 
-    &.year-highlight__photo--deletable {
-      &:hover {
-        cursor: pointer;
+    .year-highlight__photo-actions {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--op-space-x-small);
+      background-color: var(--op-color-primary-minus-eight);
+      border-radius: var(--op-radius-2x-large);
+      padding: var(--op-space-2x-small);
 
-        &::after {
-          visibility: visible;
+      .delete-image-button {
+        width: 3rem;
+        height: 3rem;
+        border: none;
+        background-color: var(--op-color-primary-base);
+        border-radius: var(--op-radius-2x-large);
+        color: var(--op-color-neutral-plus-max);
+        font-size: var(--op-font-large);
+
+        &:hover {
+          background-color: var(--op-color-primary-minus-one);
+          color: var(--op-color-primary-on-minus-one);
         }
-      }
-
-      &::after {
-        content: $ti-icon-trash;
-        background-color: var(--op-color-alerts-danger-plus-seven);
-        color: var(--op-color-alerts-danger-on-plus-seven);
-        visibility: hidden;
-        position: absolute;
-        font-family: $ti-font-family;
-        font-size: var(--op-font-small);
-        padding: var(--op-space-3x-small);
-        border-radius: 50%;
-        top: -10px;
-        right: -10px;
       }
     }
   }
