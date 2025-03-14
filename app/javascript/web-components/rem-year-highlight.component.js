@@ -17,7 +17,7 @@ export default class REMYearHighlight extends REMBeRealMemory {
       <div class="placeholder ${!this.expanded ? 'hide' : ''}" @click=${this._expandImage}>
         <ti-icon name='camera' class="placeholder__icon"></ti-icon>
       </div>
-      <img src="${images[0]}" @click="${this._expandImage}" alt="${this.date}" class="${this.expanded ? 'expanded' : ''}" style="width: ${height};">
+      <img src="${images[0]}" @click="${this._expandImage}" alt="${this.date}" class="${this.expanded ? 'expanded' : ''}" style="width: ${height}; height: ${height}; object-fit: contain;">
       <slot name="actions" class="${!this.expanded ? 'hide' : ''}"></slot>
     `
   }
@@ -38,9 +38,14 @@ export default class REMYearHighlight extends REMBeRealMemory {
       color: var(--op-color-neutral-plus-max);
       border-radius: var(--op-radius-medium);
       box-sizing: border-box;
+      cursor: pointer;
 
       ti-icon {
         --font-size: var(--op-font-large);
+      }
+
+      &:hover {
+        background-color: var(--op-color-primary-plus-one);
       }
     }
 

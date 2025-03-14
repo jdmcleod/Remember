@@ -72,6 +72,8 @@
 
     .year-highlight__photo-actions {
       position: absolute;
+      top: var(--op-space-4x-large);
+      left: var(--op-space-x-small);
       display: flex;
       align-items: center;
       justify-content: center;
