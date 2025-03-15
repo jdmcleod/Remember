@@ -6,6 +6,6 @@
 = content_for(:modal_footer_actions) do
   .flex.gap-sm
     = link_to 'Delete', year_event_path(@year, @event), class: 'btn', data: { turbo_method: :delete }
-    = button_tag class: 'btn-primary', form: "edit_event_#{@event.id}" do
-      = icon('check', classes: 'icon--medium')
+    = button_tag class: 'btn btn--primary', form: "edit_event_#{@event.id}" do
+      = icon('check', classes: 'icon--medium', color: 'neutral-plus-max')
       | Update

@@ -1,35 +1,33 @@
-// Initial Color Definitions
-
-@mixin color-varieties {
-  // Primary HSL
+:root {
+  /*Primary HSL*/
   --op-color-primary-h: 348;
   --op-color-primary-s: 87%;
   --op-color-primary-s-alt: 51%;
   --op-color-primary-l: 63%;
 
-  // Secondary HSL
+  /*Secondary HSL*/
   --op-color-secondary-h: 36;
   --op-color-secondary-s: 100%;
   --op-color-secondary-l: 50%;
 
-  // Neutral HSL
+  /*Neutral HSL*/
   --op-color-neutral-h: 204;
   --op-color-neutral-s: 8%;
   --op-color-neutral-l: 50%;
 
-  // Alerts Notice HSL
+  /*Alerts Notice HSL*/
   --op-color-alerts-notice-h: 174;
   --op-color-alerts-notice-s: 71%;
   --op-color-alerts-notice-s-alt: 51%;
   --op-color-alerts-notice-l: 26%;
 
-  // Alerts Info HSL
+  /*Alerts Info HSL*/
   --op-color-alerts-info-h: 204;
   --op-color-alerts-info-s: 100%;
   --op-color-alerts-info-s-alt: 80%;
   --op-color-alerts-info-l: 50%;
 
-  // Alerts Warning HSL
+  /*Alerts Warning HSL*/
   --op-color-alerts-warning-h: 44;
   --op-color-alerts-warning-s: 100%;
   --op-color-alerts-warning-s-alt-low: 85%;
@@ -37,7 +35,7 @@
   --op-color-alerts-warning-s-alt-high: 95%;
   --op-color-alerts-warning-l: 60%;
 
-  // Alerts Danger HSL
+  /*Alerts Danger HSL*/
   --op-color-alerts-danger-h: 345;
   --op-color-alerts-danger-s: 100%;
   --op-color-alerts-danger-s-alt: 80%;
@@ -48,22 +46,16 @@
   --op-color-transparent-6: rgba(255, 255, 255, 0.6);
   --op-color-transparent-7: rgba(255, 255, 255, 0.7);
   --op-color-transparent-8: rgba(255, 255, 255, 0.8);
-}
 
-@mixin box-shadows {
   --op-border-all: inset 0 0 0 var(--op-border-width);
   --op-border-modal-accent: var(--op-color-neutral-minus-four);
   --op-current-day-highlight: inset 0 0 0 var(--op-border-width-large) var(--op-color-primary-on-plus-seven);
   --op-holiday-highlight: inset 0 0 0 var(--op-border-width-large) var(--op-color-alerts-danger-base);
-}
 
-@mixin spacing-scales {
-  --op-space-3x-large: calc(var(--op-space-scale-unit) * 3.2); // 32px
-  --op-space-4x-large: calc(var(--op-space-scale-unit) * 4); // 40px
-  --op-space-5x-large: calc(var(--op-space-scale-unit) * 8); // 80px
-}
+  --op-space-3x-large: calc(var(--op-space-scale-unit) * 3.2);
+  --op-space-4x-large: calc(var(--op-space-scale-unit) * 4);
+  --op-space-5x-large: calc(var(--op-space-scale-unit) * 8);
 
-@mixin border-radius {
   --op-radius-x-small: 2px;
   --op-radius-small: 4px;
   --op-radius-medium: 8px;
@@ -72,18 +64,8 @@
   --op-radius-2x-large: 20px;
   --op-radius-circle: 50%;
   --op-radius-pill: 9999px;
-}
 
-@mixin fonts {
   --op-font-family: 'Ubuntu', sans-serif;
   --op-font-family-secondary: 'Belanosima', sans-serif;
   --op-font-family-tertiary: 'Cantarell', serif;
-}
-
-:root {
-  @include color-varieties;
-  @include box-shadows;
-  @include spacing-scales;
-  @include fonts;
-  @include border-radius;
 }

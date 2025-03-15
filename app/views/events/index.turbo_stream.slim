@@ -2,7 +2,7 @@
   | Trips and Events
 
 = turbo_stream.update 'modal-header-actions' do
-  = link_to new_year_event_path(@year), class: 'btn-primary', data: { turbo_stream: true } do
+  = link_to new_year_event_path(@year), class: 'btn btn--primary', data: { turbo_stream: true } do
     = icon('plus', classes: 'icon--medium', color: 'primary-minus-two')
     | New
 

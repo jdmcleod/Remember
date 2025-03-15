@@ -42,13 +42,13 @@
     }
   }
 
-  @media only screen and (max-width: $breakpoint-small) {
+  @media only screen and (max-width: 768px) {
     width: 100%;
     padding: var(--op-space-3x-small) var(--op-space-x-small) var(--op-space-x-small) var(--op-space-x-small);
     left: 0;
   }
 
-  @media only screen and (min-width: $breakpoint-small) {
+  @media only screen and (min-width: 768px) {
     min-width: 65rem;
   }
 }
@@ -82,12 +82,10 @@
     }
 
     &::after {
-      content: $ti-icon-trash;
       background-color: var(--op-color-alerts-danger-plus-seven);
       color: var(--op-color-alerts-danger-on-plus-seven);
       visibility: hidden;
       position: absolute;
-      font-family: $ti-font-family;
       font-size: var(--op-font-small);
       padding: var(--op-space-3x-small);
       border-radius: 50%;
@@ -140,7 +138,7 @@
 }
 
 .day-popup-title, .day-popup__photo {
-  @media only screen and (max-width: $breakpoint-small) {
+  @media only screen and (max-width: 768px) {
     display: none;
   }
 }
@@ -149,7 +147,7 @@
   display: flex;
   gap: var(--op-space-x-small);
 
-  @media only screen and (max-width: $breakpoint-small) {
+  @media only screen and (max-width: 768px) {
     gap: 0;
   }
 }

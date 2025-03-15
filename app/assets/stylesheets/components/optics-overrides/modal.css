@@ -1,8 +1,9 @@
 .modal {
   --_op-modal-width: 60rem;
+  --op-color-background: var(--op-color-neutral-plus-max);
+
   border-radius: var(--op-radius-x-large);
   transition-duration: 150ms;
-  background-color: var(--op-color-neutral-plus-eight);
   contain: unset;
   display: flex;
   flex-direction: column;
@@ -17,6 +18,10 @@
 
   .modal__footer {
     justify-content: space-between;
+  }
+
+  .modal__header {
+    /*background-color: white;*/
   }
 
   .modal__body {
@@ -69,7 +74,7 @@ dialog.modal {
       }
     }
 
-    @media only screen and (max-width: $breakpoint-small) {
+    @media only screen and (max-width: 768px) {
       width: 100%;
       height: 80vh;
       trix-editor {
@@ -80,7 +85,7 @@ dialog.modal {
 
   .modal__footer {
     padding: var(--op-space-small);
-    @media only screen and (max-width: $breakpoint-small) {
+    @media only screen and (max-width: 768px) {
       padding: var(--op-space-x-small);
     }
   }

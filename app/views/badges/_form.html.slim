@@ -6,7 +6,7 @@
   div data-controller='badge-preview'
     = f.input :name
 
-    .card-padded.card--white
+    .card.card--padded.card--white
       .card__header
         | Icon Settings (
         a.text-decoration-none href='https://tablericons.com/' target="_blank" See icon library
@@ -22,7 +22,7 @@
         .one-quarter-width.flex.justify-center.items-center.flex-col.gap-lg
           .card__header Live look
           .day__wrapper
-            .day
+            .day.day--preview
               .day__number 24
             .day-badges
               .day-badge-indicator style="--badge-color: #{@badge.color}" data-badge-preview-target='preview'

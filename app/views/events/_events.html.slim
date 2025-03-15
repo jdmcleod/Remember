@@ -3,7 +3,7 @@
     .flex.flex-col.gap-sm
       - @events.each do |event|
         = link_to edit_year_event_path(@year, event), class: 'text-decoration-none', data: { turbo_stream: true } do
-          .card.card-padded.event-card
+          .card.card--padded.event-card
             .flex.items-center.gap-md.justify-between
               .flex.items-center.gap-md
                 .event-card__name

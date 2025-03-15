@@ -5,6 +5,6 @@
   = render 'form'
 
 = turbo_stream.update 'modal-footer-actions' do
-  = button_tag class: 'btn-primary', form: "new_badge" do
-    = icon('check', classes: 'icon--medium')
+  = button_tag class: 'btn btn--primary', form: "new_badge" do
+    = icon('check', classes: 'icon--medium', color: 'neutral-plus-max')
     | Create

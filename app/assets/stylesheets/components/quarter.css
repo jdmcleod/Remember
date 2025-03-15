@@ -10,7 +10,7 @@
   scrollbar-width: none;  /* Firefox */
   border-radius: var(--op-radius-x-large);
 
-  @media only screen and (max-width: $breakpoint-small) {
+  @media only screen and (max-width: 768px) {
     flex-direction: column;
     height: 100%;
     align-items: center;
@@ -36,7 +36,7 @@
 }
 
 .quarter--1, .quarter--2, .quarter--3, .quarter--4 {
-  @media only screen and (max-width: $breakpoint-small) {
+  @media only screen and (max-width: 768px) {
     background: unset;
   }
 }

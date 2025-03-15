@@ -6,7 +6,7 @@
     - if locals[:toggle].present?
       = locals[:toggle]
     - else
-      = icon(locals[:icon], classes: 'icon--large icon--bold', color: 'primary-minus-two')
+      = icon(locals[:icon], classes: 'icon--large')
 
   .context-menu__dropdown.context-menu__dropdown--closed{
     data-testid="#{locals[:name]}-menu-dropdown"

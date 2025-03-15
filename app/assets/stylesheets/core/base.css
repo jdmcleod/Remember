@@ -14,7 +14,7 @@ a {
   max-width: 129rem;
   margin-inline: auto;
 
-  @media only screen and (max-width: $breakpoint-small) {
+  @media only screen and (max-width: 768px) {
     padding-left: 0;
     padding-right: 0;
   }

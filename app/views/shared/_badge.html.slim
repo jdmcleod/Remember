@@ -9,5 +9,9 @@
   - icon = locals[:icon]
   - icon = 'plus' if locals[:type] == 'new'
 div class=classes style="--badge-color: #{color}"
+  - if locals[:type] == 'addable'
+    i.ti.ti-plus
+  - if locals[:type] == 'deletable'
+    i.ti.ti-trash
   .badge__border
   = icon(icon)

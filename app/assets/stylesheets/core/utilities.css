@@ -108,19 +108,19 @@
 }
 
 .mobile-hidden {
-  @media(max-width: $breakpoint-small) {
+  @media(max-width: 768px) {
     display: none;
   }
 }
 
 .tablet-hidden {
-  @media(max-width: $breakpoint-medium) {
+  @media(max-width: 1024px) {
     display: none;
   }
 }
 
 .desktop-hidden {
-  @media(min-width: $breakpoint-small) {
+  @media(min-width: 768px) {
     display: none;
   }
 }

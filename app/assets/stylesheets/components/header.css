@@ -8,13 +8,14 @@
     border-radius: var(--op-radius-large);
     z-index: 1;
     background-color: var(--op-color-primary-base);
+    box-shadow: var(--op-color-neutral-plus-four) 0px 1px 1px, var(--op-color-neutral-plus-four) 0px 0px 1px 1px;
     color: var(--op-color-neutral-plus-max);
 
     font-weight: var(--op-font-weight-semi-bold);
     font-size: var(--op-font-3x-large);
     text-decoration: none;
 
-    @media only screen and (max-width: $breakpoint-small) {
+    @media only screen and (max-width: 768px) {
       border-radius: var(--op-radius-small);
     }
   }
@@ -27,23 +28,24 @@
     display: flex;
     align-items: center;
     gap: var(--op-space-x-small);
-    @media only screen and (max-width: $breakpoint-small) {
+    @media only screen and (max-width: 768px) {
       gap: 0;
     }
   }
 
   .header__wing {
     --_header-wing-radius: var(--op-radius-large);
-    --_header-wing-height: calc(var(--op-size-unit) * 9); // 36px
+    --_header-wing-height: calc(var(--op-size-unit) * 9);
 
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: var(--op-space-2x-small);
 
     height: var(--_header-wing-height);
 
     padding-inline: var(--op-space-x-small);
-    box-shadow: var(--op-color-primary-base) 0px 1px 1px, var(--op-color-primary-base) 0px 0px 1px 1px;
+    box-shadow: var(--op-color-neutral-plus-four) 0px 1px 1px, var(--op-color-neutral-plus-four) 0px 0px 1px 1px;
 
     background-color: var(--op-color-neutral-plus-max);
     color: var(--op-color-neutral-plus-max);
@@ -58,7 +60,7 @@
       border-bottom-right-radius: var(--_header-wing-radius);
     }
 
-    @media only screen and (max-width: $breakpoint-small) {
+    @media only screen and (max-width: 768px) {
       padding-inline: var(--op-space-3x-small);
     }
   }
@@ -70,7 +72,7 @@
 
 .header--main {
   .header__logo {
-    @media only screen and (max-width: $breakpoint-small) {
+    @media only screen and (max-width: 768px) {
       display: none;
     }
   }

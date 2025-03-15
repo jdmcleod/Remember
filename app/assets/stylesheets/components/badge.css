@@ -1,3 +1,12 @@
+@keyframes rotateAnimation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .badge {
   position: relative;
   width: var(--op-space-4x-large);
@@ -53,13 +62,6 @@
     border-width: 2px;
   }
 
-  &.badge--x-large {
-    width: calc(var(--op-space-4x-large) + var(--op-space-large));
-    height: calc(var(--op-space-4x-large) + var(--op-space-large));
-    border-width: 2px;
-    font-size: var(--op-font-5x-large);
-  }
-
   &.badge--new {
     color: var(--op-color-neutral-base);
 
@@ -85,34 +87,26 @@
     &:hover {
       cursor: pointer;
 
-      &::after {
+      i.ti {
         visibility: visible;
       }
     }
-
-    &::after {
-      visibility: hidden;
-      position: absolute;
-      font-family: $ti-font-family;
-      font-size: var(--op-font-small);
-      padding: var(--op-space-3x-small);
-      border-radius: 50%;
-      top: -10px;
-      right: -10px;
-    }
   }
 
-  &.badge--deletable {
-    &::after {
-      content: $ti-icon-trash;
-      background-color: var(--op-color-alerts-danger-plus-seven);
-      color: var(--op-color-alerts-danger-on-plus-seven);
-    }
+  i.ti {
+    visibility: hidden;
+    position: absolute;
+    font-size: var(--op-font-small);
+    padding: var(--op-space-3x-small);
+    border-radius: 50%;
+    top: -5px;
+    right: -8px;
+    background-color: var(--op-color-alerts-danger-plus-seven);
+    color: var(--op-color-alerts-danger-on-plus-seven);
   }
 
   &.badge--addable {
-    &::after {
-      content: $ti-icon-plus;
+    i.ti {
       background-color: var(--op-color-alerts-notice-plus-seven);
       color: var(--op-color-alerts-notice-on-plus-seven);
     }
@@ -124,43 +118,10 @@
     .badge__border {
       border-style: dashed;
 
-      -webkit-animation-name: Rotate;
-      -webkit-animation-duration: 10s;
-      -webkit-animation-iteration-count: infinite;
-      -webkit-animation-timing-function: linear;
-      -moz-animation-name: Rotate;
-      -moz-animation-duration: 10s;
-      -moz-animation-iteration-count: infinite;
-      -moz-animation-timing-function: linear;
-      -ms-animation-name: Rotate;
-      -ms-animation-duration: 10s;
-      -ms-animation-iteration-count: infinite;
-      -ms-animation-timing-function: linear;
-    }
-
-    @-webkit-keyframes Rotate {
-      from {
-        -webkit-transform: rotate(0deg);
-      }
-      to {
-        -webkit-transform: rotate(360deg);
-      }
-    }
-    @-moz-keyframes Rotate {
-      from {
-        -moz-transform: rotate(0deg);
-      }
-      to {
-        -moz-transform: rotate(360deg);
-      }
-    }
-    @-ms-keyframes Rotate {
-      from {
-        -ms-transform: rotate(0deg);
-      }
-      to {
-        -ms-transform: rotate(360deg);
-      }
+      animation-name: rotateAnimation;
+      animation-duration: 10s;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
     }
   }
 }
@@ -184,7 +145,7 @@ a:has(.badge), button:has(.badge) {
   display: flex;
   flex-direction: column;
   align-items: center;
-  @media only screen and (max-width: $breakpoint-small) {
+  @media only screen and (max-width: 768px) {
     padding-left: var(--op-space-x-small);
   }
 }
