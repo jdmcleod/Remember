@@ -131,14 +131,16 @@
   }
 }
 
- /*Note: Not used at the moment, but could be a modifier of the `hero__graphic` element*/
- /*.home-page__hero--graphic {*/
- /*  position: absolute;*/
- /*  width: 600px;*/
- /*  height: 350px;*/
- /*  right: 200px;*/
- /*  z-index: -1;*/
- /*  border-radius: 63% 37% 24% 76% / 51% 56% 44% 49%;*/
- /*  background-image: linear-gradient(43deg, var(--op-color-primary-plus-two) 0%, var(--op-color-primary-minus-one) 46%, var(--op-color-primary-base) 100%);*/
- /*  opacity: 0.8;*/
- /*}*/
+ /*
+  Note: Not used at the moment, but could be a modifier of the `hero__graphic` element
+  .home-page__hero--graphic {
+    position: absolute;
+    width: 600px;
+    height: 350px;
+    right: 200px;
+    z-index: -1;
+    border-radius: 63% 37% 24% 76% / 51% 56% 44% 49%;
+    background-image: linear-gradient(43deg, var(--op-color-primary-plus-two) 0%, var(--op-color-primary-minus-one) 46%, var(--op-color-primary-base) 100%);
+    opacity: 0.8;
+  }
+*/
