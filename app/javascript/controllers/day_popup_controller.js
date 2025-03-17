@@ -67,10 +67,10 @@ export default class DayPopupController extends Controller {
   popupTargetConnected() {
     if (this.dayElement && !this._skipAnimation) {
       this._skipAnimation = false
-      const animations = ['backInUp', 'bounceIn', 'lightSpeedInLeft', 'rotateInUpLeft', 'rollIn']
-      const randomIndex = Math.floor(Math.random() * animations.length)
-      const randomAnimation = animations[randomIndex]
-      animate(this.popupTarget, randomAnimation)
+      // const animations = ['backInUp', 'bounceIn', 'lightSpeedInLeft', 'rotateInUpLeft', 'rollIn']
+      // const randomIndex = Math.floor(Math.random() * animations.length)
+      // const randomAnimation = animations[randomIndex]
+      animate(this.popupTarget, 'backInUp')
     }
   }
 

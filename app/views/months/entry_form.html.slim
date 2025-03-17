@@ -16,5 +16,5 @@
     = f.rich_text_area :content, data: { testid: 'month-entry-text-area' }
 
   = content_for(:modal_footer_actions) do
-    = f.submit "Save", class: 'btn-primary', form: "edit_entry_#{@entry.id}", data: { action: 'toggle#off' }
+    = f.submit "Save", class: 'btn btn--primary', form: "edit_entry_#{@entry.id}", data: { action: 'toggle#off' }
 

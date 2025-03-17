@@ -12,6 +12,17 @@ module ApplicationHelper
     end
   end
 
+  def icon_color_for_flash(type)
+    case type
+    when 'notice'
+      'alerts-notice-base'
+    when 'alert'
+      'alerts-danger-base'
+    else
+      type
+    end
+  end
+
   def tab_link_to(name, path)
     link_to(name, path, active_tab(path))
   end

@@ -22,25 +22,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up node
-        uses: actions/setup-node@v4
-        with:
-          node-version-file: .node-version
-          cache: yarn
-
       - name: Install Ruby and gems
         uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
-
-      - name: Build assets
-        run: bundle exec rails test:prepare
-
-      - name: Store built assets
-        uses: actions/upload-artifact@v4
-        with:
-          name: build-assets
-          path: app/assets/builds
 
   model_test:
     name: Ruby Tests
@@ -68,15 +53,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
-      - name: Set up node
-        uses: actions/setup-node@v4
-        with:
-          node-version-file: .node-version
-          cache: yarn
-
-      - name: Run Yarn Install
-        run: yarn install --frozen-lockfile
 
       - name: Install Ruby and gems
         uses: ruby/setup-ruby@v1
@@ -130,25 +106,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Retrieve built assets
-        uses: actions/download-artifact@v4
-        with:
-          name: build-assets
-          path: app/assets/builds
-
       - name: Install Ruby and gems
         uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
-
-      - name: Set up node
-        uses: actions/setup-node@v4
-        with:
-          node-version-file: .node-version
-          cache: yarn
-
-      - name: Run Yarn Install
-        run: yarn install --frozen-lockfile
 
       - name: Setup database
         run: |

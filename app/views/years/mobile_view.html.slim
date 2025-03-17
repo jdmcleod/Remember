@@ -1,5 +1,5 @@
 div data-controller="search"
-  .btn-primary.btn--icon.btn--large.mobile-search-button data-action="click->search#toggle"
+  .btn.btn--primary.btn--icon.btn--large.mobile-search-button data-action="click->search#toggle"
     = icon('search', color: 'primary-plus-five', classes: 'icon--x-large')
 
   = render 'shared/search_form'
@@ -16,4 +16,4 @@ div data-controller="search"
       = render @current_quarter
 
       .mobile-load-all-button
-        = link_to "Load All", current_years_path, class: 'btn-primary'
+        = link_to "Load All", current_years_path, class: 'btn btn--primary'

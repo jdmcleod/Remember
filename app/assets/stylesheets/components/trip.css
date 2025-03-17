@@ -44,8 +44,6 @@
   font-size: var(--op-font-2x-small);
 }
 
-// Decorations
-
 .trip__decoration {
   position: absolute;
   max-width: unset;

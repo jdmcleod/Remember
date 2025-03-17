@@ -10,7 +10,7 @@
   - @entries.each do |entry|
     - next if entry.empty?
 
-    .card.card-padded data-live-filter-target='filterable' data-filter-key=entry.content.to_plain_text
+    .card.card--padded data-live-filter-target='filterable' data-filter-key=entry.content.to_plain_text
       .card__header
         = entry.title
 

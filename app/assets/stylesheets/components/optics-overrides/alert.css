@@ -6,6 +6,6 @@
   padding: var(--op-space-small);
 
   .alert__messages {
-    color: var(--op-color-neutral-minus-four);
+    color: var(--op-color-neutral-minus-one);
   }
 }

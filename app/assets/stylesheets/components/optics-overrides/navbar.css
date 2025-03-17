@@ -1,4 +1,4 @@
-%navbar-global {
+.navbar {
   --_op-navbar-background-color: var(--op-color-neutral-plus-max);
   --_op-navbar-text-color: var(--op-color-neutral-on-plus-max);
 

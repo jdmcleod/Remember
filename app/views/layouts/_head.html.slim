@@ -2,13 +2,13 @@ head
   title Remember
   = csrf_meta_tags
   = csp_meta_tag
+  = favicon_link_tag asset_path('favicon.svg')
+
   = javascript_importmap_tags
 
-
-  = stylesheet_link_tag "application", "data-turbo-track": "reload"
-  = javascript_include_tag "application", "data-turbo-track": "reload", defer: true, type: "module"
-
-  = favicon_link_tag asset_path('favicon.svg')
+  = stylesheet_link_tag 'https://cdn.jsdelivr.net/npm/@rolemodel/optics@2.1.2/dist/css/optics.min.css', 'data-turbo-track': 'reload'
+  = stylesheet_link_tag 'https://cdn.jsdelivr.net/npm/@rolemodel/optics@2.1.2/dist/css/addons/fonts/tabler_icons.css', 'data-turbo-track': 'reload'
+  = stylesheet_link_tag :all, 'data-turbo-track': 'reload'
 
   link rel="preconnect" href="https://fonts.googleapis.com"
   link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=true

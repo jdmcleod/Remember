@@ -8,7 +8,8 @@
   z-index: 20;
   transition: cubic-bezier(0.4, 0, 0.2, 1) 150ms all;
 
-  @media only screen and (max-width: $breakpoint-small) {
+  /* --op-breakpoint-small */
+  @media only screen and (max-width: 768px) {
     width: 100%;
     left: 0;
   }
@@ -56,9 +57,9 @@
   flex-direction: column;
   gap: var(--op-space-2x-large);
 
-  .card-padded {
+  .card--padded {
     background-color: var(--op-color-neutral-plus-max);
-    border: var(--op-border-width) solid (--op-color-neutral-plus-max);
+    border: var(--op-border-width) solid var(--op-color-neutral-plus-max);
   }
 
   .card__header {

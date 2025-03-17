@@ -7,14 +7,14 @@ div data-controller='hotkeys' data-hotkeys-bindings-value='{"command+/": ".app__
   .header.header--main
     nav.header__nav
       - if !hide_nav
-        = link_to year_path(@year.year.to_i - 1), class: 'btn btn--icon btn--pill btn--no-background' do
+        = link_to year_path(@year.year.to_i - 1), class: 'btn btn--icon btn--pill' do
           = icon('circle-caret-left', color: 'primary-base', classes: 'icon--x-large')
       .header__wing.header__wing--left
-        = modal_link_to badges_path, class: 'btn btn--no-background btn--small' do
-          = icon('badge', classes: 'icon--large icon--bold', color: 'primary-minus-two')
+        = modal_link_to badges_path, class: 'btn  btn--small' do
+          = icon('badge', classes: 'icon--large')
 
-        button.btn.btn--no-background.btn--small data-action="click->search#toggle" data-testid='search-button'
-          = icon('search', classes: 'icon--large icon--bold', color: 'primary-minus-two')
+        button.btn.btn--small data-action="click->search#toggle" data-testid='search-button'
+          = icon('search', classes: 'icon--large')
 
     = link_to root_path, class: 'header__label', data: { turbo_frame: 'modal' } do
       .flex.gap-xs.items-end
@@ -24,32 +24,32 @@ div data-controller='hotkeys' data-hotkeys-bindings-value='{"command+/": ".app__
 
     nav.header__nav
       .header__wing.header__wing--right
-        = modal_link_to year_events_path(@year || current_user.years.current_year), class: 'btn btn--no-background btn--small', 'data-testid': 'trips-button' do
-          = icon('plane', classes: 'icon--large icon--bold', color: 'primary-minus-two')
+        = modal_link_to year_events_path(@year || current_user.years.current_year), class: 'btn btn--small', 'data-testid': 'trips-button' do
+          = icon('plane', classes: 'icon--large')
 
-        .btn.btn--icon.btn--no-background
+        .btn.btn--icon.btn--small
           = render 'shared/context_menu', locals: { icon: 'user-hexagon' }
-            = link_to years_path, class: 'btn btn--small btn--no-border full-width' do
-              = icon('home', classes: 'icon--large icon--bold', color: 'primary-minus-two')
+            = link_to years_path, class: 'btn btn--small full-width' do
+              = icon('home', classes: 'icon--large')
               | Home
 
-            = link_to profile_users_path, class: 'btn btn--small btn--no-border full-width' do
-              = icon('user', classes: 'icon--large icon--bold', color: 'primary-minus-two')
+            = link_to profile_users_path, class: 'btn btn--small full-width' do
+              = icon('user', classes: 'icon--large')
               | Profile
 
-            = modal_link_to new_export_path, class: 'btn btn--small btn--no-border full-width' do
-              = icon('download', classes: 'icon--large icon--bold', color: 'primary-minus-two')
+            = modal_link_to new_export_path, class: 'btn btn--small full-width' do
+              = icon('download', classes: 'icon--large')
               | Export
 
-            = button_to sign_out_sessions_path, method: :delete, class: 'btn btn--small btn--no-border' do
-              = icon('logout', classes: 'icon--large icon--bold', color: 'primary-minus-two')
+            = button_to sign_out_sessions_path, method: :delete, class: 'btn btn--small' do
+              = icon('logout', classes: 'icon--large')
               | Logout
 
             .desktop-hidden
-              = link_to mobile_view_years_path, class: 'btn btn--small btn--no-border full-width' do
-                = icon('device-mobile', classes: 'icon--large icon--bold', color: 'primary-minus-two')
+              = link_to mobile_view_years_path, class: 'btn btn--small full-width' do
+                = icon('device-mobile', classes: 'icon--large')
                 | Mobile
 
       - if !hide_nav
-        = link_to year_path(@year.year.to_i + 1), class: 'button btn btn--icon btn--pill btn--no-background' do
+        = link_to year_path(@year.year.to_i + 1), class: 'button btn btn--icon btn--pill' do
           = icon('circle-caret-right', color: 'primary-base', classes: 'icon--x-large')

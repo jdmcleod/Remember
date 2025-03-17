@@ -7,10 +7,6 @@
   height: 100%;
   display: flex;
   align-items: center;
-
-  &:hover {
-    color: var(--op-color-primary-base);
-  }
 }
 
 .context-menu__dropdown {
@@ -39,11 +35,14 @@
 
   display: flex;
   flex-direction: column;
-  button {
+
+  button, .btn {
     width: 100%;
+    background-color: unset;
   }
 
-  @media only screen and (max-width: $breakpoint-small) {
+  /* --op-breakpoint-small */
+  @media only screen and (max-width: 768px) {
     left: -3rem;
   }
 }

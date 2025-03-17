@@ -16,10 +16,10 @@
           rem-be-real-person name=@be_real_person.fullname src=@be_real_person.profile_picture.url
     .card__body
       - if current_user.be_real_connected?
-        = link_to profile_user_be_real_connection_path(current_user, @be_real_connection), class: 'btn-primary' do
-          = icon('photo', classes: 'icon--medium')
+        = link_to profile_user_be_real_connection_path(current_user, @be_real_connection), class: 'btn btn--primary' do
+          = icon('photo', classes: 'icon--medium', color: 'neutral-plus-max')
           | View BeReal Data
       - else
-        = link_to new_user_be_real_connection_path(current_user), class: 'btn-primary' do
+        = link_to new_user_be_real_connection_path(current_user), class: 'btn btn--primary' do
           = icon('photo', classes: 'icon--medium')
           | Connect to BeReal
