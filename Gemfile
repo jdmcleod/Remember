@@ -11,7 +11,6 @@ gem "pg_search"
 
 # assets
 gem "stimulus-rails"
-gem 'cssbundling-rails'
 gem 'image_processing', '~> 1.2'
 gem 'requestjs-rails'
 gem 'importmap-rails' # rubocop:disable Bundler/OrderedGems - must come after requestjs-rails
