@@ -39,6 +39,7 @@
 .sign-in-with-google-button {
   padding: 0;
 
+  /* --op-breakpoint-small */
   @media only screen and (max-width: 768px) {
     display: none;
   }
@@ -53,6 +54,7 @@
     min-width: var(--op-space-4x-large);
   }
 
+  /* --op-breakpoint-small */
   @media only screen and (max-width: 768px) {
     display: inline-block;
   }

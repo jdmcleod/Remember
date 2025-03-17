@@ -12,6 +12,7 @@
   position: relative;
   max-width: 40rem;
 
+  /* --op-breakpoint-small */
   @media only screen and (max-width: 768px) {
     display: block;
   }
