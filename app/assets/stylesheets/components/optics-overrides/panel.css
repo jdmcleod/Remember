@@ -1,0 +1,31 @@
+.panel {
+  --op-panel-width: 36rem;
+  --op-transition-panel: left 150ms ease-in;
+
+  left: calc(-1 * var(--op-panel-width));
+  height: 80vh;
+
+  top: 10vh;
+  scrollbar-width: none;  /* Firefox */
+  border: var(--op-border-width-large) solid var(--op-color-primary-base);
+  border-left: none;
+  box-shadow: var(--op-color-primary-base) 0px 20px 30px -10px;
+  background-color: var(--op-color-neutral-plus-max);
+  border-radius: 0 var(--op-radius-large) var(--op-radius-large) 0;
+}
+
+.panel--active {
+  left: 0;
+}
+
+#panel-header {
+  h2 { margin: 0; }
+}
+
+#panel-header, #panel-content, #panel-footer {
+  padding: var(--op-space-small);
+}
+
+#panel-content {
+
+}

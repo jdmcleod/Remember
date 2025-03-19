@@ -13,6 +13,7 @@
 ActiveRecord::Schema[8.0].define(version: 2024_09_27_181813) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+  enable_extension "pg_trgm"
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -39,10 +40,10 @@ ActiveRecord::Schema[8.0].define(version: 2024_09_27_181813) do
     t.string "filename", null: false
     t.string "content_type"
     t.text "metadata"
-    t.string "service_name", null: false
     t.bigint "byte_size", null: false
     t.string "checksum"
     t.datetime "created_at", null: false
+    t.string "service_name", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
@@ -141,6 +142,17 @@ ActiveRecord::Schema[8.0].define(version: 2024_09_27_181813) do
     t.index ["quarter_id"], name: "index_months_on_quarter_id"
   end
 
+  create_table "musings", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "name"
+    t.string "type"
+    t.datetime "date"
+    t.jsonb "custom_fields"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_musings_on_user_id"
+  end
+
   create_table "quarters", force: :cascade do |t|
     t.bigint "year_id"
     t.date "start_date"
@@ -176,4 +188,5 @@ ActiveRecord::Schema[8.0].define(version: 2024_09_27_181813) do
   add_foreign_key "day_badges", "badges"
   add_foreign_key "day_badges", "days"
   add_foreign_key "entries", "users"
+  add_foreign_key "musings", "users"
 end

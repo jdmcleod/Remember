@@ -1,0 +1,18 @@
+-# locals: (resource:, delete_path:, upload_path:)
+
+- form_id = "edit_#{resource.to_param}"
+
+- if resource.image.present?
+  .image-upload#image-uploader
+    rem-be-real-memory{
+      date=resource.date
+      primarySrc=rails_storage_proxy_path(resource.image)
+      size="52"}
+    = button_to delete_path, method: :delete, class: 'btn btn--small delete-image-button' do
+      = icon('trash')
+
+- else
+  = simple_form_for(resource, url: upload_path, html: { id: "image-uploader" }) do |f|
+    rem-uploader formId="image-uploader" allowedFileExtensions=%w[png jpg jpeg svg webp heic]
+      div slot='input' = f.input :image, as: :file
+      div slot='errors' = f.object.errors[:image].join(', ') if f.object.errors[:image].any?

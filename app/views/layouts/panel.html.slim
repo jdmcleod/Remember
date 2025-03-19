@@ -1,24 +1,25 @@
 doctype html
 html
-  head
-    title Remember
-    = csrf_meta_tags
-    = csp_meta_tag
-    = stylesheet_link_tag 'application'
-    = javascript_include_tag 'application', 'data-turbo-track': 'reload', defer: true
+  = render 'layouts/head'
+
   body
     = turbo_frame_tag 'panel' do
-      .panel.flex.items-center.justify-center(
+      .panel(
         data-testid='panel'
         class=class_names('panel--active' => response.message == 'Unprocessable Entity')
         data-controller="toggle"
         data-toggle-perform-on-connect-value=(response.message == 'OK')
+        data-toggle-close-on-click-outside-value=true
+        data-action="keydown.esc@window->toggle#off toggle:click:outside->toggle#off"
         data-toggle-active-class="panel--active"
-        data-turbo-cache="false"
-      )
-        .panel__content
-          .modal-nav
-            .panel__close data-action="click->toggle#perform"
-              = icon('close')
-          .panel__body
-            = yield
+        data-turbo-cache="false")
+
+        #panel-header.flex.justify-between.items-center
+          h2 slot='label' = yield :panel_title
+
+          .flex.gap-xs.items-center
+            = yield :panel_header_actions
+            .btn.btn--icon.btn--small data-action="click->toggle#off"
+              = icon('square-rounded-x', classes: 'icon--large')
+        #panel-content = yield
+        #panel-footer.full-width slot='footer' = yield :panel_actions

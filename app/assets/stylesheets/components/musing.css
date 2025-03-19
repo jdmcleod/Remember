@@ -1,0 +1,13 @@
+.btn.musing-handle__wrapper {
+  position: fixed;
+  border-radius: 0 var(--op-radius-medium) var(--op-radius-medium) 0;
+  padding: var(--op-space-x-small) var(--op-space-x-small) var(--op-space-x-small) var(--op-space-2x-small);
+  box-shadow: var(--op-shadow-x-small);
+  font-size: var(--op-space-small);
+}
+
+.musing-handle__wrapper--position-1 {
+  top: 20%;
+  left: 0;
+  color: var(--op-color-netural-base);
+}

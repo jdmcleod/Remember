@@ -7,12 +7,16 @@ class User < ApplicationRecord
   has_many :events, dependent: :destroy
   has_many :entries, dependent: :destroy
 
+  has_many :musings
+
+  has_many :books, dependent: :destroy
+
   has_one :be_real_connection, dependent: :destroy
 
   def be_real_connected?
     be_real_connection&.connected?
   end
-  
+
   after_create :create_default_badges!
 
   def create_default_badges!

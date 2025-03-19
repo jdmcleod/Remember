@@ -69,67 +69,6 @@
   height: 0;
 }
 
-.day-popup__photo {
-  width: 215px;
-  height: 100%;
-  position: relative;
-
-  &.day-popup__photo--deletable {
-    &:hover {
-      cursor: pointer;
-
-      &::after {
-        visibility: visible;
-      }
-    }
-
-    &::after {
-      background-color: var(--op-color-alerts-danger-plus-seven);
-      color: var(--op-color-alerts-danger-on-plus-seven);
-      visibility: hidden;
-      position: absolute;
-      font-size: var(--op-font-small);
-      padding: var(--op-space-3x-small);
-      border-radius: 50%;
-      top: -10px;
-      right: -10px;
-    }
-  }
-
-  .delete-image-button {
-    position: absolute;
-    bottom: var(--op-space-small);
-    right: var(--op-space-small);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 3rem;
-    height: 3rem;
-    border: none;
-    background-color: var(--op-color-primary-base);
-    border-radius: var(--op-radius-2x-large);
-    color: var(--op-color-neutral-plus-max);
-    font-size: var(--op-font-large);
-
-    &:hover {
-      background-color: var(--op-color-primary-minus-one);
-      color: var(--op-color-primary-on-minus-one);
-    }
-  }
-}
-
-.day-popup__photo-floating {
-  float: left;
-  padding-right: var(--op-space-small);
-}
-
-.day-popup__photo-template {
-  width: 200px;
-  height: 100%;
-  border: 2x dashed var(--op-color-neutral-plus-eight);
-  border-radius: var(--op-radius-medium);
-}
-
 .day-popup__header {
   background-color: var(--op-color-primary-base);
   color: var(--op-color-primary-plus-seven);
@@ -139,7 +78,7 @@
   border-radius: var(--op-radius-medium) var(--op-radius-medium) 0 0;
 }
 
-.day-popup-title, .day-popup__photo {
+.day-popup-title, .image-upload {
   /* --op-breakpoint-small */
   @media only screen and (max-width: 768px) {
     display: none;

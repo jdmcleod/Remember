@@ -5,4 +5,4 @@
   div It is encouraged to regularly download all your data as a backup. This export will download a JSON file of every entry, badge, and event on your account.
   div Eventually it will download your images as well (whenever I get to that).
 
-  = button_to 'Download Entries', exports_path, class: 'btn btn--primary', data: { turbo: false, 'controller': 'submit', action: 'submit#disable' }
+  = button_to 'Download Entries', exports_path, class: 'btn btn--primary', data: { turbo: false, 'controller': 'disable-submit', action: 'disable-submit#disable' }
