@@ -7,12 +7,12 @@
     .flex.gap-sm.items-center.full-width
       = f.input :name,
         label: false,
-        placeholder: "New #{@type.to_s.humanize.pluralize} name",
+        placeholder: "New #{@type.to_s.humanize} name",
         input_html: { data: { clear_input_target: 'input'}},
         wrapper_html: { class: 'form-group--no-padding full-width' }
 
-      button.btn-primary.btn--icon.btn--small data-action="click->clear-input#execute"
-        = icon('square-rounded-plus', classes: 'icon--large')
+      button.btn.btn--primary.btn--icon.btn--small data-action="click->clear-input#execute"
+        = icon('square-rounded-plus', classes: 'icon--large', color: 'neutral-plus-max')
 
   #musings
     = render @collection

@@ -3,6 +3,8 @@ class Musing < ApplicationRecord
   self.table_name = :musings
   include DateScopes
 
+  belongs_to :user
+
   has_one :entry, as: :journalable, dependent: :destroy, class_name: 'Entry'
 
   has_one_attached :image do |attachable|
@@ -10,4 +12,10 @@ class Musing < ApplicationRecord
   end
 
   validates :name, :date, presence: true
+
+  def find_entry
+    return entry if entry.present?
+
+    build_entry(user: user, date: date)
+  end
 end

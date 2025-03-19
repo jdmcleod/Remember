@@ -2,8 +2,9 @@
   --op-panel-width: 36rem;
   --op-transition-panel: left 150ms ease-in;
 
-  left: calc(-1 * var(--op-panel-width)); // this pushes the panel off the sceen to the right
+  left: calc(-1 * var(--op-panel-width));
   height: 80vh;
+
   top: 10vh;
   scrollbar-width: none;  /* Firefox */
   border: var(--op-border-width-large) solid var(--op-color-primary-base);

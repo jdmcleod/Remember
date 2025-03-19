@@ -1,4 +1,4 @@
-.musing-handle__wrapper {
+.btn.musing-handle__wrapper {
   position: fixed;
   border-radius: 0 var(--op-radius-medium) var(--op-radius-medium) 0;
   padding: var(--op-space-x-small) var(--op-space-x-small) var(--op-space-x-small) var(--op-space-2x-small);

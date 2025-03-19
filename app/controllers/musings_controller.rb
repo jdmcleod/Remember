@@ -40,7 +40,7 @@ class MusingsController < ApplicationController
   end
 
   def show
-    render layout: 'modal'
+    render layout: 'modal', locals: { modal_class: 'modal--musing' }
   end
 
   def destroy
