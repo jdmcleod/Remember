@@ -95,12 +95,13 @@
   gap: 2px;
   left: 0;
   top: -2px;
-  width: 100%;
   z-index: 5;
 }
 
 .day-badges--during-event {
   justify-content: flex-end;
+  right: 0;
+  left: unset;
 }
 
 .day-badge-indicator {

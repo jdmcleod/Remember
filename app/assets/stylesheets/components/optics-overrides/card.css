@@ -1,9 +1,13 @@
 .card--padded {
-  .card__header { padding: 0; }
+  .card__header {
+    padding: 0;
+  }
+  --_op-card-padding: var(--op-space-small);
 }
 
 .card {
-  background-color: var(--op-color-neutral-plus-seven);
+  background-color: var(--op-color-neutral-plus-max);
+  border-radius: var(--op-radius-2x-large);
 }
 
 .card__header {

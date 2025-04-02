@@ -1,6 +1,6 @@
 .modal {
   --_op-modal-width: 60rem;
-  --op-color-background: var(--op-color-neutral-plus-max);
+  --op-color-background: var(--op-color-neutral-plus-nine);
 
   border-radius: var(--op-radius-x-large);
   transition-duration: 150ms;
@@ -21,7 +21,7 @@
   }
 
   .modal__body {
-    background-color: var(--op-color-neutral-plus-max);
+    background-color: var(--op-color-background);
     overflow-y: auto;
     flex-grow: 1;
   }

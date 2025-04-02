@@ -29,7 +29,7 @@ class EntriesController < ApplicationController
     @search_term = params[:q]
     @entries = current_user.entries.order(:date).includes(journalable: [{ be_real_memories: [{ primary_attachment: :blob, secondary_attachment: :blob }] }])
 
-    if search_date && !@search_term.downcase == 'wedding' && !@search_term.downcase == 'marriage' # lol (wed, mar -> wednesday, march)
+    if search_date && @search_term.downcase != 'wedding' && @search_term.downcase != 'marriage' # lol (wed, mar -> wednesday, march)
       @entries = @entries.where(journalable_type: 'Day').where("date(date) = ?", search_date)
     elsif params[:year_id].present?
       @year = Year.find(params[:year_id])
