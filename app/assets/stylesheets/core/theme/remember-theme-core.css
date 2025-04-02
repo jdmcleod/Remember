@@ -68,4 +68,6 @@
   --op-font-family: 'Ubuntu', sans-serif;
   --op-font-family-secondary: 'Belanosima', sans-serif;
   --op-font-family-tertiary: 'Cantarell', serif;
+
+  --op-color-neutral-plus-nine: hsl(var(--op-color-neutral-h) var(--op-color-neutral-s) 98.5%);
 }

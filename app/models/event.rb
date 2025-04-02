@@ -51,7 +51,7 @@ class Event < ApplicationRecord
   end
 
   def icon_name
-    super || 'plane'
+    super.presence || 'plane'
   end
 
   def contains_date(date)

@@ -10,7 +10,7 @@ div class=p.wrapper_class(p.primary_event, @highlight_day) style=p.primary_style
     - if p.show_secondary_trip_handle?
       = modal_link_to year_event_path(month.year, p.secondary_event) do
         .trip__handle.trip__handle--secondary style=p.secondary_style data-tooltip-text=p.secondary_event.name
-          = icon(p.secondary_event.icon_name, classes: 'icon--x-small', color: 'neutral-plus-max')
+          = icon(p.secondary_event.icon_name, classes: 'icon--small', color: 'neutral-plus-max')
 
     .trip__secondary class=p.secondary_trip_class style="background-color: #{p.secondary_event&.color}"
 

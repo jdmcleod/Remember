@@ -10,20 +10,18 @@
 }
 
 .hero {
-  --_hero-card-width: calc(var(--op-size-unit) * 250); // 1000px
-  --_hero-card-radius: calc(var(--op-size-unit) * 13); // 52px
+  --_hero-card-width: calc(var(--op-size-unit) * 250);
+  --_hero-card-radius: calc(var(--op-size-unit) * 13);
   --_hero-graphic-width: 80%;
   --_hero-graphic-max-height: 70vh;
   --_hero-graphic-radius: var(--op-radius-2x-large);
-  --_hero-title-font-size: calc(var(--op-font-scale-unit) * 7.2); // 55px
+  --_hero-title-font-size: calc(var(--op-font-scale-unit) * 7.2);
   --_hero-graphic-box-shadow: 0px 0px 20px 3px rgba(0, 0, 0, 0.12), 0px 0px 100px 32px rgba(0, 0, 0, 0.12);
 
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  // Elements
 
   .hero__card {
     display: flex;
@@ -123,8 +121,6 @@
       display: block;
     }
   }
-
-  // Modifiers
 
   &.hero--primary {
     color: var(--op-color-primary-on-base);
