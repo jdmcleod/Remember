@@ -30,7 +30,7 @@ class BeRealConnectionsController < ApplicationController
 
     if session_info.nil?
       set_new_be_real_connection
-      # TODO: Flash message: "Failed to send one-time password."
+      flash.now[:alert] = 'Failed to send one-time password'
       render :new, status: :unprocessable_entity
       return
     end
@@ -44,7 +44,7 @@ class BeRealConnectionsController < ApplicationController
     if @be_real_connection.save
       redirect_to otp_user_be_real_connection_url(@current_user, @be_real_connection), notice: 'One-time password sent to your phone.'
     else
-      # TODO: Flash message: "Failed to send one-time password."
+      flash.now[:alert] = 'Failed to send one-time password'
       render :new, status: :unprocessable_entity
     end
   end
@@ -56,7 +56,7 @@ class BeRealConnectionsController < ApplicationController
     session_info = google_client.request_otp(params[:be_real_connection][:phone_number])
 
     if session_info.nil?
-      # TODO: Flash message: "Failed to send one-time password."
+      flash.now[:alert] = 'Failed to send one-time password'
       render :new, status: :unprocessable_entity
       return
     end
