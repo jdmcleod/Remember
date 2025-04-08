@@ -158,8 +158,8 @@
 
 .day-popup__save {
   position: absolute;
-  bottom: 1.6rem;
   transform: translateX(-4.5rem) translateY(-0.5rem);
+  bottom: 1rem;
 }
 
 .day-popup__event-buttons {
