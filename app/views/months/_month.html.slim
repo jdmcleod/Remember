@@ -1,7 +1,4 @@
 .month id="month-#{month.number}" data-testid="month-#{month.id}"
-  .month__illustration class="month__illustration--#{month.number}"
-  .month__illustration-indicator class="month__illustration-indicator--#{month.number}"
-
   .flex.justify-between
     = modal_link_to month_path(month), class: 'btn btn--icon btn--small btn--transparent' do
       = icon('layout-list', classes: 'icon--large', color: 'neutral-minus-two')
