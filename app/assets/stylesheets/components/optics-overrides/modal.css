@@ -88,3 +88,9 @@ dialog.modal {
     }
   }
 }
+
+.modal--no-body-padding {
+  .modal__body {
+    padding: 0;
+  }
+}

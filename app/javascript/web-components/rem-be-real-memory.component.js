@@ -16,7 +16,6 @@ export default class REMBeRealMemory extends LitElement {
     super()
     this.date = ''
     this.primarySrc = ''
-    this.size = 100
     this.secondarySrc = ''
     this.swapped = false
     this.dragging = false
@@ -104,8 +103,13 @@ export default class REMBeRealMemory extends LitElement {
 
     const classes = `primary ${this.expanded ? 'expanded' : ''}`
 
-    const primaryHeight = `calc(var(--op-size-unit) * ${size})`
-    const secondaryHeight = `calc(var(--op-size-unit) * ${size / 3.34})`
+    let primaryHeight = '100%'
+    let secondaryHeight = '10rem';
+
+    if (this.size) {
+      primaryHeight = `calc(var(--op-size-unit) * ${size})`
+      secondaryHeight = `calc(var(--op-size-unit) * ${size / 3.34})`
+    }
     return html`
       <img src="${images[0]}" @click="${this.#expandImage}" alt="${this.date}" class="${classes}" style="width: ${primaryHeight};">
       
@@ -118,6 +122,7 @@ export default class REMBeRealMemory extends LitElement {
       position: relative;
       display: block;
       overflow: hidden;
+      padding: var(--op-space-2x-small);
     }
 
     img {

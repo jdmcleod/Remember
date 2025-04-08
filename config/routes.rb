@@ -33,6 +33,7 @@ Rails.application.routes.draw do
     delete 'remove_badge/:badge_id', on: :member, to: 'days#remove_badge', as: :remove_badge
     patch :add_image_attachment, on: :member
     delete :delete_image_attachment, on: :member
+    get :image, on: :member
   end
 
   resources :users, only: [] do

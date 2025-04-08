@@ -23,3 +23,12 @@
     rem-uploader formId="day-popup-image" allowedFileExtensions=%w[png jpg jpeg svg webp heic]
       div slot='input' = f.input :image, as: :file
       div slot='errors' = f.object.errors[:image].join(', ') if f.object.errors[:image].any?
+
+.desktop-hidden
+  = modal_link_to image_day_path(@day), class: 'day day-popup__mobile-photo'
+    - if @day.image.present?
+      .day__background-image
+        = image_tag @day.image.variant(:thumb), loading: "lazy"
+    - elsif @day.be_real_memories.any?
+      .day__background-image
+        = image_tag @day.be_real_memories.first.thumbnail_url, loading: "lazy"
