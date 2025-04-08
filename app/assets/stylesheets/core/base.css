@@ -1,5 +1,9 @@
-body {
+html, body {
   line-height: var(--op-line-height-densest);
+  height: 100vh;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  width: 100vw;
 }
 
 a {
