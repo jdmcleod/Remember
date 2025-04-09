@@ -14,9 +14,9 @@
 }
 
 .trip__secondary {
-  height: 0.6rem;
+  height: 0.5rem;
   position: absolute;
-  bottom: -6px;
+  bottom: -3px;
   width: 100%;
 }
 
@@ -39,7 +39,7 @@
 
 .trip__handle--secondary {
   top: unset;
-  bottom: -11px;
+  bottom: -9px;
   left: -9px;
   font-size: var(--op-font-2x-small);
 }

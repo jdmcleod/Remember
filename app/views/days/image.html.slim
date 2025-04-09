@@ -1,0 +1,15 @@
+= content_for(:modal_title) do
+  | #{@day.date.strftime('%A')}, #{@day.date.strftime('%B %e, %Y')}
+
+- if @image.present?
+  rem-be-real-memory{
+    date=@day.date
+    primarySrc=rails_storage_proxy_path(@image)}
+  = button_to delete_image_attachment_day_path(@day), method: :delete, class: 'btn btn--small delete-image-button' do
+    = icon('trash', color: 'op-neutral-plus-max')
+- elsif @memories&.any?
+  - memory = @memories.first
+  rem-be-real-memory{
+    date=memory.day.date
+    primarySrc=rails_storage_proxy_path(memory.primary)
+    secondarySrc=rails_storage_proxy_path(memory.secondary)}

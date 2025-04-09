@@ -13,7 +13,7 @@ const freezeScrollOnNextRender = () => {
 };
 
 export default class DayPopupController extends Controller {
-  static targets = ['popup', 'container', 'form', 'day']
+  static targets = ['popup', 'container', 'form', 'day', 'badgesContainer']
 
   async show(event) {
     if (this._popupOpen) await this.save()
@@ -128,6 +128,14 @@ export default class DayPopupController extends Controller {
     if (this.formTarget && this._changed) {
       freezeScrollOnNextRender()
       this.formTarget.requestSubmit()
+    }
+  }
+
+  toggleBadgesContainer() {
+    if (this.badgesContainerTarget.classList.contains('show-on-mobile')) {
+      this.badgesContainerTarget.classList.remove('show-on-mobile')
+    } else {
+      this.badgesContainerTarget.classList.add('show-on-mobile')
     }
   }
 

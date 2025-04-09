@@ -138,6 +138,17 @@ a:has(.badge), button:has(.badge) {
   flex-direction: column;
   justify-content: space-between;
   gap: var(--op-space-x-small);
+  transition: width 250ms ease-in-out;
+
+  @media (width < 768px) {
+    overflow: hidden;
+    width: 0;
+
+    &.show-on-mobile {
+      width: 4rem;
+      overflow: unset;
+    }
+  }
 }
 
 .badges__gutter {
