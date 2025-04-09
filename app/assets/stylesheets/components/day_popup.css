@@ -158,11 +158,13 @@
   backdrop-filter: blur(3rem);
   background-color: rgba(239, 239, 239, 0.62);
   color: var(--op-color-neutral-minus-max);
-  transform: translateY(-34px);
-  height: 26px;
-  padding: var(--op-space-3x-small) var(--op-space-x-small);
+  transform: translateY(-38px);
+  height: 30px;
+  padding: 0;
   border-radius: var(--op-radius-medium);
-  transition: all 1s ease-in-out;
+  transition: all 300ms ease-in-out;
+  display: flex;
+  align-items:center;
 }
 
 .day-popup-title {
