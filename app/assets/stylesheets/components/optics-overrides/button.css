@@ -64,7 +64,7 @@
   background-color: var(--op-color-transparent-25);
 }
 
-.btn {
+.btn.btn--mobile-force-small {
   @media (width <= 768px) {
     &.btn--large, &.btn--medium, &.btn--small {
       --__op-btn-height: var(--_op-btn-height-small);

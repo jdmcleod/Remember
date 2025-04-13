@@ -1,6 +1,6 @@
 .app__header data-controller='hotkeys' data-hotkeys-bindings-value='{"command+/": ".app__header->search#toggle"}'
   .navbar.flex.justify-between data-controller='search'
-    = image_tag 'logo-red.svg', class: 'header__logo'
+    = image_tag 'favicon.svg', class: 'header__logo-square'
 
     .flex.gap-sm.items-center
       - if current_user.admin?

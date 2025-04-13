@@ -40,10 +40,9 @@
           = render 'popup_badges'
           = render 'popup_event_buttons'
 
-
           .day-popup__save
-            button.btn.btn--green.btn--icon.btn--small title="Save" type="submit" name="commit" data-action="day-popup#close" data-testid="save-short-entry"
+            button.btn.btn--green.btn--icon.btn--small.btn--mobile-force-small title="Save" type="submit" name="commit" data-action="day-popup#close" data-testid="save-short-entry"
               = icon('discount-check', classes: 'icon--large', color: 'alerts-notice-plus-six')
 
-            .desktop-hidden.btn.btn--icon.btn--small data-action="click->day-popup#toggleBadgesContainer"
+            .desktop-hidden.btn.btn--icon.btn--small.btn--mobile-force-small data-action="click->day-popup#toggleBadgesContainer"
               = icon('badge', classes: 'icon--large')

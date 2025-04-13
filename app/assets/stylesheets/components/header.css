@@ -31,7 +31,7 @@
     gap: var(--op-space-x-small);
     /* --op-breakpoint-small */
     @media only screen and (max-width: 768px) {
-      gap: 0;
+      gap: var(--op-space-2x-small);
     }
   }
 
@@ -72,6 +72,11 @@
 
 .header__logo {
   max-width: 180px;
+}
+
+.header__logo-square {
+  max-width: 60px;
+  border-radius: var(--op-radius-large);
 }
 
 .header--main {

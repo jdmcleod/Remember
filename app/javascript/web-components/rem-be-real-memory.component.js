@@ -98,7 +98,7 @@ export default class REMBeRealMemory extends LitElement {
     let size = this.size
 
     if (this.expanded) {
-      size = 120
+      size = 130
     }
 
     const classes = `primary ${this.expanded ? 'expanded' : ''}`
@@ -121,13 +121,17 @@ export default class REMBeRealMemory extends LitElement {
     :host {
       position: relative;
       display: block;
-      overflow: hidden;
-      padding: var(--op-space-2x-small);
     }
 
     img {
       border-radius: var(--op-radius-large);
       border: var(--op-border-width-large) solid var(--op-color-neutral-plus-seven);
+      @media (width > 712px) {
+        &:not(.expanded) {
+          object-fit: cover;
+          aspect-ratio: 9/12;
+        }
+      }
       &:hover {
         border: var(--op-border-width-large) solid black;
         cursor: pointer;
