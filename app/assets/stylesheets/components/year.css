@@ -57,3 +57,23 @@
   background-color: var(--op-color-alerts-notice-plus-four);
   color: var(--op-color-alerts-notice-minus-four);;
 }
+
+.year__current-day-button {
+  position: fixed;
+  bottom: var(--op-space-medium);
+  right: var(--op-space-medium);
+  z-index: 9;
+
+  box-shadow: var(--op-shadow-large);
+  backdrop-filter: blur(3rem);
+  background-color: rgba(170, 0, 0, 0.10);
+  border-radius: 50%;
+
+  height: 5rem;
+  width: 5rem;
+  min-width: 5rem;
+
+  @media (width < 768px) {
+    left: calc(50% - 20px);
+  }
+}

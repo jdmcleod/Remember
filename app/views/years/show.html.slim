@@ -7,3 +7,6 @@ div{data-controller="scroll-to-day"
   = render 'days/popup_form'
   .flex.flex-col.gap-xs
     = render @year.quarters
+
+  = link_to year_path(Date.current.year, highlight_day: Date.current.to_s), class: 'btn btn--primary year__current-day-button', data: { tooltip_text: 'Today' } do
+    = icon('calendar', classes: 'icon--medium icon--x-large', color: 'neutral-plus-max')

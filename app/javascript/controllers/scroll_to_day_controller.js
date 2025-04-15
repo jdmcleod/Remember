@@ -10,6 +10,7 @@ export default class extends StimulusController {
       const node = document.querySelector(`[data-date="${this.dateValue}"]`)
       node.scrollIntoView({ behavior: 'smooth', block: 'center' })
       setTimeout(() => node.click(), 1000)
+      history.replaceState(null, "", window.location.pathname + window.location.hash); // clear all query params
     }
   }
 }
