@@ -123,14 +123,16 @@
 
   &.search__entry-text--on-image {
     position: absolute;
-    bottom: 0;
+    bottom: 7px;
+    left: 2px;
     background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
     border-radius: var(--op-radius-large);
     color: var(--op-color-neutral-plus-max);
   }
 
   @media (width < 768px) {
-    min-width: 37rem;
+    min-width: 32rem;
+    width: 100%;
   }
 }
 
