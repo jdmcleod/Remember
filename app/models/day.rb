@@ -54,17 +54,10 @@ class Day < ApplicationRecord
   end
 
   def title
-    suffix = if (11..13).include?(date.day % 100)
-      "#{date.day}th"
-    else
-      case date.day % 10
-      when 1 then "#{date.day}st"
-      when 2 then "#{date.day}nd"
-      when 3 then "#{date.day}rd"
-      else "#{date.day}th"
-      end
-    end
+    date.strftime("%a %B %-d, %y")
+  end
 
-    date.strftime("%B #{suffix}")
+  def has_image?
+    be_real_memories.any? || image.present?
   end
 end

@@ -6,6 +6,8 @@ class Entry < ApplicationRecord
 
   belongs_to :journalable, polymorphic: true
 
+  delegate :has_image?, to: :journalable, allow_nil: true
+
   encrypts :title
 
   scope :in_range, -> (start_date, end_date) do

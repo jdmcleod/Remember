@@ -1,7 +1,7 @@
 .badges__gutter#day-popup-badges
   - if @day_badges.count < Badge::ADDABLE_COUNT
     - if @addable_badges.any?
-      = render 'shared/context_menu', locals: { toggle: capture { render 'shared/badge', locals: { size: 'x-small', type: 'new' } } }
+      = render 'shared/context_menu', locals: { classes: 'context-menu--position-left', toggle: capture { render 'shared/badge', locals: { size: 'x-small', type: 'new' } } }
         .flex.items-center.gap-xs.flex-wrap
           - @addable_badges.each do |badge|
             = button_to add_badge_day_path(@day, badge), method: :post, class: 'padding-inline-none' do

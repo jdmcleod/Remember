@@ -22,4 +22,8 @@ class Month < ApplicationRecord
 
     create_entry(user: year.user, date: start_date)
   end
+
+  def has_image?
+    false
+  end
 end

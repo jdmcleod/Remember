@@ -19,7 +19,7 @@ class EventsController < ApplicationController
 
   def show
     @entries = current_user.entries.in_range(@event.start_date, @event.end_date)
-    render layout: 'modal'
+    render layout: 'modal', locals: { modal_class: 'modal--full' }
   end
 
   def create

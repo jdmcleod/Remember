@@ -184,8 +184,8 @@ export default class REMUploader extends LitElement {
     @media only screen and (max-width: 712px) {
       .upload-container {
         position: absolute;
-        bottom: 2rem;
-        left: 2rem;
+        bottom: 1.2rem;
+        left: 1.2rem;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -195,9 +195,14 @@ export default class REMUploader extends LitElement {
         background-color: var(--op-color-primary-base);
         border-radius: var(--op-radius-2x-large);
         color: var(--op-color-neutral-plus-max);
-          
+        z-index: 10;
+        
         ti-icon {
           --font-size: var(--op-font-large);
+        }
+        
+        &:hover {
+          cursor: pointer;
         }
       }
     }

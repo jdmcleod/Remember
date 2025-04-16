@@ -1,5 +1,7 @@
 class SessionsController < ApplicationController
-  skip_before_action :require_authentication!, only: [:create, :index]
+  allow_unauthenticated_access only: %i[ create index]
+  rate_limit to: 10, within: 3.minutes, only: :create, with: -> { render_rejection :too_many_requests }
+
   def index
     return redirect_to current_years_path if current_user
     render layout: 'full_screen'
@@ -7,16 +9,17 @@ class SessionsController < ApplicationController
 
   def create
     auth = request.env['omniauth.auth']
+    name = auth['info']['name']
+    profile_image_url = auth['info']['image']
+    email = auth['info']['email']
 
-    user = User.create_with(
-      name: auth['info']['name'],
-      profile_image_url: auth['info']['image']
-    ).find_or_create_by(
-      email: auth['info']['email']
-    )
-
-    session[:current_user_id] = user.id
-    redirect_to current_years_path, notice: "Welcome, #{user.name}"
+    if user = User.create_with(name:, profile_image_url:).find_or_create_by(email:)
+      start_new_session_for user
+      session[:current_user_id] = user.id
+      redirect_to current_years_path, notice: "Welcome, #{user.name}"
+    else
+      render_rejection :unauthorized
+    end
   end
 
   def failure
@@ -24,9 +27,14 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    session[:current_user_id] = nil
-    @current_user = nil
-
+    reset_authentication
     redirect_to sessions_path, notice: 'Signed out successfully.'
+  end
+
+  private
+
+  def render_rejection(status)
+    flash[:alert] = "Too many requests or unauthorized."
+    render :new, status: status
   end
 end

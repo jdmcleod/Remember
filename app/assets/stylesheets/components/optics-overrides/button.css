@@ -63,3 +63,13 @@
 .btn--transparent {
   background-color: var(--op-color-transparent-25);
 }
+
+.btn.btn--mobile-force-small {
+  @media (width <= 768px) {
+    &.btn--large, &.btn--medium, &.btn--small {
+      --__op-btn-height: var(--_op-btn-height-small);
+      --__op-btn-font-size: var(--_op-btn-font-medium);
+      --__op-btn-padding: var(--_op-btn-padding-medium);
+    }
+  }
+}

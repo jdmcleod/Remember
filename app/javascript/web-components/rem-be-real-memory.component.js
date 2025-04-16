@@ -16,7 +16,6 @@ export default class REMBeRealMemory extends LitElement {
     super()
     this.date = ''
     this.primarySrc = ''
-    this.size = 100
     this.secondarySrc = ''
     this.swapped = false
     this.dragging = false
@@ -99,15 +98,20 @@ export default class REMBeRealMemory extends LitElement {
     let size = this.size
 
     if (this.expanded) {
-      size = 120
+      size = 130
     }
 
     const classes = `primary ${this.expanded ? 'expanded' : ''}`
 
-    const primaryHeight = `calc(var(--op-size-unit) * ${size})`
-    const secondaryHeight = `calc(var(--op-size-unit) * ${size / 3.34})`
+    let width = '100%'
+    let secondaryHeight = '10rem';
+
+    if (this.size) {
+      width = `calc(var(--op-size-unit) * ${size})`
+      secondaryHeight = `calc(var(--op-size-unit) * ${size / 3.34})`
+    }
     return html`
-      <img src="${images[0]}" @click="${this.#expandImage}" alt="${this.date}" class="${classes}" style="width: ${primaryHeight};">
+      <img src="${images[0]}" @click="${this.#expandImage}" alt="${this.date}" class="${classes}" style="width: ${width};">
       
       ${this._renderSecondary(secondaryHeight, images[1])}
     `
@@ -117,12 +121,17 @@ export default class REMBeRealMemory extends LitElement {
     :host {
       position: relative;
       display: block;
-      overflow: hidden;
     }
 
     img {
       border-radius: var(--op-radius-large);
       border: var(--op-border-width-large) solid var(--op-color-neutral-plus-seven);
+      @media (width > 712px) {
+        &:not(.expanded) {
+          object-fit: cover;
+          aspect-ratio: 9/12;
+        }
+      }
       &:hover {
         border: var(--op-border-width-large) solid black;
         cursor: pointer;

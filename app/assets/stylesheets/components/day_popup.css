@@ -14,7 +14,7 @@
 
   padding: var(--op-space-3x-small) var(--op-space-x-small) var(--op-space-x-small) var(--op-space-x-small);
   box-shadow: var(--op-color-primary-base) 0px 20px 30px -10px;
-  background-color: var(--op-color-neutral-plus-max);
+  background-color: var(--op-color-neutral-plus-nine);
   border-radius: var(--op-radius-2x-large);
   border: var(--op-border-width-large) solid var(--op-color-primary-base);
 
@@ -35,6 +35,7 @@
     line-height: var(--op-line-height-dense);
     background-color: var(--op-color-neutral-plus-seven);
     overflow-y: auto;
+    padding-bottom: 6rem;
 
     &:focus-visible {
       outline: none;
@@ -47,6 +48,18 @@
     width: 100%;
     padding: var(--op-space-3x-small) var(--op-space-x-small) var(--op-space-x-small) var(--op-space-x-small);
     left: 0;
+    border: var(--op-border-width-large) solid var(--op-color-neutral-plus-six);
+    box-shadow: var(--op-shadow-large);
+
+    trix-editor {
+      background-color: unset;
+      border: unset;
+
+      &:focus-visible {
+        outline: none;
+        box-shadow: none;
+      }
+    }
   }
 
   /* --op-breakpoint-small */
@@ -116,6 +129,17 @@
       color: var(--op-color-primary-on-minus-one);
     }
   }
+
+  /* --op-breakpoint-small */
+  @media (width < 768px) {
+    display: none;
+  }
+}
+
+.day-popup__mobile-photo {
+  position: absolute;
+  bottom: var(--op-space-medium);
+  left: var(--op-space-medium);
 }
 
 .day-popup__photo-floating {
@@ -131,15 +155,19 @@
 }
 
 .day-popup__header {
-  background-color: var(--op-color-primary-base);
-  color: var(--op-color-primary-plus-seven);
-  transform: translateY(-29px);
-  height: 26px;
-  padding: var(--op-space-2x-small) var(--op-space-x-small);
-  border-radius: var(--op-radius-medium) var(--op-radius-medium) 0 0;
+  backdrop-filter: blur(3rem);
+  background-color: rgba(239, 239, 239, 0.62);
+  color: var(--op-color-neutral-minus-max);
+  transform: translateY(-38px);
+  height: 30px;
+  padding: 0;
+  border-radius: var(--op-radius-medium);
+  transition: all 300ms ease-in-out;
+  display: flex;
+  align-items:center;
 }
 
-.day-popup-title, .day-popup__photo {
+.day-popup-title {
   /* --op-breakpoint-small */
   @media only screen and (max-width: 768px) {
     display: none;
@@ -158,8 +186,16 @@
 
 .day-popup__save {
   position: absolute;
-  bottom: 1.6rem;
   transform: translateX(-4.5rem) translateY(-0.5rem);
+  bottom: 1.4rem;
+
+  /* --op-breakpoint-small */
+  @media only screen and (max-width: 768px) {
+    display: flex;
+    gap: var(--op-space-x-small);
+    transform: translateX(-6.5rem) translateY(-0.5rem);
+    bottom: var(--op-space-x-small);
+  }
 }
 
 .day-popup__event-buttons {

@@ -4,16 +4,4 @@
       div = @month.name
     div = "#{@entries.size} entries"
 
-.modal__body--min-height.flex.flex-col.gap-sm  data-controller="live-filter"
-  input.full-width.form-control data-live-filter-target='source' data-action='input->live-filter#filter' type='text' placeholder='Filter'
-
-  - @entries.each do |entry|
-    - next if entry.empty?
-
-    .card.card--padded data-live-filter-target='filterable' data-filter-key=entry.content.to_plain_text
-      .card__header
-        = entry.title
-
-      .search-result
-        = entry.content
-
+= render 'entries/collection', entries: @entries

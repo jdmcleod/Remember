@@ -57,3 +57,23 @@
   background-color: var(--op-color-alerts-notice-plus-four);
   color: var(--op-color-alerts-notice-minus-four);;
 }
+
+.year__current-day-button {
+  position: fixed;
+  bottom: var(--op-space-x-large);
+  right: var(--op-space-x-large);
+  z-index: 9;
+
+  box-shadow: var(--op-shadow-large);
+  background-image: linear-gradient(to right bottom, #d20000, #cf0057, #a62f8d, #6651a2, #245e96);
+  opacity: 0.8;
+  border-radius: 24px;
+
+  height: 5.4rem;
+  width: 5.4rem;
+  min-width: 5.4rem;
+
+  @media (width < 768px) {
+    left: calc(50% - 20px);
+  }
+}

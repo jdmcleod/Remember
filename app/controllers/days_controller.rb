@@ -16,6 +16,13 @@ class DaysController < ApplicationController
     set_badges
   end
 
+  def image
+    @day = Day.find(params[:id])
+    @image = @day.image
+    @memories = @day.be_real_memories
+    render layout: 'modal', locals: { modal_class: 'modal--full modal--no-body-padding' }
+  end
+
   def remove_badge
     @day = Day.find(params[:id])
     DayBadge.find_by(day_id: @day.id, badge_id: params[:badge_id]).destroy

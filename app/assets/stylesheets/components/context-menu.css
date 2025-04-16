@@ -45,6 +45,11 @@
   @media only screen and (max-width: 768px) {
     left: -3rem;
   }
+
+  &.context-menu--position-left {
+    right: 0;
+    left: unset;
+  }
 }
 
 .context-menu__dropdown > *:not(:last-child) {

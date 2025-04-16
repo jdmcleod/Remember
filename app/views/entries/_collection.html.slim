@@ -1,0 +1,8 @@
+-# locals: (entries:, search_term: nil)
+
+.modal__body--min-height.flex.flex-col.gap-sm data-controller="live-filter"
+  input.full-width.form-control data-live-filter-target='source' data-action='input->live-filter#filter' type='text' placeholder='Filter'
+
+  .flex.gap-xs.flex-wrap.justify-around
+    = render collection: entries, partial: 'entries/image_with_text', as: :entry, locals: { search_term: }
+

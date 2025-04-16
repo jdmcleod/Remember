@@ -3,7 +3,7 @@
   --_op-navbar-text-color: var(--op-color-neutral-on-plus-max);
 
   border-radius: var(--op-radius-2x-large);
-  padding: var(--_op-navbar-horizontal-spacing);
+  padding: var(--op-space-small);
 
   .navbar__brand {
     display: flex;

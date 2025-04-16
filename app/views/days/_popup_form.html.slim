@@ -6,20 +6,20 @@
           .flex.gap-xxs.items-center
             .flex
               button data-action="click->day-popup#backOneMonth"
-                = icon('chevrons-left', color: 'primary-base', classes: 'btn btn--icon btn--x-small')
+                = icon('chevrons-left', color: 'primary-minus-six', classes: 'btn btn--icon btn--x-small')
 
               button data-action="click->day-popup#backOneDay"
-                = icon('chevron-left', color: 'primary-base', classes: 'btn btn--icon btn--x-small')
+                = icon('chevron-left', color: 'primary-minus-six', classes: 'btn btn--icon btn--x-small')
 
             span.day-popup-title = "What I did on #{@entry.journalable.date.strftime('%A')}, "
             span.day-popup-title-day = "#{@entry.title}"
 
             .flex
               button data-action="click->day-popup#forwardOneDay"
-                = icon('chevron-right', color: 'primary-base', classes: 'btn btn--icon btn--x-small')
+                = icon('chevron-right', color: 'primary-minus-six', classes: 'btn btn--icon btn--x-small')
 
               button data-action="click->day-popup#forwardOneMonth"
-                = icon('chevrons-right', color: 'primary-base', classes: 'btn btn--icon btn--x-small')
+                = icon('chevrons-right', color: 'primary-minus-six', classes: 'btn btn--icon btn--x-small')
 
       .day-popup__body
         = render 'popup_image'
@@ -34,11 +34,15 @@
             = f.hidden_field :journalable_id, value: @entry.journalable_id
             = f.hidden_field :journalable_type, value: @entry.journalable_type
 
-            = f.rich_text_area :content, data: { testid: 'short-entry-input', action: 'click->day-popup#inputChange' }
+            = f.rich_text_area :content, data: { testid: 'short-entry-input', action: 'trix-change->day-popup#inputChange' }
 
-        .badges-addable-container
+        .badges-addable-container data-day-popup-target="badgesContainer"
           = render 'popup_badges'
           = render 'popup_event_buttons'
 
-          button.btn.btn--green.btn--icon.btn--small.day-popup__save title="Save" type="submit" name="commit" data-action="day-popup#close" data-testid="save-short-entry"
-            = icon('discount-check', classes: 'icon--large', color: 'alerts-notice-plus-six')
+          .day-popup__save
+            button.btn.btn--green.btn--icon.btn--small.btn--mobile-force-small title="Save" type="submit" name="commit" data-action="day-popup#close" data-testid="save-short-entry"
+              = icon('discount-check', classes: 'icon--large', color: 'alerts-notice-plus-six')
+
+            .desktop-hidden.btn.btn--icon.btn--small.btn--mobile-force-small data-action="click->day-popup#toggleBadgesContainer"
+              = icon('badge', classes: 'icon--large')
