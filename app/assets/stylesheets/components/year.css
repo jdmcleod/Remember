@@ -60,18 +60,18 @@
 
 .year__current-day-button {
   position: fixed;
-  bottom: var(--op-space-medium);
-  right: var(--op-space-medium);
+  bottom: var(--op-space-x-large);
+  right: var(--op-space-x-large);
   z-index: 9;
 
   box-shadow: var(--op-shadow-large);
-  backdrop-filter: blur(3rem);
-  background-color: rgba(170, 0, 0, 0.10);
-  border-radius: 50%;
+  background-image: linear-gradient(to right bottom, #d20000, #cf0057, #a62f8d, #6651a2, #245e96);
+  opacity: 0.8;
+  border-radius: 24px;
 
-  height: 5rem;
-  width: 5rem;
-  min-width: 5rem;
+  height: 5.4rem;
+  width: 5.4rem;
+  min-width: 5.4rem;
 
   @media (width < 768px) {
     left: calc(50% - 20px);
