@@ -1,0 +1,19 @@
+-# locals: (entry:, search_term: nil)
+
+.search__entry data-live-filter-target='filterable' data-filter-key=entry.content.to_plain_text
+  = render 'entries/background_image', entry:
+
+  .search__entry-title class=class_names('search__entry-title--on-image': entry.has_image?)
+    .flex.gap-x-sm.items-center.justify-center
+      = entry.title
+      = link_to year_path(entry.date.year, highlight_day: entry.date.utc.to_date.to_s), class: 'search__open-day' do
+        = icon('arrow-big-right-filled', classes: 'icon--medium', color: 'alerts-notice-minus-four')
+
+  - if entry.content.present?
+    .search__entry-text class=class_names('search__entry-text--on-image': entry.has_image?)
+      - if search_term.present?
+        = highlight_search_result(entry.content.to_plain_text.truncate(800), search_term)
+      - else
+        = entry.content
+  - else
+    .search__entry-text <em>Missing content</em>

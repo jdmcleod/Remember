@@ -2,28 +2,4 @@
   div Search Results
 
 .search-results
-  - @entries.each do |entry|
-    .flex.flex-col
-      .card__header.flex.justify-between
-        div = "#{entry.title}, #{entry.date&.strftime('%Y')}"
-
-        .flex.gap-sm
-          div = entry.journalable_type.humanize
-          .search__open-day
-            = link_to year_path(entry.date.year, highlight_day: entry.date.utc.to_date.to_s) do
-              = icon('arrow-big-right-filled', classes: 'icon--medium', color: 'alerts-notice-minus-four')
-
-      .search-result
-        - if entry.journalable_type == 'Day' && entry.journalable.be_real_memories.any?
-          .flex.gap-sm
-            .day-popup__photo
-              - memory = entry.journalable.be_real_memories.first
-              rem-be-real-memory{
-                date=memory.day.date
-                primarySrc=rails_storage_proxy_path(memory.primary)
-                secondarySrc=rails_storage_proxy_path(memory.secondary)
-                disableExpand=true
-                size="54"}
-            p = highlight_search_result(entry.content.to_plain_text.truncate(800), @search_term)
-        - else
-          p = highlight_search_result(entry.content.to_plain_text.truncate(800), @search_term)
+  = render 'entries/collection', entries: @entries, search_term: @search_term

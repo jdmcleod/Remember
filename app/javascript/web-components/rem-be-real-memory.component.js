@@ -103,15 +103,15 @@ export default class REMBeRealMemory extends LitElement {
 
     const classes = `primary ${this.expanded ? 'expanded' : ''}`
 
-    let primaryHeight = '100%'
+    let width = '100%'
     let secondaryHeight = '10rem';
 
     if (this.size) {
-      primaryHeight = `calc(var(--op-size-unit) * ${size})`
+      width = `calc(var(--op-size-unit) * ${size})`
       secondaryHeight = `calc(var(--op-size-unit) * ${size / 3.34})`
     }
     return html`
-      <img src="${images[0]}" @click="${this.#expandImage}" alt="${this.date}" class="${classes}" style="width: ${primaryHeight};">
+      <img src="${images[0]}" @click="${this.#expandImage}" alt="${this.date}" class="${classes}" style="width: ${width};">
       
       ${this._renderSecondary(secondaryHeight, images[1])}
     `

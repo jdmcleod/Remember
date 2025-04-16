@@ -67,4 +67,8 @@ class Day < ApplicationRecord
 
     date.strftime("%B #{suffix}")
   end
+
+  def has_image?
+    be_real_memories.any? || image.present?
+  end
 end

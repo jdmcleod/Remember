@@ -33,9 +33,9 @@ class EntriesController < ApplicationController
       @entries = @entries.where(journalable_type: 'Day').where("date(date) = ?", search_date)
     elsif params[:year_id].present?
       @year = Year.find(params[:year_id])
-      @entries = @entries.in_range(@year.start_date, @year.end_date).search(@search_term)
+      @entries = @entries.in_range(@year.start_date, @year.end_date).search(@search_term).limit(100)
     else
-      @entries = @entries.search(@search_term)
+      @entries = @entries.search(@search_term).limit(100)
     end
 
     render layout: 'modal', locals: { modal_class: 'modal--full' }
